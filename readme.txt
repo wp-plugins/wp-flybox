@@ -14,6 +14,8 @@ Social media floating fly out tabbed boxes. Can be located on either side of scr
 
 Social media floating fly out tabbed boxes. Can be located on either side of screen. No Javascript used. FlyBoxes include Facebook, Twitter, Pinterest, LinkedIn, Google Plus, Youtube, and Feedburner.
 
+Since this uses CSS, some themes will affect the layout of the tabs. If yours is displaying incorrectly PLEASE let me know which theme is causing poblems and I will fix it as soon as I can.
+
 == Installation ==
 
 This section describes how to install the plugin and get it working.
