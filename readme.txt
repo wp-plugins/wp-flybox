@@ -20,8 +20,7 @@ Since this uses CSS, some themes will affect the layout of the tabs. If yours is
 
 This section describes how to install the plugin and get it working.
 
-1. Upload and unzip files into your wp-content/plugins/ folder
-1. OR install via your worpress dashboard
+1. Upload and unzip files into your wp-content/plugins/ folder OR install via your worpress dashboard
 2. Activate plugin in your plugin settings
 3. Configure plugin using Settings > WP-Flybox
 
@@ -51,7 +50,7 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 == Changelog ==
 
 = 1.1 =
-Fixed some issues with some themes.
+* Fixed issues with some themes.
 
 = 1.0 =
 * First stable release.
