@@ -35,6 +35,10 @@ http://njarb.com/2012/08/wp-flybox/
 
 No and Yes, Not to display the tabs, but yes to displaying the social boxes.
 
+= Why won't this work with some themes? =
+
+All themes have different CSS and layouts. Since no javascript is used, the CSS that is used may be affected by the theme. If this is the case PLEASE let me know so I can fix it.
+
 == Screenshots ==
 
 1. Some of the tabs.
