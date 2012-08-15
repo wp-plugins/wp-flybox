@@ -67,7 +67,7 @@ while ($i <= $wpflybox_count)
     {
     if ($wpflybox_tabs[$i]=="facebook")
         {
-        echo 'div.wpfb-facebook {width:333px;height:271px;top:'.$wpflybox_pos[$i].';left:-304px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-facebook {width:336px;height:264px;top:'.$wpflybox_pos[$i].';left:-304px;position:fixed;z-index:900;}';
         echo 'div.wpfb-facebook-transition table, th, tr, td{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}';
         echo 'div.wpfb-facebook div.wpfb-facebook-transition {margin-left: 0px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-facebook div.wpfb-facebook-transition iframe {border:0px;overflow:hidden;position:static;height:260px;}';
@@ -75,47 +75,47 @@ while ($i <= $wpflybox_count)
         }
     if ($wpflybox_tabs[$i]=="twitter")
         {
-        echo 'div.wpfb-twitter {width:298px;height:248px;top:'.$wpflybox_pos[$i].';left:-269px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-twitter {width:301px;height:241px;top:'.$wpflybox_pos[$i].';left:-269px;position:fixed;z-index:900;}';
         echo 'div.wpfb-twitter-transition table, th, tr, td{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}';
         echo 'div.wpfb-twitter div.wpfb-twitter-transition {margin-left: 0px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-twitter:hover div.wpfb-twitter-transition {margin-left: 301px;}';  
         }
     if ($wpflybox_tabs[$i]=="googleplus")
         {
-        echo 'div.wpfb-googleplus {width:361px;height:161px;top:'.$wpflybox_pos[$i].';left:-332px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-googleplus {width:361px;height:154px;top:'.$wpflybox_pos[$i].';left:-329px;position:fixed;z-index:900;}';
         echo 'div.wpfb-googleplus-transition table, th, tr, td{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}';
         echo 'div.wpfb-googleplus div.wpfb-googleplus-transition {margin-left:0;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-googleplus div.wpfb-googleplus-transition iframe {border:0px;overflow:hidden;position:static;}';
-        echo 'div.wpfb-googleplus:hover div.wpfb-googleplus-transition {margin-left: 364px;}'; 
+        echo 'div.wpfb-googleplus:hover div.wpfb-googleplus-transition {margin-left: 361px;}'; 
         }
     if ($wpflybox_tabs[$i]=="youtube")
         {        
-        echo 'div.wpfb-youtube {width:333px;height:116px;top:'.$wpflybox_pos[$i].';left:-304px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-youtube {width:336px;height:110px;top:'.$wpflybox_pos[$i].';left:-304px;position:fixed;z-index:900;}';
         echo 'div.wpfb-youtube-transition table, th, tr, td{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}';
         echo 'div.wpfb-youtube div.wpfb-youtube-transition {margin-left:0;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-youtube:hover div.wpfb-youtube-transition {margin-left: 336px;}';
         }
     if ($wpflybox_tabs[$i]=="subscription")
         {
-        echo 'div.wpfb-subscribe {width:323px;height110px;top:'.$wpflybox_pos[$i].';left:-294px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-subscribe {width:326px;height:101px;top:'.$wpflybox_pos[$i].';left:-294px;position:fixed;z-index:900;}';
         echo 'div.wpfb-subscribe-transition table, th, tr, td{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}';
         echo 'div.wpfb-subscribe div.wpfb-subscribe-transition {margin-left:0px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-subscribe:hover div.wpfb-subscribe-transition {margin-left: 326px;}';   
         }    
     if ($wpflybox_tabs[$i]=="pinterest")
         {     
-        echo 'div.wpfb-pinterest {width:287px;height:101px;top:'.$wpflybox_pos[$i].';left:-258px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-pinterest {width:287px;height:101px;top:'.$wpflybox_pos[$i].';left:-255px;position:fixed;z-index:900;}';
         echo 'div.wpfb-pinterest-transition table, th, tr, td{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}';
         echo 'div.wpfb-pinterest div.wpfb-pinterest-transition {margin-left:0px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
-        echo 'div.wpfb-pinterest:hover div.wpfb-pinterest-transition {margin-left: 290px;}';
+        echo 'div.wpfb-pinterest:hover div.wpfb-pinterest-transition {margin-left: 287px;}';
         }
     if ($wpflybox_tabs[$i]=="linkedin")
         {         
-        echo 'div.wpfb-linkedin {width:397px;height:167px;top:'.$wpflybox_pos[$i].';left:-368px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-linkedin {width:397px;height:168px;top:'.$wpflybox_pos[$i].';left:-365px;position:fixed;z-index:900;}';
         echo 'div.wpfb-linkedin-transition table, th, tr, td{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}';
         echo 'div.wpfb-linkedin div.wpfb-linkedin-transition {margin-left:0px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-linkedin div.wpfb-facebook-transition iframe {border:0px;overflow:hidden;position:static;height:260px;}';
-        echo 'div.wpfb-linkedin:hover div.wpfb-linkedin-transition {margin-left: 400px;}';
+        echo 'div.wpfb-linkedin:hover div.wpfb-linkedin-transition {margin-left: 397px;}';
         }
         
     $i=$i+1;    
@@ -132,13 +132,13 @@ while ($i <= $wpflybox_count)
     if ($wpflybox_tabs[$i]=="facebook")
         {
         ?>
-        <div class="wpfb-facebook"><div class="wpfb-facebook-transition"><table><tr><th style="background-color:#fff; border: 2px solid #3c95d9;"><iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Ffacebook.com%2F<?php echo $wpflybox_facebook; ?>&amp;locale=en_GB&amp;width=245&amp;connections=10&amp;stream=&amp;header=false&amp;show_faces=0&amp;height=260" scrolling="no"></iframe></th><th valign="top" ><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -303px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th></tr></table></div></div>
+        <div class="wpfb-facebook"><div class="wpfb-facebook-transition"><table><tr><th style="background-color:#fff; border: 2px solid #3c95d9;width:300px;height;260px;overflow:hidden;"><iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Ffacebook.com%2F<?php echo $wpflybox_facebook; ?>&amp;locale=en_GB&amp;width=245&amp;connections=10&amp;stream=&amp;header=false&amp;show_faces=0&amp;height=260" scrolling="no"></iframe></th><th valign="top" ><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -303px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th></tr></table></div></div>
         <?php
         }
     if ($wpflybox_tabs[$i]=="twitter")
         {
         ?>
-        <div class="wpfb-twitter"><div class="wpfb-twitter-transition"><table><tr><th style="background-color:#fff; border: 2px solid #6CC5FF;"><script type="text/javascript" src="<?php echo plugins_url().'/wp-flybox/static/twitterbox.js'; ?>"></script><div id="twitterfanbox"></div><script type="text/javascript">fanbox_init("<?php echo $wpflybox_twitter; ?>");</script></th><th valign="top"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -606px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th></tr></table></div></div>
+        <div class="wpfb-twitter"><div class="wpfb-twitter-transition"><table><tr><th style="background-color:#fff; border: 2px solid #6CC5FF; width:265px; height:237px; overflow:hidden;"><script type="text/javascript" src="<?php echo plugins_url().'/wp-flybox/static/twitterbox.js'; ?>"></script><div id="twitterfanbox"></div><script type="text/javascript">fanbox_init("<?php echo $wpflybox_twitter; ?>");</script></th><th valign="top"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -606px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th></tr></table></div></div>
         <?php
         }
     if ($wpflybox_tabs[$i]=="googleplus")
@@ -146,43 +146,43 @@ while ($i <= $wpflybox_count)
         if (get_option(wpflybox_google_type)== 'profile')
             {
             ?>    
-            <div class="wpfb-googleplus"><div class="wpfb-googleplus-transition"><table><tr><th style="background-color:#fff; border: 2px solid #006ec9;width:325px;"><iframe src="http://www.google.com/s2/u/0/widgets/ProfileCard?uid=<?php echo $wpflybox_google; ?>" scrolling="no"></iframe></th><th valign="top"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -404px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th></tr></table></div></div>
+            <div class="wpfb-googleplus"><div class="wpfb-googleplus-transition"><table><tr><th style="background-color:#fff; border: 2px solid #006ec9;width:325px; height:150px; overflow:hidden;"><iframe src="http://www.google.com/s2/u/0/widgets/ProfileCard?uid=<?php echo $wpflybox_google; ?>" scrolling="no"></iframe></th><th valign="top"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -404px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th></tr></table></div></div>
             <?php
             } else if (get_option(wpflybox_google_type)== 'page')
             {
             ?>    
-            <div class="wpfb-googleplus"><div class="wpfb-googleplus-transition"><table><tr><th style="background-color:#fff; border: 2px solid #006ec9;width:325px;"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><div class="g-plus" data-href="https://plus.google.com/<?php echo $wpflybox_google; ?>?rel=publisher"></div></th><th valign="top"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -404px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th></tr></table></div></div> 
+            <div class="wpfb-googleplus"><div class="wpfb-googleplus-transition"><table><tr><th style="background-color:#fff; border: 2px solid #006ec9;width:325px; height:150px; overflow:hidden;"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><div class="g-plus" data-href="https://plus.google.com/<?php echo $wpflybox_google; ?>?rel=publisher"></div></th><th valign="top"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -404px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th></tr></table></div></div> 
             <?php    
             }   
         }
     if ($wpflybox_tabs[$i]=="youtube")
         {
         ?>
-        <div class="wpfb-youtube"><div class="wpfb-youtube-transition"><table><tr><th style="background-color:#fff; border: 2px solid #ff0000;"><iframe src=http://www.youtube.com/subscribe_widget?p=<?php echo $wpflybox_youtube; ?> style="height: 105px; width: 300px; border: 0;" scrolling="no" frameBorder="0"></iframe></th><th valign="top"><div style="margin-left:px; margin-top:0px; width:32px; height:101px; background-position:0px -202px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th></tr></table></div></div>
+        <div class="wpfb-youtube"><div class="wpfb-youtube-transition"><table><tr><th style="background-color:#fff; border: 2px solid #ff0000; width:300px; height;105px; overflow:hidden;"><iframe src=http://www.youtube.com/subscribe_widget?p=<?php echo $wpflybox_youtube; ?> style="height: 105px; width: 300px; border: 0;" scrolling="no" frameBorder="0"></iframe></th><th valign="top"><div style="margin-left:px; margin-top:0px; width:32px; height:101px; background-position:0px -202px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th></tr></table></div></div>
         <?php    
         }
     if ($wpflybox_tabs[$i]=="subscription")
         {
         ?>
-        <div class="wpfb-subscribe"><div class="wpfb-subscribe-transition"><table><tr><th style="background-color:#fff; border: 2px solid #5b5b5b;"><center><p style="color:#F66303;margin-right:10px;margin-left:10px;width:270px;">Subscribe to Receive E-Mail Updates:</p> <form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=<?php echo $wpflybox_feedburner; ?>', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><input gtbfieldid="10" class="enteryouremail" name="email" value="Enter Your E-Mail Here..." onblur="if (this.value == &#39;&#39;) {this.value = &#39;Enter Your E-Mail Here...&#39;;}" onfocus="if (this.value == &#39;Enter Your E-Mail Here...&#39;) {this.value = &#39;&#39;;}" type="text" /><input value="Trickstreasure" name="uri" type="hidden" /><input value="Submit" class="submitbutton" type="submit" /></form></center></th><th valign="top"><div style="margin-left:0px; margin-top:0x; width:32px; height:101px; background-position:0px 0px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th></tr></table></div></div>
+        <div class="wpfb-subscribe"><div class="wpfb-subscribe-transition"><table><tr><th style="background-color:#fff; border: 2px solid #5b5b5b; width:290px; height:97px; overflow:hidden;"><center><p style="color:#F66303;margin-right:10px;margin-left:10px;width:270px;">Subscribe to Receive E-Mail Updates:</p> <form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=<?php echo $wpflybox_feedburner; ?>', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><input gtbfieldid="10" class="enteryouremail" name="email" value="Enter Your E-Mail Here..." onblur="if (this.value == &#39;&#39;) {this.value = &#39;Enter Your E-Mail Here...&#39;;}" onfocus="if (this.value == &#39;Enter Your E-Mail Here...&#39;) {this.value = &#39;&#39;;}" type="text" /><input value="Trickstreasure" name="uri" type="hidden" /><input value="Submit" class="submitbutton" type="submit" /></form></center></th><th valign="top"><div style="margin-left:0px; margin-top:0x; width:32px; height:101px; background-position:0px 0px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th></tr></table></div></div>
         <?php
         }    
     if ($wpflybox_tabs[$i]=="pinterest")
         {
         ?>
-        <div class="wpfb-pinterest"><div class="wpfb-pinterest-transition"><table><tr><th style="background-color:#fff; border: 2px solid #f81f22;">
+        <div class="wpfb-pinterest"><div class="wpfb-pinterest-transition"><table><tr><th style="background-color:#fff; border: 2px solid #f81f22; width:254px; height:98px; overflow:hidden;">
         <div align="center"><a href="http://pinterest.com/<?php echo $wpflybox_pinterest; ?>"><img src="http://twitterbuttons.sociableblog.com/images/pinterest-button5.png" title="Pinterest" width="250" height="60" border="0" /></a></div>
-        </th><th valign="top"><div style="margin-left:-3px; margin-top:0px; width:32px; height:102px; background-position:0px -101px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th></tr></table></div></div>
+        </th><th valign="top"><div style="margin-left:-3px; margin-top:0px; width:32px; height:101px; background-position:0px -101px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th></tr></table></div></div>
         <?php
         }    
     if ($wpflybox_tabs[$i]=="linkedin")
         {
         ?>
-        <div class="wpfb-linkedin"><div class="wpfb-linkedin-transition"><table><tr><th style="background-color:#fff; border: 2px solid #65b2d0;width:364px;">
+        <div class="wpfb-linkedin"><div class="wpfb-linkedin-transition"><table><tr><th style="background-color:#fff; border: 2px solid #65b2d0; width:364px; height:156px; overflow:hidden;">
         <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
         <script type="IN/MemberProfile" data-id="<?php echo $wpflybox_linkedin; ?>" data-format="inline" data-related="false" data-width="364"></script>
         </th>
-        <th valign="top"><div style="margin-left:-3px; margin-top:0px; width:32px; height:101px; background-position:0px -505px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"></div></th></tr></table></div></div>
+        <th valign="top"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -505px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"></div></th></tr></table></div></div>
         <?php
         }    
         
@@ -206,7 +206,7 @@ while ($i <= $wpflybox_count)
     {
     if ($wpflybox_tabs[$i]=="facebook")
         {
-        echo 'div.wpfb-facebook {width:333px;height:271px;top:'.$wpflybox_pos[$i].';right:-301px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-facebook {width:336px;height:264px;top:'.$wpflybox_pos[$i].';right:-304px;position:fixed;z-index:900;}';
         echo 'div.wpfb-facebook-transition table, th, tr, td{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}';
         echo 'div.wpfb-facebook div.wpfb-facebook-transition {-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-facebook div.wpfb-facebook-transition iframe {border:0px;overflow:hidden;position:static;height:260px;}';
@@ -214,46 +214,46 @@ while ($i <= $wpflybox_count)
         }
     if ($wpflybox_tabs[$i]=="twitter")
         {
-        echo 'div.wpfb-twitter {width:298px;height:248px;top:'.$wpflybox_pos[$i].';right:-266px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-twitter {width:301px;height:241px;top:'.$wpflybox_pos[$i].';right:-269px;position:fixed;z-index:900;}';
         echo 'div.wpfb-twitter-transition table, th, tr, td{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}';
         echo 'div.wpfb-twitter div.wpfb-twitter-transition {-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-twitter:hover div.wpfb-twitter-transition {margin-left: -301px;}';  
         }
     if ($wpflybox_tabs[$i]=="googleplus")
         {
-        echo 'div.wpfb-googleplus {width:361px;height:161px;top:'.$wpflybox_pos[$i].';right:-329px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-googleplus {width:361px;height:154px;top:'.$wpflybox_pos[$i].';right:-329px;position:fixed;z-index:900;}';
         echo 'div.wpfb-googleplus-transition table, th, tr, td{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}';
         echo 'div.wpfb-googleplus div.wpfb-googleplus-transition {-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
-        echo 'div.wpfb-googleplus:hover div.wpfb-googleplus-transition {margin-left: -364px;}';
+        echo 'div.wpfb-googleplus:hover div.wpfb-googleplus-transition {margin-left: -361px;}';
         echo 'div.wpfb-googleplus div.wpfb-googleplus-transition iframe {border:0px;overflow:hidden;position:static;}';
         }
     if ($wpflybox_tabs[$i]=="youtube")
         {        
-        echo 'div.wpfb-youtube {width:333px;height:116px;top:'.$wpflybox_pos[$i].';right:-301px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-youtube {width:336px;height:110px;top:'.$wpflybox_pos[$i].';right:-304px;position:fixed;z-index:900;}';
         echo 'div.wpfb-youtube-transition table, th, tr, td{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}';
         echo 'div.wpfb-youtube div.wpfb-youtube-transition {-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-youtube:hover div.wpfb-youtube-transition {margin-left: -336px;}';
         }
     if ($wpflybox_tabs[$i]=="subscription")
         {
-        echo 'div.wpfb-subscribe {width:323px;height110px;top:'.$wpflybox_pos[$i].';right:-291px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-subscribe {width:326px;height:101px;top:'.$wpflybox_pos[$i].';right:-294px;position:fixed;z-index:900;}';
         echo 'div.wpfb-subscribe-transition table, th, tr, td{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}';
         echo 'div.wpfb-subscribe div.wpfb-subscribe-transition {-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-subscribe:hover div.wpfb-subscribe-transition {margin-left: -326px;}';   
         }    
     if ($wpflybox_tabs[$i]=="pinterest")
         {     
-        echo 'div.wpfb-pinterest {width:283px;height:101px;top:'.$wpflybox_pos[$i].';right:-251px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-pinterest {width:287px;height:101px;top:'.$wpflybox_pos[$i].';right:-255px;position:fixed;z-index:900;}';
         echo 'div.wpfb-pinterest-transition table, th, tr, td{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}';
         echo 'div.wpfb-pinterest div.wpfb-pinterest-transition {-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
-        echo 'div.wpfb-pinterest:hover div.wpfb-pinterest-transition {margin-left: -286px;}';
+        echo 'div.wpfb-pinterest:hover div.wpfb-pinterest-transition {margin-left: -287px;}';
         }
     if ($wpflybox_tabs[$i]=="linkedin")
         {         
-        echo 'div.wpfb-linkedin {width:397px;height:167px;top:'.$wpflybox_pos[$i].';right:-365px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-linkedin {width:397px;height:168px;top:'.$wpflybox_pos[$i].';right:-365px;position:fixed;z-index:900;}';
         echo 'div.wpfb-linkedin-transition table, th, tr, td{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}';
         echo 'div.wpfb-linkedin div.wpfb-linkedin-transition {-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
-        echo 'div.wpfb-linkedin:hover div.wpfb-linkedin-transition {margin-left: -400px;}';
+        echo 'div.wpfb-linkedin:hover div.wpfb-linkedin-transition {margin-left: -397px;}';
         echo 'div.wpfb-linkedin div.wpfb-facebook-transition iframe {border:0px;overflow:hidden;position:static;height:260px;}';
         }
         
@@ -272,13 +272,13 @@ while ($i <= $wpflybox_count)
     if ($wpflybox_tabs[$i]=="facebook")
         {
         ?>
-        <div class="wpfb-facebook"><div class="wpfb-facebook-transition"><table><tr><th valign="top" ><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -303px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th><th style="background-color:#fff; border: 2px solid #3c95d9;"><iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Ffacebook.com%2F<?php echo $wpflybox_facebook; ?>&amp;locale=en_GB&amp;width=245&amp;connections=10&amp;stream=&amp;header=false&amp;show_faces=0&amp;height=260" scrolling="no"></iframe></th></th></tr></table></div></div>
+        <div class="wpfb-facebook"><div class="wpfb-facebook-transition"><table><tr><th valign="top" ><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -303px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th><th style="background-color:#fff; border: 2px solid #3c95d9;width:300px;height;260px;overflow:hidden;"><iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Ffacebook.com%2F<?php echo $wpflybox_facebook; ?>&amp;locale=en_GB&amp;width=245&amp;connections=10&amp;stream=&amp;header=false&amp;show_faces=0&amp;height=260" scrolling="no"></iframe></th></th></tr></table></div></div>
         <?php
         }
     if ($wpflybox_tabs[$i]=="twitter")
         {
         ?>
-        <div class="wpfb-twitter"><div class="wpfb-twitter-transition"><table><tr><th valign="top"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -606px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th><th style="background-color:#fff; border: 2px solid #6CC5FF;"><script type="text/javascript" src="<?php echo plugins_url().'/wp-flybox/static/twitterbox.js'; ?>"></script><div id="twitterfanbox"></div><script type="text/javascript">fanbox_init("<?php echo $wpflybox_twitter; ?>");</script></th></th></tr></table></div></div>
+        <div class="wpfb-twitter"><div class="wpfb-twitter-transition"><table><tr><th valign="top"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -606px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th><th style="background-color:#fff; border: 2px solid #6CC5FF;width:265px; height:237px; overflow:hidden;"><script type="text/javascript" src="<?php echo plugins_url().'/wp-flybox/static/twitterbox.js'; ?>"></script><div id="twitterfanbox"></div><script type="text/javascript">fanbox_init("<?php echo $wpflybox_twitter; ?>");</script></th></th></tr></table></div></div>
         <?php
         }
     if ($wpflybox_tabs[$i]=="googleplus")
@@ -286,31 +286,31 @@ while ($i <= $wpflybox_count)
         if (get_option(wpflybox_google_type)== 'profile')
             {
             ?>    
-            <div class="wpfb-googleplus"><div class="wpfb-googleplus-transition"><table><tr><th valign="top"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -404px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th><th style="background-color:#fff; border: 2px solid #006ec9;width:325px;"><iframe src="http://www.google.com/s2/u/0/widgets/ProfileCard?uid=<?php echo $wpflybox_google; ?>" width="100%" height="125px" scrolling="no" style="border:0px;"></iframe></th></tr></table></div></div>
+            <div class="wpfb-googleplus"><div class="wpfb-googleplus-transition"><table><tr><th valign="top"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -404px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th><th style="background-color:#fff; border: 2px solid #006ec9;width:325px;height:150px; overflow:hidden;"><iframe src="http://www.google.com/s2/u/0/widgets/ProfileCard?uid=<?php echo $wpflybox_google; ?>" width="100%" height="125px" scrolling="no" style="border:0px;"></iframe></th></tr></table></div></div>
             <?php
             } else if (get_option(wpflybox_google_type)== 'page')
             {
             ?>    
-            <div class="wpfb-googleplus"><div class="wpfb-googleplus-transition"><table><tr><th valign="top"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -404px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th><th style="background-color:#fff; border: 2px solid #006ec9;width:325px;"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><div class="g-plus" data-href="https://plus.google.com/<?php echo $wpflybox_google; ?>?rel=publisher"></div></th></tr></table></div></div>
+            <div class="wpfb-googleplus"><div class="wpfb-googleplus-transition"><table><tr><th valign="top"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -404px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th><th style="background-color:#fff; border: 2px solid #006ec9;width:325px;height:150px; overflow:hidden;"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><div class="g-plus" data-href="https://plus.google.com/<?php echo $wpflybox_google; ?>?rel=publisher"></div></th></tr></table></div></div>
             <?php    
             }   
         }
     if ($wpflybox_tabs[$i]=="youtube")
         {
         ?>
-        <div class="wpfb-youtube"><div class="wpfb-youtube-transition"><table><tr><th valign="top"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -202px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th><th style="background-color:#fff; border: 2px solid #ff0000;"><iframe src=http://www.youtube.com/subscribe_widget?p=<?php echo $wpflybox_youtube; ?> style="height: 105px; width: 300px; border: 0;" scrolling="no" frameBorder="0"></iframe></th></tr></table></div></div>
+        <div class="wpfb-youtube"><div class="wpfb-youtube-transition"><table><tr><th valign="top"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -202px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th><th style="background-color:#fff; border: 2px solid #ff0000; width:300px; height;105px; overflow:hidden;"><iframe src=http://www.youtube.com/subscribe_widget?p=<?php echo $wpflybox_youtube; ?> style="height: 105px; width: 300px; border: 0;" scrolling="no" frameBorder="0"></iframe></th></tr></table></div></div>
         <?php    
         }
     if ($wpflybox_tabs[$i]=="subscription")
         {
         ?>
-        <div class="wpfb-subscribe"><div class="wpfb-subscribe-transition"><table><tr><th valign="top"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px 0px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th><th style="background-color:#fff; border: 2px solid #5b5b5b;"><center><p style="color:#F66303;margin-right:10px;margin-left:10px;width:270px;">Subscribe to Receive E-Mail Updates:</p> <form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=<?php echo $wpflybox_feedburner; ?>', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><input gtbfieldid="10" class="enteryouremail" name="email" value="Enter Your E-Mail Here..." onblur="if (this.value == &#39;&#39;) {this.value = &#39;Enter Your E-Mail Here...&#39;;}" onfocus="if (this.value == &#39;Enter Your E-Mail Here...&#39;) {this.value = &#39;&#39;;}" type="text" /><input value="Trickstreasure" name="uri" type="hidden" /><input value="Submit" class="submitbutton" type="submit" /></form></center></th></tr></table></div></div>
+        <div class="wpfb-subscribe"><div class="wpfb-subscribe-transition"><table><tr><th valign="top"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px 0px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th><th style="background-color:#fff; border: 2px solid #5b5b5b; width:290px; height:97px; overflow:hidden;"><center><p style="color:#F66303;margin-right:10px;margin-left:10px;width:270px;">Subscribe to Receive E-Mail Updates:</p> <form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=<?php echo $wpflybox_feedburner; ?>', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><input gtbfieldid="10" class="enteryouremail" name="email" value="Enter Your E-Mail Here..." onblur="if (this.value == &#39;&#39;) {this.value = &#39;Enter Your E-Mail Here...&#39;;}" onfocus="if (this.value == &#39;Enter Your E-Mail Here...&#39;) {this.value = &#39;&#39;;}" type="text" /><input value="Trickstreasure" name="uri" type="hidden" /><input value="Submit" class="submitbutton" type="submit" /></form></center></th></tr></table></div></div>
         <?php
         }    
     if ($wpflybox_tabs[$i]=="pinterest")
         {
         ?>
-        <div class="wpfb-pinterest"><div class="wpfb-pinterest-transition"><table><tr><th valign="top"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -101px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th><th style="background-color:#fff; border: 2px solid #f81f22;">
+        <div class="wpfb-pinterest"><div class="wpfb-pinterest-transition"><table><tr><th valign="top"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -101px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th><th style="background-color:#fff; border: 2px solid #f81f22; width:254px; height:98px; overflow:hidden;">
         <div align="center"><a href="http://pinterest.com/<?php echo $wpflybox_pinterest; ?>"><img src="http://twitterbuttons.sociableblog.com/images/pinterest-button5.png" title="Pinterest" width="250" height="60" border="0" /></a></div>
         </th></tr></table></div></div>
         <?php
@@ -318,7 +318,7 @@ while ($i <= $wpflybox_count)
     if ($wpflybox_tabs[$i]=="linkedin")
         {
         ?>
-        <div class="wpfb-linkedin"><div class="wpfb-linkedin-transition"><table><tr><th valign="top"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -505px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th><th style="background-color:#fff; border: 2px solid #4875B4;">
+        <div class="wpfb-linkedin"><div class="wpfb-linkedin-transition"><table><tr><th valign="top"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -505px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></th><th style="background-color:#fff; border: 2px solid #4875B4; width:364px; height:156px; overflow:hidden;">
         <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
         <script type="IN/MemberProfile" data-id="<?php echo $wpflybox_linkedin; ?>" data-format="inline" data-related="false" data-width="364"></script>
         </th></tr></table></div></div>
