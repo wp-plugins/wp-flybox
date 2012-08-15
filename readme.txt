@@ -1,6 +1,6 @@
-=== Plugin Name ===
+=== WP-FlyBox ===
 Contributors: cconoly
-Donate link: http://example.com/
+Donate link: http://njarb.com/2012/08/wp-flybox/
 Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, css
 Requires at least: 2.0
 Tested up to: 3.4.1
@@ -8,11 +8,11 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Social media floating fly out tabbed boxes. Can be located on either side of screen. No Javascript used.
+Social media floating fly out tabbed boxes. Can be located on either side of screen. No Javascript used. FlyBoxes include Facebook, Twitter, Pinterest, LinkedIn, Google Plus, Youtube, and Feedburner.
 
 == Description ==
 
-Social media floating fly out tabbed boxes. Can be located on either side of screen. No Javascript used.
+Social media floating fly out tabbed boxes. Can be located on either side of screen. No Javascript used. FlyBoxes include Facebook, Twitter, Pinterest, LinkedIn, Google Plus, Youtube, and Feedburner.
 
 == Installation ==
 
@@ -25,13 +25,13 @@ This section describes how to install the plugin and get it working.
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Where can I get help? =
 
-An answer to that question.
+http://njarb.com/2012/08/wp-flybox/
 
-= What about foo bar? =
+= Is Javascript used? =
 
-Answer to foo bar dilemma.
+No and Yes, Not to display the tabs, but yes to displaying the social boxes.
 
 == Screenshots ==
 
@@ -49,7 +49,7 @@ Answer to foo bar dilemma.
 * Added facebook, twitter, google plus, pinterest, feedburner, and youtube tabs.
 * Added admin settings page.
 
-= 0.5 =
+= 0.1 =
 * Beta, initial design and testing.
 
 == Upgrade Notice ==
