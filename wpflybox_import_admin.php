@@ -67,7 +67,9 @@
 		</h3>
 	<div class="inside">		
 <b>Help:</b>
-<br /><a href="#" target="blank">Blog Post on Plugin</a>
+<br /><a href="http://njarb.com/2012/08/wp-flybox/" target="blank">Blog Post</a>
+<br /><a href="http://wordpress.org/extend/plugins/wp-flybox/" target="blank">Wordpress Plugin Page</a>
+<br /><a href="http://njarb.com/2012/08/wp-flybox/" target="blank">Help</a>
 <br /><br />
 <b>Find me on:</b>
 <br /><a href="http://facebook.com/cylec" target="_blank">Facebook</a>
