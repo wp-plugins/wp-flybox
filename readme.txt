@@ -8,7 +8,7 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Social media floating fly out tabbed boxes. Can be located on either side of screen. No Javascript used. FlyBoxes include Facebook, Twitter, Pinterest, LinkedIn, Google Plus, Youtube, and Feedburner.
+Social media floating fly out tabbed boxes. Can be located on either side of screen. No Javascript used. 
 
 == Description ==
 
