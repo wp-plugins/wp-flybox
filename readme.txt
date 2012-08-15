@@ -4,7 +4,7 @@ Donate link: http://njarb.com/2012/08/wp-flybox/
 Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, css
 Requires at least: 2.0
 Tested up to: 3.4.1
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,6 +44,9 @@ No and Yes, Not to display the tabs, but yes to displaying the social boxes.
 
 == Changelog ==
 
+= 1.1 =
+Fixed some issues with some themes.
+
 = 1.0 =
 * First stable release.
 * Added facebook, twitter, google plus, pinterest, feedburner, and youtube tabs.
@@ -53,6 +56,9 @@ No and Yes, Not to display the tabs, but yes to displaying the social boxes.
 * Beta, initial design and testing.
 
 == Upgrade Notice ==
+
+= 1.1 =
+Fixes issues with some themes.
 
 = 1.0 =
 Updated small bugs.
