@@ -243,7 +243,7 @@
         <table cellpadding="3" style="background-color:#f5f5f5;">
         <tr><td style="text-align:right;"><?php _e("Facebook: " ); ?></td><td>
         <input type="text" name="wpflybox_facebook" value="<?php echo get_option(wpflybox_facebook); ?>" size="20" />
-	(page id, example: http://www.facebook.com/<b>wired</b> = wired)(it must be a fan page, not a personal page)
+	(page id) (example: if your page is "http://www.facebook.com/<b>wired</b>" use wired for your id)(it must be a fan page, not a personal page)
         </td></tr>
              
         <tr><td style="text-align:right;"><?php _e("Twitter: " ); ?></td><td>
@@ -253,7 +253,7 @@
         
         <tr><td style="text-align:right;"><?php _e("Google Plus: " ); ?></td><td>
         <input type="text" name="wpflybox_google" value="<?php echo get_option(wpflybox_google); ?>" size="30" />
-	(goolge numeric username code, example: http://plus.google.com/u/0/<b>105734435204105331709</b>/posts = 105734435204105331709)
+	(goolge numeric username code) (example: if your page is "http://plus.google.com/u/0/<b>105734435204105331709</b>/posts" use 105734435204105331709 as your code.)
         </td></tr>
 	
         <tr><td style="text-align:right;"><?php _e("Google Plus Type: " ); ?></td><td>
@@ -276,7 +276,7 @@
         
         <tr><td style="text-align:right;"><?php _e("Pinterest: " ); ?></td><td>
         <input type="text" name="wpflybox_pinterest" value="<?php echo get_option(wpflybox_pinterest); ?>" size="30" />
-	(pinterest username)
+	(pinterest public username)(can be found under pinterest settings)
         </td></tr>  
         
         <tr><td style="text-align:right;"><?php _e("Linked In URL (with http://www.): " ); ?></td><td>
