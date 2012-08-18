@@ -132,7 +132,7 @@ while ($i <= $wpflybox_count)
     if ($wpflybox_tabs[$i]=="facebook")
         {
         ?>
-        <div class="wpfb-facebook"><div class="wpfb-facebook-transition"><table><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #3c95d9;width:300px;height;260px;overflow:hidden;padding:0px;"><iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Ffacebook.com%2F<?php echo $wpflybox_facebook; ?>&amp;locale=en_GB&amp;width=245&amp;connections=10&amp;stream=&amp;header=false&amp;show_faces=0&amp;height=260" scrolling="no"></iframe></th><th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -303px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"> </div></a></th></tr></table></div></div>
+        <div class="wpfb-facebook"><div class="wpfb-facebook-transition"><table><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #3c95d9;width:300px;height;260px;overflow:hidden;padding:0px;"><iframe src="http://www.facebook.com/plugins/likebox.php?href=<?php echo $wpflybox_facebook; ?>&amp;locale=en_GB&amp;width=245&amp;connections=10&amp;stream=&amp;header=false&amp;show_faces=0&amp;height=260" scrolling="no"></iframe></th><th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -303px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"> </div></a></th></tr></table></div></div>
         <?php
         }
     if ($wpflybox_tabs[$i]=="twitter")

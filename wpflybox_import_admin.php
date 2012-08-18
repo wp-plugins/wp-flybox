@@ -61,7 +61,7 @@
 <div class="postbox-container" style="width: 300px; float:right">
 <div class="metabox-holder">
 <div class="meta-box-sortables ui-sortable">
-<div id="wpflybox_general" class="postbox">
+<div id="wpflybox_general" class="postbox" >
 		<h3 class="hndle">
 		<span>More Info:</span>
 		</h3>
@@ -91,11 +91,11 @@
 </div>
 <form name="oscimp_form" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
 				<input type="hidden" name="wpflybox_hidden" value="Y">
-<div class="postbox-container">
+<div class="postbox-container" style="width:75%">
 <div class="metabox-holder">
 <div class="meta-box-sortables ui-sortable">
 		
-		<div id="wpflybox_general" class="postbox">
+		<div id="wpflybox_general" class="postbox" style="width:75%;">
 		<h3 class="hndle">
 		<span>Display Options:</span>
 		</h3>
@@ -236,14 +236,14 @@
 		</div>
 	<br />&nbsp;
 	<br />&nbsp;
-	<div id="wpflybox_config" class="postbox">
+	<div id="wpflybox_config" class="postbox" style="width:75%">
 		<h3 class="hndle">
 			Tab Configuration:
 		</h3>
         <table cellpadding="3" style="background-color:#f5f5f5;">
         <tr><td style="text-align:right;"><?php _e("Facebook: " ); ?></td><td>
-        <input type="text" name="wpflybox_facebook" value="<?php echo get_option(wpflybox_facebook); ?>" size="20" />
-	(page id) (example: if your page is "http://www.facebook.com/<b>wired</b>" use wired for your id)(it must be a fan page, not a personal page)
+        <input type="text" name="wpflybox_facebook" value="<?php echo get_option(wpflybox_facebook); ?>" size="70" />
+	(page page url) (enter the entire url of your page. Be sure to inlcude "http://")(it must be a fan page, not a personal page)
         </td></tr>
              
         <tr><td style="text-align:right;"><?php _e("Twitter: " ); ?></td><td>

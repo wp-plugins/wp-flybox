@@ -4,7 +4,7 @@ Donate link: http://njarb.com/2012/08/wp-flybox/
 Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, css
 Requires at least: 2.0
 Tested up to: 3.4.1
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,6 +15,8 @@ Social media floating fly out tabbed boxes. Can be located on either side of scr
 Social media floating fly out tabbed boxes. Can be located on either side of screen. No Javascript used. FlyBoxes include Facebook, Twitter, Pinterest, LinkedIn, Google Plus, Youtube, and Feedburner.
 
 Since this uses CSS, some themes will affect the layout of the tabs. If yours is displaying incorrectly PLEASE let me know which theme is causing poblems and I will fix it as soon as I can.
+
+Currently does not work on IE.
 
 == Installation ==
 
@@ -49,6 +51,9 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 
 == Changelog ==
 
+= 1.3 =
+*Added support for non-custom facebook pages.
+
 = 1.2 =
 * Added hover compatability for iPad, iPhone, other iOS devices, and some other mobile devices.
 * More descriptions on settings page.
@@ -65,6 +70,9 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 * Beta, initial design and testing.
 
 == Upgrade Notice ==
+
+= 1.3 =
+*Added support for non-custom facebook pages. After update be sure to adjust your facebook tab configuration.
 
 = 1.2 =
 * Added hover compatability for iPad, iPhone, other iOS devices, and some other mobile devices.
