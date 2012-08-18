@@ -52,7 +52,7 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 == Changelog ==
 
 = 1.3 =
-*Added support for non-custom facebook pages.
+*Added support for non-custom facebook pages. After update be sure to adjust your facebook tab configuration.
 
 = 1.2 =
 * Added hover compatability for iPad, iPhone, other iOS devices, and some other mobile devices.

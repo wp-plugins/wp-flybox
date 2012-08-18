@@ -243,7 +243,7 @@
         <table cellpadding="3" style="background-color:#f5f5f5;">
         <tr><td style="text-align:right;"><?php _e("Facebook: " ); ?></td><td>
         <input type="text" name="wpflybox_facebook" value="<?php echo get_option(wpflybox_facebook); ?>" size="70" />
-	(page page url) (enter the entire url of your page. Be sure to inlcude "http://")(it must be a fan page, not a personal page)
+	(page page url) (enter the entire url of your page and be sure to inlcude "http://")(it must be a fan page, not a personal page)
         </td></tr>
              
         <tr><td style="text-align:right;"><?php _e("Twitter: " ); ?></td><td>
