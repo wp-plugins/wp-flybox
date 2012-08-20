@@ -1,4 +1,16 @@
 <?php 
+if (get_option(wpflybox_facebook_header)==""){$wpflybox_facebook_header="false";update_option('wpflybox_facebook_header', $wpflybox_facebook_header);}
+if (get_option(wpflybox_facebook_stream)==""){$wpflybox_facebook_stream="false";update_option('wpflybox_facebook_tream', $wpflybox_facebook_stream);}
+if (get_option(wpflybox_facebook_showfaces)==""){$wpflybox_facebook_showfaces="true";update_option('wpflybox_facebook_showfaces', $wpflybox_facebook_showfaces);}
+if (get_option(wpflybox_facebook_color)==""){$wpflybox_facebook_color="light";update_option('wpflybox_facebook_color', $wpflybox_facebook_color);}
+if (get_option(wpflybox_facebook_height)==""){$wpflybox_facebook_height="200";update_option('wpflybox_facebook_height', $wpflybox_facebook_height);}
+if (get_option(wpflybox_facebook_width)==""){$wpflybox_facebook_width="292";update_option('wpflybox_facebook_width', $wpflybox_facebook_width);}
+if (!strstr(get_option(wpflybox_facebook), 'facebook.com')){$wpflybox_facebook="http://facebook.com/".get_option(wpflybox_facebook);update_option('wpflybox_facebook', $wpflybox_facebook);}
+if (get_option(wpflybox_ie)==""){$wpflybox_ie="true";update_option('wpflybox_ie', $wpflybox_ie);}
+if (get_option(wpflybox_mobile)==""){$wpflybox_mobile="false";update_option('wpflybox_mobile', $wpflybox_mobile);}
+if (get_option(wpflybox_captcha)==""){$wpflybox_captcha="true";update_option('wpflybox_captcha', $wpflybox_captcha);}
+if (get_option(wpflybox_linkedin_type)==""){$wpflybox_linkedin_type="member";update_option('wpflybox_linkedin_type', $wpflybox_linkedin_type);}
+if (get_option(wpflybox_contactemail)==""){$wpflybox_contactemail="email@domain.com";update_option('wpflybox_contactemail', $wpflybox_contactemail);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
 			//Form data sent
@@ -18,17 +30,31 @@
 			update_option('wpflybox_tab3', $wpflybox_tab3);
 			$wpflybox_tab4 = $_POST['wpflybox_tab4'];
 			update_option('wpflybox_tab4', $wpflybox_tab4);	      
-		$wpflybox_tab5 = $_POST['wpflybox_tab5'];
+		  $wpflybox_tab5 = $_POST['wpflybox_tab5'];
 			update_option('wpflybox_tab5', $wpflybox_tab5);	
 			$wpflybox_tab6 = $_POST['wpflybox_tab6'];
 			update_option('wpflybox_tab6', $wpflybox_tab6);
 			$wpflybox_tab7 = $_POST['wpflybox_tab7'];
 			update_option('wpflybox_tab7', $wpflybox_tab7);	
+			$wpflybox_tab8 = $_POST['wpflybox_tab8'];
+			update_option('wpflybox_tab8', $wpflybox_tab8);				
 			
 			$wpflybox_google_type = $_POST['wpflybox_google_type'];
 			update_option('wpflybox_google_type', $wpflybox_google_type);
       $wpflybox_facebook = $_POST['wpflybox_facebook'];
-			update_option('wpflybox_facebook', $wpflybox_facebook);		
+			update_option('wpflybox_facebook', $wpflybox_facebook);	
+      $wpflybox_facebook_header = $_POST['wpflybox_facebook_header']; 
+			update_option('wpflybox_facebook_header', $wpflybox_facebook_header);
+      $wpflybox_facebook_stream = $_POST['wpflybox_facebook_stream']; 
+			update_option('wpflybox_facebook_stream', $wpflybox_facebook_stream);	          			
+      $wpflybox_facebook_showfaces = $_POST['wpflybox_facebook_showfaces']; 
+			update_option('wpflybox_facebook_showfaces', $wpflybox_facebook_showfaces);    	
+      $wpflybox_facebook_color = $_POST['wpflybox_facebook_color']; 
+			update_option('wpflybox_facebook_color', $wpflybox_facebook_color);     	
+      $wpflybox_facebook_height = $_POST['wpflybox_facebook_height']; 
+			update_option('wpflybox_facebook_height', $wpflybox_facebook_height);     	            			
+      $wpflybox_facebook_width = $_POST['wpflybox_facebook_width']; 
+			update_option('wpflybox_facebook_width', $wpflybox_facebook_width);	      	
       $wpflybox_twitter = $_POST['wpflybox_twitter'];
 			update_option('wpflybox_twitter', $wpflybox_twitter);	      
       $wpflybox_google = $_POST['wpflybox_google'];
@@ -40,7 +66,21 @@
       $wpflybox_pinterest = $_POST['wpflybox_pinterest'];
 			update_option('wpflybox_pinterest', $wpflybox_pinterest); 
       $wpflybox_linkedin = $_POST['wpflybox_linkedin'];
-			update_option('wpflybox_linkedin', $wpflybox_linkedin);                     
+			update_option('wpflybox_linkedin', $wpflybox_linkedin);
+      $wpflybox_linkedin_type = $_POST['wpflybox_linkedin_type'];
+			update_option('wpflybox_linkedin_type', $wpflybox_linkedin_type);			
+      $wpflybox_ie = $_POST['wpflybox_ie'];
+			update_option('wpflybox_ie', $wpflybox_ie); 
+      $wpflybox_mobile = $_POST['wpflybox_mobile'];
+			update_option('wpflybox_mobile', $wpflybox_mobile);
+      $wpflybox_captcha = $_POST['wpflybox_captcha'];
+			update_option('wpflybox_captcha', $wpflybox_captcha); 
+      $wpflybox_contactemail = $_POST['wpflybox_contactemail'];
+			update_option('wpflybox_contactemail', $wpflybox_contactemail);
+      $wpflybox_flickr = $_POST['wpflybox_flickr'];
+			update_option('wpflybox_flickr', $wpflybox_flickr);
+      $wpflybox_flickr_tag = $_POST['wpflybox_flickr_tag'];
+			update_option('wpflybox_flickr_tag', $wpflybox_flickr_tag);                                         
       		
       			
 			?>
@@ -130,6 +170,7 @@
         <option value="5" <?php if(get_option(wpflybox_count)=="5"){echo 'selected';} ?>>5</option>
 	<option value="6" <?php if(get_option(wpflybox_count)=="6"){echo 'selected';} ?>>6</option>
 	<option value="7" <?php if(get_option(wpflybox_count)=="7"){echo 'selected';} ?>>7</option>
+		<option value="8" <?php if(get_option(wpflybox_count)=="8"){echo 'selected';} ?>>8</option>
         </select> <input type="submit" name="Submit" value="Apply" />
         </td></tr>
         
@@ -143,6 +184,8 @@
         <option value="subscription" <?php if(get_option(wpflybox_tab1)=="subscription"){echo 'selected';} ?>>Feedburner Subscription</option>
         <option value="pinterest" <?php if(get_option(wpflybox_tab1)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
         <option value="linkedin" <?php if(get_option(wpflybox_tab1)=="linkedin"){echo 'selected';} ?>>Linked In</option>
+        <option value="flickr" <?php if(get_option(wpflybox_tab1)=="flickr"){echo 'selected';} ?>>Flickr</option>        
+        <option value="contact" <?php if(get_option(wpflybox_tab1)=="contact"){echo 'selected';} ?>>Contact Me</option>
         </select>
         </td></tr>
         
@@ -157,6 +200,8 @@
         <option value="subscription" <?php if(get_option(wpflybox_tab2)=="subscription"){echo 'selected';} ?>>Feedburner Subscription</option>
         <option value="pinterest" <?php if(get_option(wpflybox_tab2)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
         <option value="linkedin" <?php if(get_option(wpflybox_tab2)=="linkedin"){echo 'selected';} ?>>Linked In</option>
+        <option value="flickr" <?php if(get_option(wpflybox_tab2)=="flickr"){echo 'selected';} ?>>Flickr</option> 
+        <option value="contact" <?php if(get_option(wpflybox_tab2)=="contact"){echo 'selected';} ?>>Contact Me</option>
         </select>
         </td></tr>
         
@@ -171,6 +216,8 @@
         <option value="subscription" <?php if(get_option(wpflybox_tab3)=="subscription"){echo 'selected';} ?>>Feedburner Subscription</option>
         <option value="pinterest" <?php if(get_option(wpflybox_tab3)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
         <option value="linkedin" <?php if(get_option(wpflybox_tab3)=="linkedin"){echo 'selected';} ?>>Linked In</option>
+        <option value="flickr" <?php if(get_option(wpflybox_tab3)=="flickr"){echo 'selected';} ?>>Flickr</option> 
+        <option value="contact" <?php if(get_option(wpflybox_tab3)=="contact"){echo 'selected';} ?>>Contact Me</option>
         </select>
         </td></tr>
         
@@ -185,6 +232,8 @@
         <option value="subscription" <?php if(get_option(wpflybox_tab4)=="subscription"){echo 'selected';} ?>>Feedburner Subscription</option>
         <option value="pinterest" <?php if(get_option(wpflybox_tab4)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
         <option value="linkedin" <?php if(get_option(wpflybox_tab4)=="linkedin"){echo 'selected';} ?>>Linked In</option>
+        <option value="flickr" <?php if(get_option(wpflybox_tab4)=="flickr"){echo 'selected';} ?>>Flickr</option> 
+        <option value="contact" <?php if(get_option(wpflybox_tab4)=="contact"){echo 'selected';} ?>>Contact Me</option>
         </select>
         </td></tr>
         
@@ -199,6 +248,8 @@
         <option value="subscription" <?php if(get_option(wpflybox_tab5)=="subscription"){echo 'selected';} ?>>Feedburner Subscription</option>
         <option value="pinterest" <?php if(get_option(wpflybox_tab5)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
         <option value="linkedin" <?php if(get_option(wpflybox_tab5)=="linkedin"){echo 'selected';} ?>>Linked In</option>
+        <option value="flickr" <?php if(get_option(wpflybox_tab5)=="flickr"){echo 'selected';} ?>>Flickr</option> 
+        <option value="contact" <?php if(get_option(wpflybox_tab5)=="contact"){echo 'selected';} ?>>Contact Me</option>
         </select>
         </td></tr>
 	
@@ -213,6 +264,8 @@
         <option value="subscription" <?php if(get_option(wpflybox_tab6)=="subscription"){echo 'selected';} ?>>Feedburner Subscription</option>
         <option value="pinterest" <?php if(get_option(wpflybox_tab6)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
         <option value="linkedin" <?php if(get_option(wpflybox_tab6)=="linkedin"){echo 'selected';} ?>>Linked In</option>
+        <option value="flickr" <?php if(get_option(wpflybox_tab6)=="flickr"){echo 'selected';} ?>>Flickr</option> 
+        <option value="contact" <?php if(get_option(wpflybox_tab6)=="contact"){echo 'selected';} ?>>Contact Me</option>
         </select>
         </td></tr>
 	
@@ -227,9 +280,35 @@
         <option value="subscription" <?php if(get_option(wpflybox_tab7)=="subscription"){echo 'selected';} ?>>Feedburner Subscription</option>
         <option value="pinterest" <?php if(get_option(wpflybox_tab7)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
         <option value="linkedin" <?php if(get_option(wpflybox_tab7)=="linkedin"){echo 'selected';} ?>>Linked In</option>
+        <option value="flickr" <?php if(get_option(wpflybox_tab7)=="flickr"){echo 'selected';} ?>>Flickr</option> 
+        <option value="contact" <?php if(get_option(wpflybox_tab7)=="contact"){echo 'selected';} ?>>Contact Me</option>
         </select>
         </td></tr>
+        
+	<?php } if(get_option(wpflybox_count)>=8){ ?>
+        
+        <tr><td style="text-align:right;"><?php _e("Eighth tab: " ); ?></td><td>
+        <select name="wpflybox_tab8">
+        <option value="facebook" <?php if(get_option(wpflybox_tab8)=="facebook"){echo 'selected';} ?>>Facebook</option>
+        <option value="twitter" <?php if(get_option(wpflybox_tab8)=="twitter"){echo 'selected';} ?>>Twitter</option>
+        <option value="googleplus" <?php if(get_option(wpflybox_tab8)=="googleplus"){echo 'selected';} ?>>Google Plus</option>
+        <option value="youtube" <?php if(get_option(wpflybox_tab8)=="youtube"){echo 'selected';} ?>>Youtube</option>
+        <option value="subscription" <?php if(get_option(wpflybox_tab8)=="subscription"){echo 'selected';} ?>>Feedburner Subscription</option>
+        <option value="pinterest" <?php if(get_option(wpflybox_tab8)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
+        <option value="linkedin" <?php if(get_option(wpflybox_tab8)=="linkedin"){echo 'selected';} ?>>Linked In</option>
+        <option value="flickr" <?php if(get_option(wpflybox_tab8)=="flickr"){echo 'selected';} ?>>Flickr</option> 
+        <option value="contact" <?php if(get_option(wpflybox_tab8)=="contact"){echo 'selected';} ?>>Contact Me</option>
+        </select>
+        </td></tr>        
 		  <?php } ?>
+		  
+        
+		    <tr><td style="text-align:right;"><?php _e("Enable for Mobile Devices: " ); ?></td><td>
+        <select name="wpflybox_mobile">
+        <option value="true" <?php if(get_option(wpflybox_mobile)=="true"){echo 'selected';} ?>>Yes</option>
+        <option value="false" <?php if(get_option(wpflybox_mobile)=="false"){echo 'selected';} ?>>No</option>
+        </select>
+        </td></tr>        
 			
 	</table>
 	</div>
@@ -240,23 +319,60 @@
 		<h3 class="hndle">
 			Tab Configuration:
 		</h3>
+
         <table cellpadding="3" style="background-color:#f5f5f5;">
-        <tr><td style="text-align:right;"><?php _e("Facebook: " ); ?></td><td>
+        <tr><td colspan="2"><h4>Facebook:</h4></td></tr>
+        <tr><td style="text-align:right;">Full Page URL:</td><td>
         <input type="text" name="wpflybox_facebook" value="<?php echo get_option(wpflybox_facebook); ?>" size="70" />
-	(page page url) (enter the entire url of your page and be sure to inlcude "http://")(it must be a fan page, not a personal page)
+        (it must be a fan page, not a personal page)
         </td></tr>
-             
-        <tr><td style="text-align:right;"><?php _e("Twitter: " ); ?></td><td>
-        <input type="text" name="wpflybox_twitter" value="<?php echo get_option(wpflybox_twitter); ?>" size="20" />
-	(twitter username)
+        
+        <tr><td style="text-align:right;">Color Scheme:</td><td>
+        <select name="wpflybox_facebook_color">
+        <option value="light" <?php if(get_option(wpflybox_facebook_color)=="light"){echo 'selected';} ?>>Light</option>
+        <option value="dark" <?php if(get_option(wpflybox_facebook_color)=="dark"){echo 'selected';} ?>>Dark</option>
+        </select>
+        </td></tr>
+        
+        <tr><td style="text-align:right;">Height:</td><td>
+        <input type="text" name="wpflybox_facebook_height" value="<?php echo get_option(wpflybox_facebook_height); ?>" size="6" />px
+        </td></tr>
+        
+        <tr><td style="text-align:right;">Show Header:</td><td>
+        <select name="wpflybox_facebook_header">
+        <option value="true" <?php if(get_option(wpflybox_facebook_header)=="true"){echo 'selected';} ?>>Yes</option>
+        <option value="false" <?php if(get_option(wpflybox_facebook_header)=="false"){echo 'selected';} ?>>No</option>
+        </select>("Find Us On Facebook" is the header)
         </td></tr> 
         
-        <tr><td style="text-align:right;"><?php _e("Google Plus: " ); ?></td><td>
+        <tr><td style="text-align:right;">Show Stream:</td><td>
+        <select name="wpflybox_facebook_stream">
+        <option value="true" <?php if(get_option(wpflybox_facebook_stream)=="true"){echo 'selected';} ?>>Yes</option>
+        <option value="false" <?php if(get_option(wpflybox_facebook_stream)=="false"){echo 'selected';} ?>>No</option>
+        </select>
+        </td></tr> 
+        
+        <tr><td style="text-align:right;">Show Faces:</td><td>
+        <select name="wpflybox_facebook_showfaces">
+        <option value="true" <?php if(get_option(wpflybox_facebook_showfaces)=="true"){echo 'selected';} ?>>Yes</option>
+        <option value="false" <?php if(get_option(wpflybox_facebook_showfaces)=="false"){echo 'selected';} ?>>No</option>
+        </select>
+        </td></tr>                                  
+
+
+        <tr><td colspan="2"><h4>Twitter:</h4></td></tr>            
+        <tr><td style="text-align:right;">Twitter Username:</td><td>
+        <input type="text" name="wpflybox_twitter" value="<?php echo get_option(wpflybox_twitter); ?>" size="20" />
+        </td></tr> 
+
+        
+        <tr><td colspan="2"><h4>Google Plus:</h4></td></tr>
+        <tr><td style="text-align:right;">Google Numeric Username:</td><td>
         <input type="text" name="wpflybox_google" value="<?php echo get_option(wpflybox_google); ?>" size="30" />
-	(goolge numeric username code) (example: if your page is "http://plus.google.com/u/0/<b>105734435204105331709</b>/posts" use 105734435204105331709 as your code.)
+        (example: if your page is "http://plus.google.com/u/0/<b>105734435204105331709</b>/posts" use 105734435204105331709 as your code.)
         </td></tr>
 	
-        <tr><td style="text-align:right;"><?php _e("Google Plus Type: " ); ?></td><td>
+        <tr><td style="text-align:right;">Page Type:</td><td>
         <select name="wpflybox_google_type">
         <option value="profile" <?php if(get_option(wpflybox_google_type)=="profile"){echo 'selected';} ?>>Profile</option>
         <option value="page" <?php if(get_option(wpflybox_google_type)=="page"){echo 'selected';} ?>>Page</option>
@@ -264,24 +380,57 @@
 	(does the google plus numeric username code belong to a personal profile or a business/fan page?s)
         </td></tr>
         
-        <tr><td style="text-align:right;"><?php _e("Youtube: " ); ?></td><td>
+        <tr><td colspan="2"><h4>Youtube:</h4></td></tr>        
+        <tr><td style="text-align:right;">Youtube Username:</td><td>
         <input type="text" name="wpflybox_youtube" value="<?php echo get_option(wpflybox_youtube); ?>" size="30" />
-	(youtube username)
         </td></tr>
         
-        <tr><td style="text-align:right;"><?php _e("Feedburner: " ); ?></td><td>
+        <tr><td colspan="2"><h4>Feedburner Subscription:</h4></td></tr> 
+        <tr><td style="text-align:right;">Feedburner Username:</td><td>
         <input type="text" name="wpflybox_feedburner" value="<?php echo get_option(wpflybox_feedburner); ?>" size="30" />
-	(feedburner username)
         </td></tr> 
         
-        <tr><td style="text-align:right;"><?php _e("Pinterest: " ); ?></td><td>
+        <tr><td colspan="2"><h4>Pinterest:</h4></td></tr> 
+        <tr><td style="text-align:right;">Pinterest Username:</td><td>
         <input type="text" name="wpflybox_pinterest" value="<?php echo get_option(wpflybox_pinterest); ?>" size="30" />
-	(pinterest public username)(can be found under pinterest settings)
+        (can be found under pinterest settings)
         </td></tr>  
         
-        <tr><td style="text-align:right;"><?php _e("Linked In URL (with http://www.): " ); ?></td><td>
+        <tr><td colspan="2"><h4>LinkedIn:</h4></td></tr>
+        <tr><td style="text-align:right;">LinkedIn Member URL or Company ID:</td><td>
         <input type="text" name="wpflybox_linkedin" value="<?php echo get_option(wpflybox_linkedin); ?>" size="70" />
-	(linked in public profile URL)<br>To find your linked in public profile URL, sign into Linked In. Click Profile at the top and choose view profile. At the bottom of your info is your public profile URL.
+        <br>To find your linked in public profile URL, sign into Linked In. Click Profile at the top and choose view profile. At the bottom of your info is your public profile URL.
+        <br>To find your company ID look in the address bar after "http://www.linkedin.com/company/"will be your Company ID.
+        </td></tr>
+        <tr><td style="text-align:right;">Member or Company Profile:</td><td>
+        <select name="wpflybox_linkedin_type">
+        <option value="member" <?php if(get_option(wpflybox_linkedin_type)=="member"){echo 'selected';} ?>>Member</option>        
+        <option value="company" <?php if(get_option(wpflybox_linkedin_type)=="company"){echo 'selected';} ?>>Company</option>
+        </select>
+        </td></tr>
+        
+        <tr><td colspan="2"><h4>Flickr:</h4></td></tr>
+        <tr><td style="text-align:right;">Flickr ID:</td><td>
+        <input type="text" name="wpflybox_flickr" value="<?php echo get_option(wpflybox_flickr); ?>" size="20" />
+        Use this URL to help you find your ID: <a href="http://idgettr.com/" target="_blank">http://idgettr.com/</a>.
+        </td></tr> 
+        
+        <tr><td style="text-align:right;">Photo Tag:</td><td>
+        <input type="text" name="wpflybox_flickr_tag" value="<?php echo get_option(wpflybox_flickr_tag); ?>" size="20" />
+        Show only photos with this tag, or leave blank for all.
+        </td></tr>         
+        
+        <tr><td colspan="2"><h4>Contact Me:</h4></td></tr>
+        <tr><td style="text-align:right;">Email to Send Completed Form:</td><td>
+        <input type="text" name="wpflybox_contactemail" value="<?php echo get_option(wpflybox_contactemail); ?>" size="70" />
+        </td></tr>        
+        
+        <tr><td style="text-align:right;">
+        <tr><td style="text-align:right;">Use Captcha:</td><td>
+        <select name="wpflybox_captcha">
+        <option value="true" <?php if(get_option(wpflybox_captcha)=="true"){echo 'selected';} ?>>Yes</option>        
+        <option value="false" <?php if(get_option(wpflybox_captcha)=="false"){echo 'selected';} ?>>No</option>
+        </select>
         </td></tr>
 	</table></div>
              

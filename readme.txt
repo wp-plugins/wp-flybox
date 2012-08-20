@@ -8,15 +8,14 @@ Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Social media floating fly out tabbed boxes. Can be located on either side of screen. No Javascript used. 
+Social media floating fly out tabbed boxes. Can be located on either side of screen.  
 
 == Description ==
 
-Social media floating fly out tabbed boxes. Can be located on either side of screen. No Javascript used. FlyBoxes include Facebook, Twitter, Pinterest, LinkedIn, Google Plus, Youtube, and Feedburner.
+Social media floating fly out tabbed boxes. Can be located on either side of screen. FlyBoxes include Facebook, Twitter, Pinterest, LinkedIn, Google Plus, Youtube, Feedburner, Flickr, and Contact Me.
 
 Since this uses CSS, some themes will affect the layout of the tabs. If yours is displaying incorrectly PLEASE let me know which theme is causing poblems and I will fix it as soon as I can.
 
-Currently does not work on IE.
 
 == Installation ==
 
@@ -34,7 +33,7 @@ http://njarb.com/2012/08/wp-flybox/
 
 = Is Javascript used? =
 
-No and Yes, Not to display the tabs, but yes to displaying the social boxes.
+No and Yes, Not to display the tabs, but yes to displaying the social boxes. Javascript is also used to slide the tabs in Internet Explorer.
 
 = Why won't this work with some themes? =
 
@@ -51,8 +50,17 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 
 == Changelog ==
 
+= 1.4 =
+* Added support for more themes.
+* Added more Facebook page customizations.
+* Added option for mobile devices and Internet Explorer.
+* Added a "Contact Me" tab. 
+* Added LinkedIn Company Profiles.
+* Added Flickr Tab.
+* Now works with Internet Explorer.
+
 = 1.3 =
-*Added support for non-custom facebook pages. After update be sure to adjust your facebook tab configuration.
+* Added support for non-custom facebook pages.
 
 = 1.2 =
 * Added hover compatability for iPad, iPhone, other iOS devices, and some other mobile devices.
@@ -71,8 +79,17 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 
 == Upgrade Notice ==
 
+= 1.4 =
+* Added support for more themes.
+* Added more Facebook page customizations.
+* Added option for mobile devices and Internet Explorer.
+* Added a "Contact Me" tab.
+* Added LinkedIn Company Profiles.
+* Added Flickr Tab.
+* Now works with Internet Explorer.
+
 = 1.3 =
-*Added support for non-custom facebook pages. After update be sure to adjust your facebook tab configuration.
+* Added support for non-custom facebook pages. After update be sure to adjust your facebook tab configuration.
 
 = 1.2 =
 * Added hover compatability for iPad, iPhone, other iOS devices, and some other mobile devices.
