@@ -4,7 +4,7 @@ Donate link: http://njarb.com/2012/08/wp-flybox/
 Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, css
 Requires at least: 2.0
 Tested up to: 3.4.1
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,11 +53,11 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 = 1.4 =
 * Added support for more themes.
 * Added more Facebook page customizations.
-* Added option for mobile devices and Internet Explorer.
+* Added option for mobile devices.
 * Added a "Contact Me" tab. 
 * Added LinkedIn Company Profiles.
 * Added Flickr Tab.
-* Now works with Internet Explorer.
+* Now works with all browsers.
 
 = 1.3 =
 * Added support for non-custom facebook pages.
@@ -82,11 +82,11 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 = 1.4 =
 * Added support for more themes.
 * Added more Facebook page customizations.
-* Added option for mobile devices and Internet Explorer.
-* Added a "Contact Me" tab.
+* Added option for mobile devices.
+* Added a "Contact Me" tab. 
 * Added LinkedIn Company Profiles.
 * Added Flickr Tab.
-* Now works with Internet Explorer.
+* Now works with all browsers.
 
 = 1.3 =
 * Added support for non-custom facebook pages. After update be sure to adjust your facebook tab configuration.
