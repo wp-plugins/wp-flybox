@@ -32,7 +32,7 @@
       
       function DrawLines() {
          for ($i = 0; $i < $this->iNumLines; $i++) {
-            $iRandColour = rand(100, 200);
+            $iRandColour = rand(150, 200);
             $iLineColour = imagecolorallocate($this->oImage, $iRandColour, $iRandColour, $iRandColour);
             imageline($this->oImage, rand(0, $this->iWidth), rand(0, $this->iHeight), rand(0, $this->iWidth), rand(0, $this->iHeight), $iLineColour);
          }
@@ -53,7 +53,7 @@
             $iCurrentFont = rand(3, 5);
             
             // select random greyscale colour
-            $iRandColour = rand(0, 128);
+            $iRandColour = rand(0, 75);
             $iTextColour = imagecolorallocate($this->oImage, $iRandColour, $iRandColour, $iRandColour);
             
             // write text to image
