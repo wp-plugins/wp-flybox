@@ -25,7 +25,6 @@ $numcode=cndstrips(previous_request_value('security_code'));
 $hiddencode=cndstrips(previous_request_value('hiddencode'));
 $message_subject="Contact Me Form Submitted from WP-FlyBox";
 $security_code=str_replace(' ','',cndstrips(trim(previous_request_value('security_code'))));
-
 $errors="";
 $message_sent=false;
 
@@ -41,7 +40,7 @@ if (validate_email($visitor_email) ) {
 $errors.="Please enter a valid email address in the form of user@place.ext<br/><br/>";
 }
 $newcode = (54213+$hiddencode)*2;
-if ((substr($numcode, 0, 5) !== substr($newcode, 0, 5)) && ($numcode)) {
+if ((substr($numcode, 0, 5) !== substr($newcode, 0, 5)) && ($hiddencode)) {
 $errors.="The verification code for the image presented was incorrect. Please enter a correct verification code.<br/><br/>";
 }
 

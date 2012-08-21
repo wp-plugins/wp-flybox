@@ -302,7 +302,7 @@ while ($i <= $wpflybox_count)
         <input value="<?php echo $wpflybox_code; ?>" name="hiddencode" id="hiddencode" type="hidden" />
         <p><img src="<?php echo plugins_url(); ?>/wp-flybox/static/securityimage/security-image.php?width=200&code=<?php echo $wpflybox_code; ?>" width="200" height="40" alt="Verification Image" /></p>
         <p>Enter number from above:<br /><input style="padding:1px;" gtbfieldid="10" class="entercaptcha" name ="security_code" id="security_code" type="text" /></p>
-          <?php } ?>
+          <?php } ?> 
         <input value="<?php echo $wpflybox_contactencrypted; ?>" name="sendtoemail" id="sendtoemail" type="hidden" />      
         <p><input style="padding:2px;" value="Submit" class="submitbutton" type="submit" /></p></form></center>
         </th>

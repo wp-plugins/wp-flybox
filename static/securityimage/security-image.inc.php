@@ -32,7 +32,7 @@
       
       function DrawLines() {
          for ($i = 0; $i < $this->iNumLines; $i++) {
-            $iRandColour = rand(190, 250);
+            $iRandColour = rand(100, 200);
             $iLineColour = imagecolorallocate($this->oImage, $iRandColour, $iRandColour, $iRandColour);
             imageline($this->oImage, rand(0, $this->iWidth), rand(0, $this->iHeight), rand(0, $this->iWidth), rand(0, $this->iHeight), $iLineColour);
          }
