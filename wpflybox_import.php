@@ -41,6 +41,17 @@ $wpflybox_contactencrypted = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, m
 $wpflybox_flickr=get_option(wpflybox_flickr);
 $wpflybox_flickr_tag=get_option(wpflybox_flickr_tag);
 
+$wpflybox_deviant_username=get_option(wpflybox_deviant_username);
+$wpflybox_deviant_limit=get_option(wpflybox_deviant_limit);
+$wpflybox_deviant_max_width=get_option(wpflybox_deviant_max_width);
+$wpflybox_deviant_max_height=get_option(wpflybox_deviant_max_height);
+$wpflybox_deviant_columns=get_option(wpflybox_deviant_columns);
+$wpflybox_deviant_frame_width=get_option(wpflybox_deviant_frame_width);
+$wpflybox_deviant_frame_height=get_option(wpflybox_deviant_frame_height);
+$wpflybox_deviant_total_frame_width=$wpflybox_deviant_frame_width+36;
+$wpflybox_deviant_left=($wpflybox_deviant_total_frame_width-32)*(-1);
+
+
 $mobile_browser = '0';
  
 if (preg_match('/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone|android)/i', strtolower($_SERVER['HTTP_USER_AGENT']))) {
@@ -140,6 +151,9 @@ jQuery("#wpfb-contact").hover(function(){ jQuery(this).stop(true,false).animate(
 function(){ jQuery("#wpfb-contact").stop(true,false).animate({left: -284}, 500); }); 
 jQuery("#wpfb-flickr").hover(function(){ jQuery(this).stop(true,false).animate({left:  32}, 500); },
 function(){ jQuery("#wpfb-flickr").stop(true,false).animate({left: -117}, 500); });   
+jQuery("#wpfb-deviant").hover(function(){ jQuery(this).stop(true,false).animate({left:  32}, 500); },
+function(){ jQuery("#wpfb-deviant").stop(true,false).animate({left: <?php echo $wpflybox_deviant_left; ?>}, 500); });  
+
 });
 </script>
 <?php
@@ -212,7 +226,14 @@ while ($i <= $wpflybox_count)
         echo 'div.wpfb-flickr div.wpfb-flickr-transition {margin-left:0px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-flickr div.wpfb-flickr-transition iframe {border:0px;overflow:hidden;position:static;}';
         if (!$wpflybox_isie){echo 'div.wpfb-flickr:hover div.wpfb-flickr-transition {margin-left: 149px;}';}               
-        }                  
+        }
+    if ($wpflybox_tabs[$i]=="deviant")
+        {
+        echo 'div.wpfb-deviant {width:'.$wpflybox_deviant_total_frame_width.'px;top:'.$wpflybox_pos[$i].';left:'.$wpflybox_deviant_left.'px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-deviant div.wpfb-deviant-transition {margin-left: 0px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
+        echo 'div.wpfb-deviant div.wpfb-deviant-transition iframe {border:0px;overflow:hidden;position:static;width:'.$wpflybox_deviant_frame_width.'px}';
+        if (!$wpflybox_isie){echo 'div.wpfb-deviant:hover div.wpfb-deviant-transition {margin-left:'.$wpflybox_deviant_total_frame_width.'px;}';} 
+        }                          
         
     $i=$i+1;    
     }
@@ -317,7 +338,16 @@ if ($wpflybox_tabs[$i]=="flickr")
         <iframe style="background-color:#ffffff; border-color:#ffffff; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color=ffffff&zg_person_id=<?php echo $wpflybox_flickr; ?>&zg_tags=<?php echo $wpflybox_flickr_tag; ?>&zg_tag_mode=any" title="Flickr Badge"></iframe>
         </th><th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -808px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"> </div></a></th></tr></table></div></div>
         <?php        
-        }                
+        }
+        
+if ($wpflybox_tabs[$i]=="deviant")
+        {
+        ?>
+        <div class="wpfb-deviant" id="wpfb-deviant"><div class="wpfb-deviant-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #506256; overflow:hidden;padding:0px;height:<?php echo $wpflybox_deviant_frame_height; ?>px;width:<?php echo $wpflybox_deviant_frame_width; ?>px;">
+        <iframe style="background-color:#ffffff; border-color:#ffffff; border:none;" frameborder="0" scrolling="no" src="<?php echo plugins_url()."/wp-flybox/deviant.php?username=".$wpflybox_deviant_username."&limit=".$wpflybox_deviant_limit."&max_width=".$wpflybox_deviant_max_width."&max_height=".$wpflybox_deviant_max_height."&columns=".$wpflybox_deviant_columns; ?>" title="Deviant Art Badge"></iframe>
+        </th><th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -909px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"> </div></a></th></tr></table></div></div>
+        <?php        
+        }                         
         
     $i=$i+1;    
     }
@@ -353,7 +383,9 @@ function(){ jQuery("#wpfb-linkedin").stop(true,false).animate({right: -368}, 500
 jQuery("#wpfb-contact").hover(function(){ jQuery(this).stop(true,false).animate({right:  32}, 500); },
 function(){ jQuery("#wpfb-contact").stop(true,false).animate({right: -284}, 500); });
 jQuery("#wpfb-flickr").hover(function(){ jQuery(this).stop(true,false).animate({right:  32}, 500); },
-function(){ jQuery("#wpfb-flickr").stop(true,false).animate({right: -117}, 500); });    
+function(){ jQuery("#wpfb-flickr").stop(true,false).animate({right: -117}, 500); });
+jQuery("#wpfb-deviant").hover(function(){ jQuery(this).stop(true,false).animate({right:  32}, 500); },
+function(){ jQuery("#wpfb-deviant").stop(true,false).animate({right: <?php echo $wpflybox_deviant_left; ?>}, 500); });     
 });
 </script>
 <?php
@@ -425,7 +457,14 @@ while ($i <= $wpflybox_count)
         echo 'div.wpfb-flickr div.wpfb-flickr-transition {margin-left:0px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-flickr div.wpfb-flickr-transition iframe {border:0px;overflow:hidden;position:static;}';
         if (!$wpflybox_isie){echo 'div.wpfb-flickr:hover div.wpfb-flickr-transition {margin-left: -149px;}';}               
-        }                 
+        }
+    if ($wpflybox_tabs[$i]=="deviant")
+        {
+        echo 'div.wpfb-deviant {width:'.$wpflybox_deviant_total_frame_width.'px;top:'.$wpflybox_pos[$i].';right:'.$wpflybox_deviant_left.'px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-deviant div.wpfb-deviant-transition {margin-left: 0px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
+        echo 'div.wpfb-deviant div.wpfb-deviant-transition iframe {border:0px;overflow:hidden;position:static;width:'.$wpflybox_deviant_frame_width.'px}';
+        if (!$wpflybox_isie){echo 'div.wpfb-deviant:hover div.wpfb-deviant-transition {margin-left:-'.$wpflybox_deviant_total_frame_width.'px;}';} 
+        }                           
         
     $i=$i+1;    
     }
@@ -534,7 +573,19 @@ if ($wpflybox_tabs[$i]=="flickr")
         </th>
         </tr></table></div></div>
         <?php        
-        }         
+        }
+        
+if ($wpflybox_tabs[$i]=="deviant")
+        {
+        ?>
+        <div class="wpfb-deviant" id="wpfb-deviant"><div class="wpfb-deviant-transition"><table class="wpflyboxtable"><tr style="background:transparent">
+        <th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -909px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"> </div></a></th>
+        <th style="background-color:#fff; border: 2px solid #506256; overflow:hidden;padding:0px;height:<?php echo $wpflybox_deviant_frame_height; ?>px;width:<?php echo $wpflybox_deviant_frame_width; ?>px;">
+        <iframe style="background-color:#ffffff; border-color:#ffffff; border:none;" frameborder="0" scrolling="no" src="<?php echo plugins_url()."/wp-flybox/deviant.php?username=".$wpflybox_deviant_username."&limit=".$wpflybox_deviant_limit."&max_width=".$wpflybox_deviant_max_width."&max_height=".$wpflybox_deviant_max_height."&columns=".$wpflybox_deviant_columns; ?>" title="Deviant Art Badge"></iframe>
+        </th>
+        </tr></table></div></div>
+        <?php        
+        }                   
                      
         
     $i=$i+1;    
