@@ -10,6 +10,7 @@ if (get_option(wpflybox_ie)==""){$wpflybox_ie="true";update_option('wpflybox_ie'
 if (get_option(wpflybox_mobile)==""){$wpflybox_mobile="false";update_option('wpflybox_mobile', $wpflybox_mobile);}
 if (get_option(wpflybox_captcha)==""){$wpflybox_captcha="true";update_option('wpflybox_captcha', $wpflybox_captcha);}
 if (get_option(wpflybox_linkedin_type)==""){$wpflybox_linkedin_type="member";update_option('wpflybox_linkedin_type', $wpflybox_linkedin_type);}
+if (get_option(wpflybox_contactemail)==""){$wpflybox_contactemail="email@domain.com";update_option('wpflybox_contactemail', $wpflybox_contactemail);}
 if (get_option(wpflybox_deviant_limit)==""){$wpflybox_deviant_limit="12";update_option('wpflybox_deviant_limit', $wpflybox_deviant_limit);}
 if (get_option(wpflybox_deviant_max_width)==""){$wpflybox_deviant_max_width="50";update_option('wpflybox_deviant_max_width', $wpflybox_deviant_max_width);}
 if (get_option(wpflybox_deviant_max_height)==""){$wpflybox_deviant_max_height="50";update_option('wpflybox_deviant_max_height', $wpflybox_deviant_max_height);}
