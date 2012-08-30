@@ -4,7 +4,7 @@ Donate link: http://njarb.com/2012/08/wp-flybox/
 Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, css
 Requires at least: 2.0
 Tested up to: 3.4.1
-Stable tag: 1.7
+Stable tag: 1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,9 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 
 == Changelog ==
 
+= 1.8 =
+* Fixed Feedburner Subscriptions saying email subscriptions not activated.
+
 = 1.7 =
 * Expanded hover area to resolve jittery effect.
 
@@ -88,6 +91,9 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 * Beta, initial design and testing.
 
 == Upgrade Notice ==
+
+= 1.8 =
+* Fixed Feedburner Subscriptions saying email subscriptions not activated.
 
 = 1.7 =
 * Expanded hover area to resolve jittery effect.
