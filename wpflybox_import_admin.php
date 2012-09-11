@@ -17,8 +17,8 @@ if (get_option(wpflybox_deviant_max_height)==""){$wpflybox_deviant_max_height="5
 if (get_option(wpflybox_deviant_columns)==""){$wpflybox_deviant_columns="3";update_option('wpflybox_deviant_columns', $wpflybox_deviant_columns);}
 if (get_option(wpflybox_deviant_frame_width)==""){$wpflybox_deviant_frame_width="160";update_option('wpflybox_deviant_frame_width', $wpflybox_deviant_frame_width);}
 if (get_option(wpflybox_deviant_frame_height)==""){$wpflybox_deviant_frame_height="300";update_option('wpflybox_deviant_frame_height', $wpflybox_deviant_frame_height);}
-
-
+if (get_option(wpflybox_instagram_max)==""){$wpflybox_instagram_max="9";update_option('wpflybox_instagram_max', $wpflybox_instagram_max);}
+if (get_option(wpflybox_instagram_header)==""){$wpflybox_instagram_header="true";update_option('wpflybox_instagram_header', $wpflybox_instagram_header);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
 			//Form data sent
@@ -103,9 +103,16 @@ if (get_option(wpflybox_deviant_frame_height)==""){$wpflybox_deviant_frame_heigh
 			update_option('wpflybox_deviant_frame_width', $wpflybox_deviant_frame_width); 
       $wpflybox_deviant_frame_height = $_POST['wpflybox_deviant_frame_height'];
 			update_option('wpflybox_deviant_frame_height', $wpflybox_deviant_frame_height); 			
-			
-			
-      			
+      $wpflybox_instagram_id = $_POST['wpflybox_instagram_id'];
+			update_option('wpflybox_instagram_id', $wpflybox_instagram_id); 
+      $wpflybox_instagram_token = $_POST['wpflybox_instagram_token'];
+			update_option('wpflybox_instagram_token', $wpflybox_instagram_token);
+      $wpflybox_instagram_max = $_POST['wpflybox_instagram_max'];
+			update_option('wpflybox_instagram_max', $wpflybox_instagram_max);            
+      $wpflybox_instagram_header = $_POST['wpflybox_instagram_header'];
+			update_option('wpflybox_instagram_header', $wpflybox_instagram_header);
+		
+      			                                                                                                  
 			?>
 			<div class="updated"><p><strong><?php _e('Options saved.' ); ?></strong></p></div>
 			<?php
@@ -210,6 +217,7 @@ if (get_option(wpflybox_deviant_frame_height)==""){$wpflybox_deviant_frame_heigh
         <option value="flickr" <?php if(get_option(wpflybox_tab1)=="flickr"){echo 'selected';} ?>>Flickr</option>        
         <option value="contact" <?php if(get_option(wpflybox_tab1)=="contact"){echo 'selected';} ?>>Contact Me</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab1)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
+        <option value="instagram" <?php if(get_option(wpflybox_tab1)=="instagram"){echo 'selected';} ?>>Instagram</option>
         </select>
         </td></tr>
         
@@ -227,6 +235,7 @@ if (get_option(wpflybox_deviant_frame_height)==""){$wpflybox_deviant_frame_heigh
         <option value="flickr" <?php if(get_option(wpflybox_tab2)=="flickr"){echo 'selected';} ?>>Flickr</option> 
         <option value="contact" <?php if(get_option(wpflybox_tab2)=="contact"){echo 'selected';} ?>>Contact Me</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab2)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
+        <option value="instagram" <?php if(get_option(wpflybox_tab2)=="instagram"){echo 'selected';} ?>>Instagram</option>
         </select>
         </td></tr>
         
@@ -244,6 +253,7 @@ if (get_option(wpflybox_deviant_frame_height)==""){$wpflybox_deviant_frame_heigh
         <option value="flickr" <?php if(get_option(wpflybox_tab3)=="flickr"){echo 'selected';} ?>>Flickr</option> 
         <option value="contact" <?php if(get_option(wpflybox_tab3)=="contact"){echo 'selected';} ?>>Contact Me</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab3)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
+        <option value="instagram" <?php if(get_option(wpflybox_tab3)=="instagram"){echo 'selected';} ?>>Instagram</option>
         </select>
         </td></tr>
         
@@ -261,6 +271,7 @@ if (get_option(wpflybox_deviant_frame_height)==""){$wpflybox_deviant_frame_heigh
         <option value="flickr" <?php if(get_option(wpflybox_tab4)=="flickr"){echo 'selected';} ?>>Flickr</option> 
         <option value="contact" <?php if(get_option(wpflybox_tab4)=="contact"){echo 'selected';} ?>>Contact Me</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab4)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
+        <option value="instagram" <?php if(get_option(wpflybox_tab4)=="instagram"){echo 'selected';} ?>>Instagram</option>
         </select>
         </td></tr>
         
@@ -278,6 +289,7 @@ if (get_option(wpflybox_deviant_frame_height)==""){$wpflybox_deviant_frame_heigh
         <option value="flickr" <?php if(get_option(wpflybox_tab5)=="flickr"){echo 'selected';} ?>>Flickr</option> 
         <option value="contact" <?php if(get_option(wpflybox_tab5)=="contact"){echo 'selected';} ?>>Contact Me</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab5)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
+        <option value="instagram" <?php if(get_option(wpflybox_tab5)=="instagram"){echo 'selected';} ?>>Instagram</option>
         </select>
         </td></tr>
 	
@@ -295,6 +307,7 @@ if (get_option(wpflybox_deviant_frame_height)==""){$wpflybox_deviant_frame_heigh
         <option value="flickr" <?php if(get_option(wpflybox_tab6)=="flickr"){echo 'selected';} ?>>Flickr</option> 
         <option value="contact" <?php if(get_option(wpflybox_tab6)=="contact"){echo 'selected';} ?>>Contact Me</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab6)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
+        <option value="instagram" <?php if(get_option(wpflybox_tab6)=="instagram"){echo 'selected';} ?>>Instagram</option>
         </select>
         </td></tr>
 	
@@ -312,6 +325,7 @@ if (get_option(wpflybox_deviant_frame_height)==""){$wpflybox_deviant_frame_heigh
         <option value="flickr" <?php if(get_option(wpflybox_tab7)=="flickr"){echo 'selected';} ?>>Flickr</option> 
         <option value="contact" <?php if(get_option(wpflybox_tab7)=="contact"){echo 'selected';} ?>>Contact Me</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab7)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
+        <option value="instagram" <?php if(get_option(wpflybox_tab7)=="instagram"){echo 'selected';} ?>>Instagram</option>
         </select>
         </td></tr>
         
@@ -329,6 +343,7 @@ if (get_option(wpflybox_deviant_frame_height)==""){$wpflybox_deviant_frame_heigh
         <option value="flickr" <?php if(get_option(wpflybox_tab8)=="flickr"){echo 'selected';} ?>>Flickr</option> 
         <option value="contact" <?php if(get_option(wpflybox_tab8)=="contact"){echo 'selected';} ?>>Contact Me</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab8)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
+        <option value="instagram" <?php if(get_option(wpflybox_tab8)=="instagram"){echo 'selected';} ?>>Instagram</option>
         </select>
         </td></tr>        
 		  <?php } ?>
@@ -456,7 +471,7 @@ if (get_option(wpflybox_deviant_frame_height)==""){$wpflybox_deviant_frame_heigh
         <input type="text" name="wpflybox_contactemail" value="<?php echo get_option(wpflybox_contactemail); ?>" size="70" />
         </td></tr>        
         
-        <tr><td style="text-align:right;">
+        
         <tr><td style="text-align:right;">Use Captcha:</td><td>
         <select name="wpflybox_captcha">
         <option value="true" <?php if(get_option(wpflybox_captcha)=="true"){echo 'selected';} ?>>Yes</option>        
@@ -492,12 +507,30 @@ if (get_option(wpflybox_deviant_frame_height)==""){$wpflybox_deviant_frame_heigh
         <tr><td style="text-align:right;">Number Of Columns:</td><td>
         <input type="text" name="wpflybox_deviant_columns" value="<?php echo get_option(wpflybox_deviant_columns); ?>" size="3" />
         </td></tr>
-                                           
+                  
+                  
+        <tr><td colspan="2"><h4>Instagram:</h4></td></tr>
+        <tr><td colspan="2">WP-Flybox needs to be authorized first so that it has permission to show your photos.<br />To do that go <a href="http://njarb.com/wp-flybox/instagram" target="_blank">here</a>.
+        <tr><td style="text-align:right;">User ID:</td><td>
+        <input type="text" name="wpflybox_instagram_id" value="<?php echo get_option(wpflybox_instagram_id); ?>" size="30" /><a href="http://njarb.com/wp-flybox/instagram" target="_blank">Get your ID here.</a>
+        </td></tr>
+        <tr><td style="text-align:right;">Auth Token for WP-Flybox:</td><td>
+        <input type="text" name="wpflybox_instagram_token" value="<?php echo get_option(wpflybox_instagram_token); ?>" size="70" /><a href="http://njarb.com/wp-flybox/instagram" target="_blank">Get your Auth Token here.</a>
+        </td></tr>
+        <tr><td style="text-align:right;">Max Recent Pics:</td><td>
+        <input type="text" name="wpflybox_instagram_max" value="<?php echo get_option(wpflybox_instagram_max); ?>" size="2" />How many pictures do you want to show?
+        </td></tr> 
+        <tr><td style="text-align:right;">Show Header:</td><td>
+        <select name="wpflybox_instagram_header">
+        <option value="true" <?php if(get_option(wpflybox_instagram_header)=="true"){echo 'selected';} ?>>Yes</option>        
+        <option value="false" <?php if(get_option(wpflybox_instagram_header)=="false"){echo 'selected';} ?>>No</option>
+        </select>
+        </td></tr>                                                          
         
 	</table></div>
              
 	
-        		
+        		                              
 				<p class="submit">
 				<input class="button-primary" type="submit" name="Submit" value="Update Options" />
 				</p>

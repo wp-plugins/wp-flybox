@@ -49,7 +49,14 @@ $wpflybox_deviant_columns=get_option(wpflybox_deviant_columns);
 $wpflybox_deviant_frame_width=get_option(wpflybox_deviant_frame_width);
 $wpflybox_deviant_frame_height=get_option(wpflybox_deviant_frame_height);
 $wpflybox_deviant_total_frame_width=$wpflybox_deviant_frame_width+36+32;
+$wpflybox_deviant_total_frame_width_left=$wpflybox_deviant_total_frame_width-32;
 $wpflybox_deviant_left=($wpflybox_deviant_total_frame_width-32)*(-1);
+$wpflybox_deviant_right=$wpflybox_deviant_left;
+
+$wpflybox_instagram_id=get_option(wpflybox_instagram_id);
+$wpflybox_instagram_token=get_option(wpflybox_instagram_token);
+$wpflybox_instagram_max=get_option(wpflybox_instagram_max);
+$wpflybox_instagram_header=get_option(wpflybox_instagram_header);
 
 
 $mobile_browser = '0';
@@ -153,6 +160,8 @@ jQuery("#wpfb-flickr").hover(function(){ jQuery(this).stop(true,false).animate({
 function(){ jQuery("#wpfb-flickr").stop(true,false).animate({left: -149}, 500); });   
 jQuery("#wpfb-deviant").hover(function(){ jQuery(this).stop(true,false).animate({left:  0}, 500); },
 function(){ jQuery("#wpfb-deviant").stop(true,false).animate({left: <?php echo $wpflybox_deviant_left; ?>}, 500); });  
+jQuery("#wpfb-instagram").hover(function(){ jQuery(this).stop(true,false).animate({left:  0}, 500); },
+function(){ jQuery("#wpfb-instagram").stop(true,false).animate({left: -232}, 500); });  
 
 });
 </script>
@@ -233,7 +242,15 @@ while ($i <= $wpflybox_count)
         echo 'div.wpfb-deviant div.wpfb-deviant-transition {margin-left: 32px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-deviant div.wpfb-deviant-transition iframe {border:0px;overflow:hidden;position:static;width:'.$wpflybox_deviant_frame_width.'px}';
         if (!$wpflybox_isie){echo 'div.wpfb-deviant:hover div.wpfb-deviant-transition {margin-left:'.$wpflybox_deviant_total_frame_width.'px;}';} 
-        }                          
+        }
+    if ($wpflybox_tabs[$i]=="instagram")
+        {
+        echo 'div.wpfb-instagram a:hover, a:hover img {border:none;}';           
+        echo 'div.wpfb-instagram {width:264px;top:'.$wpflybox_pos[$i].';left:-232px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-instagram div.wpfb-instagram-transition {margin-left:32px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
+        echo 'div.wpfb-instagram div.wpfb-instagram-transition iframe {border:0px;overflow:hidden;position:static;height:260px;}';
+        if (!$wpflybox_isie){echo 'div.wpfb-instagram:hover div.wpfb-instagram-transition {margin-left: 264px;}';}          
+        }                                  
         
     $i=$i+1;    
     }
@@ -288,7 +305,7 @@ while ($i <= $wpflybox_count)
         {
         ?>
         <div class="wpfb-pinterest" id="wpfb-pinterest"><div class="wpfb-pinterest-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #f81f22; width:254px; height:98px; overflow:hidden;padding:0px;">
-        <div align="center"><a href="http://pinterest.com/<?php echo $wpflybox_pinterest; ?>"><img src="<?php echo $wpflybox_pinterest_button_url; ?>" title="Pinterest" width="250" height="60" border="0" /></a></div>
+        <div align="center"><a href="http://pinterest.com/<?php echo $wpflybox_pinterest; ?>" target="_blank"><img src="<?php echo $wpflybox_pinterest_button_url; ?>" title="Pinterest" width="250" height="60" border="0" /></a></div>
         </th><th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -101px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"> </div></a></th></tr></table></div></div>
         <?php
         }    
@@ -347,8 +364,39 @@ if ($wpflybox_tabs[$i]=="deviant")
         <iframe style="background-color:#ffffff; border-color:#ffffff; border:none;" frameborder="0" scrolling="no" src="<?php echo plugins_url()."/wp-flybox/deviant.php?username=".$wpflybox_deviant_username."&limit=".$wpflybox_deviant_limit."&max_width=".$wpflybox_deviant_max_width."&max_height=".$wpflybox_deviant_max_height."&columns=".$wpflybox_deviant_columns; ?>" title="Deviant Art Badge"></iframe>
         </th><th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -909px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"> </div></a></th></tr></table></div></div>
         <?php        
-        }                         
+        }
         
+if ($wpflybox_tabs[$i]=="instagram")
+        {
+        ?>
+        <div class="wpfb-instagram" id="wpfb-instagram"><div class="wpfb-instagram-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #86513e;width:196px; overflow:hidden;padding:0px;">
+        <?php
+        echo '<div style="width:196px;text-align: center;overflow:auto;">';
+        if ($wpflybox_instagram_header=='true')
+        {
+          $wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);
+          $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);
+          echo '<table border="0" cellpadding="2" class="wpflyboxtable">';
+          echo '<tr><td><img src="'.$wpflybox_instagram_json->data->profile_picture.'" height="40" width="40" title="'.$wpflybox_instagram_json->data->username.'"></td>';
+          echo '<td align="center"><div style="font-weight:bold;font-size:16px;">'.$wpflybox_instagram_json->data->counts->media.'</div><div style="font-size:10px;">&nbsp;Photos</div></td>';
+          echo '<td align="center"><div style="font-weight:bold;font-size:16px;">'.$wpflybox_instagram_json->data->counts->followed_by.'</div><div style="font-size:10px;">&nbsp;Followers</div></td>';
+          echo '<td align="center"><div style="font-weight:bold;font-size:16px;">'.$wpflybox_instagram_json->data->counts->follows.'</div><div style="font-size:10px;">&nbsp;Following</div></td></tr>';
+          echo '</table>';
+        }
+        $wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);
+        $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);
+        $m=0;
+          foreach ($wpflybox_instagram_json->data as $entry) {
+            echo '<a href="'.$entry->link.'" target="_blank"><img src="'.$entry->images->thumbnail->url.'" height="50" width="50" style="padding:1px;" title="'.$entry->caption->text.'"></a>';
+            if (++$m == $wpflybox_instagram_max) break;
+          }
+        echo '</div>';
+        ?>
+        </th>
+        <th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -1010px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"></div></a></th></tr></table></div></div>
+        <?php        
+        }                                  
+   
     $i=$i+1;    
     }
 ?>
@@ -385,13 +433,16 @@ function(){ jQuery("#wpfb-contact").stop(true,false).animate({right: -316}, 500)
 jQuery("#wpfb-flickr").hover(function(){ jQuery(this).stop(true,false).animate({right:  0}, 500); },
 function(){ jQuery("#wpfb-flickr").stop(true,false).animate({right: -149}, 500); });
 jQuery("#wpfb-deviant").hover(function(){ jQuery(this).stop(true,false).animate({right:  0}, 500); },
-function(){ jQuery("#wpfb-deviant").stop(true,false).animate({right: <?php echo $wpflybox_deviant_left; ?>}, 500); });     
+function(){ jQuery("#wpfb-deviant").stop(true,false).animate({right: <?php echo $wpflybox_deviant_left; ?>}, 500); }); 
+jQuery("#wpfb-instagram").hover(function(){ jQuery(this).stop(true,false).animate({right:  0}, 500); },
+function(){ jQuery("#wpfb-instagram").stop(true,false).animate({right: -232}, 500); });    
 });
 </script>
 <?php
 }
 
 $wpflybox_sprite_url=plugins_url()."/wp-flybox/static/FlyBoxSpriteRight.png";
+$wpflybox_pinterest_button_url=plugins_url()."/wp-flybox/static/pinterest-button.png";
 ?>
 <style type="text/css">
 table.wpflyboxtable, .wpflyboxtable tbody, .wpflyboxtable th, .wpflyboxtable tr, .wpflyboxtable td, table.wpflyboxtable th, table.wpflyboxtable tr:hover, table.wpflyboxtable tr{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}
@@ -404,44 +455,44 @@ while ($i <= $wpflybox_count)
         echo 'div.wpfb-facebook {width:360px;top:'.$wpflybox_pos[$i].';right:-328px;position:fixed;z-index:900;}';
         echo 'div.wpfb-facebook div.wpfb-facebook-transition {-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-facebook div.wpfb-facebook-transition iframe {border:0px;overflow:hidden;position:static;height:260px;}';
-        if (!$wpflybox_isie){echo 'div.wpfb-facebook:hover div.wpfb-facebook-transition {margin-left: -360px;}';}  
+        if (!$wpflybox_isie){echo 'div.wpfb-facebook:hover div.wpfb-facebook-transition {margin-left: -328px;}';}  
         }
     if ($wpflybox_tabs[$i]=="twitter")
         {
         echo 'div.wpfb-twitter {width:333px;height:241px;top:'.$wpflybox_pos[$i].';right:-301px;position:fixed;z-index:900;}';
         echo 'div.wpfb-twitter div.wpfb-twitter-transition {-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
-        if (!$wpflybox_isie){echo 'div.wpfb-twitter:hover div.wpfb-twitter-transition {margin-left: -333px;}';}  
+        if (!$wpflybox_isie){echo 'div.wpfb-twitter:hover div.wpfb-twitter-transition {margin-left: -301px;}';}  
         }
     if ($wpflybox_tabs[$i]=="googleplus")
         {
         echo 'div.wpfb-googleplus {width:393px;top:'.$wpflybox_pos[$i].';right:-361px;position:fixed;z-index:900;}';
         echo 'div.wpfb-googleplus div.wpfb-googleplus-transition {-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
-        if (!$wpflybox_isie){echo 'div.wpfb-googleplus:hover div.wpfb-googleplus-transition {margin-left: -393px;}';}
+        if (!$wpflybox_isie){echo 'div.wpfb-googleplus:hover div.wpfb-googleplus-transition {margin-left: -361px;}';}
         echo 'div.wpfb-googleplus div.wpfb-googleplus-transition iframe {border:0px;overflow:hidden;position:static;}';
         }
     if ($wpflybox_tabs[$i]=="youtube")
         {        
         echo 'div.wpfb-youtube {width:368px;height:110px;top:'.$wpflybox_pos[$i].';right:-336px;position:fixed;z-index:900;}';
         echo 'div.wpfb-youtube div.wpfb-youtube-transition {-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
-        if (!$wpflybox_isie){echo 'div.wpfb-youtube:hover div.wpfb-youtube-transition {margin-left: -368px;}';}
+        if (!$wpflybox_isie){echo 'div.wpfb-youtube:hover div.wpfb-youtube-transition {margin-left: -336px;}';}
         }
     if ($wpflybox_tabs[$i]=="subscription")
         {
         echo 'div.wpfb-subscribe {width:358px;height:101px;top:'.$wpflybox_pos[$i].';right:-326px;position:fixed;z-index:900;}';
         echo 'div.wpfb-subscribe div.wpfb-subscribe-transition {-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
-        if (!$wpflybox_isie){echo 'div.wpfb-subscribe:hover div.wpfb-subscribe-transition {margin-left: -358px;}';}   
+        if (!$wpflybox_isie){echo 'div.wpfb-subscribe:hover div.wpfb-subscribe-transition {margin-left: -326px;}';}   
         }    
     if ($wpflybox_tabs[$i]=="pinterest")
         {     
         echo 'div.wpfb-pinterest {width:322px;height:101px;top:'.$wpflybox_pos[$i].';right:-290px;position:fixed;z-index:900;}';
         echo 'div.wpfb-pinterest div.wpfb-pinterest-transition {-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
-        if (!$wpflybox_isie){echo 'div.wpfb-pinterest:hover div.wpfb-pinterest-transition {margin-left: -322px;}';}
+        if (!$wpflybox_isie){echo 'div.wpfb-pinterest:hover div.wpfb-pinterest-transition {margin-left: -290px;}';}
         }
     if ($wpflybox_tabs[$i]=="linkedin")
         {         
         echo 'div.wpfb-linkedin {width:432px;height:168px;top:'.$wpflybox_pos[$i].';right:-400px;position:fixed;z-index:900;}';
         echo 'div.wpfb-linkedin div.wpfb-linkedin-transition {-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
-        if (!$wpflybox_isie){echo 'div.wpfb-linkedin:hover div.wpfb-linkedin-transition {margin-left: -432px;}';}
+        if (!$wpflybox_isie){echo 'div.wpfb-linkedin:hover div.wpfb-linkedin-transition {margin-left: -400px;}';}
         echo 'div.wpfb-linkedin div.wpfb-facebook-transition iframe {border:0px;overflow:hidden;position:static;height:260px;}';
         }
     if ($wpflybox_tabs[$i]=="contact")
@@ -449,22 +500,30 @@ while ($i <= $wpflybox_count)
         echo 'div.wpfb-contact {width:348px;height:300px;top:'.$wpflybox_pos[$i].';right:-316px;position:fixed;z-index:900;}';
         echo 'div.wpfb-contact div.wpfb-contact-transition {margin-left:0px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-contact div.wpfb-contact-transition iframe {border:0px;overflow:hidden;position:static;height:260px;}';
-        if (!$wpflybox_isie){echo 'div.wpfb-contact:hover div.wpfb-contact-transition {margin-left: -348px;}';}                 
+        if (!$wpflybox_isie){echo 'div.wpfb-contact:hover div.wpfb-contact-transition {margin-left: -316px;}';}                 
         }      
     if ($wpflybox_tabs[$i]=="flickr")
         {
         echo 'div.wpfb-flickr {width:181px;height:155px;top:'.$wpflybox_pos[$i].';right:-149px;position:fixed;z-index:900;}';
         echo 'div.wpfb-flickr div.wpfb-flickr-transition {margin-left:0px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-flickr div.wpfb-flickr-transition iframe {border:0px;overflow:hidden;position:static;}';
-        if (!$wpflybox_isie){echo 'div.wpfb-flickr:hover div.wpfb-flickr-transition {margin-left: -181px;}';}               
+        if (!$wpflybox_isie){echo 'div.wpfb-flickr:hover div.wpfb-flickr-transition {margin-left: -149px;}';}               
         }
     if ($wpflybox_tabs[$i]=="deviant")
         {
-        echo 'div.wpfb-deviant {width:'.$wpflybox_deviant_total_frame_width.'px;top:'.$wpflybox_pos[$i].';right:'.$wpflybox_deviant_left.'px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-deviant {width:'.$wpflybox_deviant_total_frame_width.'px;top:'.$wpflybox_pos[$i].';right:'.$wpflybox_deviant_right.'px;position:fixed;z-index:900;}';
         echo 'div.wpfb-deviant div.wpfb-deviant-transition {margin-left: 0px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-deviant div.wpfb-deviant-transition iframe {border:0px;overflow:hidden;position:static;width:'.$wpflybox_deviant_frame_width.'px}';
-        if (!$wpflybox_isie){echo 'div.wpfb-deviant:hover div.wpfb-deviant-transition {margin-left:-'.$wpflybox_deviant_total_frame_width.'px;}';} 
-        }                           
+        if (!$wpflybox_isie){echo 'div.wpfb-deviant:hover div.wpfb-deviant-transition {margin-left:-'.$wpflybox_deviant_total_frame_width_left.'px;}';} 
+        }
+    if ($wpflybox_tabs[$i]=="instagram")
+        {
+        echo 'div.wpfb-instagram a:hover, a:hover img {border:none;}';
+        echo 'div.wpfb-instagram {width:264px;top:'.$wpflybox_pos[$i].';right:-232px;position:fixed;z-index:900;}';
+        echo 'div.wpfb-instagram div.wpfb-instagram-transition {margin-left:0px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
+        echo 'div.wpfb-instagram div.wpfb-instagram-transition iframe {border:0px;overflow:hidden;position:static;height:260px;}';
+        if (!$wpflybox_isie){echo 'div.wpfb-instagram:hover div.wpfb-instagram-transition {margin-left: -232px;}';}         
+        }                                    
         
     $i=$i+1;    
     }
@@ -520,7 +579,7 @@ while ($i <= $wpflybox_count)
         {
         ?>
         <div class="wpfb-pinterest" id="wpfb-pinterest"><div class="wpfb-pinterest-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><a href="#"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -101px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></a></th><th style="background-color:#fff; border: 2px solid #f81f22; width:254px; height:98px; overflow:hidden;">
-        <div align="center"><a href="http://pinterest.com/<?php echo $wpflybox_pinterest; ?>"><img src="<?php echo $wpflybox_pinterest_button_url; ?>" title="Pinterest" width="250" height="60" border="0" /></a></div>
+        <div align="center"><a href="http://pinterest.com/<?php echo $wpflybox_pinterest; ?>" target="_blank"><img src="<?php echo $wpflybox_pinterest_button_url; ?>" title="Pinterest" width="250" height="60" border="0" /></a></div>
         </th></tr></table></div></div>
         <?php
         }    
@@ -585,7 +644,40 @@ if ($wpflybox_tabs[$i]=="deviant")
         </th>
         </tr></table></div></div>
         <?php        
-        }                   
+        }
+        
+if ($wpflybox_tabs[$i]=="instagram")
+        {
+        ?>
+        <div class="wpfb-instagram" id="wpfb-instagram"><div class="wpfb-instagram-transition"><table class="wpflyboxtable"><tr style="background:transparent">
+        <th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -1010px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"></div></a></th>
+        <th style="background-color:#fff; border: 2px solid #86513e; width:196px; overflow:hidden;padding:0px;">
+        <?php
+         echo '<div style="width:196px;text-align: center;overflow:auto;">';
+        if ($wpflybox_instagram_header=='true')
+        {
+          $wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);
+          $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);       
+          echo '<table border="0" cellpadding="2" class="wpflyboxtable">';
+          echo '<tr><td><img src="'.$wpflybox_instagram_json->data->profile_picture.'" height="40" width="40" title="'.$wpflybox_instagram_json->data->username.'"></td>';
+          echo '<td align="center"><div style="font-weight:bold;font-size:16px;">'.$wpflybox_instagram_json->data->counts->media.'</div><div style="font-size:10px;">&nbsp;Photos</div></td>';
+          echo '<td align="center"><div style="font-weight:bold;font-size:16px;">'.$wpflybox_instagram_json->data->counts->followed_by.'</div><div style="font-size:10px;">&nbsp;Followers</div></td>';
+          echo '<td align="center"><div style="font-weight:bold;font-size:16px;">'.$wpflybox_instagram_json->data->counts->follows.'</div><div style="font-size:10px;">&nbsp;Following</div></td></tr>';
+          echo '</table>';
+        }
+        $wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);
+        $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);
+        $m=0;
+          foreach ($wpflybox_instagram_json->data as $entry) {
+            echo '<a href="'.$entry->link.'" target="_blank"><img src="'.$entry->images->thumbnail->url.'" height="50" width="50" style="padding:1px;" title="'.$entry->caption->text.'"></a>';
+            if (++$m == $wpflybox_instagram_max) break;
+          }
+        echo '</div>';
+        ?>
+        </th></tr></table></div></div>
+        
+        <?php        
+        }                           
                      
         
     $i=$i+1;    
