@@ -136,8 +136,12 @@ if (strpos($wpflybox_start,'px') !== false && strpos($wpflybox_seperation,'px') 
 
 if (get_option(wpflybox_side)=="left"){
 if ($wpflybox_isie>0){
+if (get_option(wpflybox_jquery)=="on"){
 ?>
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' type='text/javascript'></script>
+<?php 
+}
+?>
 <script type='text/javascript'> 
 jQuery(document).ready (
 function(){jQuery("#wpfb-facebook").hover(function(){ jQuery(this).stop(true,false).animate({left:  0}, 500); },
@@ -410,8 +414,12 @@ if ($wpflybox_tabs[$i]=="instagram")
 } else if (get_option(wpflybox_side)=="right"){
 
 if ($wpflybox_isie>0){
+if (get_option(wpflybox_jquery)=="on"){
 ?>
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' type='text/javascript'></script>
+<?php 
+}
+?>
 <script type='text/javascript'> 
 jQuery(document).ready (
 function(){jQuery("#wpfb-facebook").hover(function(){ jQuery(this).stop(true,false).animate({right:  0}, 500); },

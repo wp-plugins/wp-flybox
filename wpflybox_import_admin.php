@@ -19,6 +19,7 @@ if (get_option(wpflybox_deviant_frame_width)==""){$wpflybox_deviant_frame_width=
 if (get_option(wpflybox_deviant_frame_height)==""){$wpflybox_deviant_frame_height="300";update_option('wpflybox_deviant_frame_height', $wpflybox_deviant_frame_height);}
 if (get_option(wpflybox_instagram_max)==""){$wpflybox_instagram_max="9";update_option('wpflybox_instagram_max', $wpflybox_instagram_max);}
 if (get_option(wpflybox_instagram_header)==""){$wpflybox_instagram_header="true";update_option('wpflybox_instagram_header', $wpflybox_instagram_header);}
+if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflybox_jquery', $wpflybox_jquery);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
 			//Form data sent
@@ -111,6 +112,8 @@ if (get_option(wpflybox_instagram_header)==""){$wpflybox_instagram_header="true"
 			update_option('wpflybox_instagram_max', $wpflybox_instagram_max);            
       $wpflybox_instagram_header = $_POST['wpflybox_instagram_header'];
 			update_option('wpflybox_instagram_header', $wpflybox_instagram_header);
+			$wpflybox_jquery = $_POST['wpflybox_jquery'];
+			update_option('wpflybox_jquery', $wpflybox_jquery);
 		
       			                                                                                                  
 			?>
@@ -530,6 +533,22 @@ if (get_option(wpflybox_instagram_header)==""){$wpflybox_instagram_header="true"
 	</table></div>
              
 	
+	<br />&nbsp;
+	<div id="wpflybox_trouble" class="postbox" style="width:75%">
+		<h3 class="hndle">
+			Troubleshoot:
+		</h3>
+		<table cellpadding="3" style="background-color:#f5f5f5;">
+        <tr><td colspan="2"><h4>jquery:</h4></td></tr>
+        <tr><td style="text-align:right;width:100px;">Load jquery:</td><td>
+        <select name="wpflybox_jquery">
+        <option value="on" <?php if(get_option(wpflybox_jquery)=="on"){echo 'selected';} ?>>On</option>        
+        <option value="off" <?php if(get_option(wpflybox_jquery)=="off"){echo 'selected';} ?>>Off</option>
+        </select>
+        <br />Most websites will not need this on. Many themes and plugins use jquery and having it load multiple times can cause slow down and conflicts. If you are having problems with other plugins when this plugin is activated try turning this off. If there is a problem with another plugin, then chances are they are calling jquery also and you can turn this option off. Jquery is only used on Internet Explorer with this plugin. To see if you need jquery, turn this option off and open your page in Internet Explorer, if the tabs scroll out then you do not need jquery on because it is already being called in your theme or wordpress.
+        </td></tr>
+		</table>
+	</div	
         		                              
 				<p class="submit">
 				<input class="button-primary" type="submit" name="Submit" value="Update Options" />
