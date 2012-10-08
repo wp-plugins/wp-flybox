@@ -4,7 +4,7 @@ Donate link: http://njarb.com/2012/08/wp-flybox/
 Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, css
 Requires at least: 2.0
 Tested up to: 3.4.2
-Stable tag: 1.10
+Stable tag: 1.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,9 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 6. Tab setup and configuration.
 
 == Changelog ==
+
+= 1.11 =
+* Fixed issue on webpages when text was right to left.
 
 = 1.10 =
 * Bug Fixes (Added option to not load jquery if loaded elsewhere)
@@ -98,6 +101,9 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 * Beta, initial design and testing.
 
 == Upgrade Notice ==
+
+= 1.11 =
+* Fixed issue on webpages when text was right to left.
 
 = 1.10 =
 * Bug Fixes (Added option to not load jquery if loaded elsewhere)
