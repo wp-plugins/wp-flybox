@@ -35,8 +35,11 @@ $wpflybox_isie=strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE').strpos($_SERVER['HTTP
 
 $wpflybox_captcha=get_option(wpflybox_captcha);
 $wpflybox_contactemail=get_option(wpflybox_contactemail);
+$wpflybox_contactwho=get_option(wpflybox_contactwho);
 $wpflybox_key="cyle";
 $wpflybox_contactencrypted = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($wpflybox_key), $wpflybox_contactemail, MCRYPT_MODE_CBC, md5(md5($wpflybox_key))));
+
+if ($wpflybox_contactwho == "us"){$wpflybox_contactwhopixel="1111";} else {$wpflybox_contactwhopixel="707";} 
 
 $wpflybox_flickr=get_option(wpflybox_flickr);
 $wpflybox_flickr_tag=get_option(wpflybox_flickr_tag);
@@ -348,7 +351,7 @@ while ($i <= $wpflybox_count)
         <input value="<?php echo $wpflybox_contactencrypted; ?>" name="sendtoemail" id="sendtoemail" type="hidden" />      
         <p><input style="padding:2px;" value="Submit" class="submitbutton" type="submit" /></p></form></center>
         </th>
-        <th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -707px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"></div></a></th></tr></table></div></div>
+        <th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -<?php echo $wpflybox_contactwhopixel; ?>px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"></div></a></th></tr></table></div></div>
         <?php         
         }
         
@@ -610,7 +613,7 @@ while ($i <= $wpflybox_count)
         {
         ?>
         <div class="wpfb-contact" id="wpfb-contact"><div class="wpfb-contact-transition"><table class="wpflyboxtable"><tr style="background:transparent">
-        <th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -707px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"></div></a></th>
+        <th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -<?php echo $wpflybox_contactwhopixel; ?>px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"></div></a></th>
         <th style="background-color:#fff; border: 2px solid #2653a1;width:280px; overflow:hidden;padding:0px;">
         <center><form style="padding:5px;" action="<?php echo plugins_url(); ?>/wp-flybox/contact.php";" method="post" target="popupwindow" onsubmit="window.open('<?php echo plugins_url(); ?>/wp-flybox/contact.php', 'popupwindow', 'scrollbars=no,width=300,height=300');return true">
         <p>Name: <input style="padding:1px;" gtbfieldid="10" class="enteryourname" name="name" id="name" type="text" /></p>

@@ -20,6 +20,7 @@ if (get_option(wpflybox_deviant_frame_height)==""){$wpflybox_deviant_frame_heigh
 if (get_option(wpflybox_instagram_max)==""){$wpflybox_instagram_max="9";update_option('wpflybox_instagram_max', $wpflybox_instagram_max);}
 if (get_option(wpflybox_instagram_header)==""){$wpflybox_instagram_header="true";update_option('wpflybox_instagram_header', $wpflybox_instagram_header);}
 if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflybox_jquery', $wpflybox_jquery);}
+if (get_option(wpflybox_contactwho)==""){$wpflybox_contactwho="me";update_option('wpflybox_contactwho', $wpflybox_contactwho);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
 			//Form data sent
@@ -86,6 +87,8 @@ if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflyb
 			update_option('wpflybox_captcha', $wpflybox_captcha); 
       $wpflybox_contactemail = $_POST['wpflybox_contactemail'];
 			update_option('wpflybox_contactemail', $wpflybox_contactemail);
+      $wpflybox_contactwho = $_POST['wpflybox_contactwho'];
+			update_option('wpflybox_contactwho', $wpflybox_contactwho);			
       $wpflybox_flickr = $_POST['wpflybox_flickr'];
 			update_option('wpflybox_flickr', $wpflybox_flickr);
       $wpflybox_flickr_tag = $_POST['wpflybox_flickr_tag'];
@@ -218,7 +221,7 @@ if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflyb
         <option value="pinterest" <?php if(get_option(wpflybox_tab1)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
         <option value="linkedin" <?php if(get_option(wpflybox_tab1)=="linkedin"){echo 'selected';} ?>>Linked In</option>
         <option value="flickr" <?php if(get_option(wpflybox_tab1)=="flickr"){echo 'selected';} ?>>Flickr</option>        
-        <option value="contact" <?php if(get_option(wpflybox_tab1)=="contact"){echo 'selected';} ?>>Contact Me</option>
+        <option value="contact" <?php if(get_option(wpflybox_tab1)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab1)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
         <option value="instagram" <?php if(get_option(wpflybox_tab1)=="instagram"){echo 'selected';} ?>>Instagram</option>
         </select>
@@ -236,7 +239,7 @@ if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflyb
         <option value="pinterest" <?php if(get_option(wpflybox_tab2)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
         <option value="linkedin" <?php if(get_option(wpflybox_tab2)=="linkedin"){echo 'selected';} ?>>Linked In</option>
         <option value="flickr" <?php if(get_option(wpflybox_tab2)=="flickr"){echo 'selected';} ?>>Flickr</option> 
-        <option value="contact" <?php if(get_option(wpflybox_tab2)=="contact"){echo 'selected';} ?>>Contact Me</option>
+        <option value="contact" <?php if(get_option(wpflybox_tab2)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab2)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
         <option value="instagram" <?php if(get_option(wpflybox_tab2)=="instagram"){echo 'selected';} ?>>Instagram</option>
         </select>
@@ -254,7 +257,7 @@ if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflyb
         <option value="pinterest" <?php if(get_option(wpflybox_tab3)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
         <option value="linkedin" <?php if(get_option(wpflybox_tab3)=="linkedin"){echo 'selected';} ?>>Linked In</option>
         <option value="flickr" <?php if(get_option(wpflybox_tab3)=="flickr"){echo 'selected';} ?>>Flickr</option> 
-        <option value="contact" <?php if(get_option(wpflybox_tab3)=="contact"){echo 'selected';} ?>>Contact Me</option>
+        <option value="contact" <?php if(get_option(wpflybox_tab3)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab3)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
         <option value="instagram" <?php if(get_option(wpflybox_tab3)=="instagram"){echo 'selected';} ?>>Instagram</option>
         </select>
@@ -272,7 +275,7 @@ if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflyb
         <option value="pinterest" <?php if(get_option(wpflybox_tab4)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
         <option value="linkedin" <?php if(get_option(wpflybox_tab4)=="linkedin"){echo 'selected';} ?>>Linked In</option>
         <option value="flickr" <?php if(get_option(wpflybox_tab4)=="flickr"){echo 'selected';} ?>>Flickr</option> 
-        <option value="contact" <?php if(get_option(wpflybox_tab4)=="contact"){echo 'selected';} ?>>Contact Me</option>
+        <option value="contact" <?php if(get_option(wpflybox_tab4)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab4)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
         <option value="instagram" <?php if(get_option(wpflybox_tab4)=="instagram"){echo 'selected';} ?>>Instagram</option>
         </select>
@@ -290,7 +293,7 @@ if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflyb
         <option value="pinterest" <?php if(get_option(wpflybox_tab5)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
         <option value="linkedin" <?php if(get_option(wpflybox_tab5)=="linkedin"){echo 'selected';} ?>>Linked In</option>
         <option value="flickr" <?php if(get_option(wpflybox_tab5)=="flickr"){echo 'selected';} ?>>Flickr</option> 
-        <option value="contact" <?php if(get_option(wpflybox_tab5)=="contact"){echo 'selected';} ?>>Contact Me</option>
+        <option value="contact" <?php if(get_option(wpflybox_tab5)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab5)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
         <option value="instagram" <?php if(get_option(wpflybox_tab5)=="instagram"){echo 'selected';} ?>>Instagram</option>
         </select>
@@ -308,7 +311,7 @@ if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflyb
         <option value="pinterest" <?php if(get_option(wpflybox_tab6)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
         <option value="linkedin" <?php if(get_option(wpflybox_tab6)=="linkedin"){echo 'selected';} ?>>Linked In</option>
         <option value="flickr" <?php if(get_option(wpflybox_tab6)=="flickr"){echo 'selected';} ?>>Flickr</option> 
-        <option value="contact" <?php if(get_option(wpflybox_tab6)=="contact"){echo 'selected';} ?>>Contact Me</option>
+        <option value="contact" <?php if(get_option(wpflybox_tab6)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab6)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
         <option value="instagram" <?php if(get_option(wpflybox_tab6)=="instagram"){echo 'selected';} ?>>Instagram</option>
         </select>
@@ -326,7 +329,7 @@ if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflyb
         <option value="pinterest" <?php if(get_option(wpflybox_tab7)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
         <option value="linkedin" <?php if(get_option(wpflybox_tab7)=="linkedin"){echo 'selected';} ?>>Linked In</option>
         <option value="flickr" <?php if(get_option(wpflybox_tab7)=="flickr"){echo 'selected';} ?>>Flickr</option> 
-        <option value="contact" <?php if(get_option(wpflybox_tab7)=="contact"){echo 'selected';} ?>>Contact Me</option>
+        <option value="contact" <?php if(get_option(wpflybox_tab7)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab7)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
         <option value="instagram" <?php if(get_option(wpflybox_tab7)=="instagram"){echo 'selected';} ?>>Instagram</option>
         </select>
@@ -344,7 +347,7 @@ if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflyb
         <option value="pinterest" <?php if(get_option(wpflybox_tab8)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
         <option value="linkedin" <?php if(get_option(wpflybox_tab8)=="linkedin"){echo 'selected';} ?>>Linked In</option>
         <option value="flickr" <?php if(get_option(wpflybox_tab8)=="flickr"){echo 'selected';} ?>>Flickr</option> 
-        <option value="contact" <?php if(get_option(wpflybox_tab8)=="contact"){echo 'selected';} ?>>Contact Me</option>
+        <option value="contact" <?php if(get_option(wpflybox_tab8)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab8)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
         <option value="instagram" <?php if(get_option(wpflybox_tab8)=="instagram"){echo 'selected';} ?>>Instagram</option>
         </select>
@@ -474,13 +477,20 @@ if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflyb
         <input type="text" name="wpflybox_contactemail" value="<?php echo get_option(wpflybox_contactemail); ?>" size="70" />
         </td></tr>        
         
-        
         <tr><td style="text-align:right;">Use Captcha:</td><td>
         <select name="wpflybox_captcha">
         <option value="true" <?php if(get_option(wpflybox_captcha)=="true"){echo 'selected';} ?>>Yes</option>        
         <option value="false" <?php if(get_option(wpflybox_captcha)=="false"){echo 'selected';} ?>>No</option>
         </select>
         </td></tr>
+        
+        <tr><td style="text-align:right;">Tab Wording:</td><td>
+        <select name="wpflybox_contactwho">
+        <option value="me" <?php if(get_option(wpflybox_contactwho)=="me"){echo 'selected';} ?>>Contact Me</option>        
+        <option value="us" <?php if(get_option(wpflybox_contactwho)=="us"){echo 'selected';} ?>>Contact Us</option>
+        </select>
+        </td></tr>
+        
         
         <tr><td colspan="2"><h4>Deviant Art:</h4></td></tr> 
         <tr><td style="text-align:right;">Username:</td><td>
