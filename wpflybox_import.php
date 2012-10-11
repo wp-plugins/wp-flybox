@@ -61,6 +61,7 @@ $wpflybox_instagram_token=get_option(wpflybox_instagram_token);
 $wpflybox_instagram_max=get_option(wpflybox_instagram_max);
 $wpflybox_instagram_header=get_option(wpflybox_instagram_header);
 
+$wpflybox_usecurl=get_option(wpflybox_usecurl);
 
 $mobile_browser = '0';
  
@@ -378,10 +379,25 @@ if ($wpflybox_tabs[$i]=="instagram")
         ?>
         <div class="wpfb-instagram" id="wpfb-instagram"><div class="wpfb-instagram-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #86513e;width:196px; overflow:hidden;padding:0px;">
         <?php
+    if ($wpflybox_usecurl=="true"){    
+    function url_get_contents ($Url) {
+    if (!function_exists('curl_init')){
+    echo('CURL is not installed!');
+    return false;
+    }
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $Url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $output = curl_exec($ch);                                                                       
+    curl_close($ch);
+    return $output;
+    }
+    }
         echo '<div style="width:196px;text-align: center;overflow:auto;">';
         if ($wpflybox_instagram_header=='true')
         {
-          $wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);
+          if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
+          else {$wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
           $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);
           echo '<table border="0" cellpadding="2" class="wpflyboxtable">';
           echo '<tr><td><img src="'.$wpflybox_instagram_json->data->profile_picture.'" height="40" width="40" title="'.$wpflybox_instagram_json->data->username.'"></td>';
@@ -390,7 +406,8 @@ if ($wpflybox_tabs[$i]=="instagram")
           echo '<td align="center"><div style="font-weight:bold;font-size:16px;">'.$wpflybox_instagram_json->data->counts->follows.'</div><div style="font-size:10px;">&nbsp;Following</div></td></tr>';
           echo '</table>';
         }
-        $wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);
+        if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
+        else {$wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
         $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);
         $m=0;
           foreach ($wpflybox_instagram_json->data as $entry) {
@@ -664,10 +681,25 @@ if ($wpflybox_tabs[$i]=="instagram")
         <th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -1010px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"></div></a></th>
         <th style="background-color:#fff; border: 2px solid #86513e; width:196px; overflow:hidden;padding:0px;">
         <?php
+    if ($wpflybox_usecurl=="true"){    
+    function url_get_contents ($Url) {
+    if (!function_exists('curl_init')){
+    echo('CURL is not installed!');
+    return false;
+    }
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $Url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $output = curl_exec($ch);                                                                       
+    curl_close($ch);
+    return $output;
+    }
+    }
          echo '<div style="width:196px;text-align: center;overflow:auto;">';
         if ($wpflybox_instagram_header=='true')
         {
-          $wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);
+          if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
+          else {$wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
           $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);       
           echo '<table border="0" cellpadding="2" class="wpflyboxtable">';
           echo '<tr><td><img src="'.$wpflybox_instagram_json->data->profile_picture.'" height="40" width="40" title="'.$wpflybox_instagram_json->data->username.'"></td>';
@@ -676,7 +708,8 @@ if ($wpflybox_tabs[$i]=="instagram")
           echo '<td align="center"><div style="font-weight:bold;font-size:16px;">'.$wpflybox_instagram_json->data->counts->follows.'</div><div style="font-size:10px;">&nbsp;Following</div></td></tr>';
           echo '</table>';
         }
-        $wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);
+        if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
+        else {$wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
         $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);
         $m=0;
           foreach ($wpflybox_instagram_json->data as $entry) {

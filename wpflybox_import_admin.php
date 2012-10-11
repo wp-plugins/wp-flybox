@@ -21,6 +21,7 @@ if (get_option(wpflybox_instagram_max)==""){$wpflybox_instagram_max="9";update_o
 if (get_option(wpflybox_instagram_header)==""){$wpflybox_instagram_header="true";update_option('wpflybox_instagram_header', $wpflybox_instagram_header);}
 if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflybox_jquery', $wpflybox_jquery);}
 if (get_option(wpflybox_contactwho)==""){$wpflybox_contactwho="me";update_option('wpflybox_contactwho', $wpflybox_contactwho);}
+if (get_option(wpflybox_usecurl)==""){$wpflybox_usecurl="false";update_option('wpflybox_usecurl', $wpflybox_usecurl);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
 			//Form data sent
@@ -117,7 +118,8 @@ if (get_option(wpflybox_contactwho)==""){$wpflybox_contactwho="me";update_option
 			update_option('wpflybox_instagram_header', $wpflybox_instagram_header);
 			$wpflybox_jquery = $_POST['wpflybox_jquery'];
 			update_option('wpflybox_jquery', $wpflybox_jquery);
-		
+			$wpflybox_usecurl = $_POST['wpflybox_usecurl'];
+			update_option('wpflybox_usecurl', $wpflybox_usecurl);
       			                                                                                                  
 			?>
 			<div class="updated"><p><strong><?php _e('Options saved.' ); ?></strong></p></div>
@@ -556,6 +558,16 @@ if (get_option(wpflybox_contactwho)==""){$wpflybox_contactwho="me";update_option
         <option value="off" <?php if(get_option(wpflybox_jquery)=="off"){echo 'selected';} ?>>Off</option>
         </select>
         <br />Most websites will not need this on. Many themes and plugins use jquery and having it load multiple times can cause slow down and conflicts. If you are having problems with other plugins when this plugin is activated try turning this off. If there is a problem with another plugin, then chances are they are calling jquery also and you can turn this option off. Jquery is only used on Internet Explorer with this plugin. To see if you need jquery, turn this option off and open your page in Internet Explorer, if the tabs scroll out then you do not need jquery on because it is already being called in your theme or wordpress.
+        </td></tr>
+        
+        <tr><td colspan="2"><h4>Instagram Error:</h4></td></tr>
+        <tr><td style="text-align:right;width:100px;">file_get_contents / cURL:</td><td>
+        <select name="wpflybox_usecurl">
+        <option value="false" <?php if(get_option(wpflybox_usecurl)=="false"){echo 'selected';} ?>>Use file_get_contents()</option>        
+        <option value="true" <?php if(get_option(wpflybox_usecurl)=="true"){echo 'selected';} ?>>Use cURL</option>
+        </select>
+        <br />This plugin uses a php function called file_get_contents. It fetches files and data from other websites to be displayed on yours. In this case this plugin fetches image locations and data from instagram's server (less than 1kb) to display on your tab. Some web hosting companys disable this plugin because it can take up huge amounts of memory if fetching big pages with a lot of data.
+        <br />If you get an error in your instagram tab then try using cURL. If that does not work then cURL is disabled too. If you still have a problem and really want the instagram tab then let me know and I'll work on a workaround.
         </td></tr>
 		</table>
 	</div	
