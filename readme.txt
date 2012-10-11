@@ -4,7 +4,7 @@ Donate link: http://njarb.com/2012/08/wp-flybox/
 Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, css
 Requires at least: 2.0
 Tested up to: 3.4.2
-Stable tag: 1.12
+Stable tag: 1.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,9 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 6. Tab setup and configuration.
 
 == Changelog ==
+
+= 1.13 =
+* Added workaround for people having errors on instagram tab where their web hosts had file_get_contents() disabled.
 
 = 1.12 =
 * Added an option to change the tab wording on Contact Me to Contact Us.
@@ -104,6 +107,9 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 * Beta, initial design and testing.
 
 == Upgrade Notice ==
+
+= 1.13 =
+* Added workaround for people having errors on instagram tab where their web hosts had file_get_contents() disabled.
 
 = 1.12 =
 * Added an option to change the tab wording on Contact Me to Contact Us.
