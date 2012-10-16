@@ -368,7 +368,7 @@ while ($i <= $wpflybox_count)
     if ($wpflybox_tabs[$i]=="pinterest")
         {
         ?>
-        <div class="wpfb-pinterest" id="wpfb-pinterest"><div class="wpfb-pinterest-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #f81f22; width:254px; height:98px; overflow:hidden;padding:0px;">
+        <div class="wpfb-pinterest" id="wpfb-pinterest"><div class="wpfb-pinterest-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #f81f22; width:254px; overflow:hidden;padding:0px;vertical-align:middle;">
         <div align="center"><a href="http://pinterest.com/<?php echo $wpflybox_pinterest; ?>" target="_blank"><img src="<?php echo $wpflybox_pinterest_button_url; ?>" title="Pinterest" width="250" height="60" border="0" /></a></div>
         </th><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>pinterest.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -101px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
         <?php
@@ -710,7 +710,7 @@ while ($i <= $wpflybox_count)
     if ($wpflybox_tabs[$i]=="pinterest")
         {
         ?>
-        <div class="wpfb-pinterest" id="wpfb-pinterest"><div class="wpfb-pinterest-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>pinterest.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -101px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th><th style="background-color:#fff; border: 2px solid #f81f22; width:254px; height:98px; overflow:hidden;">
+        <div class="wpfb-pinterest" id="wpfb-pinterest"><div class="wpfb-pinterest-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>pinterest.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -101px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th><th style="background-color:#fff; border: 2px solid #f81f22; width:254px; overflow:hidden;vertical-align:middle;">
         <div align="center"><a href="http://pinterest.com/<?php echo $wpflybox_pinterest; ?>" target="_blank"><img src="<?php echo $wpflybox_pinterest_button_url; ?>" title="Pinterest" width="250" height="60" border="0" /></a></div>
         </th></tr></table></div></div>
         <?php
