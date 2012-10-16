@@ -63,6 +63,14 @@ $wpflybox_instagram_header=get_option(wpflybox_instagram_header);
 
 $wpflybox_usecurl=get_option(wpflybox_usecurl);
 
+$wpflybox_usecustombutton=get_option(wpflybox_usecustombutton);
+$wpflybox_custombuttonloc=plugins_url()."/wp-flybox/static/icons/";
+$wpflybox_bgtopgradient=get_option(wpflybox_bgtopgradient);		
+$wpflybox_bgbottomgradient=get_option(wpflybox_bgbottomgradient);       			
+$wpflybox_bgborder=get_option(wpflybox_bgborder);
+
+
+
 $mobile_browser = '0';
  
 if (preg_match('/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone|android)/i', strtolower($_SERVER['HTTP_USER_AGENT']))) {
@@ -182,6 +190,54 @@ $wpflybox_pinterest_button_url=plugins_url()."/wp-flybox/static/pinterest-button
 <style type="text/css">
 table.wpflyboxtable, .wpflyboxtable tbody, .wpflyboxtable th, .wpflyboxtable tr, .wpflyboxtable td, table.wpflyboxtable th, table.wpflyboxtable tr:hover, table.wpflyboxtable tr{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}
 <?php
+if ($wpflybox_usecustombutton == "true")
+  {
+  ?>
+  .wpflybox_button {
+   border-top: 1px solid #<?php echo $wpflybox_bgborder;?>;
+   border-right: 1px solid #<?php echo $wpflybox_bgborder;?>;
+   border-bottom: 1px solid #<?php echo $wpflybox_bgborder;?>;
+   background: #000000;
+   background: -webkit-gradient(linear, right top, left top, from(#<?php echo $wpflybox_bgtopgradient;?>), to(#<?php echo $wpflybox_bgbottomgradient;?>));
+   background: -webkit-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+   background: -moz-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+   background: -ms-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+   background: -o-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+   display:block;
+   height:32px;
+   width: 32px;
+   margin: 0px;
+   padding: 0px;
+   -webkit-border-radius: 0px 9px 9px 0px;
+   -moz-border-radius: 0px 9px 9px 0px;
+   border-radius: 0px 9px 9px 0px;
+   color: #ffffff;
+   font-size: 10px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   z-index:800;
+   }
+  .wpflybox_button img{
+   padding:0px;
+   }
+   .wpflybox_button img:hover {
+   -webkit-border-radius: 0px 9px 9px 0px;
+   -moz-border-radius: 0px 9px 9px 0px;
+   border-radius: 0px 9px 9px 0px;
+   padding:0px;   
+   border-bottom:0px hidden;
+   background: #000000;
+   background: -webkit-gradient(linear, right top, left top, from(#<?php echo $wpflybox_bgtopgradient;?>), to(#<?php echo $wpflybox_bgbottomgradient;?>));
+   background: -webkit-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+   background: -moz-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+   background: -ms-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+   background: -o-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+   color: #000000;
+   }
+   
+   <?php
+  }
 $i=1;
 while ($i <= $wpflybox_count)
     {
@@ -274,13 +330,13 @@ while ($i <= $wpflybox_count)
     if ($wpflybox_tabs[$i]=="facebook")
         {
         ?>
-        <div class="wpfb-facebook" id="wpfb-facebook"><div class="wpfb-facebook-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #3c95d9;width:292px;overflow:hidden;padding:0px;"><iframe src="http://www.facebook.com/plugins/likebox.php?href=<?php echo $wpflybox_facebook; ?>&amp;locale=en_GB&amp;width=<?php echo $wpflybox_facebook_width; ?>&amp;height=<?php echo $wpflybox_facebook_height; ?>&amp;colorscheme=<?php echo $wpflybox_facebook_color; ?>&amp;show_faces=<?php echo $wpflybox_facebook_showfaces; ?>&amp;stream=<?php echo $wpflybox_facebook_stream; ?>&amp;header=<?php echo $wpflybox_facebook_header; ?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:<?php echo $wpflybox_facebook_height; ?>px;" allowTransparency="true"></iframe></th><th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -303px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"> </div></a></th></tr></table></div></div>
+        <div class="wpfb-facebook" id="wpfb-facebook"><div class="wpfb-facebook-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #3c95d9;width:292px;overflow:hidden;padding:0px;"><iframe src="http://www.facebook.com/plugins/likebox.php?href=<?php echo $wpflybox_facebook; ?>&amp;locale=en_GB&amp;width=<?php echo $wpflybox_facebook_width; ?>&amp;height=<?php echo $wpflybox_facebook_height; ?>&amp;colorscheme=<?php echo $wpflybox_facebook_color; ?>&amp;show_faces=<?php echo $wpflybox_facebook_showfaces; ?>&amp;stream=<?php echo $wpflybox_facebook_stream; ?>&amp;header=<?php echo $wpflybox_facebook_header; ?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:<?php echo $wpflybox_facebook_height; ?>px;" allowTransparency="true"></iframe></th><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>facebook.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -303px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
         <?php
         }
     if ($wpflybox_tabs[$i]=="twitter")
         {
         ?>
-        <div class="wpfb-twitter" id="wpfb-twitter"><div class="wpfb-twitter-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#ffffff; border: 2px solid #6CC5FF; width:265px; height:237px; overflow:hidden;padding:0px;"><script type="text/javascript" src="<?php echo plugins_url().'/wp-flybox/static/twitterbox.js'; ?>"></script><div id="twitterfanbox"></div><script type="text/javascript">fanbox_init("<?php echo $wpflybox_twitter; ?>");</script></th><th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -606px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"> </div></a></th></tr></table></div></div>
+        <div class="wpfb-twitter" id="wpfb-twitter"><div class="wpfb-twitter-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#ffffff; border: 2px solid #6CC5FF; width:265px; height:237px; overflow:hidden;padding:0px;"><script type="text/javascript" src="<?php echo plugins_url().'/wp-flybox/static/twitterbox.js'; ?>"></script><div id="twitterfanbox"></div><script type="text/javascript">fanbox_init("<?php echo $wpflybox_twitter; ?>");</script></th><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>twitter.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -606px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
         <?php
         }
     if ($wpflybox_tabs[$i]=="googleplus")
@@ -288,25 +344,25 @@ while ($i <= $wpflybox_count)
         if (get_option(wpflybox_google_type)== 'profile')
             {
             ?>    
-            <div class="wpfb-googleplus" id="wpfb-googleplus"><div class="wpfb-googleplus-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#ffffff; border: 2px solid #006ec9;width:325px; overflow:hidden;padding:0px;"><iframe src="http://www.google.com/s2/u/0/widgets/ProfileCard?uid=<?php echo $wpflybox_google; ?>" scrolling="no"></iframe></th><th valign="top" style="padding:0px;background:none;border:0px"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -404px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a></th></tr></table></div></div>
+            <div class="wpfb-googleplus" id="wpfb-googleplus"><div class="wpfb-googleplus-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#ffffff; border: 2px solid #006ec9;width:325px; overflow:hidden;padding:0px;"><iframe src="http://www.google.com/s2/u/0/widgets/ProfileCard?uid=<?php echo $wpflybox_google; ?>" scrolling="no"></iframe></th><th valign="top" style="padding:0px;background:none;border:0px"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>googleplus.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -404px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
             <?php
             } else if (get_option(wpflybox_google_type)== 'page')
             {
             ?>    
-            <div class="wpfb-googleplus" id="wpfb-googleplus"><div class="wpfb-googleplus-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#ffffff; border: 2px solid #006ec9;width:325px; overflow:hidden;padding:0px;"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><div class="g-plus" data-href="https://plus.google.com/<?php echo $wpflybox_google; ?>?rel=publisher"></div></th><th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -404px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"> </div></a></th></tr></table></div></div> 
+            <div class="wpfb-googleplus" id="wpfb-googleplus"><div class="wpfb-googleplus-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#ffffff; border: 2px solid #006ec9;width:325px; overflow:hidden;padding:0px;"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><div class="g-plus" data-href="https://plus.google.com/<?php echo $wpflybox_google; ?>?rel=publisher"></div></th><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>googleplus.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -404x; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div> 
             <?php    
             }   
         }
     if ($wpflybox_tabs[$i]=="youtube")
         {
         ?>
-        <div class="wpfb-youtube" id="wpfb-youtube"><div class="wpfb-youtube-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #ff0000; width:300px; height;105px; overflow:hidden;padding:0px;"><iframe src=http://www.youtube.com/subscribe_widget?p=<?php echo $wpflybox_youtube; ?> style="height: 105px; width: 300px; border: 0;" scrolling="no" frameBorder="0"></iframe></th><th valign="top"><a href="#"><div style="margin-left:px; margin-top:0px; width:32px; height:101px; background-position:0px -202px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"> </div></a></th></tr></table></div></div>
+        <div class="wpfb-youtube" id="wpfb-youtube"><div class="wpfb-youtube-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #ff0000; width:300px; height;105px; overflow:hidden;padding:0px;"><iframe src=http://www.youtube.com/subscribe_widget?p=<?php echo $wpflybox_youtube; ?> style="height: 105px; width: 300px; border: 0;" scrolling="no" frameBorder="0"></iframe></th><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>youtube.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -202px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
         <?php    
         }
     if ($wpflybox_tabs[$i]=="subscription")
         {
         ?>
-        <div class="wpfb-subscribe" id="wpfb-subscribe"><div class="wpfb-subscribe-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #5b5b5b; width:290px; height:97px; overflow:hidden;padding:0px;"><center><p style="color:#F66303;margin-right:10px;margin-left:10px;width:270px;font-size:14px;">Subscribe to Receive E-Mail Updates:</p> <form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=<?php echo $wpflybox_feedburner; ?>', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><input style="padding:2px;" gtbfieldid="10" class="enteryouremail" name="email" value="Enter Your E-Mail Here..." onblur="if (this.value == &#39;&#39;) {this.value = &#39;Enter Your E-Mail Here...&#39;;}" onfocus="if (this.value == &#39;Enter Your E-Mail Here...&#39;) {this.value = &#39;&#39;;}" type="text" /><input value="<?php echo $wpflybox_feedburner; ?>" name="uri" type="hidden" /><input style="padding:2px;" value="Submit" class="submitbutton" type="submit" /></form></center></th><th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0x; width:32px; height:101px; background-position:0px 0px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"> </div></a></th></tr></table></div></div>
+        <div class="wpfb-subscribe" id="wpfb-subscribe"><div class="wpfb-subscribe-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #5b5b5b; width:290px; height:97px; overflow:hidden;padding:0px;"><center><p style="color:#F66303;margin-right:10px;margin-left:10px;width:270px;font-size:14px;">Subscribe to Receive E-Mail Updates:</p> <form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=<?php echo $wpflybox_feedburner; ?>', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><input style="padding:2px;" gtbfieldid="10" class="enteryouremail" name="email" value="Enter Your E-Mail Here..." onblur="if (this.value == &#39;&#39;) {this.value = &#39;Enter Your E-Mail Here...&#39;;}" onfocus="if (this.value == &#39;Enter Your E-Mail Here...&#39;) {this.value = &#39;&#39;;}" type="text" /><input value="<?php echo $wpflybox_feedburner; ?>" name="uri" type="hidden" /><input style="padding:2px;" value="Submit" class="submitbutton" type="submit" /></form></center></th><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>subscription.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px 0px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
         <?php
         }    
     if ($wpflybox_tabs[$i]=="pinterest")
@@ -314,7 +370,7 @@ while ($i <= $wpflybox_count)
         ?>
         <div class="wpfb-pinterest" id="wpfb-pinterest"><div class="wpfb-pinterest-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #f81f22; width:254px; height:98px; overflow:hidden;padding:0px;">
         <div align="center"><a href="http://pinterest.com/<?php echo $wpflybox_pinterest; ?>" target="_blank"><img src="<?php echo $wpflybox_pinterest_button_url; ?>" title="Pinterest" width="250" height="60" border="0" /></a></div>
-        </th><th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -101px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"> </div></a></th></tr></table></div></div>
+        </th><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>pinterest.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -101px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
         <?php
         }    
     if ($wpflybox_tabs[$i]=="linkedin")
@@ -329,7 +385,7 @@ while ($i <= $wpflybox_count)
         <script type="IN/CompanyProfile" data-id="<?php echo $wpflybox_linkedin; ?>" data-format="inline" data-related="false" data-width="364"></script>
         <?php } ?>
         </th>
-        <th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -505px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"></div></a></th></tr></table></div></div>
+        <th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>linkedin.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -505px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
         <?php
         }
         
@@ -337,7 +393,7 @@ while ($i <= $wpflybox_count)
         {
         ?>
         <div class="wpfb-contact" id="wpfb-contact"><div class="wpfb-contact-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #2653a1;width:280px; overflow:hidden;padding:0px;">
-        <center><form style="padding:5px;" action="<?php echo plugins_url(); ?>/wp-flybox/contact.php";" method="post" target="popupwindow" onsubmit="window.open('<?php echo plugins_url(); ?>/wp-flybox/contact.php', 'popupwindow', 'scrollbars=no,width=300,height=300');return true">
+        <center><b>Contact Me:</b><br><form style="padding:5px;" action="<?php echo plugins_url(); ?>/wp-flybox/contact.php";" method="post" target="popupwindow" onsubmit="window.open('<?php echo plugins_url(); ?>/wp-flybox/contact.php', 'popupwindow', 'scrollbars=no,width=300,height=300');return true">
         <p>Name: <input style="padding:1px;" gtbfieldid="10" class="enteryourname" name="name" id="name" type="text" /></p>
         <p>Email: <input style="padding:1px;" gtbfieldid="10" class="enteryouremail" name="email" id="email" type="text" /></p>
         <p><textarea rows="2" cols="30" class="enteryourmessage" name="message" id="message">Enter Your Message Here...</textarea></p>
@@ -352,7 +408,7 @@ while ($i <= $wpflybox_count)
         <input value="<?php echo $wpflybox_contactencrypted; ?>" name="sendtoemail" id="sendtoemail" type="hidden" />      
         <p><input style="padding:2px;" value="Submit" class="submitbutton" type="submit" /></p></form></center>
         </th>
-        <th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -<?php echo $wpflybox_contactwhopixel; ?>px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"></div></a></th></tr></table></div></div>
+        <th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>contact.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -<?php echo $wpflybox_contactwhopixel; ?>px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
         <?php         
         }
         
@@ -361,7 +417,7 @@ if ($wpflybox_tabs[$i]=="flickr")
         ?>
         <div class="wpfb-flickr" id="wpfb-flickr"><div class="wpfb-flickr-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #0063DC; overflow:hidden;padding:0px;">
         <iframe style="background-color:#ffffff; border-color:#ffffff; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color=ffffff&zg_person_id=<?php echo $wpflybox_flickr; ?>&zg_tags=<?php echo $wpflybox_flickr_tag; ?>&zg_tag_mode=any" title="Flickr Badge"></iframe>
-        </th><th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -808px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"> </div></a></th></tr></table></div></div>
+        </th><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>flickr.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -808px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
         <?php        
         }
         
@@ -370,7 +426,7 @@ if ($wpflybox_tabs[$i]=="deviant")
         ?>
         <div class="wpfb-deviant" id="wpfb-deviant"><div class="wpfb-deviant-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #506256; overflow:hidden;padding:0px;height:<?php echo $wpflybox_deviant_frame_height; ?>px;width:<?php echo $wpflybox_deviant_frame_width; ?>px;">
         <iframe style="background-color:#ffffff; border-color:#ffffff; border:none;" frameborder="0" scrolling="no" src="<?php echo plugins_url()."/wp-flybox/deviant.php?username=".$wpflybox_deviant_username."&limit=".$wpflybox_deviant_limit."&max_width=".$wpflybox_deviant_max_width."&max_height=".$wpflybox_deviant_max_height."&columns=".$wpflybox_deviant_columns; ?>" title="Deviant Art Badge"></iframe>
-        </th><th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -909px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"> </div></a></th></tr></table></div></div>
+        </th><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>deviant.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -909px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
         <?php        
         }
         
@@ -417,7 +473,7 @@ if ($wpflybox_tabs[$i]=="instagram")
         echo '</div>';
         ?>
         </th>
-        <th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -1010px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"></div></a></th></tr></table></div></div>
+        <th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>instagram.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -1010px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
         <?php        
         }                                  
    
@@ -475,6 +531,54 @@ $wpflybox_pinterest_button_url=plugins_url()."/wp-flybox/static/pinterest-button
 <style type="text/css">
 table.wpflyboxtable, .wpflyboxtable tbody, .wpflyboxtable th, .wpflyboxtable tr, .wpflyboxtable td, table.wpflyboxtable th, table.wpflyboxtable tr:hover, table.wpflyboxtable tr{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}
 <?php
+if ($wpflybox_usecustombutton == "true")
+  {
+  ?>
+  .wpflybox_button {
+   border-top: 1px solid #<?php echo $wpflybox_bgborder;?>;
+   border-left: 1px solid #<?php echo $wpflybox_bgborder;?>;
+   border-bottom: 1px solid #<?php echo $wpflybox_bgborder;?>;
+   background: #000000;
+   background: -webkit-gradient(linear, right top, left top, from(#<?php echo $wpflybox_bgtopgradient;?>), to(#<?php echo $wpflybox_bgbottomgradient;?>));
+   background: -webkit-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+   background: -moz-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+   background: -ms-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+   background: -o-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+   display:block;
+   height:32px;
+   width: 32px;
+   margin: 0px;
+   padding: 0px;
+   -webkit-border-radius: 9px 0px 0px 9px;
+   -moz-border-radius: 9px 0px 0px 9px;
+   border-radius: 9px 0px 0px 9px;
+   color: #ffffff;
+   font-size: 10px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   z-index:800;
+   }
+  .wpflybox_button img{
+   padding:0px;
+   }
+   .wpflybox_button img:hover {
+   -webkit-border-radius: 9px 0px 0px 9px;
+   -moz-border-radius: 9px 0px 0px 9px;
+   border-radius: 9px 0px 0px 9px;
+   padding:0px;   
+   border-bottom:0px hidden;
+   background: #000000;
+   background: -webkit-gradient(linear, right top, left top, from(#<?php echo $wpflybox_bgtopgradient;?>), to(#<?php echo $wpflybox_bgbottomgradient;?>));
+   background: -webkit-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+   background: -moz-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+   background: -ms-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+   background: -o-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+   color: #000000;
+   }
+   
+   <?php
+  }
 $i=1;
 while ($i <= $wpflybox_count)
     {
@@ -568,13 +672,13 @@ while ($i <= $wpflybox_count)
     if ($wpflybox_tabs[$i]=="facebook")
         {
         ?>
-        <div class="wpfb-facebook" id="wpfb-facebook"><div class="wpfb-facebook-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top" ><a href="#"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -303px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></a></th><th style="background-color:#fff; border: 2px solid #3c95d9;width:292px;overflow:hidden;padding:0px;"><iframe src="http://www.facebook.com/plugins/likebox.php?href=<?php echo $wpflybox_facebook; ?>&amp;locale=en_GB&amp;width=<?php echo $wpflybox_facebook_width; ?>&amp;height=<?php echo $wpflybox_facebook_height; ?>&amp;colorscheme=<?php echo $wpflybox_facebook_color; ?>&amp;show_faces=<?php echo $wpflybox_facebook_showfaces; ?>&amp;stream=<?php echo $wpflybox_facebook_stream; ?>&amp;header=<?php echo $wpflybox_facebook_header; ?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:<?php echo $wpflybox_facebook_height; ?>px;" allowTransparency="true"></iframe></th></th></tr></table></div></div>
+        <div class="wpfb-facebook" id="wpfb-facebook"><div class="wpfb-facebook-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top" ><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>facebook.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -303px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th><th style="background-color:#fff; border: 2px solid #3c95d9;width:292px;overflow:hidden;padding:0px;"><iframe src="http://www.facebook.com/plugins/likebox.php?href=<?php echo $wpflybox_facebook; ?>&amp;locale=en_GB&amp;width=<?php echo $wpflybox_facebook_width; ?>&amp;height=<?php echo $wpflybox_facebook_height; ?>&amp;colorscheme=<?php echo $wpflybox_facebook_color; ?>&amp;show_faces=<?php echo $wpflybox_facebook_showfaces; ?>&amp;stream=<?php echo $wpflybox_facebook_stream; ?>&amp;header=<?php echo $wpflybox_facebook_header; ?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:<?php echo $wpflybox_facebook_height; ?>px;" allowTransparency="true"></iframe></th></th></tr></table></div></div>
         <?php
         }
     if ($wpflybox_tabs[$i]=="twitter")
         {
         ?>
-        <div class="wpfb-twitter" id="wpfb-twitter"><div class="wpfb-twitter-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><a href="#"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -606px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></a></th><th style="background-color:#ffffff; border: 2px solid #6CC5FF;width:265px; height:237px; overflow:hidden;"><script type="text/javascript" src="<?php echo plugins_url().'/wp-flybox/static/twitterbox.js'; ?>"></script><div id="twitterfanbox"></div><script type="text/javascript">fanbox_init("<?php echo $wpflybox_twitter; ?>");</script></th></th></tr></table></div></div>
+        <div class="wpfb-twitter" id="wpfb-twitter"><div class="wpfb-twitter-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>twitter.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -606px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th><th style="background-color:#ffffff; border: 2px solid #6CC5FF;width:265px; height:237px; overflow:hidden;"><script type="text/javascript" src="<?php echo plugins_url().'/wp-flybox/static/twitterbox.js'; ?>"></script><div id="twitterfanbox"></div><script type="text/javascript">fanbox_init("<?php echo $wpflybox_twitter; ?>");</script></th></th></tr></table></div></div>
         <?php
         }
     if ($wpflybox_tabs[$i]=="googleplus")
@@ -582,31 +686,31 @@ while ($i <= $wpflybox_count)
         if (get_option(wpflybox_google_type)== 'profile')
             {
             ?>    
-            <div class="wpfb-googleplus" id="wpfb-googleplus"><div class="wpfb-googleplus-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><a href="#"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -404px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></a></th><th style="background-color:#ffffff; border: 2px solid #006EC9;width:325px; overflow:hidden;"><iframe src="http://www.google.com/s2/u/0/widgets/ProfileCard?uid=<?php echo $wpflybox_google; ?>" width="100%" height="125px" scrolling="no" style="border:0px;"></iframe></th></tr></table></div></div>
+            <div class="wpfb-googleplus" id="wpfb-googleplus"><div class="wpfb-googleplus-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>googleplus.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -404px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th><th style="background-color:#ffffff; border: 2px solid #006EC9;width:325px; overflow:hidden;"><iframe src="http://www.google.com/s2/u/0/widgets/ProfileCard?uid=<?php echo $wpflybox_google; ?>" width="100%" height="125px" scrolling="no" style="border:0px;"></iframe></th></tr></table></div></div>
             <?php
             } else if (get_option(wpflybox_google_type)== 'page')
             {
             ?>    
-            <div class="wpfb-googleplus" id="wpfb-googleplus"><div class="wpfb-googleplus-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><a href="#"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -404px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></a></th><th style="background-color:#ffffff border: 2px solid #006EC9;width:325px; overflow:hidden;"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><div class="g-plus" data-href="https://plus.google.com/<?php echo $wpflybox_google; ?>?rel=publisher"></div></th></tr></table></div></div>
+            <div class="wpfb-googleplus" id="wpfb-googleplus"><div class="wpfb-googleplus-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>googleplus.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -404px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th><th style="background-color:#ffffff border: 2px solid #006EC9;width:325px; overflow:hidden;"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><div class="g-plus" data-href="https://plus.google.com/<?php echo $wpflybox_google; ?>?rel=publisher"></div></th></tr></table></div></div>
             <?php    
             }   
         }
     if ($wpflybox_tabs[$i]=="youtube")
         {
         ?>
-        <div class="wpfb-youtube" id="wpfb-youtube"><div class="wpfb-youtube-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><a href="#"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -202px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></a></th><th style="background-color:#fff; border: 2px solid #ff0000; width:300px; height;105px; overflow:hidden;"><iframe src=http://www.youtube.com/subscribe_widget?p=<?php echo $wpflybox_youtube; ?> style="height: 105px; width: 300px; border: 0;" scrolling="no" frameBorder="0"></iframe></th></tr></table></div></div>
+        <div class="wpfb-youtube" id="wpfb-youtube"><div class="wpfb-youtube-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>youtube.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -202px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th><th style="background-color:#fff; border: 2px solid #ff0000; width:300px; height;105px; overflow:hidden;"><iframe src=http://www.youtube.com/subscribe_widget?p=<?php echo $wpflybox_youtube; ?> style="height: 105px; width: 300px; border: 0;" scrolling="no" frameBorder="0"></iframe></th></tr></table></div></div>
         <?php    
         }
     if ($wpflybox_tabs[$i]=="subscription")
         {
         ?>
-        <div class="wpfb-subscribe" id="wpfb-subscribe"><div class="wpfb-subscribe-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><a href="#"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px 0px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></a></th><th style="background-color:#fff; border: 2px solid #5b5b5b; width:290px; height:97px; overflow:hidden;"><center><p style="color:#F66303;margin-right:10px;margin-left:10px;width:270px;font-size:14px;">Subscribe to Receive E-Mail Updates:</p> <form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=<?php echo $wpflybox_feedburner; ?>', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><input style="padding:2px;" gtbfieldid="10" class="enteryouremail" name="email" value="Enter Your E-Mail Here..." onblur="if (this.value == &#39;&#39;) {this.value = &#39;Enter Your E-Mail Here...&#39;;}" onfocus="if (this.value == &#39;Enter Your E-Mail Here...&#39;) {this.value = &#39;&#39;;}" type="text" /><input value="<?php echo $wpflybox_feedburner; ?>" name="uri" type="hidden" /><input style="padding:2px; value="Submit" class="submitbutton" type="submit" /></form></center></th></tr></table></div></div>
+        <div class="wpfb-subscribe" id="wpfb-subscribe"><div class="wpfb-subscribe-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>subscription.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px 0px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th><th style="background-color:#fff; border: 2px solid #5b5b5b; width:290px; height:97px; overflow:hidden;"><center><p style="color:#F66303;margin-right:10px;margin-left:10px;width:270px;font-size:14px;">Subscribe to Receive E-Mail Updates:</p> <form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=<?php echo $wpflybox_feedburner; ?>', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><input style="padding:2px;" gtbfieldid="10" class="enteryouremail" name="email" value="Enter Your E-Mail Here..." onblur="if (this.value == &#39;&#39;) {this.value = &#39;Enter Your E-Mail Here...&#39;;}" onfocus="if (this.value == &#39;Enter Your E-Mail Here...&#39;) {this.value = &#39;&#39;;}" type="text" /><input value="<?php echo $wpflybox_feedburner; ?>" name="uri" type="hidden" /><input style="padding:2px; value="Submit" class="submitbutton" type="submit" /></form></center></th></tr></table></div></div>
         <?php
         }    
     if ($wpflybox_tabs[$i]=="pinterest")
         {
         ?>
-        <div class="wpfb-pinterest" id="wpfb-pinterest"><div class="wpfb-pinterest-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><a href="#"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -101px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></a></th><th style="background-color:#fff; border: 2px solid #f81f22; width:254px; height:98px; overflow:hidden;">
+        <div class="wpfb-pinterest" id="wpfb-pinterest"><div class="wpfb-pinterest-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>pinterest.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -101px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th><th style="background-color:#fff; border: 2px solid #f81f22; width:254px; height:98px; overflow:hidden;">
         <div align="center"><a href="http://pinterest.com/<?php echo $wpflybox_pinterest; ?>" target="_blank"><img src="<?php echo $wpflybox_pinterest_button_url; ?>" title="Pinterest" width="250" height="60" border="0" /></a></div>
         </th></tr></table></div></div>
         <?php
@@ -614,7 +718,7 @@ while ($i <= $wpflybox_count)
     if ($wpflybox_tabs[$i]=="linkedin")
         {
         ?>
-        <div class="wpfb-linkedin" id="wpfb-linkedin"><div class="wpfb-linkedin-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><a href="#"><div style="margin-right:0px; margin-top:0px; width:32px; height:101px; background-position:0px -505px; background-image:url('<?php echo $wpflybox_sprite_url; ?>')"> </div></a></th><th style="background-color:#fff; border: 2px solid #4875B4; width:364px; height:159px; overflow:hidden;">
+        <div class="wpfb-linkedin" id="wpfb-linkedin"><div class="wpfb-linkedin-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>linkedin.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -505px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th><th style="background-color:#fff; border: 2px solid #4875B4; width:364px; height:159px; overflow:hidden;">
         <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
         <?php
         if ($wpflybox_linkedin_type=="member"){ ?>
@@ -630,7 +734,7 @@ while ($i <= $wpflybox_count)
         {
         ?>
         <div class="wpfb-contact" id="wpfb-contact"><div class="wpfb-contact-transition"><table class="wpflyboxtable"><tr style="background:transparent">
-        <th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -<?php echo $wpflybox_contactwhopixel; ?>px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"></div></a></th>
+        <th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>contact.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -<?php echo $wpflybox_contactwhopixel; ?>px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th>
         <th style="background-color:#fff; border: 2px solid #2653a1;width:280px; overflow:hidden;padding:0px;">
         <center><form style="padding:5px;" action="<?php echo plugins_url(); ?>/wp-flybox/contact.php";" method="post" target="popupwindow" onsubmit="window.open('<?php echo plugins_url(); ?>/wp-flybox/contact.php', 'popupwindow', 'scrollbars=no,width=300,height=300');return true">
         <p>Name: <input style="padding:1px;" gtbfieldid="10" class="enteryourname" name="name" id="name" type="text" /></p>
@@ -654,7 +758,7 @@ if ($wpflybox_tabs[$i]=="flickr")
         {
         ?>
         <div class="wpfb-flickr" id="wpfb-flickr"><div class="wpfb-flickr-transition"><table class="wpflyboxtable"><tr style="background:transparent">
-        <th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -808px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"> </div></a></th>
+        <th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>flickr.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -808px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th>
         <th style="background-color:#fff; border: 2px solid #0063DC; overflow:hidden;padding:0px;">
         <iframe style="background-color:#ffffff; border-color:#ffffff; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color=ffffff&zg_person_id=<?php echo $wpflybox_flickr; ?>&zg_tags=<?php echo $wpflybox_flickr_tag; ?>&zg_tag_mode=any" title="Flickr Badge"></iframe>
         </th>
@@ -666,7 +770,7 @@ if ($wpflybox_tabs[$i]=="deviant")
         {
         ?>
         <div class="wpfb-deviant" id="wpfb-deviant"><div class="wpfb-deviant-transition"><table class="wpflyboxtable"><tr style="background:transparent">
-        <th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -909px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"> </div></a></th>
+        <th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>deviant.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -909px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th>
         <th style="background-color:#fff; border: 2px solid #506256; overflow:hidden;padding:0px;height:<?php echo $wpflybox_deviant_frame_height; ?>px;width:<?php echo $wpflybox_deviant_frame_width; ?>px;">
         <iframe style="background-color:#ffffff; border-color:#ffffff; border:none;" frameborder="0" scrolling="no" src="<?php echo plugins_url()."/wp-flybox/deviant.php?username=".$wpflybox_deviant_username."&limit=".$wpflybox_deviant_limit."&max_width=".$wpflybox_deviant_max_width."&max_height=".$wpflybox_deviant_max_height."&columns=".$wpflybox_deviant_columns; ?>" title="Deviant Art Badge"></iframe>
         </th>
@@ -678,7 +782,7 @@ if ($wpflybox_tabs[$i]=="instagram")
         {
         ?>
         <div class="wpfb-instagram" id="wpfb-instagram"><div class="wpfb-instagram-transition"><table class="wpflyboxtable"><tr style="background:transparent">
-        <th valign="top"><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -1010px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');"></div></a></th>
+        <th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>instagram.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -1010px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th>
         <th style="background-color:#fff; border: 2px solid #86513e; width:196px; overflow:hidden;padding:0px;">
         <?php
     if ($wpflybox_usecurl=="true"){    

@@ -1,4 +1,5 @@
 <?php 
+echo '<script type="text/javascript" src="'.plugins_url().'/wp-flybox/static/jscolor/jscolor.js"></script>';
 if (get_option(wpflybox_facebook_header)==""){$wpflybox_facebook_header="false";update_option('wpflybox_facebook_header', $wpflybox_facebook_header);}
 if (get_option(wpflybox_facebook_stream)==""){$wpflybox_facebook_stream="false";update_option('wpflybox_facebook_tream', $wpflybox_facebook_stream);}
 if (get_option(wpflybox_facebook_showfaces)==""){$wpflybox_facebook_showfaces="true";update_option('wpflybox_facebook_showfaces', $wpflybox_facebook_showfaces);}
@@ -22,6 +23,10 @@ if (get_option(wpflybox_instagram_header)==""){$wpflybox_instagram_header="true"
 if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflybox_jquery', $wpflybox_jquery);}
 if (get_option(wpflybox_contactwho)==""){$wpflybox_contactwho="me";update_option('wpflybox_contactwho', $wpflybox_contactwho);}
 if (get_option(wpflybox_usecurl)==""){$wpflybox_usecurl="false";update_option('wpflybox_usecurl', $wpflybox_usecurl);}
+if (get_option(wpflybox_usecustombutton)==""){$wpflybox_usecustombutton="false";update_option('wpflybox_usecustombutton', $wpflybox_usecustombutton);}
+if (get_option(wpflybox_bgtopgradient)==""){$wpflybox_bgtopgradient="#ababab";update_option('wpflybox_bgtopgradient', $wpflybox_bgtopgradient);}
+if (get_option(wpflybox_bgbottomgradient)==""){$wpflybox_bgbottomgradient="#3b3b3b";update_option('wpflybox_bgbottomgradient', $wpflybox_bgbottomgradient);}
+if (get_option(wpflybox_bgborder)==""){$wpflybox_bgborder="#000000";update_option('wpflybox_bgborder', $wpflybox_bgborder);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
 			//Form data sent
@@ -120,6 +125,15 @@ if (get_option(wpflybox_usecurl)==""){$wpflybox_usecurl="false";update_option('w
 			update_option('wpflybox_jquery', $wpflybox_jquery);
 			$wpflybox_usecurl = $_POST['wpflybox_usecurl'];
 			update_option('wpflybox_usecurl', $wpflybox_usecurl);
+			$wpflybox_usecustombutton = $_POST['wpflybox_usecustombutton'];
+			update_option('wpflybox_usecustombutton', $wpflybox_usecustombutton);
+			$wpflybox_bgtopgradient = $_POST['wpflybox_bgtopgradient'];
+			update_option('wpflybox_bgtopgradient', $wpflybox_bgtopgradient);	      			
+			$wpflybox_bgbottomgradient = $_POST['wpflybox_bgbottomgradient'];
+			update_option('wpflybox_bgbottomgradient', $wpflybox_bgbottomgradient);
+			$wpflybox_bgborder = $_POST['wpflybox_bgborder'];
+			update_option('wpflybox_bgborder', $wpflybox_bgborder);			
+
       			                                                                                                  
 			?>
 			<div class="updated"><p><strong><?php _e('Options saved.' ); ?></strong></p></div>
@@ -153,6 +167,9 @@ if (get_option(wpflybox_usecurl)==""){$wpflybox_usecurl="false";update_option('w
 <br /><a href="http://facebook.com/cylec" target="_blank">Facebook</a>
 <br /><a href="http://twitter.com/cyleconoly" target="_blank">Twitter</a>
 <br /><a href="http://plus.google.com/u/0/105734435204105331709" target="_blank">Google Plus</a>
+<br /><br />
+<b>Rate:</b>
+<br /><a href="http://wordpress.org/extend/plugins/wp-flybox/" target="blank">Rate WP-FlyBox</a>
 <br /><br />
 <b>Donate:</b>
 <br /><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -355,14 +372,100 @@ if (get_option(wpflybox_usecurl)==""){$wpflybox_usecurl="false";update_option('w
         </select>
         </td></tr>        
 		  <?php } ?>
-		  
+
+		    <tr><td style="text-align:right;">Which type of buttons?</td><td>
+		    <table border="0">
+		    <tr><td style="text-align:center;">
+		    <img src="<?php echo plugins_url()."/wp-flybox/static/"; ?>noncustombuttonexample.png" width="101"><br>
+		    <input type="radio" name="wpflybox_usecustombutton" value="false" <?php if(get_option(wpflybox_usecustombutton)=="false"){echo 'checked';} ?>><br>Logo and Text
+		    </td><td style="text-align:center;">
+		    <img src="<?php echo plugins_url()."/wp-flybox/static/"; ?>custombuttonexample.png" width="101"><br>
+        <input type="radio" name="wpflybox_usecustombutton" value="true" <?php if(get_option(wpflybox_usecustombutton)=="true"){echo 'checked';} ?>><br>Custom Colors with Logo
+        </td><td><input type="submit" name="Submit" value="Apply" />
+        </td></table>
+        </td></tr> 
         
-		    <tr><td style="text-align:right;"><?php _e("Enable for Mobile Devices: " ); ?></td><td>
-        <select name="wpflybox_mobile">
-        <option value="true" <?php if(get_option(wpflybox_mobile)=="true"){echo 'selected';} ?>>Yes</option>
-        <option value="false" <?php if(get_option(wpflybox_mobile)=="false"){echo 'selected';} ?>>No</option>
-        </select>
-        </td></tr>        
+        
+        <?php if (get_option(wpflybox_usecustombutton)=="true"){ ?>
+        <tr><td>
+        <h4>Custom Button Configuration:</h4>
+        </td></tr>
+        
+        
+		    <tr><td style="text-align:right;">Right Gradient Color:</td><td>
+        <input class="color" type="text" name="wpflybox_bgtopgradient" value="<?php echo get_option(wpflybox_bgtopgradient); ?>" size="10" />
+        </td></tr>
+		    <tr><td style="text-align:right;">Left Gradient Color:</td><td>
+        <input class="color" type="text" name="wpflybox_bgbottomgradient" value="<?php echo get_option(wpflybox_bgbottomgradient); ?>" size="10" />
+        </td></tr>                   		  
+		    <tr><td style="text-align:right;">Border Color:</td><td>
+        <input class="color" type="text" name="wpflybox_bgborder" value="<?php echo get_option(wpflybox_bgborder); ?>" size="10" />
+        </td></tr>
+        
+        <?php
+        $wpflybox_bgtopgradient=get_option(wpflybox_bgtopgradient);
+        $wpflybox_bgbottomgradient=get_option(wpflybox_bgbottomgradient);
+        $wpflybox_bgborder=get_option(wpflybox_bgborder);
+        ?>
+        <tr><td style="text-align:right;">Current Tab Colors:<br>&nbsp;<br>&nbsp;</td><td>
+        <style type="text/css">
+        .wpflybox_button {
+         border-top: 1px solid #<?php echo $wpflybox_bgborder;?>;
+         border-right: 1px solid #<?php echo $wpflybox_bgborder;?>;
+         border-bottom: 1px solid #<?php echo $wpflybox_bgborder;?>;
+         background: #000000;
+         background: -webkit-gradient(linear, right top, left top, from(#<?php echo $wpflybox_bgtopgradient;?>), to(#<?php echo $wpflybox_bgbottomgradient;?>));
+         background: -webkit-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -moz-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -ms-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -o-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         display:block;
+         height:32px;
+         width: 32px;
+         margin: 0px;
+         padding: 0px;
+         -webkit-border-radius: 0px 9px 9px 0px;
+         -moz-border-radius: 0px 9px 9px 0px;
+         border-radius: 0px 9px 9px 0px;
+         color: #ffffff;
+         font-size: 10px;
+         font-family: Georgia, serif;
+         text-decoration: none;
+         vertical-align: middle;
+         z-index:800;
+         }
+        .wpflybox_button img{
+         padding:0px;
+         }
+         .wpflybox_button img:hover {
+         -webkit-border-radius: 0px 9px 9px 0px;
+         -moz-border-radius: 0px 9px 9px 0px;
+         border-radius: 0px 9px 9px 0px;
+         padding:0px;   
+         border-bottom:0px hidden;
+         background: #000000;
+         background: -webkit-gradient(linear, right top, left top, from(#<?php echo $wpflybox_bgtopgradient;?>), to(#<?php echo $wpflybox_bgbottomgradient;?>));
+         background: -webkit-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -moz-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -ms-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -o-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         color: #000000;
+         }
+        </style>
+        
+        <a class="wpflybox_button" href="#"><img src="<?php echo plugins_url()."/wp-flybox/static/icons/"; ?>facebook.png" height="30"></a>
+        <br><input type="submit" name="Submit" value="Apply & Refresh" />
+        </td></tr>     		  
+		   <?php
+		   }else{
+       ?> 
+       <input type="hidden" name="wpflybox_bgtopgradient" value="<?php echo get_option(wpflybox_bgtopgradient); ?>" />
+       <input type="hidden" name="wpflybox_bgbottomgradient" value="<?php echo get_option(wpflybox_bgbottomgradient); ?>" />
+       <input type="hidden" name="wpflybox_bgborder" value="<?php echo get_option(wpflybox_bgborder); ?>" />
+       <?php
+       }
+       ?>
+     
 			
 	</table>
 	</div>
@@ -569,6 +672,16 @@ if (get_option(wpflybox_usecurl)==""){$wpflybox_usecurl="false";update_option('w
         <br />This plugin uses a php function called file_get_contents. It fetches files and data from other websites to be displayed on yours. In this case this plugin fetches image locations and data from instagram's server (less than 1kb) to display on your tab. Some web hosting companys disable this plugin because it can take up huge amounts of memory if fetching big pages with a lot of data.
         <br />If you get an error in your instagram tab then try using cURL. If that does not work then cURL is disabled too. If you still have a problem and really want the instagram tab then let me know and I'll work on a workaround.
         </td></tr>
+        
+        <tr><td colspan="2"><h4>Mobile Support:</h4></td></tr>
+        <tr><td style="text-align:right;"><?php _e("Enable for Mobile Devices: " ); ?></td><td>
+        <select name="wpflybox_mobile">
+        <option value="true" <?php if(get_option(wpflybox_mobile)=="true"){echo 'selected';} ?>>Yes</option>
+        <option value="false" <?php if(get_option(wpflybox_mobile)=="false"){echo 'selected';} ?>>No</option>
+        </select>
+        </td></tr>   
+        
+        
 		</table>
 	</div	
         		                              

@@ -1,18 +1,20 @@
 === WP-FlyBox ===
 Contributors: cconoly
 Donate link: http://njarb.com/2012/08/wp-flybox/
-Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, css
+Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, css, custom, colors, sidebar, links
 Requires at least: 2.0
 Tested up to: 3.4.2
 Stable tag: 1.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Social floating fly out tabbed boxes. Can be located on either side of screen.  
+Social floating fly out tabbed boxes. Can be located on either side of screen and customized to match any theme's colors. 
 
 == Description ==
 
 Social media floating fly out tabbed boxes. Can be located on either side of screen. FlyBoxes include Facebook, Twitter, Pinterest, LinkedIn, Google Plus, Youtube, Feedburner, Flickr, DeviantArt, Instagram, and Contact Me.
+
+Tab colors can be customized to match any theme.
 
 Since this uses CSS, some themes will affect the layout of the tabs. If yours is displaying incorrectly PLEASE let me know which theme is causing poblems and I will fix it as soon as I can.
 
@@ -30,11 +32,11 @@ This section describes how to install the plugin and get it working.
 
 = Where can I get help? =
 
-http://njarb.com/2012/08/wp-flybox/
+http://njarb.com/2012/08/wp-flybox/ Post in the comments. I usually can respond within 24 hours.
 
 = Is Javascript used? =
 
-No and Yes, Not to display the tabs, but yes to displaying the social boxes. Javascript is also used to slide the tabs in Internet Explorer.
+No and Yes, Not to display the tabs, but yes to displaying the social boxes. Javascript is also used to slide the tabs in older versions of Internet Explorer.
 
 = Why won't this work with some themes? =
 
@@ -42,14 +44,19 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 
 == Screenshots ==
 
-1. Some of the tabs.
+1. Some of the default tabs.
 2. Tabs on the left side of page.
-3. LinkedIn hovered over.
-4. Facebook hovered over.
-5. Display options.
-6. Tab setup and configuration.
+3. Example of custom colored tabs to match your theme.
+4. LinkedIn hovered over.
+5. Facebook hovered over.
+6. Display options.
+7. Tab setup and configuration.
+8. Custom color configuration
 
 == Changelog ==
+
+= 2.0 =
+* Added custom colored tabs to match any theme.
 
 = 1.13 =
 * Added workaround for people having errors on instagram tab where their web hosts had file_get_contents() disabled.
@@ -107,6 +114,9 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 * Beta, initial design and testing.
 
 == Upgrade Notice ==
+
+= 2.0 =
+* Added custom colored tabs to match any theme.
 
 = 1.13 =
 * Added workaround for people having errors on instagram tab where their web hosts had file_get_contents() disabled.
