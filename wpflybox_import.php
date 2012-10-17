@@ -735,7 +735,7 @@ while ($i <= $wpflybox_count)
         <div class="wpfb-contact" id="wpfb-contact"><div class="wpfb-contact-transition"><table class="wpflyboxtable"><tr style="background:transparent">
         <th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>contact.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -<?php echo $wpflybox_contactwhopixel; ?>px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th>
         <th style="background-color:#fff; border: 2px solid #2653a1;width:280px; overflow:hidden;padding:0px;">
-        <center><form style="padding:5px;" action="<?php echo plugins_url(); ?>/wp-flybox/contact.php";" method="post" target="popupwindow" onsubmit="window.open('<?php echo plugins_url(); ?>/wp-flybox/contact.php', 'popupwindow', 'scrollbars=no,width=300,height=300');return true">
+        <center><b>Contact Me:</b><br><form style="padding:5px;" action="<?php echo plugins_url(); ?>/wp-flybox/contact.php";" method="post" target="popupwindow" onsubmit="window.open('<?php echo plugins_url(); ?>/wp-flybox/contact.php', 'popupwindow', 'scrollbars=no,width=300,height=300');return true">
         <p>Name: <input style="padding:1px;" gtbfieldid="10" class="enteryourname" name="name" id="name" type="text" /></p>
         <p>Email: <input style="padding:1px;" gtbfieldid="10" class="enteryouremail" name="email" id="email" type="text" /></p>
         <p><textarea rows="2" cols="30" class="enteryourmessage" name="message" id="message">Enter Your Message Here...</textarea></p>
