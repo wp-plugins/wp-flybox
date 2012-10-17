@@ -36,8 +36,7 @@ $wpflybox_isie=strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE').strpos($_SERVER['HTTP
 $wpflybox_captcha=get_option(wpflybox_captcha);
 $wpflybox_contactemail=get_option(wpflybox_contactemail);
 $wpflybox_contactwho=get_option(wpflybox_contactwho);
-$wpflybox_key="cyle";
-$wpflybox_contactencrypted = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($wpflybox_key), $wpflybox_contactemail, MCRYPT_MODE_CBC, md5(md5($wpflybox_key))));
+$wpflybox_contactencrypted = base64_encode($wpflybox_contactemail);
 
 if ($wpflybox_contactwho == "us"){$wpflybox_contactwhopixel="1111";} else {$wpflybox_contactwhopixel="707";} 
 
