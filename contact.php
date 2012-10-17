@@ -17,7 +17,7 @@ return $str;
 
 
 $contact_to_email=previous_request_value('sendtoemail');
-$contact_to_email = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5("cyle"), base64_decode($contact_to_email), MCRYPT_MODE_CBC, md5(md5("cyle"))), "\0");
+$contact_to_email = base64_decode($contact_to_email);
 $visitor_email=cndstrips(trim(previous_request_value('email')));
 $visitor_name=cndstrips(trim(previous_request_value('name')));
 $message_body=cndstrips(previous_request_value('message'));
