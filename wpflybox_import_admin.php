@@ -6,7 +6,7 @@ if (get_option(wpflybox_facebook_showfaces)==""){$wpflybox_facebook_showfaces="t
 if (get_option(wpflybox_facebook_color)==""){$wpflybox_facebook_color="light";update_option('wpflybox_facebook_color', $wpflybox_facebook_color);}
 if (get_option(wpflybox_facebook_height)==""){$wpflybox_facebook_height="200";update_option('wpflybox_facebook_height', $wpflybox_facebook_height);}
 if (get_option(wpflybox_facebook_width)==""){$wpflybox_facebook_width="292";update_option('wpflybox_facebook_width', $wpflybox_facebook_width);}
-if (!strstr(get_option(wpflybox_facebook), 'facebook.com')){$wpflybox_facebook="http://facebook.com/".get_option(wpflybox_facebook);update_option('wpflybox_facebook', $wpflybox_facebook);}
+if (!strstr(get_option(wpflybox_facebook), 'facebook.com/Wordpress')){$wpflybox_facebook="http://facebook.com/".get_option(wpflybox_facebook);update_option('wpflybox_facebook', $wpflybox_facebook);}
 if (get_option(wpflybox_ie)==""){$wpflybox_ie="true";update_option('wpflybox_ie', $wpflybox_ie);}
 if (get_option(wpflybox_mobile)==""){$wpflybox_mobile="false";update_option('wpflybox_mobile', $wpflybox_mobile);}
 if (get_option(wpflybox_captcha)==""){$wpflybox_captcha="true";update_option('wpflybox_captcha', $wpflybox_captcha);}
@@ -31,6 +31,17 @@ if (get_option(wpflybox_twitter_showfollowers)==""){$wpflybox_twitter_showfollow
 if (get_option(wpflybox_twitter_count)==""){$wpflybox_twitter_count="8";update_option('wpflybox_twitter_count', $wpflybox_twitter_count);}
 if (get_option(wpflybox_twitter_link)==""){$wpflybox_twitter_link="on";update_option('wpflybox_twitter_link', $wpflybox_twitter_link);}
 if (get_option(wpflybox_twitter_tweetto)==""){$wpflybox_twitter_tweetto="on";update_option('wpflybox_twitter_tweetto', $wpflybox_twitter_tweetto);}
+if (get_option(wpflybox_start)==""){$wpflybox_start="20px";update_option('wpflybox_start', $wpflybox_start);}
+if (get_option(wpflybox_seperation)==""){$wpflybox_seperation="103px";update_option('wpflybox_seperation', $wpflybox_seperation);}
+if (get_option(wpflybox_twitter)==""){$wpflybox_twitter="wordpress";update_option('wpflybox_twitter', $wpflybox_twitter);}
+if (get_option(wpflybox_google)==""){$wpflybox_google="107188080561309681193";update_option('wpflybox_google', $wpflybox_google);}
+if (get_option(wpflybox_google_type)==""){$wpflybox_google_type="page";update_option('wpflybox_google_type', $wpflybox_google_type);}
+if (get_option(wpflybox_youtube)==""){$wpflybox_youtube="nbc";update_option('wpflybox_youtube', $wpflybox_youtube);}
+if (get_option(wpflybox_linkedin)==""){$wpflybox_linkedin="google";update_option('wpflybox_linkedin', $wpflybox_linkedin);}
+if (get_option(wpflybox_linkedin_type)==""){$wpflybox_linkedin_type="company";update_option('wpflybox_linkedin_type', $wpflybox_linkedin_type);}
+if (get_option(wpflybox_flickr)==""){$wpflybox_flickr="palnick";update_option('wpflybox_flickr', $wpflybox_flickr);}
+if (get_option(wpflybox_deviant_username)==""){$wpflybox_deviant_username="leonidafremov";update_option('wpflybox_deviant_username', $wpflybox_deviant_username);}
+if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflybox_jquery', $wpflybox_jquery);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
 			//Form data sent
