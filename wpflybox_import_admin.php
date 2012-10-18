@@ -6,7 +6,8 @@ if (get_option(wpflybox_facebook_showfaces)==""){$wpflybox_facebook_showfaces="t
 if (get_option(wpflybox_facebook_color)==""){$wpflybox_facebook_color="light";update_option('wpflybox_facebook_color', $wpflybox_facebook_color);}
 if (get_option(wpflybox_facebook_height)==""){$wpflybox_facebook_height="200";update_option('wpflybox_facebook_height', $wpflybox_facebook_height);}
 if (get_option(wpflybox_facebook_width)==""){$wpflybox_facebook_width="292";update_option('wpflybox_facebook_width', $wpflybox_facebook_width);}
-if (!strstr(get_option(wpflybox_facebook), 'facebook.com/Wordpress')){$wpflybox_facebook="http://facebook.com/".get_option(wpflybox_facebook);update_option('wpflybox_facebook', $wpflybox_facebook);}
+if (get_option(wpflybox_facebook)==""){$wpflybox_facebook="http://facebook.com/Wordpress";update_option('wpflybox_facebook', $wpflybox_facebook);}
+if (!strstr(get_option(wpflybox_facebook), 'facebook.com/')){$wpflybox_facebook="http://facebook.com/".get_option(wpflybox_facebook);update_option('wpflybox_facebook', $wpflybox_facebook);}
 if (get_option(wpflybox_ie)==""){$wpflybox_ie="true";update_option('wpflybox_ie', $wpflybox_ie);}
 if (get_option(wpflybox_mobile)==""){$wpflybox_mobile="false";update_option('wpflybox_mobile', $wpflybox_mobile);}
 if (get_option(wpflybox_captcha)==""){$wpflybox_captcha="true";update_option('wpflybox_captcha', $wpflybox_captcha);}
