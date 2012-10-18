@@ -59,6 +59,7 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 * Redesigned Twitter box to allow much more customizations.
 * Clicking Follow on Twitter box does not require a page to be opened, unless the twitter user is not signed in.
 * Thanks for the tip Frank!
+* Added cleaner uninstall.
 
 = 2.01 =
 * Bug Fix: Fixed errors on web servers that don't allow mcrypt_encrypt().
@@ -127,6 +128,7 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 * Redesigned Twitter box to allow much more customizations.
 * Clicking Follow on Twitter box does not require a page to be opened, unless the twitter user is not signed in.
 * Thanks for the tip Frank!
+* Added cleaner uninstall.
 
 = 2.01 =
 * Bug Fix: Fixed errors on web servers that don't allow mcrypt_encrypt().
