@@ -399,6 +399,8 @@ if (get_option(wpflybox_pinterest)==""){$wpflybox_pinterest="janew";update_optio
         </td></tr>        
 		  <?php } ?>
 
+        <tr><td colspan="2">Note: Make sure you do not have the same thing for more than one tab or they may not show up.</td></tr>
+
 		    <tr><td style="text-align:right;">Which type of buttons?</td><td>
 		    <table border="0">
 		    <tr><td style="text-align:center;">
@@ -575,7 +577,7 @@ if (get_option(wpflybox_pinterest)==""){$wpflybox_pinterest="janew";update_optio
         </select>
         </td></tr>                                  
 
-        <tr><td colspan="2">Note: Twitter's API has a limit on the requests from their server. It is between 15-180 depending on the request. This plugin would need a couple requests to gather data about your name and followers everytime someone visits one of your pages. This would go way over the limit so the data is cached and saved for 2 hours. If you change the settings and it has some old info, then just wait a couple hours for it to re-update. I know this sucks, but it will be quicker on your end too!
+        <tr><td colspan="2">Note: Twitter's API has a limit on the requests from their server. It is between 15-180 depending on the request. This plugin would need a couple requests to gather data about your name and followers everytime someone visits one of your pages. This would go way over the limit so the data is cached and saved for 2 hours. If you change the settings and it has some old info, then just wait a couple hours for it to re-update. I know this sucks, but it will be quicker on your end too!</td></tr>
         
         <tr><td colspan="2"><h4>Google Plus:</h4></td></tr>
         <tr><td style="text-align:right;">Google Numeric Username:</td><td>
