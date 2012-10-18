@@ -1,5 +1,4 @@
 <?php
-// This is my first plugin and I know very little about php so this shit is a mess!
 $wpflybox_count=get_option(wpflybox_count);
 $wpflybox_start=get_option(wpflybox_start);
 $wpflybox_seperation=get_option(wpflybox_seperation);
@@ -150,6 +149,7 @@ if (strpos($wpflybox_start,'px') !== false && strpos($wpflybox_seperation,'px') 
 }
 
 //twitter function
+//some of this came from Twitter Like Box by timersys
 function show_twitter($options)
 {
 $key = 'wpfb_' . $options['username'];
