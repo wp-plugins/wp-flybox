@@ -2,7 +2,7 @@
 Contributors: cconoly
 Donate link: http://njarb.com/2012/08/wp-flybox/
 Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, css, custom, colors, sidebar, links
-Requires at least: 2.0
+Requires at least: 2.8
 Tested up to: 3.4.2
 Stable tag: 2.01
 License: GPLv2 or later
@@ -54,6 +54,11 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 8. Custom color configuration
 
 == Changelog ==
+
+= 2.1 =
+* Redesigned Twitter box to allow much more customizations.
+* Clicking Follow on Twitter box does not require a page to be opened, unless the twitter user is not signed in.
+* Thanks for the tip Frank!
 
 = 2.01 =
 * Bug Fix: Fixed errors on web servers that don't allow mcrypt_encrypt().
@@ -117,6 +122,11 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 * Beta, initial design and testing.
 
 == Upgrade Notice ==
+
+= 2.1 =
+* Redesigned Twitter box to allow much more customizations.
+* Clicking Follow on Twitter box does not require a page to be opened, unless the twitter user is not signed in.
+* Thanks for the tip Frank!
 
 = 2.01 =
 * Bug Fix: Fixed errors on web servers that don't allow mcrypt_encrypt().

@@ -1,5 +1,5 @@
 <?php
-
+// This is my first plugin and I know very little about php so this shit is a mess!
 $wpflybox_count=get_option(wpflybox_count);
 $wpflybox_start=get_option(wpflybox_start);
 $wpflybox_seperation=get_option(wpflybox_seperation);
@@ -22,6 +22,11 @@ $wpflybox_facebook_width=get_option(wpflybox_facebook_width);
 $wpflybox_facebook_width_36=$wpflybox_facebook_width_36+36;
 
 $wpflybox_twitter=get_option(wpflybox_twitter);
+$wpflybox_twitter_count=get_option(wpflybox_twitter_count);
+$wpflybox_twitter_showfollowers=get_option(wpflybox_twitter_showfollowers);
+$wpflybox_twitter_link=get_option(wpflybox_twitter_link);
+$wpflybox_twitter_tweetto=get_option(wpflybox_twitter_tweetto);
+
 $wpflybox_google=get_option(wpflybox_google);
 $wpflybox_youtube=get_option(wpflybox_youtube);
 $wpflybox_feedburner=get_option(wpflybox_feedburner);
@@ -144,6 +149,146 @@ if (strpos($wpflybox_start,'px') !== false && strpos($wpflybox_seperation,'px') 
     $wpflybox_pos[8]=($wpflybox_start+(7*$wpflybox_seperation)).$wpflybox_postdim.'';
 }
 
+//twitter function
+function show_twitter($options)
+{
+$key = 'wpfb_' . $options['username'];
+
+$you = get_transient($key);
+	if ($you !== false)
+	{
+		$you = $you;
+		//echo 'cached';
+	} else
+	{
+
+$response = wp_remote_get("http://api.twitter.com/1/users/lookup.json?screen_name=$options[username]");
+
+if (is_wp_error($response))
+		{
+			// In case Twitter is down we return the last successful count
+			$you = get_option($key);
+		}
+		else
+		{
+$json = json_decode(wp_remote_retrieve_body($response));
+//$json=json_decode('[{"id":102830912,"profile_background_tile":false,"created_at":"Fri Jan 08 00:14:45 +0000 2010","time_zone":null,"profile_sidebar_fill_color":"DDEEF6","default_profile_image":false,"geo_enabled":false,"friends_count":6,"favourites_count":1,"utc_offset":null,"profile_image_url":"http:\/\/a0.twimg.com\/profile_images\/2616539587\/image_normal.jpg","location":"","profile_background_color":"C0DEED","name":"Cyle Conoly","follow_request_sent":null,"lang":"en","profile_background_image_url_https":"https:\/\/si0.twimg.com\/images\/themes\/theme1\/bg.png","protected":false,"profile_background_image_url":"http:\/\/a0.twimg.com\/images\/themes\/theme1\/bg.png","id_str":"102830912","followers_count":9,"profile_link_color":"0084B4","default_profile":true,"description":"","profile_use_background_image":true,"following":null,"verified":false,"profile_text_color":"333333","is_translator":false,"listed_count":0,"screen_name":"cyleconoly","statuses_count":0,"profile_sidebar_border_color":"C0DEED","notifications":null,"profile_image_url_https":"https:\/\/si0.twimg.com\/profile_images\/2616539587\/image_normal.jpg","url":null,"contributors_enabled":false}]');
+$you['name'] 			 	= $json[0]->name;
+$you['screen_name']	 		= $json[0]->screen_name;
+$you['followers_count'] 	= $json[0]->followers_count;
+$you['profile_image_url']	= $json[0]->profile_image_url;
+$you['friends_count']		= $json[0]->friends_count;
+$you['description'] = $json[0]->description;
+if ( $options['show_followers'] == 'followers' )
+			{
+				$fans = json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/followers/ids.json?screen_name=$options[username]")));
+				//$fans = json_decode('{"previous_cursor_str":"0","next_cursor":0,"ids":[174732833,439492777,358370432,234626147,384006004,227724394,234624204,149676134,102757522],"previous_cursor":0,"next_cursor_str":"0"}');
+			}
+			else
+			{
+			  $fans = json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/friends/ids.json?screen_name=$options[username]")));
+				//$fans = json_decode ('{"previous_cursor_str":"0","next_cursor":0,"ids":[334033335,15004861,234626147,234624204,21845346,102757522],"previous_cursor":0,"next_cursor_str":"0"}');
+			}
+$fans_ids = (string)implode( ',', array_slice($fans->ids, 0, $options['total']) );
+$fans = json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/users/lookup.json?user_id=$fans_ids")));
+//$fans = json_decode('[{"id":15004861,"created_at":"Wed Jun 04 13:35:10 +0000 2008","profile_sidebar_border_color":"C0DEED","default_profile":true,"contributors_enabled":false,"time_zone":"Eastern Time (US & Canada)","utc_offset":-18000,"profile_background_tile":false,"location":"","profile_sidebar_fill_color":"DDEEF6","name":"renewedvision","geo_enabled":true,"lang":"en","listed_count":140,"is_translator":false,"protected":false,"statuses_count":180,"profile_image_url":"http:\/\/a0.twimg.com\/profile_images\/186558179\/rvLogo_normal.png","profile_background_color":"C0DEED","follow_request_sent":null,"description":"Makers of ProPresenter, ProVideoPlayer, and ProVideoSync. Professional Mac based video production software.","profile_background_image_url":"http:\/\/a0.twimg.com\/images\/themes\/theme1\/bg.png","id_str":"15004861","default_profile_image":false,"following":null,"verified":false,"followers_count":2454,"profile_link_color":"0084B4","profile_image_url_https":"https:\/\/si0.twimg.com\/profile_images\/186558179\/rvLogo_normal.png","favourites_count":1,"friends_count":14,"screen_name":"renewedvision","profile_use_background_image":true,"status":{"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"contributors":null,"favorited":false,"in_reply_to_user_id_str":null,"created_at":"Mon Oct 15 20:29:48 +0000 2012","coordinates":null,"retweet_count":3,"place":null,"truncated":false,"geo":null,"retweeted":false,"in_reply_to_screen_name":null,"source":"\u003Ca href=\"http:\/\/www.hootsuite.com\" rel=\"nofollow\"\u003EHootSuite\u003C\/a\u003E","possibly_sensitive":false,"in_reply_to_status_id":null,"id":257941363969126400,"id_str":"257941363969126400","text":"Thank You! Humbled. http:\/\/t.co\/VDm2NhSQ"},"profile_text_color":"333333","notifications":null,"url":"http:\/\/renewedvision.com","profile_background_image_url_https":"https:\/\/si0.twimg.com\/images\/themes\/theme1\/bg.png"},{"id":102757522,"created_at":"Thu Jan 07 18:45:11 +0000 2010","statuses_count":536,"profile_sidebar_border_color":"D9B17E","contributors_enabled":false,"time_zone":"Central Time (US & Canada)","utc_offset":-21600,"profile_background_tile":false,"location":"","profile_sidebar_fill_color":"EADEAA","name":"Joanie Conoly","default_profile_image":false,"geo_enabled":false,"lang":"en","is_translator":false,"friends_count":55,"favourites_count":1,"protected":false,"profile_image_url":"http:\/\/a0.twimg.com\/profile_images\/622639988\/n500418697_4180_normal.jpg","profile_background_color":"8B542B","follow_request_sent":null,"profile_image_url_https":"https:\/\/si0.twimg.com\/profile_images\/622639988\/n500418697_4180_normal.jpg","profile_background_image_url_https":"https:\/\/si0.twimg.com\/profile_background_images\/71912464\/19478_264616108697_500418697_4404658_6923216_n.jpg","description":"","profile_background_image_url":"http:\/\/a0.twimg.com\/profile_background_images\/71912464\/19478_264616108697_500418697_4404658_6923216_n.jpg","id_str":"102757522","following":null,"verified":false,"followers_count":41,"profile_link_color":"9D582E","default_profile":false,"screen_name":"JoanieConoly","profile_use_background_image":true,"status":{"in_reply_to_user_id":null,"contributors":null,"favorited":false,"created_at":"Thu Dec 22 13:57:18 +0000 2011","coordinates":null,"retweet_count":0,"in_reply_to_status_id_str":null,"place":null,"truncated":false,"geo":null,"retweeted":false,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"source":"\u003Ca href=\"http:\/\/twitter.com\/devices\" rel=\"nofollow\"\u003Etxt\u003C\/a\u003E","in_reply_to_status_id":null,"id":149851004177891328,"id_str":"149851004177891328","text":"Starbucks guy=creepy"},"profile_text_color":"333333","notifications":null,"url":null,"listed_count":0},{"is_translator":false,"id":234624204,"profile_background_tile":true,"created_at":"Thu Jan 06 04:15:17 +0000 2011","time_zone":"Central Time (US & Canada)","profile_sidebar_fill_color":"DDEEF6","geo_enabled":true,"profile_background_image_url_https":"https:\/\/si0.twimg.com\/profile_background_images\/318471603\/74181_535574284034_135300052_31234238_1695896_n.jpg","utc_offset":-21600,"profile_image_url":"http:\/\/a0.twimg.com\/profile_images\/2240956226\/579456_10100794036186981_7017119_53594218_1806089151_n_normal.jpg","location":"","profile_background_color":"E68309","profile_image_url_https":"https:\/\/si0.twimg.com\/profile_images\/2240956226\/579456_10100794036186981_7017119_53594218_1806089151_n_normal.jpg","name":"Zack Camerio","default_profile":false,"follow_request_sent":false,"lang":"en","protected":true,"profile_background_image_url":"http:\/\/a0.twimg.com\/profile_background_images\/318471603\/74181_535574284034_135300052_31234238_1695896_n.jpg","id_str":"234624204","followers_count":129,"profile_link_color":"0084B4","listed_count":0,"description":"","profile_use_background_image":true,"statuses_count":422,"following":false,"verified":false,"profile_text_color":"333333","screen_name":"ZCamerio","profile_sidebar_border_color":"C0DEED","default_profile_image":false,"notifications":false,"url":null,"favourites_count":6,"friends_count":454,"contributors_enabled":false},{"id":234626147,"created_at":"Thu Jan 06 04:27:06 +0000 2011","statuses_count":744,"profile_sidebar_border_color":"C0DEED","contributors_enabled":false,"time_zone":"Central Time (US & Canada)","utc_offset":-21600,"profile_background_tile":true,"location":"Montgomery, AL","profile_sidebar_fill_color":"DDEEF6","name":"Kevin Simpson","default_profile_image":false,"geo_enabled":false,"lang":"en","is_translator":false,"friends_count":188,"favourites_count":0,"protected":true,"profile_image_url":"http:\/\/a0.twimg.com\/profile_images\/2496911158\/6cc9balqqdj8psmcwnom_normal.jpeg","profile_background_color":"C0DEED","follow_request_sent":null,"profile_image_url_https":"https:\/\/si0.twimg.com\/profile_images\/2496911158\/6cc9balqqdj8psmcwnom_normal.jpeg","profile_background_image_url_https":"https:\/\/si0.twimg.com\/profile_background_images\/189500326\/eyesofapredator.jpg","description":"Everything Auburn.","profile_background_image_url":"http:\/\/a0.twimg.com\/profile_background_images\/189500326\/eyesofapredator.jpg","id_str":"234626147","following":null,"verified":false,"followers_count":71,"profile_link_color":"0084B4","default_profile":false,"screen_name":"KSimpson916","profile_use_background_image":true,"profile_text_color":"333333","notifications":null,"url":null,"listed_count":0},{"id":21845346,"statuses_count":28197,"profile_background_tile":false,"created_at":"Wed Feb 25 07:27:10 +0000 2009","time_zone":"Central Time (US & Canada)","profile_sidebar_fill_color":"09359C","geo_enabled":false,"utc_offset":-21600,"default_profile_image":false,"profile_image_url":"http:\/\/a0.twimg.com\/profile_images\/2681690108\/430200dc9c0d5cb4bb613d357ae4b96e_normal.gif","location":"Central and South Alabama","profile_background_color":"09359C","name":"WSFA 12 News","follow_request_sent":false,"friends_count":140,"lang":"en","favourites_count":6,"protected":false,"profile_background_image_url":"http:\/\/a0.twimg.com\/profile_background_images\/565312738\/twitter-background-test.png","id_str":"21845346","is_translator":false,"verified":false,"followers_count":18654,"profile_link_color":"7D737D","profile_background_image_url_https":"https:\/\/si0.twimg.com\/profile_background_images\/565312738\/twitter-background-test.png","description":"Coverage, Community, Commitment","profile_image_url_https":"https:\/\/si0.twimg.com\/profile_images\/2681690108\/430200dc9c0d5cb4bb613d357ae4b96e_normal.gif","profile_use_background_image":true,"default_profile":false,"following":false,"profile_text_color":"DEDEDE","screen_name":"wsfa12news","profile_sidebar_border_color":"09359C","status":{"in_reply_to_status_id":null,"possibly_sensitive":false,"in_reply_to_user_id_str":null,"id_str":"258991797672480768","in_reply_to_user_id":null,"contributors":null,"favorited":false,"created_at":"Thu Oct 18 18:03:51 +0000 2012","coordinates":null,"place":null,"geo":null,"retweet_count":0,"truncated":false,"source":"\u003Ca href=\"http:\/\/www.hootsuite.com\" rel=\"nofollow\"\u003EHootSuite\u003C\/a\u003E","retweeted":false,"id":258991797672480768,"in_reply_to_status_id_str":null,"in_reply_to_screen_name":null,"text":"Federal appeals court in New York rules Defense of Marriage Act unconstitutional... http:\/\/t.co\/JDtLqdHG #DOMA"},"notifications":false,"listed_count":310,"url":"http:\/\/www.wsfa.com","contributors_enabled":false},{"id":334033335,"created_at":"Tue Jul 12 13:39:01 +0000 2011","profile_sidebar_border_color":"C0DEED","default_profile":true,"contributors_enabled":false,"time_zone":"Central Time (US & Canada)","utc_offset":-21600,"profile_background_tile":false,"location":"","profile_sidebar_fill_color":"DDEEF6","name":"NotJustaRandomBlog","geo_enabled":false,"lang":"en","listed_count":0,"is_translator":false,"protected":false,"statuses_count":95,"profile_image_url":"http:\/\/a0.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png","profile_background_color":"C0DEED","follow_request_sent":null,"description":"","profile_background_image_url":"http:\/\/a0.twimg.com\/images\/themes\/theme1\/bg.png","id_str":"334033335","default_profile_image":true,"following":null,"verified":false,"followers_count":3,"profile_link_color":"0084B4","favourites_count":0,"friends_count":0,"profile_image_url_https":"https:\/\/si0.twimg.com\/sticky\/default_profile_images\/default_profile_6_normal.png","screen_name":"njarb","profile_use_background_image":true,"status":{"in_reply_to_user_id":null,"contributors":null,"favorited":false,"created_at":"Sat Oct 13 01:47:02 +0000 2012","possibly_sensitive":false,"in_reply_to_status_id_str":null,"coordinates":null,"retweet_count":0,"place":null,"truncated":false,"in_reply_to_user_id_str":null,"geo":null,"retweeted":false,"in_reply_to_screen_name":null,"source":"\u003Ca href=\"http:\/\/twitterfeed.com\" rel=\"nofollow\"\u003Etwitterfeed\u003C\/a\u003E","in_reply_to_status_id":null,"id":256934035555745793,"id_str":"256934035555745793","text":"Extremely Creative Advertisements: It\u2019s no wonder some companies pay so much money on graphic designers for adve... http:\/\/t.co\/M4U8l4N3"},"profile_text_color":"333333","notifications":null,"url":"http:\/\/njarb.com","profile_background_image_url_https":"https:\/\/si0.twimg.com\/images\/themes\/theme1\/bg.png"}]');
+
+$followers = array();
+for($i=0; $i <= $options['total']; $i++)
+    {
+      $followers[$i]['screen_name'] 		= (string)$fans[$i]->screen_name;
+      $followers[$i]['profile_image_url'] = (string)$fans[$i]->profile_image_url;
+    }
+$you['followers'] = $followers;
+
+//$tweet=json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=$options['username']&count=1&include_rts=false");
+//$you['latesttweet'] = $tweet['0']->text;
+//$you['description']
+
+
+// Store the result in a transient, expires after 3 hours
+// Also store it as the last successful using update_option
+set_transient($key, $you, 60*60*2);
+update_option($key, $you);    
+
+}
+}
+
+
+
+
+
+?>
+
+<div style="width:<?php echo $options['width'];?>px;padding:5px 5px 5px 5px; font-family:\'Lucida grande\',tahoma,verdana,arial,sans-serif;">
+	<div style="color:#555;border-bottom:1px solid #D8DFEA;color:#555; height:60px; position:relative;">
+		<div style="position:absolute;top:5px;left:5px;">
+			<a target="_blank" href="http://twitter.com/<?php echo $options['username'];?>">
+				<img src="<?php echo $you['profile_image_url'];?>" width="44" height="44">
+			</a>
+		</div>
+    <div style="position:absolute;top:5px;left:59px;font-size:14px;line-height:14px;font-weight:bold;">
+      <a target="_blank" href="http://twitter.com/<?php echo $options['username'];?>" style="color:<?php echo $options['font-color'];?>">
+      <?php echo $options['username'];?><span style="font-weight:normal;font-size:10px"> on Twitter</span>
+      </a>
+    </div>
+    <div style="position:absolute;top:30px;left:59px;">
+      <a href="https://twitter.com/<?php echo $options['username'];?>" class="twitter-follow-button" data-show-count="false" data-width="65px" data-show-screen-name="false">Follow @<?php echo $options['username'];?></a>
+    </div>
+	</div>
+	<div style="padding:0;">
+		<div style="padding:5px 5px 0px 5px;font-size:11px;">
+			<?php 
+			if ( $options['show_followers'] == 'followers')
+			{
+				echo $you['followers_count'].' people follow <strong>'. $options['username'].'</strong>';
+			}
+			else
+			{
+				echo $options['username'].' follows '. $you['friends_count'].' users';
+			}
+			?>	
+		</div>
+		<?php for($i=0; $i < $options['total']; $i++)	:?>
+		
+			<span style="line-height:1;padding:5px 0px 3px 5px;width:48px;float:left;text-align: center;">
+			<?php if($options['link_followers'] == 'on' ): ?>
+				<a target="_blank" href="http://twitter.com/<?php echo $you['followers'][$i]['screen_name'];?>" style="color:gray" rel="nofollow">
+			<?php endif;?>	
+					<img src="<?php echo $you['followers'][$i]['profile_image_url'];?>" width="48" height="48">
+					<span style="font-family:Arial;font-size:10px;"><?php echo substr($you['followers'][$i]['screen_name'], 0, 8);?></span>
+			<?php if($options['link_followers'] == 'on' ): ?>		
+				</a>
+			<?php endif;?>		
+			</span>
+		<? endfor;?>
+	<br style="clear:both">
+	</div>
+<?php
+if ($options['tweetto']=='on'){
+echo '<a href="https://twitter.com/intent/tweet?screen_name='.$options[username].'" class="twitter-mention-button" data-lang="en">Tweet to @'.$options[username].'</a>';
+}
+?>
+
+
+</div>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+
+<?php
+}
+
+
+
+
+
+
+
+
+
+
+
 
 if (get_option(wpflybox_side)=="left"){
 if ($wpflybox_isie>0){
@@ -158,7 +303,7 @@ jQuery(document).ready (
 function(){jQuery("#wpfb-facebook").hover(function(){ jQuery(this).stop(true,false).animate({left:  0}, 500); },
 function(){ jQuery("#wpfb-facebook").stop(true,false).animate({left: -328}, 500); });       
 jQuery("#wpfb-twitter").hover(function(){ jQuery(this).stop(true,false).animate({left:  0}, 500); },
-function(){ jQuery("#wpfb-twitter").stop(true,false).animate({left: -301}, 500); });     
+function(){ jQuery("#wpfb-twitter").stop(true,false).animate({left: -266}, 500); });     
 jQuery("#wpfb-googleplus").hover(function(){ jQuery(this).stop(true,false).animate({left:  0}, 500); },
 function(){ jQuery("#wpfb-googleplus").stop(true,false).animate({left: -361}, 500); });    
 jQuery("#wpfb-youtube").hover(function(){ jQuery(this).stop(true,false).animate({left:  0}, 500); },
@@ -249,9 +394,9 @@ while ($i <= $wpflybox_count)
         }
     if ($wpflybox_tabs[$i]=="twitter")
         {
-        echo 'div.wpfb-twitter {width:333px;height:241px;top:'.$wpflybox_pos[$i].';left:-301px;position:fixed;z-index:900;direction:ltr;}';
+        echo 'div.wpfb-twitter {width:298px;top:'.$wpflybox_pos[$i].';left:-266px;position:fixed;z-index:900;direction:ltr;}';
         echo 'div.wpfb-twitter div.wpfb-twitter-transition {margin-left: 32px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
-        if (!$wpflybox_isie){echo 'div.wpfb-twitter:hover div.wpfb-twitter-transition {margin-left: 333px;}';}  
+        if (!$wpflybox_isie){echo 'div.wpfb-twitter:hover div.wpfb-twitter-transition {margin-left: 298px;}';}  
         }
     if ($wpflybox_tabs[$i]=="googleplus")
         {
@@ -335,7 +480,13 @@ while ($i <= $wpflybox_count)
     if ($wpflybox_tabs[$i]=="twitter")
         {
         ?>
-        <div class="wpfb-twitter" id="wpfb-twitter"><div class="wpfb-twitter-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#ffffff; border: 2px solid #6CC5FF; width:265px; height:237px; overflow:hidden;padding:0px;"><script type="text/javascript" src="<?php echo plugins_url().'/wp-flybox/static/twitterbox.js'; ?>"></script><div id="twitterfanbox"></div><script type="text/javascript">fanbox_init("<?php echo $wpflybox_twitter; ?>");</script></th><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>twitter.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -606px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
+        <div class="wpfb-twitter" id="wpfb-twitter"><div class="wpfb-twitter-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#ffffff; border: 2px solid #6CC5FF; width:230px; overflow:hidden;padding:0px;">
+        <?php
+        $twitteroptions = array('username' => $wpflybox_twitter ,'total' => $wpflybox_twitter_count, 'show_followers' => $wpflybox_twitter_showfollowers, 'border-color' => '#AAA','font-color' => '#3B5998','bordertop-color' => '#315C99','bg-color' => 'transparent', 'link_followers' => $wpflybox_twitter_link, 'width' => 220, 'tweetto' => $wpflybox_twitter_tweetto);
+        show_twitter($twitteroptions);
+        ?>
+        
+        <th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>twitter.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -606px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
         <?php
         }
     if ($wpflybox_tabs[$i]=="googleplus")
@@ -452,7 +603,7 @@ if ($wpflybox_tabs[$i]=="instagram")
         if ($wpflybox_instagram_header=='true')
         {
           if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
-          else {$wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
+          else {$wpflybox_instagram_jsonfile = wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
           $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);
           echo '<table border="0" cellpadding="2" class="wpflyboxtable">';
           echo '<tr><td><img src="'.$wpflybox_instagram_json->data->profile_picture.'" height="40" width="40" title="'.$wpflybox_instagram_json->data->username.'"></td>';
@@ -462,7 +613,7 @@ if ($wpflybox_tabs[$i]=="instagram")
           echo '</table>';
         }
         if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
-        else {$wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
+        else {$wpflybox_instagram_jsonfile = wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
         $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);
         $m=0;
           foreach ($wpflybox_instagram_json->data as $entry) {
@@ -500,7 +651,7 @@ jQuery(document).ready (
 function(){jQuery("#wpfb-facebook").hover(function(){ jQuery(this).stop(true,false).animate({right:  0}, 500); },
 function(){ jQuery("#wpfb-facebook").stop(true,false).animate({right: -328}, 500); });    
 jQuery("#wpfb-twitter").hover(function(){ jQuery(this).stop(true,false).animate({right:  0}, 500); },
-function(){ jQuery("#wpfb-twitter").stop(true,false).animate({right: -301}, 500); });     
+function(){ jQuery("#wpfb-twitter").stop(true,false).animate({right: -266}, 500); });     
 jQuery("#wpfb-googleplus").hover(function(){ jQuery(this).stop(true,false).animate({right:  0}, 500); },
 function(){ jQuery("#wpfb-googleplus").stop(true,false).animate({right: -361}, 500); });    
 jQuery("#wpfb-youtube").hover(function(){ jQuery(this).stop(true,false).animate({right:  0}, 500); },
@@ -590,9 +741,9 @@ while ($i <= $wpflybox_count)
         }
     if ($wpflybox_tabs[$i]=="twitter")
         {
-        echo 'div.wpfb-twitter {width:333px;height:241px;top:'.$wpflybox_pos[$i].';right:-301px;position:fixed;z-index:900;direction:ltr;}';
+        echo 'div.wpfb-twitter {width:298px;top:'.$wpflybox_pos[$i].';right:-266px;position:fixed;z-index:900;direction:ltr;}';
         echo 'div.wpfb-twitter div.wpfb-twitter-transition {-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
-        if (!$wpflybox_isie){echo 'div.wpfb-twitter:hover div.wpfb-twitter-transition {margin-left: -301px;}';}  
+        if (!$wpflybox_isie){echo 'div.wpfb-twitter:hover div.wpfb-twitter-transition {margin-left: -266px;}';}  
         }
     if ($wpflybox_tabs[$i]=="googleplus")
         {
@@ -677,7 +828,14 @@ while ($i <= $wpflybox_count)
     if ($wpflybox_tabs[$i]=="twitter")
         {
         ?>
-        <div class="wpfb-twitter" id="wpfb-twitter"><div class="wpfb-twitter-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>twitter.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -606px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th><th style="background-color:#ffffff; border: 2px solid #6CC5FF;width:265px; height:237px; overflow:hidden;"><script type="text/javascript" src="<?php echo plugins_url().'/wp-flybox/static/twitterbox.js'; ?>"></script><div id="twitterfanbox"></div><script type="text/javascript">fanbox_init("<?php echo $wpflybox_twitter; ?>");</script></th></th></tr></table></div></div>
+        <div class="wpfb-twitter" id="wpfb-twitter"><div class="wpfb-twitter-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>twitter.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -606px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th><th style="background-color:#ffffff; border: 2px solid #6CC5FF; width:230px; overflow:hidden;padding:0px;">
+        <?php
+        $twitteroptions = array('username' => $wpflybox_twitter ,'total' => $wpflybox_twitter_count, 'show_followers' => $wpflybox_twitter_showfollowers, 'border-color' => '#AAA','font-color' => '#3B5998','bordertop-color' => '#315C99','bg-color' => 'transparent', 'link_followers' => $wpflybox_twitter_link, 'width' => 220, 'tweetto' => $wpflybox_twitter_tweetto);
+        show_twitter($twitteroptions);
+        ?>
+        
+        </tr></table></div></div>
+        
         <?php
         }
     if ($wpflybox_tabs[$i]=="googleplus")
@@ -735,7 +893,7 @@ while ($i <= $wpflybox_count)
         <div class="wpfb-contact" id="wpfb-contact"><div class="wpfb-contact-transition"><table class="wpflyboxtable"><tr style="background:transparent">
         <th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>contact.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -<?php echo $wpflybox_contactwhopixel; ?>px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th>
         <th style="background-color:#fff; border: 2px solid #2653a1;width:280px; overflow:hidden;padding:0px;">
-        <center><b>Contact Me:</b><br><form style="padding:5px;" action="<?php echo plugins_url(); ?>/wp-flybox/contact.php";" method="post" target="popupwindow" onsubmit="window.open('<?php echo plugins_url(); ?>/wp-flybox/contact.php', 'popupwindow', 'scrollbars=no,width=300,height=300');return true">
+        <center><form style="padding:5px;" action="<?php echo plugins_url(); ?>/wp-flybox/contact.php";" method="post" target="popupwindow" onsubmit="window.open('<?php echo plugins_url(); ?>/wp-flybox/contact.php', 'popupwindow', 'scrollbars=no,width=300,height=300');return true">
         <p>Name: <input style="padding:1px;" gtbfieldid="10" class="enteryourname" name="name" id="name" type="text" /></p>
         <p>Email: <input style="padding:1px;" gtbfieldid="10" class="enteryouremail" name="email" id="email" type="text" /></p>
         <p><textarea rows="2" cols="30" class="enteryourmessage" name="message" id="message">Enter Your Message Here...</textarea></p>
@@ -802,7 +960,7 @@ if ($wpflybox_tabs[$i]=="instagram")
         if ($wpflybox_instagram_header=='true')
         {
           if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
-          else {$wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
+          else {$wpflybox_instagram_jsonfile = wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
           $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);       
           echo '<table border="0" cellpadding="2" class="wpflyboxtable">';
           echo '<tr><td><img src="'.$wpflybox_instagram_json->data->profile_picture.'" height="40" width="40" title="'.$wpflybox_instagram_json->data->username.'"></td>';
@@ -812,7 +970,7 @@ if ($wpflybox_tabs[$i]=="instagram")
           echo '</table>';
         }
         if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
-        else {$wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
+        else {$wpflybox_instagram_jsonfile = wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
         $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);
         $m=0;
           foreach ($wpflybox_instagram_json->data as $entry) {
