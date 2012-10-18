@@ -1,13 +1,8 @@
 <?php
-/*
-	The uninstall file
-	(to make your blog always clean when you need to test plugins :p)
-*/
-
 if( !defined( 'ABSPATH') &&  !defined('WP_UNINSTALL_PLUGIN') )
 	    exit();
 	
-	// delete widget option
+	// delete widget options
 	delete_option( 'wpflybox_side');
 	delete_option( 'wpflybox_start');
 	delete_option( 'wpflybox_seperation');
