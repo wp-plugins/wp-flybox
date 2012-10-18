@@ -27,7 +27,6 @@ if (get_option(wpflybox_usecustombutton)==""){$wpflybox_usecustombutton="false";
 if (get_option(wpflybox_bgtopgradient)==""){$wpflybox_bgtopgradient="#ababab";update_option('wpflybox_bgtopgradient', $wpflybox_bgtopgradient);}
 if (get_option(wpflybox_bgbottomgradient)==""){$wpflybox_bgbottomgradient="#3b3b3b";update_option('wpflybox_bgbottomgradient', $wpflybox_bgbottomgradient);}
 if (get_option(wpflybox_bgborder)==""){$wpflybox_bgborder="#000000";update_option('wpflybox_bgborder', $wpflybox_bgborder);}
-if (get_option(wpflybox_twitter_width)==""){$wpflybox_twitter_width="220";update_option('wpflybox_twitter_width', $wpflybox_twitter_width);}
 if (get_option(wpflybox_twitter_showfollowers)==""){$wpflybox_twitter_showfollowers="followers";update_option('wpflybox_twitter_showfollowers', $wpflybox_twitter_showfollowers);}
 if (get_option(wpflybox_twitter_count)==""){$wpflybox_twitter_count="8";update_option('wpflybox_twitter_count', $wpflybox_twitter_count);}
 if (get_option(wpflybox_twitter_link)==""){$wpflybox_twitter_link="on";update_option('wpflybox_twitter_link', $wpflybox_twitter_link);}
