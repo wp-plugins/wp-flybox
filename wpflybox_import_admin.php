@@ -43,6 +43,8 @@ if (get_option(wpflybox_linkedin_type)==""){$wpflybox_linkedin_type="company";up
 if (get_option(wpflybox_flickr)==""){$wpflybox_flickr="palnick";update_option('wpflybox_flickr', $wpflybox_flickr);}
 if (get_option(wpflybox_deviant_username)==""){$wpflybox_deviant_username="leonidafremov";update_option('wpflybox_deviant_username', $wpflybox_deviant_username);}
 if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflybox_jquery', $wpflybox_jquery);}
+if (get_option(wpflybox_feedburner)==""){$wpflybox_feedburner="yugatech";update_option('wpflybox_feedburner', $wpflybox_feedburner);}
+if (get_option(wpflybox_pinterest)==""){$wpflybox_pinterest="janew";update_option('wpflybox_pinterest', $wpflybox_pinterest);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
 			//Form data sent
