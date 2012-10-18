@@ -45,6 +45,8 @@ if (get_option(wpflybox_deviant_username)==""){$wpflybox_deviant_username="leoni
 if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflybox_jquery', $wpflybox_jquery);}
 if (get_option(wpflybox_feedburner)==""){$wpflybox_feedburner="yugatech";update_option('wpflybox_feedburner', $wpflybox_feedburner);}
 if (get_option(wpflybox_pinterest)==""){$wpflybox_pinterest="janew";update_option('wpflybox_pinterest', $wpflybox_pinterest);}
+if (get_option(wpflybox_count)==""){$wpflybox_count="1";update_option('wpflybox_count', $wpflybox_count);}
+if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpflybox_tab1', $wpflybox_tab1);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
 			//Form data sent
@@ -243,7 +245,6 @@ if (get_option(wpflybox_pinterest)==""){$wpflybox_pinterest="janew";update_optio
         
         <tr><td style="text-align:right;"><?php _e("How many tabs?: " ); ?></td><td>
         <select name="wpflybox_count">
-        <option value="0" <?php if(get_option(wpflybox_count)=="0"){echo 'selected';} ?>>0</option>
         <option value="1" <?php if(get_option(wpflybox_count)=="1"){echo 'selected';} ?>>1</option>
         <option value="2" <?php if(get_option(wpflybox_count)=="2"){echo 'selected';} ?>>2</option>
         <option value="3" <?php if(get_option(wpflybox_count)=="3"){echo 'selected';} ?>>3</option>
