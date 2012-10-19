@@ -70,9 +70,10 @@ $wpflybox_usecustombutton=get_option(wpflybox_usecustombutton);
 $wpflybox_custombuttonloc=plugins_url()."/wp-flybox/static/icons/";
 $wpflybox_bgtopgradient=get_option(wpflybox_bgtopgradient);		
 $wpflybox_bgbottomgradient=get_option(wpflybox_bgbottomgradient);       			
-$wpflybox_bgborder=get_option(wpflybox_bgborder);
+$wpflybox_bgborder=get_option(wpflybox_bgborder);                         
 
-
+$wpflybox_vimeo_username=get_option(wpflybox_vimeo_username);
+$wpflybox_vimeo_total=get_option(wpflybox_vimeo_total);
 
 $mobile_browser = '0';
  
@@ -173,7 +174,6 @@ if (is_wp_error($response))
 		{
 		
 $json = json_decode(wp_remote_retrieve_body($response));
-
 if (is_array($json)){
 $you['name'] 			 	= $json[0]->name;
 $you['screen_name']	 		= $json[0]->screen_name;
@@ -181,12 +181,12 @@ $you['followers_count'] 	= $json[0]->followers_count;
 $you['profile_image_url']	= $json[0]->profile_image_url;
 $you['friends_count']		= $json[0]->friends_count;
 $you['description'] = $json[0]->description;
-if ( $options['show_followers'] == 'followers' )
+if ( $options['show_followers'] == 'followers' && $you['followers_count'] > 0)
 			{
 				$fans = json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/followers/ids.json?screen_name=$options[username]")));
 				
 			}
-			else
+			else if ($you['friends_count'] > 0)
 			{
 			  $fans = json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/friends/ids.json?screen_name=$options[username]")));
 				
@@ -214,7 +214,7 @@ $you['followers'] = $followers;
 set_transient($key, $you, 60*60*2);
 update_option($key, $you);    
 } else {
-echo '<b>Invalid twitter username</b>.<br />Make sure your username is correct.<br />';
+echo '<b>Error</b>.<br />Invalid username or reached api limit.<br />';
 }
 }
 }
@@ -246,11 +246,11 @@ echo '<b>Invalid twitter username</b>.<br />Make sure your username is correct.<
 			<?php 
 			if ( $options['show_followers'] == 'followers')
 			{
-				echo $you['followers_count'].' people follow <strong>'. $options['username'].'</strong>';
+				echo number_format($you['followers_count']).' people follow <strong>'. $options['username'].'</strong>';
 			}
 			else
 			{
-				echo $options['username'].' follows '. $you['friends_count'].' users';
+				echo $options['username'].' follows '. number_format($you['friends_count']).' users';
 			}
 			?>	
 		</div>
@@ -285,11 +285,201 @@ echo '<a href="https://twitter.com/intent/tweet?screen_name='.$options[username]
 }
 
 
+//vimeo function
+function show_vimeo($options)
+{
+$key = 'wpfb_v_' . $options['username'];
+$you = get_transient($key);
+	if ($you !== false)
+	{
+		$you = $you;
+		//echo 'cached';
+	} else
+	{
 
+$response = wp_remote_get("http://vimeo.com/api/v2/$options[username]/info.json");
 
+  if (is_wp_error($response))
+		{
+			// In case Twitter is down we return the last successful count
+			$you = get_option($key);
+		}
+		else
+		{
+		$json = json_decode(wp_remote_retrieve_body($response));
 
+      $you['name'] = $json->display_name;
+      $you['profile_url'] = $json->profile_url;
+      $you['videos_url'] = $json->videos_url;
+      $you['total_videos_uploaded'] = $json->total_videos_uploaded;
+      $you['portrait_medium'] = $json->portrait_medium;
+      if ( $options['show_videos'] == 'true' || 1==1)
+        {
+        $videojson = json_decode(wp_remote_retrieve_body(wp_remote_get("http://vimeo.com/api/v2/$options[username]/videos.json")));
+        $videos = array();            
+        for($i=0; $i <= $options['total']; $i++)
+          {
+          $videos[$i]['id'] 		= $videojson[$i]->id;
+          $videos[$i]['title'] 		= $videojson[$i]->title;
+          $videos[$i]['url'] 		= $videojson[$i]->url;
+          $videos[$i]['thumbnail_small'] 		= $videojson[$i]->thumbnail_small;
+          }
+        $you['videos'] = $videos;
+        
+        }
+                                                                                        
 
+      set_transient($key, $you, 60*60*2);
+      update_option($key, $you);    
+    }
+  }
+?>  
+<div style="width:210px;padding:5px 5px 5px 5px; font-family:\'Lucida grande\',tahoma,verdana,arial,sans-serif;">
+	<div style="color:#555;border-bottom:1px solid #bcd822;color:#555; height:60px; position:relative;">
+		<div style="position:absolute;top:5px;left:5px;">
+			<a target="_blank" href="<?php echo $you['profile_url'];?>">
+				<img src="<?php echo $you['portrait_medium'];?>" width="50" height="50">
+			</a>
+		</div>
+    <div style="position:absolute;top:5px;left:59px;font-size:14px;line-height:14px;font-weight:bold;">
+      <a target="_blank" href="<?php echo $you['profile_url'];?>" style="color:#3cadc9">
+      <?php echo $you['name'];?><span style="font-weight:normal;font-size:10px"> on Vimeo</span>
+      </a>
+    </div>
+    <div style="position:absolute;top:30px;left:59px;"> 
+      Videos: 
+      <a target="_blank" href="<?php echo $you['videos_url']; ?>" style="color:#3cadc9">
+      <b><?php echo number_format($you['total_videos_uploaded']); ?></b>
+      </a>  
+    </div> 
+	</div>
+<?php 			
+  if ( $options['total'] > 0)
+		{ ?>	
+  <div style="padding:0px;">
+		<?php for($i=0; $i < $options['total']; $i++)	:?>
+		
+			<span style="line-height:1;padding:5px 2px 5px 2px;width:48px;height:66px;float:left;text-align:center;overflow:hidden">
+				<a target="_blank" href="<?php echo $you['videos'][$i]['url'];?>" style="color:gray" rel="nofollow">	
+					<img src="<?php echo $you['videos'][$i]['thumbnail_small'];?>" width="48" height="48">
+					<span style="font-family:Arial;font-size:10px;"><?php echo substr($you['videos'][$i]['title'], 0, 18);?></span>
+				</a>		
+			</span>
+		<? endfor;?>
+	<br style="clear:both">
+	</div>
+<?php } ?>
+</div>
+<?php      
+}
 
+//deviantart
+function show_deviantart ($options){
+$username=$options["username"];
+$limit=$options["limit"];
+$max_width=$options["max_width"];
+$max_height=$options["max_height"];
+$columns=$options["columns"];
+$key = 'wpfb_da_' . $username;
+$content = get_transient($key);
+	if ($content !== false)
+	{
+		$you = $you;
+		//echo 'cached';
+	} else
+	{
+ 
+
+	function parseRSS($url) { 
+        $feedeed = implode('', file($url));
+        $parser = xml_parser_create();
+        xml_parse_into_struct($parser, $feedeed, $valueals, $index);
+        xml_parser_free($parser);
+
+        foreach($valueals as $keyey => $valueal){
+            if($valueal['type'] != 'cdata') {
+                $item[$keyey] = $valueal;
+			}
+        } 
+        $i = 0;
+        foreach($item as $key => $value){
+            if($value['type'] == 'open') {
+                $i++;
+                $itemame[$i] = $value['tag']; 
+            } elseif($value['type'] == 'close') { 
+                $feed = $values[$i];
+                $item = $itemame[$i];
+                $i--; 
+                if(count($values[$i])>1){
+                    $values[$i][$item][] = $feed;
+                } else {
+                    $values[$i][$item] = $feed;
+                } 
+            } else {
+                $values[$i][$value['tag']] = $value['value'];  
+            }
+        } 
+        return $values[0];
+	}  
+	//PARSE THE RSS FEED INTO ARRAY
+	$xml = parseRSS("http://backend.deviantart.com/rss.xml?type=deviation&q=by%3A".$username."+sort%3Atime+meta%3Aall");
+
+  $k=0;
+	foreach($xml['RSS']['CHANNEL']['ITEM'] as $item) if ($k<$limit){
+  $picture[$k] = parseRSS("http://backend.deviantart.com/oembed?url={$item['LINK']}&format=xml");
+  //Get width to height ratio for maxes
+  $ratio=$picture[$k]["OEMBED"]["THUMBNAIL_WIDTH"]/$picture[$k]["OEMBED"]["THUMBNAIL_HEIGHT"];
+  //Set dimensions with maxes
+  if ($ratio>1)
+    {
+    $height[$k]=$max_height;
+    $width[$k]=round($ratio*$height[$k]);
+    if ($width[$k]>$max_width)
+      {
+      $width[$k]=$max_width;
+      $height[$k]=round((1/$ratio)*$width[$k]);
+      }
+    } else if ($ratio<=1)
+    {
+    $width[$k]=$max_width;
+    $height[$k]=round((1/$ratio)*$width[$k]);
+    if ($height[$k]>$max_height)
+      {
+      $height[$k]=$max_height;
+      $width[$k]=round($ratio*$height[$k]);
+      }   
+    }   
+  
+  //store contents
+  $content[$k]='<a href="'.$item["LINK"].'" target="blank" style="border:none;"><img style="vertical-align:middle;padding:1px;border:none;" border="0" src="'.$picture[$k]["OEMBED"]["THUMBNAIL_URL_150"].'" height="'.$height[$k].'" width="'.$width[$k].'" title="'.$item["TITLE"].'"></a>'; 
+  $k=$k+1;
+  } //end foreach 
+      set_transient($key, $content, 60*60*2);
+      update_option($key, $content);
+  } 
+$k=0;  
+//display contents
+echo '<div style="width:100%;margin:0px;padding:0px;"><center>';
+?>
+<div style="position:relative;font-size:14px;line-height:14px;font-weight:bold;text-decoration:none;">
+      <a target="_blank" href="http://<?php echo $username;?>.deviantart.com" style="color:#506256;text-decoration:none;">
+      <?php echo $username;?><span style="font-weight:normal;font-size:10px;text-decoration:none;"> on diviantART</span>
+      </a>
+    </div>
+<?php
+while ($k<$limit)
+  {  
+  $j=0;
+  while ($j<$columns)
+    {
+    echo $content[$k];
+    $k=$k+1;
+    $j=$j+1;
+    }
+  echo '<br />';  
+  }
+echo '</center></div>';
+}
 
 
 
@@ -327,7 +517,8 @@ jQuery("#wpfb-deviant").hover(function(){ jQuery(this).stop(true,false).animate(
 function(){ jQuery("#wpfb-deviant").stop(true,false).animate({left: <?php echo $wpflybox_deviant_left; ?>}, 500); });  
 jQuery("#wpfb-instagram").hover(function(){ jQuery(this).stop(true,false).animate({left:  0}, 500); },
 function(){ jQuery("#wpfb-instagram").stop(true,false).animate({left: -232}, 500); });  
-
+jQuery("#wpfb-vimeo").hover(function(){ jQuery(this).stop(true,false).animate({left:  0}, 500); },
+function(){ jQuery("#wpfb-vimeo").stop(true,false).animate({left: -256}, 500); });  
 });
 </script>
 <?php
@@ -399,6 +590,7 @@ while ($i <= $wpflybox_count)
         }
     if ($wpflybox_tabs[$i]=="twitter")
         {
+        echo 'div.wpfb-twitter a img, img, a:hover, a:hover img {border: 0;padding: 0px}';
         echo 'div.wpfb-twitter {width:298px;top:'.$wpflybox_pos[$i].';left:-266px;position:fixed;z-index:900;direction:ltr;}';
         echo 'div.wpfb-twitter div.wpfb-twitter-transition {margin-left: 32px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         if (!$wpflybox_isie){echo 'div.wpfb-twitter:hover div.wpfb-twitter-transition {margin-left: 298px;}';}  
@@ -452,8 +644,7 @@ while ($i <= $wpflybox_count)
     if ($wpflybox_tabs[$i]=="deviant")
         {
         echo 'div.wpfb-deviant {width:'.$wpflybox_deviant_total_frame_width.'px;top:'.$wpflybox_pos[$i].';left:'.$wpflybox_deviant_left.'px;position:fixed;z-index:900;direction:ltr;}';
-        echo 'div.wpfb-deviant div.wpfb-deviant-transition {margin-left: 32px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
-        echo 'div.wpfb-deviant div.wpfb-deviant-transition iframe {border:0px;overflow:hidden;position:static;width:'.$wpflybox_deviant_frame_width.'px}';
+        echo 'div.wpfb-deviant div.wpfb-deviant-transition {width:'.$wpflybox_deviant_total_frame_width.'px;margin-left: 32px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         if (!$wpflybox_isie){echo 'div.wpfb-deviant:hover div.wpfb-deviant-transition {margin-left:'.$wpflybox_deviant_total_frame_width.'px;}';} 
         }
     if ($wpflybox_tabs[$i]=="instagram")
@@ -463,7 +654,15 @@ while ($i <= $wpflybox_count)
         echo 'div.wpfb-instagram div.wpfb-instagram-transition {margin-left:32px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-instagram div.wpfb-instagram-transition iframe {border:0px;overflow:hidden;position:static;height:260px;}';
         if (!$wpflybox_isie){echo 'div.wpfb-instagram:hover div.wpfb-instagram-transition {margin-left: 264px;}';}          
-        }                                  
+        }
+    if ($wpflybox_tabs[$i]=="vimeo")
+        {
+        echo 'div.wpfb-vimeo a img, img, a:hover, a:hover img {border: 0;padding: 0px}';         
+        echo 'div.wpfb-vimeo {width:288; top:'.$wpflybox_pos[$i].';left:-256px;position:fixed;z-index:900;direction:ltr;}';
+        echo 'div.wpfb-vimeo div.wpfb-vimeo-transition {margin-left:32px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
+        if (!$wpflybox_isie){echo 'div.wpfb-vimeo:hover div.wpfb-vimeo-transition {margin-left: 288px;}';}          
+        }        
+                                         
         
     $i=$i+1;    
     }
@@ -576,11 +775,14 @@ if ($wpflybox_tabs[$i]=="flickr")
         <?php        
         }
         
-if ($wpflybox_tabs[$i]=="deviant")
+if ($wpflybox_tabs[$i]=="deviant")    
         {
         ?>
         <div class="wpfb-deviant" id="wpfb-deviant"><div class="wpfb-deviant-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #506256; overflow:hidden;padding:0px;height:<?php echo $wpflybox_deviant_frame_height; ?>px;width:<?php echo $wpflybox_deviant_frame_width; ?>px;">
-        <iframe style="background-color:#ffffff; border-color:#ffffff; border:none;" frameborder="0" scrolling="no" src="<?php echo plugins_url()."/wp-flybox/deviant.php?username=".$wpflybox_deviant_username."&limit=".$wpflybox_deviant_limit."&max_width=".$wpflybox_deviant_max_width."&max_height=".$wpflybox_deviant_max_height."&columns=".$wpflybox_deviant_columns; ?>" title="Deviant Art Badge"></iframe>
+        <?php
+        $deviantoptions = array('username' => $wpflybox_deviant_username, 'limit' => $wpflybox_deviant_limit, 'max_width' => $wpflybox_deviant_max_width, 'max_height' => $wpflybox_deviant_max_height, 'columns' => $wpflybox_deviant_columns);
+        show_deviantart($deviantoptions);
+        ?>
         </th><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>deviant.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -909px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
         <?php        
         }
@@ -590,25 +792,10 @@ if ($wpflybox_tabs[$i]=="instagram")
         ?>
         <div class="wpfb-instagram" id="wpfb-instagram"><div class="wpfb-instagram-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #86513e;width:196px; overflow:hidden;padding:0px;">
         <?php
-    if ($wpflybox_usecurl=="true"){    
-    function url_get_contents ($Url) {
-    if (!function_exists('curl_init')){
-    echo('CURL is not installed!');
-    return false;
-    }
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $Url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $output = curl_exec($ch);                                                                       
-    curl_close($ch);
-    return $output;
-    }
-    }
         echo '<div style="width:196px;text-align: center;overflow:auto;">';
         if ($wpflybox_instagram_header=='true')
         {
-          if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
-          else {$wpflybox_instagram_jsonfile = wp_remote_retrieve_body(wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token));}
+          $wpflybox_instagram_jsonfile = wp_remote_retrieve_body(wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token));
           $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);
           echo '<table border="0" cellpadding="2" class="wpflyboxtable">';
           echo '<tr><td><img src="'.$wpflybox_instagram_json->data->profile_picture.'" height="40" width="40" title="'.$wpflybox_instagram_json->data->username.'"></td>';
@@ -617,8 +804,7 @@ if ($wpflybox_tabs[$i]=="instagram")
           echo '<td align="center"><div style="font-weight:bold;font-size:16px;">'.$wpflybox_instagram_json->data->counts->follows.'</div><div style="font-size:10px;">&nbsp;Following</div></td></tr>';
           echo '</table>';
         }
-        if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
-        else {$wpflybox_instagram_jsonfile = wp_remote_retrieve_body(wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token));}
+        $wpflybox_instagram_jsonfile = wp_remote_retrieve_body(wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token));
         $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);
         $m=0;
           foreach ($wpflybox_instagram_json->data as $entry) {
@@ -630,7 +816,21 @@ if ($wpflybox_tabs[$i]=="instagram")
         </th>
         <th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>instagram.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -1010px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
         <?php        
-        }                                  
+        }
+
+if ($wpflybox_tabs[$i]=="vimeo")
+        {
+        ?>
+        <div class="wpfb-vimeo" id="wpfb-vimeo"><div class="wpfb-vimeo-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #0989ab;width:220px; overflow:hidden;padding:0px;">
+        <?php
+        $vimeooptions = array('username' => $wpflybox_vimeo_username, 'total' => $wpflybox_vimeo_total);
+        show_vimeo($vimeooptions);
+        ?>
+        </th>
+        <th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>vimeo.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -1212px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
+        <?php        
+        }        
+                                       
    
     $i=$i+1;    
     }
@@ -674,7 +874,9 @@ function(){ jQuery("#wpfb-flickr").stop(true,false).animate({right: -149}, 500);
 jQuery("#wpfb-deviant").hover(function(){ jQuery(this).stop(true,false).animate({right:  0}, 500); },
 function(){ jQuery("#wpfb-deviant").stop(true,false).animate({right: <?php echo $wpflybox_deviant_left; ?>}, 500); }); 
 jQuery("#wpfb-instagram").hover(function(){ jQuery(this).stop(true,false).animate({right:  0}, 500); },
-function(){ jQuery("#wpfb-instagram").stop(true,false).animate({right: -232}, 500); });    
+function(){ jQuery("#wpfb-instagram").stop(true,false).animate({right: -232}, 500); });
+jQuery("#wpfb-vimeo").hover(function(){ jQuery(this).stop(true,false).animate({right:  0}, 500); },
+function(){ jQuery("#wpfb-vimeo").stop(true,false).animate({right: -256}, 500); });    
 });
 </script>
 <?php
@@ -810,7 +1012,14 @@ while ($i <= $wpflybox_count)
         echo 'div.wpfb-instagram div.wpfb-instagram-transition {margin-left:0px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
         echo 'div.wpfb-instagram div.wpfb-instagram-transition iframe {border:0px;overflow:hidden;position:static;height:260px;}';
         if (!$wpflybox_isie){echo 'div.wpfb-instagram:hover div.wpfb-instagram-transition {margin-left: -232px;}';}         
-        }                                    
+        } 
+    if ($wpflybox_tabs[$i]=="vimeo")
+        {
+        echo 'div.wpfb-vimeo a img, img, a:hover, a:hover img {border: 0;padding: 0px}';
+        echo 'div.wpfb-vimeo {width:288px;top:'.$wpflybox_pos[$i].';right:-256px;position:fixed;z-index:900;direction:ltr;}';
+        echo 'div.wpfb-vimeo div.wpfb-vimeo-transition {margin-left:0px;-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
+        if (!$wpflybox_isie){echo 'div.wpfb-vimeo:hover div.wpfb-vimeo-transition {margin-left: -256px;}';}         
+        }                                             
         
     $i=$i+1;    
     }
@@ -947,25 +1156,10 @@ if ($wpflybox_tabs[$i]=="instagram")
         <th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>instagram.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -1010px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th>
         <th style="background-color:#fff; border: 2px solid #86513e; width:196px; overflow:hidden;padding:0px;">
         <?php
-    if ($wpflybox_usecurl=="true"){    
-    function url_get_contents ($Url) {
-    if (!function_exists('curl_init')){
-    echo('CURL is not installed!');
-    return false;
-    }
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $Url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $output = curl_exec($ch);                                                                       
-    curl_close($ch);
-    return $output;
-    }
-    }
          echo '<div style="width:196px;text-align: center;overflow:auto;">';
         if ($wpflybox_instagram_header=='true')
         {
-          if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
-          else {$wpflybox_instagram_jsonfile = wp_remote_retrieve_body(wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token));}
+          $wpflybox_instagram_jsonfile = wp_remote_retrieve_body(wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token));
           $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);       
           echo '<table border="0" cellpadding="2" class="wpflyboxtable">';
           echo '<tr><td><img src="'.$wpflybox_instagram_json->data->profile_picture.'" height="40" width="40" title="'.$wpflybox_instagram_json->data->username.'"></td>';
@@ -974,8 +1168,7 @@ if ($wpflybox_tabs[$i]=="instagram")
           echo '<td align="center"><div style="font-weight:bold;font-size:16px;">'.$wpflybox_instagram_json->data->counts->follows.'</div><div style="font-size:10px;">&nbsp;Following</div></td></tr>';
           echo '</table>';
         }
-        if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
-        else {$wpflybox_instagram_jsonfile = wp_remote_retrieve_body(wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token));}
+        $wpflybox_instagram_jsonfile = wp_remote_retrieve_body(wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token));
         $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);
         $m=0;
           foreach ($wpflybox_instagram_json->data as $entry) {
@@ -987,7 +1180,21 @@ if ($wpflybox_tabs[$i]=="instagram")
         </th></tr></table></div></div>
         
         <?php        
-        }                           
+        }
+
+    if ($wpflybox_tabs[$i]=="vimeo")
+        {
+        ?>
+        <div class="wpfb-vimeo" id="wpfb-vimeo"><div class="wpfb-vimeo-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>vimeo.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -1212px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th><th style="background-color:#ffffff; border: 2px solid #0989ab; width:220px; overflow:hidden;padding:0px;">
+        <?php
+        $vimeooptions = array('username' => $wpflybox_vimeo_username, 'total' => $wpflybox_vimeo_total);
+        show_vimeo($vimeooptions);
+        ?>
+        
+        </tr></table></div></div>
+        
+        <?php
+        }                                   
                      
         
     $i=$i+1;    

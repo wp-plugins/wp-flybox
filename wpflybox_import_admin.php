@@ -47,6 +47,8 @@ if (get_option(wpflybox_feedburner)==""){$wpflybox_feedburner="yugatech";update_
 if (get_option(wpflybox_pinterest)==""){$wpflybox_pinterest="janew";update_option('wpflybox_pinterest', $wpflybox_pinterest);}
 if (get_option(wpflybox_count)==""){$wpflybox_count="1";update_option('wpflybox_count', $wpflybox_count);}
 if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpflybox_tab1', $wpflybox_tab1);}
+if (get_option(wpflybox_vimeo_username)==""){$wpflybox_vimeo_username="nbcnews";update_option('wpflybox_vimeo_username', $wpflybox_vimeo_username);}
+if (get_option(wpflybox_vimeo_total)==""){$wpflybox_vimeo_total="8";update_option('wpflybox_vimeo_total', $wpflybox_vimeo_total);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
 			//Form data sent
@@ -151,7 +153,7 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
 			update_option('wpflybox_instagram_header', $wpflybox_instagram_header);
 			$wpflybox_jquery = $_POST['wpflybox_jquery'];
 			update_option('wpflybox_jquery', $wpflybox_jquery);
-			$wpflybox_usecurl = $_POST['wpflybox_usecurl'];
+			$wpflybox_usecurl = 'false';
 			update_option('wpflybox_usecurl', $wpflybox_usecurl);
 			$wpflybox_usecustombutton = $_POST['wpflybox_usecustombutton'];
 			update_option('wpflybox_usecustombutton', $wpflybox_usecustombutton);
@@ -160,8 +162,12 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
 			$wpflybox_bgbottomgradient = $_POST['wpflybox_bgbottomgradient'];
 			update_option('wpflybox_bgbottomgradient', $wpflybox_bgbottomgradient);
 			$wpflybox_bgborder = $_POST['wpflybox_bgborder'];
-			update_option('wpflybox_bgborder', $wpflybox_bgborder);			
-
+			update_option('wpflybox_bgborder', $wpflybox_bgborder);
+			$wpflybox_vimeo_username = $_POST['wpflybox_vimeo_username'];
+			update_option('wpflybox_vimeo_username', $wpflybox_vimeo_username);      			    
+      $wpflybox_vimeo_total = $_POST['wpflybox_vimeo_total'];
+			update_option('wpflybox_vimeo_total', $wpflybox_vimeo_total);
+  			
       			                                                                                                  
 			?>
 			<div class="updated"><p><strong><?php _e('Options saved.' ); ?></strong></p></div>
@@ -237,6 +243,7 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
         <option value="contact" <?php if(get_option(wpflybox_tab1)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab1)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
         <option value="instagram" <?php if(get_option(wpflybox_tab1)=="instagram"){echo 'selected';} ?>>Instagram</option>
+        <option value="vimeo" <?php if(get_option(wpflybox_tab1)=="vimeo"){echo 'selected';} ?>>Vimeo</option>
         </select>
         </td></tr>
         
@@ -255,6 +262,7 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
         <option value="contact" <?php if(get_option(wpflybox_tab2)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab2)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
         <option value="instagram" <?php if(get_option(wpflybox_tab2)=="instagram"){echo 'selected';} ?>>Instagram</option>
+        <option value="vimeo" <?php if(get_option(wpflybox_tab2)=="vimeo"){echo 'selected';} ?>>Vimeo</option>
         </select>
         </td></tr>
         
@@ -273,6 +281,7 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
         <option value="contact" <?php if(get_option(wpflybox_tab3)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab3)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
         <option value="instagram" <?php if(get_option(wpflybox_tab3)=="instagram"){echo 'selected';} ?>>Instagram</option>
+        <option value="vimeo" <?php if(get_option(wpflybox_tab3)=="vimeo"){echo 'selected';} ?>>Vimeo</option>
         </select>
         </td></tr>
         
@@ -291,6 +300,7 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
         <option value="contact" <?php if(get_option(wpflybox_tab4)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab4)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
         <option value="instagram" <?php if(get_option(wpflybox_tab4)=="instagram"){echo 'selected';} ?>>Instagram</option>
+        <option value="vimeo" <?php if(get_option(wpflybox_tab4)=="vimeo"){echo 'selected';} ?>>Vimeo</option>
         </select>
         </td></tr>
         
@@ -309,6 +319,7 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
         <option value="contact" <?php if(get_option(wpflybox_tab5)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab5)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
         <option value="instagram" <?php if(get_option(wpflybox_tab5)=="instagram"){echo 'selected';} ?>>Instagram</option>
+        <option value="vimeo" <?php if(get_option(wpflybox_tab5)=="vimeo"){echo 'selected';} ?>>Vimeo</option>
         </select>
         </td></tr>
 	
@@ -327,6 +338,7 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
         <option value="contact" <?php if(get_option(wpflybox_tab6)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab6)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
         <option value="instagram" <?php if(get_option(wpflybox_tab6)=="instagram"){echo 'selected';} ?>>Instagram</option>
+        <option value="vimeo" <?php if(get_option(wpflybox_tab6)=="vimeo"){echo 'selected';} ?>>Vimeo</option>
         </select>
         </td></tr>
 	
@@ -345,6 +357,7 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
         <option value="contact" <?php if(get_option(wpflybox_tab7)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab7)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
         <option value="instagram" <?php if(get_option(wpflybox_tab7)=="instagram"){echo 'selected';} ?>>Instagram</option>
+        <option value="vimeo" <?php if(get_option(wpflybox_tab7)=="vimeo"){echo 'selected';} ?>>Vimeo</option>
         </select>
         </td></tr>
         
@@ -363,6 +376,7 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
         <option value="contact" <?php if(get_option(wpflybox_tab8)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
         <option value="deviant" <?php if(get_option(wpflybox_tab8)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
         <option value="instagram" <?php if(get_option(wpflybox_tab8)=="instagram"){echo 'selected';} ?>>Instagram</option>
+        <option value="vimeo" <?php if(get_option(wpflybox_tab8)=="vimeo"){echo 'selected';} ?>>Vimeo</option>
         </select>
         </td></tr>        
 		  <?php } ?>
@@ -545,7 +559,18 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
         </select>
         </td></tr>                                  
 
-        <tr><td colspan="2">Note: Twitter's API has a limit on the requests from their server. It is between 15-180 depending on the request. This plugin would need a couple requests to gather data about your name and followers everytime someone visits one of your pages. This would go way over the limit so the data is cached and saved for 2 hours. If you change the settings and it has some old info, then just wait a couple hours for it to re-update. I know this sucks, but it will be quicker on your end too!</td></tr>
+        <tr><td style="text-align:right;">Cache:</td><td>
+        <?php
+        $wp_trans=get_transient('wpfb_'.get_option(wpflybox_twitter));
+        if ($wp_trans !== false){echo '<div style="font-weight:bold;color:green;">cached</div>';
+        }else {
+        echo '<div style="font-weight:bold;">not cached</div>';
+        }
+        echo 'Caches automatically save when it is loaded on your pages. Cache lasts about 2 hours.';
+        
+        ?>
+        </td></tr> 
+       
         
         <tr><td colspan="2"><h4>Google Plus:</h4></td></tr>
         <tr><td style="text-align:right;">Google Numeric Username:</td><td>
@@ -649,6 +674,18 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
         <tr><td style="text-align:right;">Number Of Columns:</td><td>
         <input type="text" name="wpflybox_deviant_columns" value="<?php echo get_option(wpflybox_deviant_columns); ?>" size="3" />
         </td></tr>
+        
+        <tr><td style="text-align:right;">Cache:</td><td>
+        <?php
+        $wp_trans=get_transient('wpfb_da_'.get_option(wpflybox_deviant_username));
+        if ($wp_trans !== false){echo '<div style="font-weight:bold;color:green;">cached</div>';
+        }else {
+        echo '<div style="font-weight:bold;">not cached</div>';
+        }
+        echo 'Caches automatically save when it is loaded on your pages. Cache lasts about 2 hours.';
+        
+        ?>
+        </td></tr>        
                   
                   
         <tr><td colspan="2"><h4>Instagram:</h4></td></tr>
@@ -667,9 +704,34 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
         <option value="true" <?php if(get_option(wpflybox_instagram_header)=="true"){echo 'selected';} ?>>Yes</option>        
         <option value="false" <?php if(get_option(wpflybox_instagram_header)=="false"){echo 'selected';} ?>>No</option>
         </select>
-        </td></tr>                                                          
+        </td></tr>
         
-	</table></div>
+        <tr><td colspan="2"><h4>Vimeo:</h4></td></tr> 
+        <tr><td style="text-align:right;">Username:</td><td>
+        <input type="text" name="wpflybox_vimeo_username" value="<?php echo get_option(wpflybox_vimeo_username); ?>" size="30" />
+        </td></tr> 
+         
+        <tr><td style="text-align:right;">Videos to Show:</td><td>
+        <input type="text" name="wpflybox_vimeo_total" value="<?php echo get_option(wpflybox_vimeo_total); ?>" size="2" />
+        </td></tr>
+        
+        <tr><td style="text-align:right;">Cache:</td><td>
+        <?php
+        $wp_trans=get_transient('wpfb_v_'.get_option(wpflybox_vimeo_username));
+        if ($wp_trans !== false){echo '<div style="font-weight:bold;color:green;">cached</div>';
+        }else {
+        echo '<div style="font-weight:bold;">not cached</div>';
+        }
+        echo 'Caches automatically save when it is loaded on your pages. Cache lasts about 2 hours.';
+        
+        ?>
+        </td></tr>                                                                         
+        
+	</table>
+  <br>&nbsp;
+  <br>&nbsp;
+  <br>&nbsp;
+  </div>
              
 	
 	<br />&nbsp;
@@ -687,15 +749,6 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
         <br />Most websites will not need this on. Many themes and plugins use jquery and having it load multiple times can cause slow down and conflicts. If you are having problems with other plugins when this plugin is activated try turning this off. If there is a problem with another plugin, then chances are they are calling jquery also and you can turn this option off. Jquery is only used on Internet Explorer with this plugin. To see if you need jquery, turn this option off and open your page in Internet Explorer, if the tabs scroll out then you do not need jquery on because it is already being called in your theme or wordpress.
         </td></tr>
         
-        <tr><td colspan="2"><h4>Instagram Error:</h4></td></tr>
-        <tr><td style="text-align:right;width:100px;">file_get_contents / cURL:</td><td>
-        <select name="wpflybox_usecurl">
-        <option value="false" <?php if(get_option(wpflybox_usecurl)=="false"){echo 'selected';} ?>>Use file_get_contents()</option>        
-        <option value="true" <?php if(get_option(wpflybox_usecurl)=="true"){echo 'selected';} ?>>Use cURL</option>
-        </select>
-        <br />This plugin uses a php function called file_get_contents. It fetches files and data from other websites to be displayed on yours. In this case this plugin fetches image locations and data from instagram's server (less than 1kb) to display on your tab. Some web hosting companys disable this plugin because it can take up huge amounts of memory if fetching big pages with a lot of data.
-        <br />If you get an error in your instagram tab then try using cURL. If that does not work then cURL is disabled too. If you still have a problem and really want the instagram tab then let me know and I'll work on a workaround.
-        </td></tr>
         
         <tr><td colspan="2"><h4>Mobile Support:</h4></td></tr>
         <tr><td style="text-align:right;"><?php _e("Enable for Mobile Devices: " ); ?></td><td>
@@ -759,4 +812,3 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
 </div>
 
 
-</div>
