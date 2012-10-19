@@ -38,7 +38,7 @@ if (get_option(wpflybox_twitter)==""){$wpflybox_twitter="wordpress";update_optio
 if (get_option(wpflybox_google)==""){$wpflybox_google="107188080561309681193";update_option('wpflybox_google', $wpflybox_google);}
 if (get_option(wpflybox_google_type)==""){$wpflybox_google_type="page";update_option('wpflybox_google_type', $wpflybox_google_type);}
 if (get_option(wpflybox_youtube)==""){$wpflybox_youtube="nbc";update_option('wpflybox_youtube', $wpflybox_youtube);}
-if (get_option(wpflybox_linkedin)==""){$wpflybox_linkedin="google";update_option('wpflybox_linkedin', $wpflybox_linkedin);}
+if (get_option(wpflybox_linkedin)==""){$wpflybox_linkedin="1441";update_option('wpflybox_linkedin', $wpflybox_linkedin);}
 if (get_option(wpflybox_linkedin_type)==""){$wpflybox_linkedin_type="company";update_option('wpflybox_linkedin_type', $wpflybox_linkedin_type);}
 if (get_option(wpflybox_flickr)==""){$wpflybox_flickr="palnick";update_option('wpflybox_flickr', $wpflybox_flickr);}
 if (get_option(wpflybox_deviant_username)==""){$wpflybox_deviant_username="leonidafremov";update_option('wpflybox_deviant_username', $wpflybox_deviant_username);}

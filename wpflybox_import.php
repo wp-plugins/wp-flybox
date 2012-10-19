@@ -747,9 +747,10 @@ while ($i <= $wpflybox_count)
         {
         ?>
         <div class="wpfb-contact" id="wpfb-contact"><div class="wpfb-contact-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#fff; border: 2px solid #2653a1;width:280px; overflow:hidden;padding:0px;">
-        <center><b>Contact Me:</b><br><form style="padding:5px;" action="<?php echo plugins_url(); ?>/wp-flybox/contact.php";" method="post" target="popupwindow" onsubmit="window.open('<?php echo plugins_url(); ?>/wp-flybox/contact.php', 'popupwindow', 'scrollbars=no,width=300,height=300');return true">
-        <p>Name: <input style="padding:1px;" gtbfieldid="10" class="enteryourname" name="name" id="name" type="text" /></p>
-        <p>Email: <input style="padding:1px;" gtbfieldid="10" class="enteryouremail" name="email" id="email" type="text" /></p>
+        <center><b>Contact Form:</b><br>
+        <form style="padding:5px;" action="<?php echo plugins_url(); ?>/wp-flybox/contact.php";" method="post" target="popupwindow" onsubmit="window.open('<?php echo plugins_url(); ?>/wp-flybox/contact.php', 'popupwindow', 'scrollbars=no,width=300,height=300');return true">
+        <p>Your Name: <input style="padding:1px;" gtbfieldid="10" class="enteryourname" name="name" id="name" type="text" /></p>
+        <p>Your Email: <input style="padding:1px;" gtbfieldid="10" class="enteryouremail" name="email" id="email" type="text" /></p>
         <p><textarea rows="2" cols="30" class="enteryourmessage" name="message" id="message">Enter Your Message Here...</textarea></p>
           <?php
           if ($wpflybox_captcha=="true"){ 
@@ -1107,9 +1108,10 @@ while ($i <= $wpflybox_count)
         <div class="wpfb-contact" id="wpfb-contact"><div class="wpfb-contact-transition"><table class="wpflyboxtable"><tr style="background:transparent">
         <th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>contact.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -<?php echo $wpflybox_contactwhopixel; ?>px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th>
         <th style="background-color:#fff; border: 2px solid #2653a1;width:280px; overflow:hidden;padding:0px;">
-        <center><form style="padding:5px;" action="<?php echo plugins_url(); ?>/wp-flybox/contact.php";" method="post" target="popupwindow" onsubmit="window.open('<?php echo plugins_url(); ?>/wp-flybox/contact.php', 'popupwindow', 'scrollbars=no,width=300,height=300');return true">
-        <p>Name: <input style="padding:1px;" gtbfieldid="10" class="enteryourname" name="name" id="name" type="text" /></p>
-        <p>Email: <input style="padding:1px;" gtbfieldid="10" class="enteryouremail" name="email" id="email" type="text" /></p>
+        <center><b>Contact Form:</b><br />
+        <form style="padding:5px;" action="<?php echo plugins_url(); ?>/wp-flybox/contact.php";" method="post" target="popupwindow" onsubmit="window.open('<?php echo plugins_url(); ?>/wp-flybox/contact.php', 'popupwindow', 'scrollbars=no,width=300,height=300');return true">
+        <p>Your Name: <input style="padding:1px;" gtbfieldid="10" class="enteryourname" name="name" id="name" type="text" /></p>
+        <p>Your Email: <input style="padding:1px;" gtbfieldid="10" class="enteryouremail" name="email" id="email" type="text" /></p>
         <p><textarea rows="2" cols="30" class="enteryourmessage" name="message" id="message">Enter Your Message Here...</textarea></p>
           <?php
           if ($wpflybox_captcha=="true"){ 
@@ -1143,7 +1145,10 @@ if ($wpflybox_tabs[$i]=="deviant")
         <div class="wpfb-deviant" id="wpfb-deviant"><div class="wpfb-deviant-transition"><table class="wpflyboxtable"><tr style="background:transparent">
         <th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>deviant.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -909px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th>
         <th style="background-color:#fff; border: 2px solid #506256; overflow:hidden;padding:0px;height:<?php echo $wpflybox_deviant_frame_height; ?>px;width:<?php echo $wpflybox_deviant_frame_width; ?>px;">
-        <iframe style="background-color:#ffffff; border-color:#ffffff; border:none;" frameborder="0" scrolling="no" src="<?php echo plugins_url()."/wp-flybox/deviant.php?username=".$wpflybox_deviant_username."&limit=".$wpflybox_deviant_limit."&max_width=".$wpflybox_deviant_max_width."&max_height=".$wpflybox_deviant_max_height."&columns=".$wpflybox_deviant_columns; ?>" title="Deviant Art Badge"></iframe>
+        <?php
+        $deviantoptions = array('username' => $wpflybox_deviant_username, 'limit' => $wpflybox_deviant_limit, 'max_width' => $wpflybox_deviant_max_width, 'max_height' => $wpflybox_deviant_max_height, 'columns' => $wpflybox_deviant_columns);
+        show_deviantart($deviantoptions);
+        ?>
         </th>
         </tr></table></div></div>
         <?php        
