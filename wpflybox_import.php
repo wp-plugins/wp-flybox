@@ -965,7 +965,7 @@ if ($wpflybox_tabs[$i]=="instagram")
         if ($wpflybox_instagram_header=='true')
         {
           if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
-          else {$wpflybox_instagram_jsonfile = wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
+          else {$wpflybox_instagram_jsonfile = wp_remote_retrieve_body(wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token));}
           $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);       
           echo '<table border="0" cellpadding="2" class="wpflyboxtable">';
           echo '<tr><td><img src="'.$wpflybox_instagram_json->data->profile_picture.'" height="40" width="40" title="'.$wpflybox_instagram_json->data->username.'"></td>';
@@ -975,7 +975,7 @@ if ($wpflybox_tabs[$i]=="instagram")
           echo '</table>';
         }
         if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
-        else {$wpflybox_instagram_jsonfile = wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
+        else {$wpflybox_instagram_jsonfile = wp_remote_retrieve_body(wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token));}
         $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);
         $m=0;
           foreach ($wpflybox_instagram_json->data as $entry) {

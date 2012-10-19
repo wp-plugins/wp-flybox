@@ -178,47 +178,14 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
 			
 			
 
-<div class="postbox-container" style="width: 300px; float:right">
-<div class="metabox-holder">
-<div class="meta-box-sortables ui-sortable">
-<div id="wpflybox_general" class="postbox" >
-		<h3 class="hndle">
-		<span>More Info:</span>
-		</h3>
-	<div class="inside">		
-<b>Help:</b>
-<br /><a href="http://njarb.com/2012/08/wp-flybox/" target="blank">Blog Post</a>
-<br /><a href="http://wordpress.org/extend/plugins/wp-flybox/" target="blank">Wordpress Plugin Page</a>
-<br /><a href="http://njarb.com/2012/08/wp-flybox/" target="blank">Help</a>
-<br /><br />
-<b>Find me on:</b>
-<br /><a href="http://facebook.com/cylec" target="_blank">Facebook</a>
-<br /><a href="http://twitter.com/cyleconoly" target="_blank">Twitter</a>
-<br /><a href="http://plus.google.com/u/0/105734435204105331709" target="_blank">Google Plus</a>
-<br /><br />
-<b>Rate:</b>
-<br /><a href="http://wordpress.org/extend/plugins/wp-flybox/" target="blank">Rate WP-FlyBox</a>
-<br /><br />
-<b>Donate:</b>
-<br /><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="DAP6N4DSPBDMY">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
 
-	</div>
-</div>
-</div>
-</div>
-</div>
 <form name="oscimp_form" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
 				<input type="hidden" name="wpflybox_hidden" value="Y">
-<div class="postbox-container" style="width:75%">
+<div class="postbox-container" style="width:100%">
 <div class="metabox-holder">
 <div class="meta-box-sortables ui-sortable">
 		
-		<div id="wpflybox_general" class="postbox" style="width:75%;">
+		<div id="wpflybox_general" class="postbox" style="width:100%;">
 		<h3 class="hndle">
 		<span>Display Options:</span>
 		</h3>
@@ -501,7 +468,7 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
 		</div>
 	<br />&nbsp;
 	<br />&nbsp;
-	<div id="wpflybox_config" class="postbox" style="width:75%">
+	<div id="wpflybox_config" class="postbox" style="width:100%">
 		<h3 class="hndle">
 			Tab Configuration:
 		</h3>
@@ -706,7 +673,7 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
              
 	
 	<br />&nbsp;
-	<div id="wpflybox_trouble" class="postbox" style="width:75%">
+	<div id="wpflybox_trouble" class="postbox" style="width:100%">
 		<h3 class="hndle">
 			Troubleshoot:
 		</h3>
@@ -749,4 +716,47 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
 		</div>
 </div>
 </div>
+
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<div class="postbox-container" style="width: 300px;>
+<div class="metabox-holder">
+<div class="meta-box-sortables ui-sortable">
+<div id="wpflybox_general" class="postbox" >
+		<h3 class="hndle">
+		<span>More Info:</span>
+		</h3>
+	<div class="inside">		
+<b>Help:</b>
+<br /><a href="http://njarb.com/2012/08/wp-flybox/" target="blank">Blog Post</a>
+<br /><a href="http://wordpress.org/extend/plugins/wp-flybox/" target="blank">Wordpress Plugin Page</a>
+<br /><a href="http://njarb.com/2012/08/wp-flybox/" target="blank">Help</a>
+<br /><br />
+<b>Find me on:</b>
+<br /><a href="http://facebook.com/cylec" target="_blank">Facebook</a>
+<br /><a href="http://twitter.com/cyleconoly" target="_blank">Twitter</a>
+<br /><a href="http://plus.google.com/u/0/105734435204105331709" target="_blank">Google Plus</a>
+<br /><br />
+<b>Rate:</b>
+<br /><a href="http://wordpress.org/extend/plugins/wp-flybox/" target="blank">Rate WP-FlyBox</a>
+<br /><br />
+<b>Donate:</b>
+<br /><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="DAP6N4DSPBDMY">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+	</div>
+</div>
+</div>
+</div>
+</div>
+
+
 </div>
