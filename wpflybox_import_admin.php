@@ -730,6 +730,3 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
 </div>
 </div>
 </div>
-
-
-</div>
