@@ -519,34 +519,7 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
         @<input type="text" name="wpflybox_twitter" value="<?php echo get_option(wpflybox_twitter); ?>" size="20" />
         </td></tr>
 
-        <tr><td style="text-align:right;">Show What?</td><td>
-        <select name="wpflybox_twitter_showfollowers">
-        <option value="followers" <?php if(get_option(wpflybox_twitter_showfollowers)=="followers"){echo 'selected';} ?>>Followers</option>
-        <option value="friends" <?php if(get_option(wpflybox_twitter_showfollowers)=="friends"){echo 'selected';} ?>>Friends</option>
-        </select>
-        </td></tr>
-        
-        <tr><td style="text-align:right;">How Many Followers/Friends?:</td><td>
-        <input type="text" name="wpflybox_twitter_count" value="<?php echo get_option(wpflybox_twitter_count); ?>" size="2" />
-        Use 0 if you do not want to display any followers or friends.
-        </td></tr>
-        
-        <tr><td style="text-align:right;">Provide Link to Followers/Friends:</td><td>
-        <select name="wpflybox_twitter_link">
-        <option value="on" <?php if(get_option(wpflybox_twitter_link)=="on"){echo 'selected';} ?>>On</option>
-        <option value="off" <?php if(get_option(wpflybox_twitter_link)=="off"){echo 'selected';} ?>>Off</option>
-        </select>
-        </td></tr>
-        
-        <tr><td style="text-align:right;">Tweet To Button:</td><td>
-        <select name="wpflybox_twitter_tweetto">
-        <option value="on" <?php if(get_option(wpflybox_twitter_tweetto)=="on"){echo 'selected';} ?>>On</option>
-        <option value="off" <?php if(get_option(wpflybox_twitter_tweetto)=="off"){echo 'selected';} ?>>Off</option>
-        </select>
-        </td></tr>                                  
-
-        <tr><td colspan="2">Note: Twitter's API has a limit on the requests from their server. It is between 15-180 depending on the request. This plugin would need a couple requests to gather data about your name and followers everytime someone visits one of your pages. This would go way over the limit so the data is cached and saved for 2 hours. If you change the settings and it has some old info, then just wait a couple hours for it to re-update. I know this sucks, but it will be quicker on your end too!</td></tr>
-        
+      
         <tr><td colspan="2"><h4>Google Plus:</h4></td></tr>
         <tr><td style="text-align:right;">Google Numeric Username:</td><td>
         <input type="text" name="wpflybox_google" value="<?php echo get_option(wpflybox_google); ?>" size="30" />
