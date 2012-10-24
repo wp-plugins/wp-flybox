@@ -1,5 +1,4 @@
 <?php
-
 $wpflybox_count=get_option(wpflybox_count);
 $wpflybox_start=get_option(wpflybox_start);
 $wpflybox_seperation=get_option(wpflybox_seperation);
@@ -22,6 +21,11 @@ $wpflybox_facebook_width=get_option(wpflybox_facebook_width);
 $wpflybox_facebook_width_36=$wpflybox_facebook_width_36+36;
 
 $wpflybox_twitter=get_option(wpflybox_twitter);
+$wpflybox_twitter_count=get_option(wpflybox_twitter_count);
+$wpflybox_twitter_showfollowers=get_option(wpflybox_twitter_showfollowers);
+$wpflybox_twitter_link=get_option(wpflybox_twitter_link);
+$wpflybox_twitter_tweetto=get_option(wpflybox_twitter_tweetto);
+
 $wpflybox_google=get_option(wpflybox_google);
 $wpflybox_youtube=get_option(wpflybox_youtube);
 $wpflybox_feedburner=get_option(wpflybox_feedburner);
@@ -144,6 +148,152 @@ if (strpos($wpflybox_start,'px') !== false && strpos($wpflybox_seperation,'px') 
     $wpflybox_pos[8]=($wpflybox_start+(7*$wpflybox_seperation)).$wpflybox_postdim.'';
 }
 
+//twitter function
+//some of this came from Twitter Like Box by timersys
+function show_twitter($options)
+{
+$key = 'wpfb_' . $options['username'];
+
+$you = get_transient($key);
+	if ($you !== false)
+	{
+		$you = $you;
+		//echo 'cached';
+	} else
+	{
+
+$response = wp_remote_get("http://api.twitter.com/1/users/lookup.json?screen_name=$options[username]");
+
+if (is_wp_error($response))
+		{
+			// In case Twitter is down we return the last successful count
+			$you = get_option($key);
+		}
+		else
+		{
+		
+$json = json_decode(wp_remote_retrieve_body($response));
+
+if (is_array($json)){
+$you['name'] 			 	= $json[0]->name;
+$you['screen_name']	 		= $json[0]->screen_name;
+$you['followers_count'] 	= $json[0]->followers_count;
+$you['profile_image_url']	= $json[0]->profile_image_url;
+$you['friends_count']		= $json[0]->friends_count;
+$you['description'] = $json[0]->description;
+if ( $options['show_followers'] == 'followers' )
+			{
+				$fans = json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/followers/ids.json?screen_name=$options[username]")));
+				
+			}
+			else
+			{
+			  $fans = json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/friends/ids.json?screen_name=$options[username]")));
+				
+			}
+			
+$fans_ids = (string)implode( ',', array_slice($fans->ids, 0, $options['total']) );
+$fans = json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/users/lookup.json?user_id=$fans_ids")));
+
+
+$followers = array();            
+for($i=0; $i <= $options['total']; $i++)
+    {
+      $followers[$i]['screen_name'] 		= (string)$fans[$i]->screen_name;
+      $followers[$i]['profile_image_url'] = (string)$fans[$i]->profile_image_url;
+    }
+$you['followers'] = $followers;
+
+//$tweet=json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=$options['username']&count=1&include_rts=false");
+//$you['latesttweet'] = $tweet['0']->text;
+//$you['description']
+
+
+// Store the result in a transient, expires after 3 hours
+// Also store it as the last successful using update_option
+set_transient($key, $you, 60*60*2);
+update_option($key, $you);    
+} else {
+echo '<b>Invalid twitter username</b>.<br />Make sure your username is correct.<br />';
+}
+}
+}
+
+
+
+
+
+?>
+
+<div style="width:<?php echo $options['width'];?>px;padding:5px 5px 5px 5px; font-family:\'Lucida grande\',tahoma,verdana,arial,sans-serif;">
+	<div style="color:#555;border-bottom:1px solid #D8DFEA;color:#555; height:60px; position:relative;">
+		<div style="position:absolute;top:5px;left:5px;">
+			<a target="_blank" href="http://twitter.com/<?php echo $options['username'];?>">
+				<img src="<?php echo $you['profile_image_url'];?>" width="44" height="44">
+			</a>
+		</div>
+    <div style="position:absolute;top:5px;left:59px;font-size:14px;line-height:14px;font-weight:bold;">
+      <a target="_blank" href="http://twitter.com/<?php echo $options['username'];?>" style="color:<?php echo $options['font-color'];?>">
+      <?php echo $options['username'];?><span style="font-weight:normal;font-size:10px"> on Twitter</span>
+      </a>
+    </div>
+    <div style="position:absolute;top:30px;left:59px;">
+      <a href="https://twitter.com/<?php echo $options['username'];?>" class="twitter-follow-button" data-show-count="false" data-width="65px" data-show-screen-name="false">Follow @<?php echo $options['username'];?></a>
+    </div>
+	</div>
+	<div style="padding:0;">
+		<div style="padding:5px 5px 0px 5px;font-size:11px;">
+			<?php 
+			if ( $options['show_followers'] == 'followers')
+			{
+				echo $you['followers_count'].' people follow <strong>'. $options['username'].'</strong>';
+			}
+			else
+			{
+				echo $options['username'].' follows '. $you['friends_count'].' users';
+			}
+			?>	
+		</div>
+		<?php for($i=0; $i < $options['total']; $i++)	:?>
+		
+			<span style="line-height:1;padding:5px 0px 3px 5px;width:48px;float:left;text-align: center;">
+			<?php if($options['link_followers'] == 'on' ): ?>
+				<a target="_blank" href="http://twitter.com/<?php echo $you['followers'][$i]['screen_name'];?>" style="color:gray" rel="nofollow">
+			<?php endif;?>	
+					<img src="<?php echo $you['followers'][$i]['profile_image_url'];?>" width="48" height="48">
+					<span style="font-family:Arial;font-size:10px;"><?php echo substr($you['followers'][$i]['screen_name'], 0, 8);?></span>
+			<?php if($options['link_followers'] == 'on' ): ?>		
+				</a>
+			<?php endif;?>		
+			</span>
+		<? endfor;?>
+	<br style="clear:both">
+	</div>
+<?php
+if ($options['tweetto']=='on'){
+echo '<a href="https://twitter.com/intent/tweet?screen_name='.$options[username].'" class="twitter-mention-button" data-lang="en">Tweet to @'.$options[username].'</a>';
+}
+?>
+
+
+</div>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+
+<?php
+}
+
+
+
+
+
+
+
+
+
+
+
 
 if (get_option(wpflybox_side)=="left"){
 if ($wpflybox_isie>0){
@@ -158,7 +308,7 @@ jQuery(document).ready (
 function(){jQuery("#wpfb-facebook").hover(function(){ jQuery(this).stop(true,false).animate({left:  0}, 500); },
 function(){ jQuery("#wpfb-facebook").stop(true,false).animate({left: -328}, 500); });       
 jQuery("#wpfb-twitter").hover(function(){ jQuery(this).stop(true,false).animate({left:  0}, 500); },
-function(){ jQuery("#wpfb-twitter").stop(true,false).animate({left: -301}, 500); });     
+function(){ jQuery("#wpfb-twitter").stop(true,false).animate({left: -266}, 500); });     
 jQuery("#wpfb-googleplus").hover(function(){ jQuery(this).stop(true,false).animate({left:  0}, 500); },
 function(){ jQuery("#wpfb-googleplus").stop(true,false).animate({left: -361}, 500); });    
 jQuery("#wpfb-youtube").hover(function(){ jQuery(this).stop(true,false).animate({left:  0}, 500); },
@@ -336,6 +486,9 @@ while ($i <= $wpflybox_count)
         {
         ?>
         <div class="wpfb-twitter" id="wpfb-twitter"><div class="wpfb-twitter-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th style="background-color:#ffffff; border: 2px solid #6CC5FF; width:265px; height:237px; overflow:hidden;padding:0px;"><script type="text/javascript" src="<?php echo plugins_url().'/wp-flybox/static/twitterbox.js'; ?>"></script><div id="twitterfanbox"></div><script type="text/javascript">fanbox_init("<?php echo $wpflybox_twitter; ?>");</script></th><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>twitter.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -606px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
+        ?>
+        
+        <th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>twitter.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -606px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th></tr></table></div></div>
         <?php
         }
     if ($wpflybox_tabs[$i]=="googleplus")
@@ -452,7 +605,7 @@ if ($wpflybox_tabs[$i]=="instagram")
         if ($wpflybox_instagram_header=='true')
         {
           if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
-          else {$wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
+          else {$wpflybox_instagram_jsonfile = wp_remote_retrieve_body(wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token));}
           $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);
           echo '<table border="0" cellpadding="2" class="wpflyboxtable">';
           echo '<tr><td><img src="'.$wpflybox_instagram_json->data->profile_picture.'" height="40" width="40" title="'.$wpflybox_instagram_json->data->username.'"></td>';
@@ -462,7 +615,7 @@ if ($wpflybox_tabs[$i]=="instagram")
           echo '</table>';
         }
         if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
-        else {$wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
+        else {$wpflybox_instagram_jsonfile = wp_remote_retrieve_body(wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token));}
         $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);
         $m=0;
           foreach ($wpflybox_instagram_json->data as $entry) {
@@ -500,7 +653,7 @@ jQuery(document).ready (
 function(){jQuery("#wpfb-facebook").hover(function(){ jQuery(this).stop(true,false).animate({right:  0}, 500); },
 function(){ jQuery("#wpfb-facebook").stop(true,false).animate({right: -328}, 500); });    
 jQuery("#wpfb-twitter").hover(function(){ jQuery(this).stop(true,false).animate({right:  0}, 500); },
-function(){ jQuery("#wpfb-twitter").stop(true,false).animate({right: -301}, 500); });     
+function(){ jQuery("#wpfb-twitter").stop(true,false).animate({right: -266}, 500); });     
 jQuery("#wpfb-googleplus").hover(function(){ jQuery(this).stop(true,false).animate({right:  0}, 500); },
 function(){ jQuery("#wpfb-googleplus").stop(true,false).animate({right: -361}, 500); });    
 jQuery("#wpfb-youtube").hover(function(){ jQuery(this).stop(true,false).animate({right:  0}, 500); },
@@ -678,6 +831,10 @@ while ($i <= $wpflybox_count)
         {
         ?>
         <div class="wpfb-twitter" id="wpfb-twitter"><div class="wpfb-twitter-transition"><table class="wpflyboxtable"><tr style="background:transparent"><th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>twitter.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -606px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th><th style="background-color:#ffffff; border: 2px solid #6CC5FF;width:265px; height:237px; overflow:hidden;"><script type="text/javascript" src="<?php echo plugins_url().'/wp-flybox/static/twitterbox.js'; ?>"></script><div id="twitterfanbox"></div><script type="text/javascript">fanbox_init("<?php echo $wpflybox_twitter; ?>");</script></th></th></tr></table></div></div>
+        ?>
+        
+        </tr></table></div></div>
+        
         <?php
         }
     if ($wpflybox_tabs[$i]=="googleplus")
@@ -735,7 +892,7 @@ while ($i <= $wpflybox_count)
         <div class="wpfb-contact" id="wpfb-contact"><div class="wpfb-contact-transition"><table class="wpflyboxtable"><tr style="background:transparent">
         <th valign="top"><?php if ($wpflybox_usecustombutton == "true"){?><a class="wpflybox_button" href="#"><img src="<?php echo $wpflybox_custombuttonloc;?>contact.png" height="30"></a><?php }else{?><a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -<?php echo $wpflybox_contactwhopixel; ?>px; background-image:url('<?php echo $wpflybox_sprite_url; ?>');padding:0px;"> </div></a><?php }?></th>
         <th style="background-color:#fff; border: 2px solid #2653a1;width:280px; overflow:hidden;padding:0px;">
-        <center><b>Contact Me:</b><br><form style="padding:5px;" action="<?php echo plugins_url(); ?>/wp-flybox/contact.php";" method="post" target="popupwindow" onsubmit="window.open('<?php echo plugins_url(); ?>/wp-flybox/contact.php', 'popupwindow', 'scrollbars=no,width=300,height=300');return true">
+        <center><form style="padding:5px;" action="<?php echo plugins_url(); ?>/wp-flybox/contact.php";" method="post" target="popupwindow" onsubmit="window.open('<?php echo plugins_url(); ?>/wp-flybox/contact.php', 'popupwindow', 'scrollbars=no,width=300,height=300');return true">
         <p>Name: <input style="padding:1px;" gtbfieldid="10" class="enteryourname" name="name" id="name" type="text" /></p>
         <p>Email: <input style="padding:1px;" gtbfieldid="10" class="enteryouremail" name="email" id="email" type="text" /></p>
         <p><textarea rows="2" cols="30" class="enteryourmessage" name="message" id="message">Enter Your Message Here...</textarea></p>
@@ -802,7 +959,7 @@ if ($wpflybox_tabs[$i]=="instagram")
         if ($wpflybox_instagram_header=='true')
         {
           if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
-          else {$wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token);}
+          else {$wpflybox_instagram_jsonfile = wp_remote_retrieve_body(wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/?access_token='.$wpflybox_instagram_token));}
           $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);       
           echo '<table border="0" cellpadding="2" class="wpflyboxtable">';
           echo '<tr><td><img src="'.$wpflybox_instagram_json->data->profile_picture.'" height="40" width="40" title="'.$wpflybox_instagram_json->data->username.'"></td>';
@@ -812,7 +969,7 @@ if ($wpflybox_tabs[$i]=="instagram")
           echo '</table>';
         }
         if ($wpflybox_usecurl=="true"){$wpflybox_instagram_jsonfile = url_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
-        else {$wpflybox_instagram_jsonfile = file_get_contents('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token);}
+        else {$wpflybox_instagram_jsonfile = wp_remote_retrieve_body(wp_remote_get('https://api.instagram.com/v1/users/'.$wpflybox_instagram_id.'/media/recent/?access_token='.$wpflybox_instagram_token));}
         $wpflybox_instagram_json = json_decode($wpflybox_instagram_jsonfile);
         $m=0;
           foreach ($wpflybox_instagram_json->data as $entry) {

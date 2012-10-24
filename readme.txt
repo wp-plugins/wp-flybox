@@ -56,7 +56,7 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 == Changelog ==
 
 = 2.1.3 =
-* Downgraded to latest known stable until bugs are fixed.
+* Bug Fixes
 
 = 2.1.2 =
 * Bug Fixes.
@@ -134,7 +134,7 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 == Upgrade Notice ==
 
 = 2.1.3 =
-* Downgraded to latest known stable until bugs are fixed.
+* Bug Fixes
 
 = 2.1.2 =
 * Bug Fixes.                 

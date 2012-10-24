@@ -4,9 +4,10 @@ if (get_option(wpflybox_facebook_header)==""){$wpflybox_facebook_header="false";
 if (get_option(wpflybox_facebook_stream)==""){$wpflybox_facebook_stream="false";update_option('wpflybox_facebook_tream', $wpflybox_facebook_stream);}
 if (get_option(wpflybox_facebook_showfaces)==""){$wpflybox_facebook_showfaces="true";update_option('wpflybox_facebook_showfaces', $wpflybox_facebook_showfaces);}
 if (get_option(wpflybox_facebook_color)==""){$wpflybox_facebook_color="light";update_option('wpflybox_facebook_color', $wpflybox_facebook_color);}
-if (get_option(wpflybox_facebook_height)==""){$wpflybox_facebook_height="200";update_option('wpflybox_facebook_height', $wpflybox_facebook_height);}
+if (get_option(wpflybox_facebook_height)==""){$wpflybox_facebook_height="500";update_option('wpflybox_facebook_height', $wpflybox_facebook_height);}
 if (get_option(wpflybox_facebook_width)==""){$wpflybox_facebook_width="292";update_option('wpflybox_facebook_width', $wpflybox_facebook_width);}
-if (!strstr(get_option(wpflybox_facebook), 'facebook.com')){$wpflybox_facebook="http://facebook.com/".get_option(wpflybox_facebook);update_option('wpflybox_facebook', $wpflybox_facebook);}
+if (get_option(wpflybox_facebook)==""){$wpflybox_facebook="http://facebook.com/Wordpress";update_option('wpflybox_facebook', $wpflybox_facebook);}
+if (!strstr(get_option(wpflybox_facebook), 'facebook.com/')){$wpflybox_facebook="http://facebook.com/".get_option(wpflybox_facebook);update_option('wpflybox_facebook', $wpflybox_facebook);}
 if (get_option(wpflybox_ie)==""){$wpflybox_ie="true";update_option('wpflybox_ie', $wpflybox_ie);}
 if (get_option(wpflybox_mobile)==""){$wpflybox_mobile="false";update_option('wpflybox_mobile', $wpflybox_mobile);}
 if (get_option(wpflybox_captcha)==""){$wpflybox_captcha="true";update_option('wpflybox_captcha', $wpflybox_captcha);}
@@ -27,6 +28,25 @@ if (get_option(wpflybox_usecustombutton)==""){$wpflybox_usecustombutton="false";
 if (get_option(wpflybox_bgtopgradient)==""){$wpflybox_bgtopgradient="#ababab";update_option('wpflybox_bgtopgradient', $wpflybox_bgtopgradient);}
 if (get_option(wpflybox_bgbottomgradient)==""){$wpflybox_bgbottomgradient="#3b3b3b";update_option('wpflybox_bgbottomgradient', $wpflybox_bgbottomgradient);}
 if (get_option(wpflybox_bgborder)==""){$wpflybox_bgborder="#000000";update_option('wpflybox_bgborder', $wpflybox_bgborder);}
+if (get_option(wpflybox_twitter_showfollowers)==""){$wpflybox_twitter_showfollowers="followers";update_option('wpflybox_twitter_showfollowers', $wpflybox_twitter_showfollowers);}
+if (get_option(wpflybox_twitter_count)==""){$wpflybox_twitter_count="8";update_option('wpflybox_twitter_count', $wpflybox_twitter_count);}
+if (get_option(wpflybox_twitter_link)==""){$wpflybox_twitter_link="on";update_option('wpflybox_twitter_link', $wpflybox_twitter_link);}
+if (get_option(wpflybox_twitter_tweetto)==""){$wpflybox_twitter_tweetto="on";update_option('wpflybox_twitter_tweetto', $wpflybox_twitter_tweetto);}
+if (get_option(wpflybox_start)==""){$wpflybox_start="20px";update_option('wpflybox_start', $wpflybox_start);}
+if (get_option(wpflybox_seperation)==""){$wpflybox_seperation="103px";update_option('wpflybox_seperation', $wpflybox_seperation);}
+if (get_option(wpflybox_twitter)==""){$wpflybox_twitter="wordpress";update_option('wpflybox_twitter', $wpflybox_twitter);}
+if (get_option(wpflybox_google)==""){$wpflybox_google="107188080561309681193";update_option('wpflybox_google', $wpflybox_google);}
+if (get_option(wpflybox_google_type)==""){$wpflybox_google_type="page";update_option('wpflybox_google_type', $wpflybox_google_type);}
+if (get_option(wpflybox_youtube)==""){$wpflybox_youtube="nbc";update_option('wpflybox_youtube', $wpflybox_youtube);}
+if (get_option(wpflybox_linkedin)==""){$wpflybox_linkedin="google";update_option('wpflybox_linkedin', $wpflybox_linkedin);}
+if (get_option(wpflybox_linkedin_type)==""){$wpflybox_linkedin_type="company";update_option('wpflybox_linkedin_type', $wpflybox_linkedin_type);}
+if (get_option(wpflybox_flickr)==""){$wpflybox_flickr="palnick";update_option('wpflybox_flickr', $wpflybox_flickr);}
+if (get_option(wpflybox_deviant_username)==""){$wpflybox_deviant_username="leonidafremov";update_option('wpflybox_deviant_username', $wpflybox_deviant_username);}
+if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflybox_jquery', $wpflybox_jquery);}
+if (get_option(wpflybox_feedburner)==""){$wpflybox_feedburner="yugatech";update_option('wpflybox_feedburner', $wpflybox_feedburner);}
+if (get_option(wpflybox_pinterest)==""){$wpflybox_pinterest="janew";update_option('wpflybox_pinterest', $wpflybox_pinterest);}
+if (get_option(wpflybox_count)==""){$wpflybox_count="1";update_option('wpflybox_count', $wpflybox_count);}
+if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpflybox_tab1', $wpflybox_tab1);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
 			//Form data sent
@@ -72,8 +92,16 @@ if (get_option(wpflybox_bgborder)==""){$wpflybox_bgborder="#000000";update_optio
       $wpflybox_facebook_width = $_POST['wpflybox_facebook_width']; 
 			update_option('wpflybox_facebook_width', $wpflybox_facebook_width);	      	
       $wpflybox_twitter = $_POST['wpflybox_twitter'];
-			update_option('wpflybox_twitter', $wpflybox_twitter);	      
-      $wpflybox_google = $_POST['wpflybox_google'];
+			update_option('wpflybox_twitter', $wpflybox_twitter);      
+      $wpflybox_twitter_showfollowers = $_POST['wpflybox_twitter_showfollowers'];
+			update_option('wpflybox_twitter_showfollowers', $wpflybox_twitter_showfollowers);       
+      $wpflybox_twitter_count = $_POST['wpflybox_twitter_count'];
+			update_option('wpflybox_twitter_count', $wpflybox_twitter_count);       
+      $wpflybox_twitter_link = $_POST['wpflybox_twitter_link'];
+			update_option('wpflybox_twitter_link', $wpflybox_twitter_link);       
+      $wpflybox_twitter_tweetto = $_POST['wpflybox_twitter_tweetto'];
+			update_option('wpflybox_twitter_tweetto', $wpflybox_twitter_tweetto);       	      
+      $wpflybox_google = $_POST['wpflybox_google'];                              
 			update_option('wpflybox_google', $wpflybox_google);
       $wpflybox_youtube = $_POST['wpflybox_youtube'];
 			update_option('wpflybox_youtube', $wpflybox_youtube);      	      
@@ -150,47 +178,14 @@ if (get_option(wpflybox_bgborder)==""){$wpflybox_bgborder="#000000";update_optio
 			
 			
 
-<div class="postbox-container" style="width: 300px; float:right">
-<div class="metabox-holder">
-<div class="meta-box-sortables ui-sortable">
-<div id="wpflybox_general" class="postbox" >
-		<h3 class="hndle">
-		<span>More Info:</span>
-		</h3>
-	<div class="inside">		
-<b>Help:</b>
-<br /><a href="http://njarb.com/2012/08/wp-flybox/" target="blank">Blog Post</a>
-<br /><a href="http://wordpress.org/extend/plugins/wp-flybox/" target="blank">Wordpress Plugin Page</a>
-<br /><a href="http://njarb.com/2012/08/wp-flybox/" target="blank">Help</a>
-<br /><br />
-<b>Find me on:</b>
-<br /><a href="http://facebook.com/cylec" target="_blank">Facebook</a>
-<br /><a href="http://twitter.com/cyleconoly" target="_blank">Twitter</a>
-<br /><a href="http://plus.google.com/u/0/105734435204105331709" target="_blank">Google Plus</a>
-<br /><br />
-<b>Rate:</b>
-<br /><a href="http://wordpress.org/extend/plugins/wp-flybox/" target="blank">Rate WP-FlyBox</a>
-<br /><br />
-<b>Donate:</b>
-<br /><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="DAP6N4DSPBDMY">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
 
-	</div>
-</div>
-</div>
-</div>
-</div>
 <form name="oscimp_form" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
 				<input type="hidden" name="wpflybox_hidden" value="Y">
-<div class="postbox-container" style="width:75%">
+<div class="postbox-container" style="width:100%">
 <div class="metabox-holder">
 <div class="meta-box-sortables ui-sortable">
 		
-		<div id="wpflybox_general" class="postbox" style="width:75%;">
+		<div id="wpflybox_general" class="postbox" style="width:100%;">
 		<h3 class="hndle">
 		<span>Display Options:</span>
 		</h3>
@@ -217,7 +212,6 @@ if (get_option(wpflybox_bgborder)==""){$wpflybox_bgborder="#000000";update_optio
         
         <tr><td style="text-align:right;"><?php _e("How many tabs?: " ); ?></td><td>
         <select name="wpflybox_count">
-        <option value="0" <?php if(get_option(wpflybox_count)=="0"){echo 'selected';} ?>>0</option>
         <option value="1" <?php if(get_option(wpflybox_count)=="1"){echo 'selected';} ?>>1</option>
         <option value="2" <?php if(get_option(wpflybox_count)=="2"){echo 'selected';} ?>>2</option>
         <option value="3" <?php if(get_option(wpflybox_count)=="3"){echo 'selected';} ?>>3</option>
@@ -373,6 +367,8 @@ if (get_option(wpflybox_bgborder)==""){$wpflybox_bgborder="#000000";update_optio
         </td></tr>        
 		  <?php } ?>
 
+        <tr><td colspan="2">Note: Make sure you do not have the same thing for more than one tab or they may not show up.</td></tr>
+
 		    <tr><td style="text-align:right;">Which type of buttons?</td><td>
 		    <table border="0">
 		    <tr><td style="text-align:center;">
@@ -472,7 +468,7 @@ if (get_option(wpflybox_bgborder)==""){$wpflybox_bgborder="#000000";update_optio
 		</div>
 	<br />&nbsp;
 	<br />&nbsp;
-	<div id="wpflybox_config" class="postbox" style="width:75%">
+	<div id="wpflybox_config" class="postbox" style="width:100%">
 		<h3 class="hndle">
 			Tab Configuration:
 		</h3>
@@ -517,11 +513,39 @@ if (get_option(wpflybox_bgborder)==""){$wpflybox_bgborder="#000000";update_optio
         </td></tr>                                  
 
 
-        <tr><td colspan="2"><h4>Twitter:</h4></td></tr>            
+        <tr><td colspan="2"><h4>Twitter:</h4></td></tr>
+                           
         <tr><td style="text-align:right;">Twitter Username:</td><td>
-        <input type="text" name="wpflybox_twitter" value="<?php echo get_option(wpflybox_twitter); ?>" size="20" />
-        </td></tr> 
+        @<input type="text" name="wpflybox_twitter" value="<?php echo get_option(wpflybox_twitter); ?>" size="20" />
+        </td></tr>
 
+        <tr><td style="text-align:right;">Show What?</td><td>
+        <select name="wpflybox_twitter_showfollowers">
+        <option value="followers" <?php if(get_option(wpflybox_twitter_showfollowers)=="followers"){echo 'selected';} ?>>Followers</option>
+        <option value="friends" <?php if(get_option(wpflybox_twitter_showfollowers)=="friends"){echo 'selected';} ?>>Friends</option>
+        </select>
+        </td></tr>
+        
+        <tr><td style="text-align:right;">How Many Followers/Friends?:</td><td>
+        <input type="text" name="wpflybox_twitter_count" value="<?php echo get_option(wpflybox_twitter_count); ?>" size="2" />
+        Use 0 if you do not want to display any followers or friends.
+        </td></tr>
+        
+        <tr><td style="text-align:right;">Provide Link to Followers/Friends:</td><td>
+        <select name="wpflybox_twitter_link">
+        <option value="on" <?php if(get_option(wpflybox_twitter_link)=="on"){echo 'selected';} ?>>On</option>
+        <option value="off" <?php if(get_option(wpflybox_twitter_link)=="off"){echo 'selected';} ?>>Off</option>
+        </select>
+        </td></tr>
+        
+        <tr><td style="text-align:right;">Tweet To Button:</td><td>
+        <select name="wpflybox_twitter_tweetto">
+        <option value="on" <?php if(get_option(wpflybox_twitter_tweetto)=="on"){echo 'selected';} ?>>On</option>
+        <option value="off" <?php if(get_option(wpflybox_twitter_tweetto)=="off"){echo 'selected';} ?>>Off</option>
+        </select>
+        </td></tr>                                  
+
+        <tr><td colspan="2">Note: Twitter's API has a limit on the requests from their server. It is between 15-180 depending on the request. This plugin would need a couple requests to gather data about your name and followers everytime someone visits one of your pages. This would go way over the limit so the data is cached and saved for 2 hours. If you change the settings and it has some old info, then just wait a couple hours for it to re-update. I know this sucks, but it will be quicker on your end too!</td></tr>
         
         <tr><td colspan="2"><h4>Google Plus:</h4></td></tr>
         <tr><td style="text-align:right;">Google Numeric Username:</td><td>
@@ -649,7 +673,7 @@ if (get_option(wpflybox_bgborder)==""){$wpflybox_bgborder="#000000";update_optio
              
 	
 	<br />&nbsp;
-	<div id="wpflybox_trouble" class="postbox" style="width:75%">
+	<div id="wpflybox_trouble" class="postbox" style="width:100%">
 		<h3 class="hndle">
 			Troubleshoot:
 		</h3>
@@ -692,4 +716,47 @@ if (get_option(wpflybox_bgborder)==""){$wpflybox_bgborder="#000000";update_optio
 		</div>
 </div>
 </div>
+
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<div class="postbox-container" style="width: 300px;>
+<div class="metabox-holder">
+<div class="meta-box-sortables ui-sortable">
+<div id="wpflybox_general" class="postbox" >
+		<h3 class="hndle">
+		<span>More Info:</span>
+		</h3>
+	<div class="inside">		
+<b>Help:</b>
+<br /><a href="http://njarb.com/2012/08/wp-flybox/" target="blank">Blog Post</a>
+<br /><a href="http://wordpress.org/extend/plugins/wp-flybox/" target="blank">Wordpress Plugin Page</a>
+<br /><a href="http://njarb.com/2012/08/wp-flybox/" target="blank">Help</a>
+<br /><br />
+<b>Find me on:</b>
+<br /><a href="http://facebook.com/cylec" target="_blank">Facebook</a>
+<br /><a href="http://twitter.com/cyleconoly" target="_blank">Twitter</a>
+<br /><a href="http://plus.google.com/u/0/105734435204105331709" target="_blank">Google Plus</a>
+<br /><br />
+<b>Rate:</b>
+<br /><a href="http://wordpress.org/extend/plugins/wp-flybox/" target="blank">Rate WP-FlyBox</a>
+<br /><br />
+<b>Donate:</b>
+<br /><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="DAP6N4DSPBDMY">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+	</div>
+</div>
+</div>
+</div>
+</div>
+
+
 </div>
