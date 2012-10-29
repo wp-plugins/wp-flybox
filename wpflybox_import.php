@@ -1,4 +1,6 @@
 <?php
+$wpflb_match=preg_match('/MSIE ([0-9].[0-9])/',$_SERVER['HTTP_USER_AGENT'],$reg);
+if($wpflb_match==0){$wpflybox_ieversion=-1;}else{$wpflybox_ieversion=floatval($reg[1]);}
 $wpflybox_count=get_option(wpflybox_count);
 $wpflybox_tabs[1]=get_option(wpflybox_tab1);
 $wpflybox_tabs[2]=get_option(wpflybox_tab2);
@@ -53,7 +55,7 @@ if (get_option(wpflybox_side) !== "none"){
 include 'includes/css.php';
 
 $i=1;
-while ($i <= $wpflybox_count)
+while ($i <= $wpflybox_count && ($wpflybox_ieversion>7 || $wpflybox_ieversion<0))
     {
     if ($wpflybox_tabs[$i]=="facebook")
         {
