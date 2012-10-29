@@ -59,7 +59,10 @@ if (!$you['media'] || $wpfb_cached=='false')
   if ($you['media'][0][thumburl]){
   for($m=0; $m <= $options['max']; $m++)
   {
-  echo '<a href="'.$media[$m][link].'" target="_blank"><img src="'.$media[$m][thumburl].'" height="50" width="50" style="padding:3px;" title="'.$media[$m][text].'"></a>';
+    if ($you['media'][$m][thumburl])
+    {
+    echo '<a href="'.$media[$m][link].'" target="_blank"><img src="'.$media[$m][thumburl].'" height="50" width="50" style="padding:3px;" title="'.$media[$m][text].'"></a>';
+    }else{$m=100;}
   }
   } else {echo '<br>Invalid username, no pictures on account or instagram servers not found';}
   
