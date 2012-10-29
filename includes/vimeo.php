@@ -61,7 +61,7 @@ function wpfb_get_vimeo_data($options)
   
   }
 
-function wpfb_show_custom($options, $you)
+function wpfb_show_custom_vimeo($options, $you)
   {
   ?>
   
@@ -117,14 +117,14 @@ if (get_option(wpflybox_side)=="right")
     {
     echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/vimeo.png" height="30"></a>';
     } else {
-    echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -1212px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteRight.png\');padding:0px;"> </div></a>';
+    echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:33px; height:101px; background-position:0px -1212px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteRight.png\');padding:0px;"> </div></a>';
     }
     echo '</th>';
   }
 echo '<th style="background-color:#fff; border: 2px solid #0989ab;width:220px;overflow:hidden;padding:0px;">';
 if($you)
   {
-  wpfb_show_custom($vimeooptions, $you);
+  wpfb_show_custom_vimeo($vimeooptions, $you);
   } else {
   echo 'Error: Invalid username or vimeo server cannot be reached.';
   }      
@@ -136,7 +136,7 @@ if (get_option(wpflybox_side)=="left")
     {
     echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/vimeo.png" height="30"></a>';
     } else {
-    echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -1212px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteLeft.png\');padding:0px;"> </div></a>';
+    echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:33px; height:101px; background-position:0px -1212px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteLeft.png\');padding:0px;"> </div></a>';
     }
     echo '</th>';
   }

@@ -12,7 +12,7 @@ if (get_option(wpflybox_side)=="right")
     {
     echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/contact.png" height="30"></a>';
     } else {
-    echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -'.$wpflybox_contactwhopixel.'px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteRight.png\');padding:0px;"> </div></a>';
+    echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:33px; height:101px; background-position:0px -'.$wpflybox_contactwhopixel.'px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteRight.png\');padding:0px;"> </div></a>';
     }
     echo '</th>';
   }
@@ -41,7 +41,7 @@ if (get_option(wpflybox_side)=="left")
     {
     echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/contact.png" height="30"></a>';
     } else {
-    echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -'.$wpflybox_contactwhopixel.'px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteLeft.png\');padding:0px;"> </div></a>';
+    echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:33px; height:101px; background-position:0px -'.$wpflybox_contactwhopixel.'px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteLeft.png\');padding:0px;"> </div></a>';
     }
     echo '</th>';
   }
