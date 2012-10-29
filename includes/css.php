@@ -201,7 +201,7 @@ if ($key=array_search('contact',$wpflybox_tabs))
     }
 if ($key=array_search('flickr',$wpflybox_tabs))
     {
-    echo 'div.wpfb-flickr {width:'.($wpflybox_widths[9]+68).'px;height:155px;top:'.$wpflybox_pos[$key].';'.$wpflybox_side.':-'.($wpflybox_widths[9]+36).'px;position:fixed;z-index:999999;direction:ltr;}';
+    echo 'div.wpfb-flickr {width:'.($wpflybox_widths[9]+68).'px;top:'.$wpflybox_pos[$key].';'.$wpflybox_side.':-'.($wpflybox_widths[9]+36).'px;position:fixed;z-index:999999;direction:ltr;}';
     echo 'div.wpfb-flickr div.wpfb-flickr-transition {width:'.($wpflybox_widths[9]+68).'px;'; if ($wpflybox_side=='left'){echo 'margin-left:32px;';} echo '-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
     echo 'div.wpfb-flickr div.wpfb-flickr-transition iframe {border:0px;overflow:hidden;position:static;}';
     if (!$wpflybox_isie){echo 'div.wpfb-flickr:hover div.wpfb-flickr-transition {margin-left: '.$wpflybox_side_operator.($wpflybox_widths[9]+$wpflybox_sidemargin+$wpflybox_sideextravalue).'px;}';}               
