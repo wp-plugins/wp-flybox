@@ -204,7 +204,7 @@ if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybo
         </select>
         </td>
         </tr>
-        <td><?php _e("How high to start first tab: " ); ?></td><td>
+        <td style="text-align:right;"><?php _e("How high to start first tab: " ); ?></td><td>
         <input type="text" name="wpflybox_start" value="<?php echo get_option(wpflybox_start); ?>" size="4" />
 	(ex: 20px or 10%, must contain either 'px' or '%')
         </td></tr>
