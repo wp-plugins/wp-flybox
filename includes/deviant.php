@@ -91,18 +91,19 @@ if ($ratio>1)
 function wpfb_show_deviant($options, $data)
 {
 $k=0;
-echo '<div style="width:100%;margin:0px;padding:0px;"><center>'; 
+echo '<div style="width:'.get_option(wpflybox_deviant_frame_width).'px;margin:0px;padding:0px;"><center>'; 
 while ($k<$options['limit'])
   {
   
   $j=0;
+  
   while ($j<$options['columns'])
     {
     echo '<a href="'.$data[$k][link].'" target="_blank" style="border:none;"><img style="vertical-align:middle;padding:1px;border:none;" border="0" src="'.$data[$k][thumbnail].'" height="'.$data[$k][height].'" width="'.$data[$k][width].'" title="'.$data[$k][title].'"></a>';
     $k=$k+1;
     $j=$j+1;
     }
-  echo '<br />';  
+  echo '</br>';  
   }
 echo '</center></div>';
 }
@@ -120,7 +121,7 @@ if (get_option(wpflybox_side)=="right")
     {
     echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/deviant.png" height="30"></a>';
     } else {
-    echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -909px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteRight.png\');padding:0px;"> </div></a>';
+    echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:33px; height:101px; background-position:0px -909px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteRight.png\');padding:0px;"> </div></a>';
     }
     echo '</th>';
   }
@@ -139,7 +140,7 @@ if (get_option(wpflybox_side)=="left")
     {
     echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/deviant.png" height="30"></a>';
     } else {
-    echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:32px; height:101px; background-position:0px -909px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteLeft.png\');padding:0px;"> </div></a>';
+    echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:33px; height:101px; background-position:0px -909px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteLeft.png\');padding:0px;"> </div></a>';
     }
     echo '</th>';
   }
