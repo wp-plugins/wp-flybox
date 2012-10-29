@@ -140,7 +140,7 @@ if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybo
       $wpflybox_deviant_columns = $_POST['wpflybox_deviant_columns'];
 			update_option('wpflybox_deviant_columns', $wpflybox_deviant_columns);                                                                        
       $wpflybox_deviant_frame_width = $_POST['wpflybox_deviant_frame_width'];
-			update_option('wpflybox_deviant_frame_width', $wpflybox_deviant_frame_width); 
+			if($wpflybox_deviant_frame_width>0){update_option('wpflybox_deviant_frame_width', $wpflybox_deviant_frame_width);} 
       $wpflybox_deviant_frame_height = $_POST['wpflybox_deviant_frame_height'];
 			update_option('wpflybox_deviant_frame_height', $wpflybox_deviant_frame_height); 			
       $wpflybox_instagram_id = $_POST['wpflybox_instagram_id'];
@@ -598,7 +598,7 @@ if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybo
         <tr><td colspan="2"><h4>LinkedIn:</h4></td></tr>
         <tr><td style="text-align:right;">LinkedIn Member URL or Company ID:</td><td>
         <input type="text" name="wpflybox_linkedin" value="<?php echo get_option(wpflybox_linkedin); ?>" size="70" />
-        <br>To find your linked in public profile URL, sign into Linked In. Click Profile at the top and choose view profile. At the bottom of your info is your public profile URL.
+        <br>To find your LinkedIn public profile URL, sign into LinkedIn. Click Profile at the top and choose view profile. At the bottom of your info is your public profile URL.
         <br>To find your company ID look in the address bar after "http://www.linkedin.com/company/"will be your Company ID.
         </td></tr>
         <tr><td style="text-align:right;">Member or Company Profile:</td><td>
@@ -661,7 +661,7 @@ if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybo
         </td></tr>
         
         <tr><td style="text-align:right;">Max Height Of Each Image:</td><td>
-        <input type="text" name="wpflybox_deviant_max_height" value="<?php echo get_option(wpflybox_deviant_max_height); ?>" size="3" />px (Maximum width you want of each image)(0-150)
+        <input type="text" name="wpflybox_deviant_max_height" value="<?php echo get_option(wpflybox_deviant_max_height); ?>" size="3" />px (Maximum width you want of each image)(0-150) Leave blank for auto
         </td></tr>
         
         <tr><td style="text-align:right;">Number Of Columns:</td><td>

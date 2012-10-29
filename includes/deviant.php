@@ -40,7 +40,7 @@ if (!$you)
 
 $xml = parseRSS("http://backend.deviantart.com/rss.xml?type=deviation&q=by%3A".$options['username']."+sort%3Atime+meta%3Aall");
 
-
+if($xml['RSS']['CHANNEL']['ITEM']){ 
 $k=0;
 foreach($xml['RSS']['CHANNEL']['ITEM'] as $item) if ($k<$options['limit']){
 $picture[$k] = parseRSS("http://backend.deviantart.com/oembed?url=".$item['LINK']."&format=xml");
@@ -79,7 +79,8 @@ if ($ratio>1)
   $k=$k+1;
 	
 }
-}
+}//end for
+}//end if
   set_transient($key, $you, 60*60*3);
   update_option($key, $you);
   return $you;
