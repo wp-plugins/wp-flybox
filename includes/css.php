@@ -236,38 +236,36 @@ echo '</style>';
 if ($wpflybox_isie>0)
   {
   if (get_option(wpflybox_jquery)=="on" && jQuery !== undefined)
-    {
-    ?>
-    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' type='text/javascript'></script>
-    <?php 
+    {    
+    echo '<script src=\''.WP_PLUGIN_URL.'/wp-flybox/static/jquery-1.8.2.min.js\' type=\'text/javascript\'></script>';    
     }
-
+if ($wpflybox_side=='right'){$wpflybox_extramargin=32;}else{$wpflybox_extramargin=32;}
 echo '<script type=\'text/javascript\'>'; 
 echo 'jQuery(document).ready (
 function(){jQuery("#wpfb-facebook").hover(function(){ jQuery(this).stop(true,false).animate({'.$wpflybox_side.':  '.($wpflybox_sidemargin-32).'}, 500); },
-function(){ jQuery("#wpfb-facebook").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[1]+$wpflybox_sideextravalue).'}, 500); });       
+function(){ jQuery("#wpfb-facebook").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[1]+$wpflybox_sideextravalue+$wpflybox_extramargin).'}, 500); });       
 jQuery("#wpfb-twitter").hover(function(){ jQuery(this).stop(true,false).animate({'.$wpflybox_side.':  '.($wpflybox_sidemargin-32).'}, 500); },
-function(){ jQuery("#wpfb-twitter").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[2]+$wpflybox_sideextravalue).'}, 500); });     
+function(){ jQuery("#wpfb-twitter").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[2]+$wpflybox_sideextravalue+$wpflybox_extramargin).'}, 500); });     
 jQuery("#wpfb-googleplus").hover(function(){ jQuery(this).stop(true,false).animate({'.$wpflybox_side.':  '.($wpflybox_sidemargin-32).'}, 500); },
-function(){ jQuery("#wpfb-googleplus").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[3]+$wpflybox_sideextravalue).'}, 500); });    
+function(){ jQuery("#wpfb-googleplus").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[3]+$wpflybox_sideextravalue+$wpflybox_extramargin).'}, 500); });    
 jQuery("#wpfb-youtube").hover(function(){ jQuery(this).stop(true,false).animate({'.$wpflybox_side.':  '.($wpflybox_sidemargin-32).'}, 500); },
-function(){ jQuery("#wpfb-youtube").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[4]+$wpflybox_sideextravalue).'}, 500); });  
+function(){ jQuery("#wpfb-youtube").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[4]+$wpflybox_sideextravalue+$wpflybox_extramargin).'}, 500); });  
 jQuery("#wpfb-subscribe").hover(function(){ jQuery(this).stop(true,false).animate({'.$wpflybox_side.':  '.($wpflybox_sidemargin-32).'}, 500); },
-function(){ jQuery("#wpfb-subscribe").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[5]+$wpflybox_sideextravalue).'}, 500); });
+function(){ jQuery("#wpfb-subscribe").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[5]+$wpflybox_sideextravalue+$wpflybox_extramargin).'}, 500); });
 jQuery("#wpfb-pinterest").hover(function(){ jQuery(this).stop(true,false).animate({'.$wpflybox_side.':  '.($wpflybox_sidemargin-32).'}, 500); },
-function(){ jQuery("#wpfb-pinterest").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[6]+$wpflybox_sideextravalue).'}, 500); }); 
+function(){ jQuery("#wpfb-pinterest").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[6]+$wpflybox_sideextravalue+$wpflybox_extramargin).'}, 500); }); 
 jQuery("#wpfb-linkedin").hover(function(){ jQuery(this).stop(true,false).animate({'.$wpflybox_side.':  '.($wpflybox_sidemargin-32).'}, 500); },
-function(){ jQuery("#wpfb-linkedin").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[7]+$wpflybox_sideextravalue).'}, 500); }); 
+function(){ jQuery("#wpfb-linkedin").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[7]+$wpflybox_sideextravalue+$wpflybox_extramargin).'}, 500); }); 
 jQuery("#wpfb-contact").hover(function(){ jQuery(this).stop(true,false).animate({'.$wpflybox_side.':  '.($wpflybox_sidemargin-32).'}, 500); },
-function(){ jQuery("#wpfb-contact").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[8]+$wpflybox_sideextravalue).'}, 500); }); 
+function(){ jQuery("#wpfb-contact").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[8]+$wpflybox_sideextravalue+$wpflybox_extramargin).'}, 500); }); 
 jQuery("#wpfb-flickr").hover(function(){ jQuery(this).stop(true,false).animate({'.$wpflybox_side.':  '.($wpflybox_sidemargin-32).'}, 500); },
-function(){ jQuery("#wpfb-flickr").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[9]+$wpflybox_sidemargin+$wpflybox_sideextravalue).'}, 500); });   
+function(){ jQuery("#wpfb-flickr").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[9]+$wpflybox_sideextravalue+$wpflybox_extramargin).'}, 500); });   
 jQuery("#wpfb-deviant").hover(function(){ jQuery(this).stop(true,false).animate({'.$wpflybox_side.': '.($wpflybox_sidemargin-32).'}, 500); },
-function(){ jQuery("#wpfb-deviant").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[10]+$wpflybox_sideextravalue).'}, 500); });  
+function(){ jQuery("#wpfb-deviant").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[10]+$wpflybox_sideextravalue+$wpflybox_extramargin).'}, 500); });  
 jQuery("#wpfb-instagram").hover(function(){ jQuery(this).stop(true,false).animate({'.$wpflybox_side.':  '.($wpflybox_sidemargin-32).'}, 500); },
-function(){ jQuery("#wpfb-instagram").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[11]+$wpflybox_sideextravalue).'}, 500); });  
+function(){ jQuery("#wpfb-instagram").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[11]+$wpflybox_sideextravalue+$wpflybox_extramargin).'}, 500); });  
 jQuery("#wpfb-vimeo").hover(function(){ jQuery(this).stop(true,false).animate({'.$wpflybox_side.':  '.($wpflybox_sidemargin-32).'}, 500); },
-function(){ jQuery("#wpfb-vimeo").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[12]+$wpflybox_sideextravalue).'}, 500); }); 
+function(){ jQuery("#wpfb-vimeo").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[12]+$wpflybox_sideextravalue+$wpflybox_extramargin).'}, 500); }); 
 });
 </script>';
   }   

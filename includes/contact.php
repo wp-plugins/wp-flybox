@@ -17,7 +17,6 @@ if (get_option(wpflybox_side)=="right")
     echo '</th>';
   }
 echo '<th style="background-color:#fff; border: 2px solid #2653a1; width:280px; overflow:hidden;padding:0px;">';
-      echo '<script src="//platform.linkedin.com/in.js" type="text/javascript"></script>';
       echo '<center><b>Contact '; 
       if (get_option(wpflybox_contactwho) == "us"){echo 'Us';} else {echo 'Me';}
       echo ':</b><br><form style="padding:5px;" action="'.WP_PLUGIN_URL.'/wp-flybox/contact.php";" method="post" target="popupwindow" onsubmit="window.open(\''.WP_PLUGIN_URL.'/wp-flybox/contact.php\', \'popupwindow\', \'scrollbars=no,width=300,height=300\');return true">
