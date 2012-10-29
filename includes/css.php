@@ -146,7 +146,6 @@ if (get_option(wpflybox_edge) == 'true')
 
 $wpflybox_sideextravalue=4;
 if ($wpflybox_side=='left'){$wpflybox_sideextravalue=36;}      
-
 if ($key=array_search('facebook',$wpflybox_tabs))
     {
     echo 'div.wpfb-facebook {width:'.($wpflybox_widths[1]+68).'px;top:'.$wpflybox_pos[$key].';'.$wpflybox_side.':-'.($wpflybox_widths[1]+36).'px;position:fixed;z-index:999999;text-align:right;direction:ltr;}';
@@ -239,7 +238,7 @@ if ($wpflybox_isie>0)
     {    
     echo '<script src=\''.WP_PLUGIN_URL.'/wp-flybox/static/jquery-1.8.2.min.js\' type=\'text/javascript\'></script>';    
     }
-if ($wpflybox_side=='right'){$wpflybox_extramargin=32;}else{$wpflybox_extramargin=32;}
+if ($wpflybox_side=='right'){$wpflybox_extramargin=32;}else{$wpflybox_extramargin=0;}
 echo '<script type=\'text/javascript\'>'; 
 echo 'jQuery(document).ready (
 function(){jQuery("#wpfb-facebook").hover(function(){ jQuery(this).stop(true,false).animate({'.$wpflybox_side.':  '.($wpflybox_sidemargin-32).'}, 500); },

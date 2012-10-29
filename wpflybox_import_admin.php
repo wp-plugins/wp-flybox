@@ -186,7 +186,7 @@ if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybo
 
 <form name="oscimp_form" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
 				<input type="hidden" name="wpflybox_hidden" value="Y">
-<div class="postbox-container" style="width:74%">
+<div class="postbox-container" style="width:74%; float:left">
 <div class="metabox-holder">
 <div class="meta-box-sortables ui-sortable">
 		
@@ -721,7 +721,11 @@ if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybo
         <option value="true" <?php if(get_option(wpflybox_mobile)=="true"){echo 'selected';} ?>>Yes</option>
         <option value="false" <?php if(get_option(wpflybox_mobile)=="false"){echo 'selected';} ?>>No</option>
         </select>
-        </td></tr>   
+        </td></tr>
+        
+        <tr><td colspan="2"><h4>Mobile Support:</h4></td></tr>
+        <tr><td colspan="2">Note: This plugin is automatically disabled for Internet Explorer 7.0 and below because this plugin uses advanced sliding css not supported in earlier versions of IE.
+        </td></tr>      
         
         
 		</table>
@@ -735,7 +739,7 @@ if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybo
 </div>
 </div>
 
-<div class="postbox-container" style="width: 25%; float:right; ">
+<div class="postbox-container" style="width: 25%; float:right;position:absolute;right:0px;">
 <div class="metabox-holder">
 <div class="meta-box-sortables ui-sortable">
 <div id="wpflybox_general" class="postbox" >
