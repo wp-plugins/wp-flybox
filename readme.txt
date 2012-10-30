@@ -58,6 +58,7 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 = 3.0.1 =
 * Added mobile support and ipad options.
 * Vimeo fixes.
+* W3C valid now.
 
 = 3.0 =
 * Completely rewrote code.
@@ -147,6 +148,7 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 = 3.0.1 =
 * Added mobile support and ipad options.
 * Vimeo fixes.
+* W3C valid now.
 
 = 3.0 =
 * Completely rewrote code.

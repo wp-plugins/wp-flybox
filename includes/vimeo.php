@@ -36,20 +36,21 @@ function wpfb_get_vimeo_data($options)
     
     if ( $options['total'] > 0)
       {
-      $videosget = wp_remote_retrieve_body(wp_remote_get("http://vimeo.com/api/v2/".$options[username]."/videos.json"));
+      $videosget = wp_remote_retrieve_body(wp_remote_get("http://vimeo.com/api/v2/".$options['username']."/videos.json"));
       if (strpos($videosget, 'not found')>0)
         {
         return get_option($key);
         }
-      $videojson=json_decode($videosget); 
-       
+      $videojson=json_decode($videosget);  
       $videos = array();            
       for($i=0; $i <= $options['total']; $i++)
         {
+        if ($videojson[$i]->id){
         $videos[$i]['id'] 		= $videojson[$i]->id;
         $videos[$i]['title'] 		= $videojson[$i]->title;
         $videos[$i]['url'] 		= $videojson[$i]->url;
         $videos[$i]['thumbnail_small'] 		= $videojson[$i]->thumbnail_small;
+        } else {$i=100;}
         }
       $you['videos'] = $videos;
       
@@ -66,10 +67,10 @@ function wpfb_show_custom_vimeo($options, $you)
   ?>
   
 <div style="width:210px;padding:5px 5px 5px 5px; font-family:\'Lucida grande\',tahoma,verdana,arial,sans-serif;">
-	<div style="color:#555;color:#555; height:55px; position:relative;">
+	<div style="color:#555;color:#555; height:55px; position:relative;padding-bottom:8px;">
 		<div style="position:absolute;top:5px;left:5px;">
 			<a target="_blank" href="<?php echo $you['profile_url'];?>">
-				<img src="<?php echo $you['portrait_medium'];?>" width="50" height="50">
+				<img src="<?php echo $you['portrait_medium'];?>" width="50" height="50" alt="vimeo profile pic">
 			</a>
 		</div>
     <div style="position:absolute;top:5px;left:59px;font-size:14px;line-height:14px;font-weight:bold;">
@@ -89,13 +90,14 @@ function wpfb_show_custom_vimeo($options, $you)
 		{ ?>	
   <div style="padding:0px;border-top:1px solid #3cadc9;">
 		<?php for($i=0; $i < $options['total']; $i++)	:?>
-		
+		  <?php if ($you['videos'][$i]['url']) { ?>
 			<span class="wpfb_vimeo_vids" style="line-height:1;padding:5px 2px 5px 2px;width:48px;height:67px;float:left;text-align:center;overflow:hidden;font-size:10px;">
 				<a target="_blank" href="<?php echo $you['videos'][$i]['url'];?>" style="color:gray" rel="nofollow">	
-					<img src="<?php echo $you['videos'][$i]['thumbnail_small'];?>" width="48" height="48">
+					<img src="<?php echo $you['videos'][$i]['thumbnail_small'];?>" width="48" height="48" alt="vimeo video">
 					<span style="font-family:Arial;font-size:10px;"><?php echo substr($you['videos'][$i]['title'], 0, 18);?></span>
 				</a>		
 			</span>
+		<?php } else {$i=100;} ?>	
 		<? endfor;?>
 	<br style="clear:both">
 	</div>
@@ -112,10 +114,10 @@ echo '<div class="wpfb-vimeo" id="wpfb-vimeo">
             <tr style="background:transparent">';
 if (get_option(wpflybox_side)=="right")
   {
-  echo '<th valign="top" >';
+  echo '<th style="vertical-align:top">';
   if (get_option(wpflybox_usecustombutton) == "true")
     {
-    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/vimeo.png" height="30"></a>';
+    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/vimeo.png" height="30" alt="V"></a>';
     } else {
     echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:33px; height:101px; background-position:0px -1212px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteRight.png\');padding:0px;"> </div></a>';
     }
@@ -131,10 +133,10 @@ if($you)
 echo '</th>';
 if (get_option(wpflybox_side)=="left")
   {
-  echo '<th valign="top" >';
+  echo '<th style="vertical-align:top">';
   if (get_option(wpflybox_usecustombutton) == "true")
     {
-    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/vimeo.png" height="30"></a>';
+    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/vimeo.png" height="30" alt="V"></a>';
     } else {
     echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:33px; height:101px; background-position:0px -1212px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteLeft.png\');padding:0px;"> </div></a>';
     }

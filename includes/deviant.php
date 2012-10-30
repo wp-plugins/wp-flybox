@@ -92,7 +92,7 @@ if ($ratio>1)
 function wpfb_show_deviant($options, $data)
 {
 $k=0;
-echo '<div style="width:'.get_option(wpflybox_deviant_frame_width).'px;margin:0px;padding:0px;"><center>'; 
+echo '<div style="width:'.get_option(wpflybox_deviant_frame_width).'px;margin:0px;padding:0px;text-align:center;">'; 
 while ($k<$options['limit'])
   {
   
@@ -100,13 +100,13 @@ while ($k<$options['limit'])
   
   while ($j<$options['columns'])
     {
-    echo '<a href="'.$data[$k][link].'" target="_blank" style="border:none;"><img style="vertical-align:middle;padding:1px;border:none;" border="0" src="'.$data[$k][thumbnail].'" height="'.$data[$k][height].'" width="'.$data[$k][width].'" title="'.$data[$k][title].'"></a>';
+    echo '<a href="'.$data[$k][link].'" target="_blank" style="border:none;"><img style="vertical-align:middle;padding:1px;border:none;" src="'.$data[$k][thumbnail].'" height="'.$data[$k][height].'" width="'.$data[$k][width].'" title="'.$data[$k][title].'" alt="'.$data[$k][title].'"></a>';
     $k=$k+1;
     $j=$j+1;
     }
-  echo '</br>';  
+  echo '<br />';  
   }
-echo '</center></div>';
+echo '</div>';
 }
 
 $you = wpfb_get_deviant_data($deviantoptions);
@@ -117,10 +117,10 @@ echo '<div class="wpfb-deviant" id="wpfb-deviant">
             <tr style="background:transparent">';
 if (get_option(wpflybox_side)=="right")
   {
-  echo '<th valign="top" >';
+  echo '<th style="vertical-align:top">';
   if (get_option(wpflybox_usecustombutton) == "true")
     {
-    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/deviant.png" height="30"></a>';
+    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/deviant.png" height="30" alt="D"></a>';
     } else {
     echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:33px; height:101px; background-position:0px -909px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteRight.png\');padding:0px;"> </div></a>';
     }
@@ -136,10 +136,10 @@ if (get_option(wpflybox_side)=="right")
       echo '</th>';
 if (get_option(wpflybox_side)=="left")
   {
-  echo '<th valign="top" >';
+  echo '<th style="vertical-align:top">';
   if (get_option(wpflybox_usecustombutton) == "true")
     {
-    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/deviant.png" height="30"></a>';
+    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/deviant.png" height="30" alt="D"></a>';
     } else {
     echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:33px; height:101px; background-position:0px -909px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteLeft.png\');padding:0px;"> </div></a>';
     }

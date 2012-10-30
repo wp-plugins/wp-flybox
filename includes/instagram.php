@@ -27,11 +27,11 @@ if ($options[header]=='true')
     }
 
   if ($you['username']){  
-  echo '<table border="0" cellpadding="2" class="wpflyboxtable">';
-  echo '<tr style="padding:3px;"><td><img src="'.$you[profile_picture].'" height="40" width="40" title="'.$you[username].'"></td>';
-  echo '<td align="center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[mediacount].'</div><div style="font-size:10px;">&nbsp;Photos</div></td>';
-  echo '<td align="center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[followedby].'</div><div style="font-size:10px;">&nbsp;Followers</div></td>';
-  echo '<td align="center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[follows].'</div><div style="font-size:10px;">&nbsp;Following</div></td></tr>';
+  echo '<table style="padding:2px;border:none;" class="wpflyboxtable">';
+  echo '<tr style="padding:3px;"><td><img src="'.$you[profile_picture].'" height="40" width="40" title="'.$you[username].'" alt="'.$you[username].'"></td>';
+  echo '<td style="text-align:center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[mediacount].'</div><div style="font-size:10px;">&nbsp;Photos</div></td>';
+  echo '<td style="text-align:center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[followedby].'</div><div style="font-size:10px;">&nbsp;Followers</div></td>';
+  echo '<td style="text-align:center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[follows].'</div><div style="font-size:10px;">&nbsp;Following</div></td></tr>';
   echo '</table>';
   } else {echo 'Invalid username or instagram servers not found';}
 }
@@ -61,7 +61,7 @@ if (!$you['media'] || $wpfb_cached=='false')
   {
     if ($you['media'][$m][thumburl])
     {
-    echo '<a href="'.$media[$m][link].'" target="_blank"><img src="'.$media[$m][thumburl].'" height="50" width="50" style="padding:3px;" title="'.$media[$m][text].'"></a>';
+    echo '<a href="'.$media[$m][link].'" target="_blank"><img src="'.$media[$m][thumburl].'" height="50" width="50" style="padding:3px;" alt="'.$media[$m][text].'" title="'.$media[$m][text].'"></a>';
     }else{$m=100;}
   }
   } else {echo '<br>Invalid username, no pictures on account or instagram servers not found';}
@@ -84,10 +84,10 @@ echo '<div class="wpfb-instagram" id="wpfb-instagram">
             <tr style="background:transparent">';
 if (get_option(wpflybox_side)=="right")
   {
-  echo '<th valign="top" >';
+  echo '<th style="vertical-align:top">';
   if (get_option(wpflybox_usecustombutton) == "true")
     {
-    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/instagram.png" height="30"></a>';
+    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/instagram.png" height="30" alt="I"></a>';
     } else {
     echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:33px; height:101px; background-position:0px -1010px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteRight.png\');padding:0px;"> </div></a>';
     }
@@ -98,10 +98,10 @@ if (get_option(wpflybox_side)=="right")
       echo '</th>';
 if (get_option(wpflybox_side)=="left")
   {
-  echo '<th valign="top" >';
+  echo '<th style="vertical-align:top">';
   if (get_option(wpflybox_usecustombutton) == "true")
     {
-    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/instagram.png" height="30"></a>';
+    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/instagram.png" height="30" alt="I"></a>';
     } else {
     echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:33px; height:101px; background-position:0px -1010px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteLeft.png\');padding:0px;"> </div></a>';
     }

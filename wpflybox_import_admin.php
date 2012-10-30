@@ -49,6 +49,8 @@ if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpfl
 if (get_option(wpflybox_vimeo_username)==""){$wpflybox_vimeo_username="nbcnews";update_option('wpflybox_vimeo_username', $wpflybox_vimeo_username);}
 if (get_option(wpflybox_vimeo_total)==""){$wpflybox_vimeo_total="8";update_option('wpflybox_vimeo_total', $wpflybox_vimeo_total);}
 if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybox_edge', $wpflybox_edge);}
+if (get_option(wpflybox_ipad)==""){$wpflybox_ipad="false";update_option('wpflybox_ipad', $wpflybox_ipad);}
+
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
 			//Form data sent
@@ -167,7 +169,10 @@ if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybo
 			update_option('wpflybox_vimeo_total', $wpflybox_vimeo_total);      			
       $wpflybox_edge = $_POST['wpflybox_edge'];
 			update_option('wpflybox_edge', $wpflybox_edge); 
-      			                                                                                                  
+      $wpflybox_ipad = $_POST['wpflybox_ipad'];                            
+			update_option('wpflybox_ipad', $wpflybox_ipad); 			
+
+            			                                                                                                  
 			?>
 			<div class="updated"><p><strong><?php _e('Options saved.' ); ?></strong></p></div>
 			<?php
@@ -728,7 +733,15 @@ if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybo
         </select>
         </td></tr>
         
-        <tr><td colspan="2"><h4>Mobile Support:</h4></td></tr>
+        <tr><td colspan="2"><h4>iPad Support:</h4></td></tr>
+        <tr><td style="text-align:right;"><?php _e("Enable for iPads: " ); ?></td><td>
+        <select name="wpflybox_ipad">
+        <option value="true" <?php if(get_option(wpflybox_ipad)=="true"){echo 'selected';} ?>>Yes</option>
+        <option value="false" <?php if(get_option(wpflybox_ipad)=="false"){echo 'selected';} ?>>No</option>
+        </select>
+        </td></tr>
+        
+       
         <tr><td colspan="2">Note: This plugin is automatically disabled for Internet Explorer 7.0 and below because this plugin uses advanced sliding css not supported in earlier versions of IE.
         </td></tr>      
         

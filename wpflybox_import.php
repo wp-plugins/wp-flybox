@@ -29,8 +29,10 @@ if (preg_match('/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone|andro
  
 if ((strpos(strtolower($_SERVER['HTTP_ACCEPT']),'application/vnd.wap.xhtml+xml') > 0) or ((isset($_SERVER['HTTP_X_WAP_PROFILE']) or isset($_SERVER['HTTP_PROFILE'])))) {
     $mobile_browser++;
-}    
- 
+}
+    
+$isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
+
 $mobile_ua = strtolower(substr($_SERVER['HTTP_USER_AGENT'], 0, 4));
 $mobile_agents = array(
     'w3c ','acs-','alav','alca','amoi','audi','avan','benq','bird','blac',
@@ -55,9 +57,11 @@ if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),'windows') > 0) {
     $mobile_browser = 0;
 }
  
-if ($mobile_browser > 0 && $wpflybox_mobile=="false") {
-   // do nothing
-} else {
+if ($mobile_browser > 0 && get_option(wpflybox_mobile)=="false") {
+// do nothing
+} else if ($isiPad && get_option(wpflybox_ipad) == "false"){
+//do nothing
+}  else {
 
 if (get_option(wpflybox_side) !== "none"){
 include 'includes/css.php';
