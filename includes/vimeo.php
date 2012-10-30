@@ -69,7 +69,7 @@ function wpfb_show_custom_vimeo($options, $you)
 	<div style="color:#555;color:#555; height:55px; position:relative;">
 		<div style="position:absolute;top:5px;left:5px;">
 			<a target="_blank" href="<?php echo $you['profile_url'];?>">
-				<img src="<?php echo $you['portrait_medium'];?>" width="50" height="50">
+				<img src="<?php echo $you['portrait_medium'];?>" width="50" height="50" alt="vimeo profile pic">
 			</a>
 		</div>
     <div style="position:absolute;top:5px;left:59px;font-size:14px;line-height:14px;font-weight:bold;">
@@ -92,7 +92,7 @@ function wpfb_show_custom_vimeo($options, $you)
 		
 			<span class="wpfb_vimeo_vids" style="line-height:1;padding:5px 2px 5px 2px;width:48px;height:67px;float:left;text-align:center;overflow:hidden;font-size:10px;">
 				<a target="_blank" href="<?php echo $you['videos'][$i]['url'];?>" style="color:gray" rel="nofollow">	
-					<img src="<?php echo $you['videos'][$i]['thumbnail_small'];?>" width="48" height="48">
+					<img src="<?php echo $you['videos'][$i]['thumbnail_small'];?>" width="48" height="48" alt="vimeo video">
 					<span style="font-family:Arial;font-size:10px;"><?php echo substr($you['videos'][$i]['title'], 0, 18);?></span>
 				</a>		
 			</span>
@@ -112,10 +112,10 @@ echo '<div class="wpfb-vimeo" id="wpfb-vimeo">
             <tr style="background:transparent">';
 if (get_option(wpflybox_side)=="right")
   {
-  echo '<th valign="top" >';
+  echo '<th style="vertical-align:top">';
   if (get_option(wpflybox_usecustombutton) == "true")
     {
-    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/vimeo.png" height="30"></a>';
+    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/vimeo.png" height="30" alt="V"></a>';
     } else {
     echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:33px; height:101px; background-position:0px -1212px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteRight.png\');padding:0px;"> </div></a>';
     }
@@ -131,10 +131,10 @@ if($you)
 echo '</th>';
 if (get_option(wpflybox_side)=="left")
   {
-  echo '<th valign="top" >';
+  echo '<th style="vertical-align:top">';
   if (get_option(wpflybox_usecustombutton) == "true")
     {
-    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/vimeo.png" height="30"></a>';
+    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/vimeo.png" height="30" alt="V"></a>';
     } else {
     echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:33px; height:101px; background-position:0px -1212px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteLeft.png\');padding:0px;"> </div></a>';
     }

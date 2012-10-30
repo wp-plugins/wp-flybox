@@ -65,7 +65,7 @@ function wpfb_show_custom_twitter($options, $you)
   	<div style="color:#555;border-bottom:1px solid #D8DFEA;color:#555; height:60px; position:relative;">
   		<div style="position:absolute;top:5px;left:5px;">
   			<a target="_blank" href="http://twitter.com/<?php echo $options['username'];?>">
-  				<img src="<?php echo $you['profile_image_url'];?>" width="44" height="44">
+  				<img src="<?php echo $you['profile_image_url'];?>" width="44" height="44" alt="twitter profile pic">
   			</a>
   		</div>
       <div style="position:absolute;top:5px;left:59px;font-size:14px;line-height:14px;font-weight:bold;">
@@ -96,7 +96,7 @@ function wpfb_show_custom_twitter($options, $you)
   			<?php if($options['link_followers'] == 'on' ): ?>
   				<a target="_blank" href="http://twitter.com/<?php echo $you['followers'][$i]['screen_name'];?>" style="color:gray" rel="nofollow">
   			<?php endif;?>	
-  					<img src="<?php echo $you['followers'][$i]['profile_image_url'];?>" width="48" height="48">
+  					<img src="<?php echo $you['followers'][$i]['profile_image_url'];?>" width="48" height="48" alt="twitter users">
   					<span style="font-family:Arial;font-size:10px;"><?php echo substr($you['followers'][$i]['screen_name'], 0, 8);?></span>
   			<?php if($options['link_followers'] == 'on' ): ?>		
   				</a>
@@ -125,10 +125,10 @@ echo '<div class="wpfb-twitter" id="wpfb-twitter">
             <tr style="background:transparent">';
 if (get_option(wpflybox_side)=="right")
   {
-  echo '<th valign="top" >';
+  echo '<th style="vertical-align:top">';
   if (get_option(wpflybox_usecustombutton) == "true")
     {
-    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/twitter.png" height="30"></a>';
+    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/twitter.png" height="30" alt="T"></a>';
     } else {
     echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:33px; height:101px; background-position:0px -606px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteRight.png\');padding:0px;"> </div></a>';
     }
@@ -144,10 +144,10 @@ if($you)
 echo '</th>';
 if (get_option(wpflybox_side)=="left")
   {
-  echo '<th valign="top" >';
+  echo '<th style="vertical-align:top">';
   if (get_option(wpflybox_usecustombutton) == "true")
     {
-    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/twitter.png" height="30"></a>';
+    echo '<a class="wpflybox_button" href="#"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/twitter.png" height="30" alt="T"></a>';
     } else {
     echo'<a href="#"><div style="margin-left:0px; margin-top:0px; width:33px; height:101px; background-position:0px -606px; background-image:url(\''.WP_PLUGIN_URL.'/wp-flybox/static/FlyBoxSpriteLeft.png\');padding:0px;"> </div></a>';
     }
