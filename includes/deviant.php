@@ -81,7 +81,7 @@ if ($ratio>1)
 }
 }//end for
 }//end if
-  set_transient($key, $you, 60*60*3);
+  set_transient($key, $you, 60*60*12);
   update_option($key, $you);
   return $you;
 } else {

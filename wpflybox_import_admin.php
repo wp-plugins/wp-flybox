@@ -156,11 +156,11 @@ if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybo
 			$wpflybox_usecustombutton = $_POST['wpflybox_usecustombutton'];
 			update_option('wpflybox_usecustombutton', $wpflybox_usecustombutton);
 			$wpflybox_bgtopgradient = $_POST['wpflybox_bgtopgradient'];
-			update_option('wpflybox_bgtopgradient', $wpflybox_bgtopgradient);	      			
+			if ($wpflybox_bgtopgradient !== ''){update_option('wpflybox_bgtopgradient', $wpflybox_bgtopgradient);}	      			
 			$wpflybox_bgbottomgradient = $_POST['wpflybox_bgbottomgradient'];
-			update_option('wpflybox_bgbottomgradient', $wpflybox_bgbottomgradient);
+			if($wpflybox_bgbottomgradient !== ''){update_option('wpflybox_bgbottomgradient', $wpflybox_bgbottomgradient);}
 			$wpflybox_bgborder = $_POST['wpflybox_bgborder'];
-			update_option('wpflybox_bgborder', $wpflybox_bgborder);
+			if($wpflybox_bgborder !== ''){update_option('wpflybox_bgborder', $wpflybox_bgborder);}
 			$wpflybox_vimeo_username = $_POST['wpflybox_vimeo_username'];
 			update_option('wpflybox_vimeo_username', $wpflybox_vimeo_username);      			    
       $wpflybox_vimeo_total = $_POST['wpflybox_vimeo_total'];
@@ -430,11 +430,13 @@ if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybo
          border-right: 1px solid #<?php echo $wpflybox_bgborder;?>;
          border-bottom: 1px solid #<?php echo $wpflybox_bgborder;?>;
          background: #000000;
-         background: -webkit-gradient(linear, right top, left top, from(#<?php echo $wpflybox_bgtopgradient;?>), to(#<?php echo $wpflybox_bgbottomgradient;?>));
-         background: -webkit-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
-         background: -moz-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
-         background: -ms-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
-         background: -o-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -webkit-gradient(linear, left top, right top, from(#<?php echo $wpflybox_bgtopgradient;?>), to(#<?php echo $wpflybox_bgbottomgradient;?>));
+         background: -webkit-linear-gradient(left, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -moz-linear-gradient(left, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -ms-linear-gradient(left, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -o-linear-gradient(left, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#<?php echo $wpflybox_bgtopgradient;?>', endColorstr='#<?php echo $wpflybox_bgbottomgradient;?>');
+         -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#<?php echo $wpflybox_bgtopgradient;?>', endColorstr='#<?php echo $wpflybox_bgbottomgradient;?>')";
          display:block;
          height:32px;
          width: 32px;
@@ -460,18 +462,21 @@ if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybo
          padding:0px;   
          border-bottom:0px hidden;
          background: #000000;
-         background: -webkit-gradient(linear, right top, left top, from(#<?php echo $wpflybox_bgtopgradient;?>), to(#<?php echo $wpflybox_bgbottomgradient;?>));
-         background: -webkit-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
-         background: -moz-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
-         background: -ms-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
-         background: -o-linear-gradient(right, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -webkit-gradient(linear, left top, right top, from(#<?php echo $wpflybox_bgtopgradient;?>), to(#<?php echo $wpflybox_bgbottomgradient;?>));
+         background: -webkit-linear-gradient(left, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -moz-linear-gradient(left, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -ms-linear-gradient(left, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -o-linear-gradient(left, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#<?php echo $wpflybox_bgtopgradient;?>', endColorstr='#<?php echo $wpflybox_bgbottomgradient;?>');
+         -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#<?php echo $wpflybox_bgtopgradient;?>', endColorstr='#<?php echo $wpflybox_bgbottomgradient;?>')";
          color: #000000;
          }
         </style>
         
         <a class="wpflybox_button" href="#"><img src="<?php echo plugins_url()."/wp-flybox/static/icons/"; ?>facebook.png" height="30"></a>
         <br><input type="submit" name="Submit" value="Apply & Refresh" />
-        </td></tr>     		  
+        </td></tr>
+        <tr><td colspan="2">Note: Internet Explorer 8 and below does not support rounded corners without using external files. For users on Internet Explorer 8 and below the corners will be square.</td></tr>     		  
 		   <?php
 		   }else{
        ?> 

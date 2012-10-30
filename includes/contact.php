@@ -17,7 +17,7 @@ if (get_option(wpflybox_side)=="right")
     echo '</th>';
   }
 echo '<th style="background-color:#fff; border: 2px solid #2653a1; width:280px; overflow:hidden;padding:0px;">';
-      echo '<center><b>Contact '; 
+      echo '<div style="text-align:center;padding-top:8px;"><b>Contact '; 
       if (get_option(wpflybox_contactwho) == "us"){echo 'Us';} else {echo 'Me';}
       echo ':</b><br><form style="padding:5px;" action="'.WP_PLUGIN_URL.'/wp-flybox/contact.php";" method="post" target="popupwindow" onsubmit="window.open(\''.WP_PLUGIN_URL.'/wp-flybox/contact.php\', \'popupwindow\', \'scrollbars=no,width=300,height=300\');return true">
         <p>Name: <input style="padding:1px;" gtbfieldid="10" class="enteryourname" name="name" id="name" type="text" /></p>
@@ -31,7 +31,7 @@ echo '<th style="background-color:#fff; border: 2px solid #2653a1; width:280px; 
         <p>Enter number from above:<br /><input style="padding:1px;" gtbfieldid="10" class="entercaptcha" name ="security_code" id="security_code" type="text" /></p>';
            }  
         echo '<input value="'.$wpflybox_contactencrypted.'" name="sendtoemail" id="sendtoemail" type="hidden" />      
-        <p><input style="padding:2px;" value="Submit" class="submitbutton" type="submit" /></p></form></center>';
+        <p><input style="padding:2px;" value="Submit" class="submitbutton" type="submit" /></p></form></div>';
       echo '</th>';
 if (get_option(wpflybox_side)=="left")
   {

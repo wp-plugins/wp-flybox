@@ -14,7 +14,7 @@ if (get_option(wpflybox_side)=="right")
     }
     echo '</th>';
   }
-echo '<th style="background-color:#fff; border: 2px solid #f81f22; width:254px; overflow:hidden;padding:0px;">';
+echo '<th style="background-color:#fff; border: 2px solid #f81f22; width:254px; overflow:hidden;padding:0px;line-height:0.5">';
       echo '<div align="center">
             <a href="http://pinterest.com/'.get_option(wpflybox_pinterest).'" target="_blank">
             <img src="'.WP_PLUGIN_URL.'/wp-flybox/static/pinterest-button.png" title="Pinterest" width="250" height="60" border="0"';

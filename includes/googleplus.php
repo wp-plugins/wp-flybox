@@ -14,7 +14,7 @@ if (get_option(wpflybox_side)=="right")
     }
     echo '</th>';
   }
-      echo '<th style="background-color:#fff; border: 2px solid #006ec9;width:325px;overflow:hidden;padding:0px;">';
+      echo '<th style="background-color:#fff; border: 2px solid #006ec9;width:325px;overflow:hidden;padding:0px;padding-top:12px;">';
       if (get_option(wpflybox_google_type)== 'profile')
             {
             echo '<iframe src="http://www.google.com/s2/u/0/widgets/ProfileCard?uid='.get_option(wpflybox_google).'" scrolling="no"></iframe>'; 
