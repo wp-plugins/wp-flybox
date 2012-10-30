@@ -1,4 +1,12 @@
 <?php
+//used for testing load times
+function microtime_float()
+{
+    list($usec, $sec) = explode(" ", microtime());
+    return ((float)$usec + (float)$sec);
+}
+$wpflybox_time_start = microtime_float(); 
+
 $wpflb_match=preg_match('/MSIE ([0-9].[0-9])/',$_SERVER['HTTP_USER_AGENT'],$reg);
 if($wpflb_match==0){$wpflybox_ieversion=-1;}else{$wpflybox_ieversion=floatval($reg[1]);}
 $wpflybox_count=get_option(wpflybox_count);
@@ -57,6 +65,7 @@ include 'includes/css.php';
 $i=1;
 while ($i <= $wpflybox_count && ($wpflybox_ieversion>7 || $wpflybox_ieversion<0))
     {
+    $wpflybox_time_start_sp[$i] = microtime_float();
     if ($wpflybox_tabs[$i]=="facebook")
         {
         include 'includes/facebook.php';
@@ -105,10 +114,19 @@ while ($i <= $wpflybox_count && ($wpflybox_ieversion>7 || $wpflybox_ieversion<0)
         {
         include 'includes/vimeo.php';        
         }                                            
-   
+    //load timing
+    $wpflybox_time_end_sp[$i] = microtime_float();
+    $wp_flybox_individual_time[$i]=round(($wpflybox_time_end_sp[$i] - $wpflybox_time_start_sp[$i])*1000,2); 
+    
     $i=$i+1;    
     }
 
 }//end mobile detection
 }//end check for none side
+
+//load time testing.
+$wpflybox_time_end = microtime_float();
+$wpflybox_time = ($wpflybox_time_end - $wpflybox_time_start)*1000;
+$wpflybox_time = round($wpflybox_time,2); 
+
 ?>

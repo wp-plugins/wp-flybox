@@ -14,7 +14,7 @@ if (get_option(wpflybox_side)=="right")
     }
     echo '</th>';
   }
-echo '<th style="background-color:#fff; border: 2px solid #3c95d9;width:292px;overflow:hidden;padding:0px;">';
+echo '<th style="background-color:#fff; border: 2px solid #3c95d9;width:292px;overflow:hidden;padding:0px;line-height:0.5">';
       echo '<iframe src="https://www.facebook.com/plugins/likebox.php?href='.get_option(wpflybox_facebook).'&amp;locale=en_GB&amp;width=292&amp;height='.get_option(wpflybox_facebook_height).'&amp;colorscheme='.get_option(wpflybox_facebook_color).'&amp;show_faces='.get_option(wpflybox_facebook_showfaces).'&amp;stream='.get_option(wpflybox_facebook_stream).'&amp;header='.get_option(wpflybox_facebook_header).'" scrolling="no" frameborder="0" width="200px" style="border:none; overflow:hidden; width:292px; height:'.get_option(wpflybox_facebook_height).'px;" allowTransparency="true"></iframe>';
       echo '</th>';
 if (get_option(wpflybox_side)=="left")

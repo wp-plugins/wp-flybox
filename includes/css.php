@@ -12,10 +12,10 @@ if ($wpflybox_side=='right')
   }
 
 echo '<style type="text/css">';
-echo 'table.wpflyboxtable, .wpflyboxtable tbody, .wpflyboxtable th, .wpflyboxtable tr, .wpflyboxtable td, table.wpflyboxtable th, table.wpflyboxtable tr:hover, table.wpflyboxtable tr{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;}';
+echo 'table.wpflyboxtable, .wpflyboxtable tbody, .wpflyboxtable th, .wpflyboxtable tr, .wpflyboxtable td, table.wpflyboxtable th, table.wpflyboxtable tr:hover, table.wpflyboxtable tr{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;vertical-align:top;display: table-cell;font-weight: normal;text-align: center;border-spacing:0px;line-height:1}';
 if (get_option(wpflybox_usecustombutton) == "true")
   {
-  echo '.wpflybox_button {
+  echo '.wpflybox_button img{
    border-top: 1px solid #'.$wpflybox_bgborder.';';
    if ($wpflybox_side=='left')
     {
@@ -23,13 +23,17 @@ if (get_option(wpflybox_usecustombutton) == "true")
     } else {
     echo 'border-left: 1px solid #'.$wpflybox_bgborder.';';
     }
-   echo 'border-bottom: 1px solid #'.$wpflybox_bgborder.';
+   echo 'direction:ltr;
+   border-bottom: 1px solid #'.$wpflybox_bgborder.';
    background: #000000;
    background: -webkit-gradient(linear, right top, left top, from(#'.$wpflybox_bgtopgradient.'), to(#'.$wpflybox_bgbottomgradient.'));
    background: -webkit-linear-gradient(right, #'.$wpflybox_bgtopgradient.', #'.$wpflybox_bgbottomgradient.');
    background: -moz-linear-gradient(right, #'.$wpflybox_bgtopgradient.', #'.$wpflybox_bgbottomgradient.');
    background: -ms-linear-gradient(right, #'.$wpflybox_bgtopgradient.', #'.$wpflybox_bgbottomgradient.');
    background: -o-linear-gradient(right, #'.$wpflybox_bgtopgradient.', #'.$wpflybox_bgbottomgradient.');
+   background: linear-gradient(to right, #'.$wpflybox_bgtopgradient.', #'.$wpflybox_bgbottomgradient.');
+   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=\'#'.$wpflybox_bgtopgradient.'\', endColorstr=\'#'.$wpflybox_bgbottomgradient.'\');
+   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=\'#'.$wpflybox_bgtopgradient.'\', endColorstr=\'#'.$wpflybox_bgbottomgradient.'\')"; 
    display:block;
    height:32px;
    width: 32px;
@@ -65,15 +69,26 @@ if (get_option(wpflybox_usecustombutton) == "true")
    echo '-webkit-border-radius: 9px 0px 0px 9px;
    -moz-border-radius: 9px 0px 0px 9px;
    border-radius: 9px 0px 0px 9px;';
-   }   
-   echo 'padding:0px;   
-   border-bottom:0px hidden;
+   } 
+     
+   echo '   border-top: 1px solid #'.$wpflybox_bgborder.';';
+   if ($wpflybox_side=='left')
+    {
+    echo 'border-right: 1px solid #'.$wpflybox_bgborder.';';
+    } else {
+    echo 'border-left: 1px solid #'.$wpflybox_bgborder.';';
+    }echo 'border-bottom: 1px solid #'.$wpflybox_bgborder.';
+   direction:ltr;
+   padding:0px;   
    background: #000000;
    background: -webkit-gradient(linear, right top, left top, from(#'.$wpflybox_bgtopgradient.'), to(#'.$wpflybox_bgbottomgradient.'));
    background: -webkit-linear-gradient(right, #'.$wpflybox_bgtopgradient.', #'.$wpflybox_bgbottomgradient.');
    background: -moz-linear-gradient(right, #'.$wpflybox_bgtopgradient.', #'.$wpflybox_bgbottomgradient.');
    background: -ms-linear-gradient(right, #'.$wpflybox_bgtopgradient.', #'.$wpflybox_bgbottomgradient.');
    background: -o-linear-gradient(right, #'.$wpflybox_bgtopgradient.', #'.$wpflybox_bgbottomgradient.');
+   background: linear-gradient(to right, #'.$wpflybox_bgtopgradient.', #'.$wpflybox_bgbottomgradient.');
+   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=\'#'.$wpflybox_bgtopgradient.'\', endColorstr=\'#'.$wpflybox_bgbottomgradient.'\');
+   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=\'#'.$wpflybox_bgtopgradient.'\', endColorstr=\'#'.$wpflybox_bgbottomgradient.'\')";   
    color: #000000;
    }';
   }
@@ -221,12 +236,13 @@ if ($key=array_search('instagram',$wpflybox_tabs))
     if (!$wpflybox_isie){echo 'div.wpfb-instagram:hover div.wpfb-instagram-transition {margin-left: '.$wpflybox_side_operator.($wpflybox_widths[11]+$wpflybox_sidemargin+$wpflybox_sideextravalue).'px;}';}          
     }
 if ($key=array_search('vimeo',$wpflybox_tabs))
-        {
-        echo 'div.wpfb-vimeo a img, img, a:hover, a:hover img {border: 0;padding: 0px}';         
-        echo 'div.wpfb-vimeo {width:'.($wpflybox_widths[12]+68).'px; top:'.$wpflybox_pos[$key].';'.$wpflybox_side.':-'.($wpflybox_widths[12]+36).'px;position:fixed;z-index:999999;direction:ltr;}';
-        echo 'div.wpfb-vimeo div.wpfb-vimeo-transition {width:'.($wpflybox_widths[12]+68).'px;'; if ($wpflybox_side=='left'){echo 'margin-left:32px;';} echo '-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
-        if (!$wpflybox_isie){echo 'div.wpfb-vimeo:hover div.wpfb-vimeo-transition {margin-left: '.$wpflybox_side_operator.($wpflybox_widths[12]+$wpflybox_sidemargin+$wpflybox_sideextravalue).'px;}';}          
-        }                                       
+    {
+    echo '.wpfb_vimeo_vids a img, .wpfb_vimeo_vids img, .wpfb_vimeo_vids a:hover, .wpfb_vimeo_vids a:hover img {border: 0;padding: 0px; text-decoration:none;}';         
+    echo 'div.wpfb-vimeo {width:'.($wpflybox_widths[12]+68).'px; top:'.$wpflybox_pos[$key].';'.$wpflybox_side.':-'.($wpflybox_widths[12]+36).'px;position:fixed;z-index:999999;direction:ltr;}';
+    echo 'div.wpfb-vimeo div.wpfb-vimeo-transition {width:'.($wpflybox_widths[12]+68).'px;'; if ($wpflybox_side=='left'){echo 'margin-left:32px;';} echo '-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
+    if (!$wpflybox_isie){echo 'div.wpfb-vimeo:hover div.wpfb-vimeo-transition {margin-left: '.$wpflybox_side_operator.($wpflybox_widths[12]+$wpflybox_sidemargin+$wpflybox_sideextravalue).'px;}';}          
+    }
+                                           
 echo '</style>';
  
  

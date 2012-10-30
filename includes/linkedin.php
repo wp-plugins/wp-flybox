@@ -14,7 +14,7 @@ if (get_option(wpflybox_side)=="right")
     }
     echo '</th>';
   }
-echo '<th style="background-color:#fff; border: 2px solid #65b2d0; width:364px; height:159px; overflow:hidden;padding:0px;">';
+echo '<th style="background-color:#fff; border: 2px solid #65b2d0; width:364px; height:159px; overflow:hidden;padding:0px;line-height:0.5">';
       echo '<script src="//platform.linkedin.com/in.js" type="text/javascript"></script>';
       if (get_option(wpflybox_linkedin_type)=="member")
         {

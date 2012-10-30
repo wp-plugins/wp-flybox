@@ -51,11 +51,11 @@ function wpfb_get_twitter_data($options)
   $you['followers'] = $followers;
   }
   }//end no error
-  set_transient($key, $you, 60*60*3);
+  set_transient($key, $you, 60*60*4);
   update_option($key, $you);    
   return $you;
   
-  }
+  }  
 
 function wpfb_show_custom_twitter($options, $you)
   {
@@ -73,7 +73,7 @@ function wpfb_show_custom_twitter($options, $you)
         <?php echo $options['username'];?><span style="font-weight:normal;font-size:10px"> on Twitter</span>
         </a>
       </div>
-      <div style="position:absolute;top:30px;left:60px;width:65px;height:20px;">
+      <div style="position:absolute;top:30px;left:60px;min-width:65px;height:20px;">
         <a href="https://twitter.com/<?php echo $options['username'];?>" class="twitter-follow-button" data-show-count="false" data-width="65px" data-show-screen-name="false">Follow @<?php echo $options['username'];?></a>
       </div> 
   	</div>
