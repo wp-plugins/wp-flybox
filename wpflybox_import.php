@@ -55,7 +55,7 @@ if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),'windows') > 0) {
     $mobile_browser = 0;
 }
  
-if ($mobile_browser > 0 && $wpflybox_mobile=="false") {
+if ($mobile_browser > 0 && get_option(wpflybox_mobile)=="false") {
    // do nothing
 } else {
 
