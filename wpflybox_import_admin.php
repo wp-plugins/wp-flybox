@@ -728,7 +728,7 @@ if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybo
         </select>
         </td></tr>
         
-        <tr><td colspan="2"><h4>Mobile Support:</h4></td></tr>
+        <tr><td colspan="2"><h4>Internet Explorer < 8:</h4></td></tr>
         <tr><td colspan="2">Note: This plugin is automatically disabled for Internet Explorer 7.0 and below because this plugin uses advanced sliding css not supported in earlier versions of IE.
         </td></tr>      
         
