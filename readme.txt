@@ -1,10 +1,10 @@
 === WP-FlyBox ===
 Contributors: cconoly
 Donate link: http://njarb.com/2012/08/wp-flybox/
-Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, css, custom, colors, sidebar, links
+Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, vimeo, deviantart, instagram, css, custom, colors, sidebar, links
 Requires at least: 2.8
 Tested up to: 3.4.2
-Stable tag: 2.1.3
+Stable tag: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Social floating fly out tabbed boxes. Can be located on either side of screen an
 
 == Description ==
 
-Social media floating fly out tabbed boxes. Can be located on either side of screen. FlyBoxes include Facebook, Twitter, Pinterest, LinkedIn, Google Plus, Youtube, Feedburner, Flickr, DeviantArt, Instagram, and Contact Me.
+Social media floating fly out tabbed boxes. Can be located on either side of screen. FlyBoxes include Facebook, Twitter, Pinterest, LinkedIn, Google Plus, Youtube, Feedburner, Flickr, DeviantArt, Vimeo, Instagram, and Contact Me.
 
 Tab colors can be customized to match any theme.
 
@@ -58,8 +58,9 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 = 3.0 =
 * Completely rewrote code.
 * Added vimeo tab.
-* Added caching on twitter, vimeo,deviant art and instagram tabs.
+* Added caching on twitter, vimeo, deviant art and instagram tabs.
 * Added option to have slide out boxes slideout to edge of screen or edge of tabs.
+* Added more support for IE browsers.
 
 = 2.1.3 =
 * Bug Fixes
@@ -142,8 +143,9 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 = 3.0 =
 * Completely rewrote code.
 * Added vimeo tab.
-* Added caching on twitter, vimeo,deviant art and instagram tabs.
+* Added caching on twitter, vimeo, deviant art and instagram tabs.
 * Added option to have slide out boxes slideout to edge of screen or edge of tabs.
+* Added more support for IE browsers.
 
 = 2.1.3 =
 * Bug Fixes
