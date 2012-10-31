@@ -5,7 +5,7 @@ Plugin URI: http://njarb.com/2012/08/wp-flybox/
 Description: Tabbed fly-out social boxes for Facebook, Twitter, Google Plus, Youtube, LinkedIn, Feedburner, Pinterest, Flickr, DeviantArt, Instagram and a Contact Me Tab.
 Version: 3.1
 Author: Cyle Conoly
-Author URI: http://www.facebook.com/cylec/
+Author URI: http://njarb.com
 License: GPL2
 
 Copyright 2012  Cyle Conoly  (email : cyle.conoly@gmail.com)
@@ -29,10 +29,23 @@ function wpflybox_admin() {
 }  
 
 function wpflybox_admin_actions() {  
-  add_options_page("WP-FlyBox", "WP-FlyBox", 1, "WP-FlyBox", "wpflybox_admin");          
+  add_options_page("WP-FlyBox", "WP-FlyBox", "manage_options", "WP-FlyBox", "wpflybox_admin");          
   }  
 add_action('admin_menu', 'wpflybox_admin_actions');
 
+/**
+ * Add settings link on plugin page
+ * @since 3.0
+ * @author c.bavota (http://bavotasan.com/2009/a-settings-link-for-your-wordpress-plugins/)
+ * from Beee @ http://berryplasman.com 
+ */
+function wpflybox_settings_link($links) { 
+	  $wpflybox_settings_link = '<a href="options-general.php?page=WP-FlyBox">Settings</a>'; 
+	  array_unshift($links, $wpflybox_settings_link); 
+	  return $links; 
+}
+$wpflybox_plugin = plugin_basename(__FILE__); 
+add_filter("plugin_action_links_$wpflybox_plugin", 'wpflybox_settings_link' );
 
 function wpflybox_init_head (){
 if (get_option(wpflybox_side) !== "none"){
