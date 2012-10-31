@@ -1,4 +1,7 @@
-<?php 
+<?php
+if ( !current_user_can( 'manage_options' ) )  {
+		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+	} 
 echo '<script type="text/javascript" src="'.plugins_url().'/wp-flybox/static/jscolor/jscolor.js"></script>';
 if (get_option(wpflybox_facebook_header)==""){$wpflybox_facebook_header="false";update_option('wpflybox_facebook_header', $wpflybox_facebook_header);}
 if (get_option(wpflybox_facebook_stream)==""){$wpflybox_facebook_stream="false";update_option('wpflybox_facebook_tream', $wpflybox_facebook_stream);}
