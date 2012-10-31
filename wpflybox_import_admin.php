@@ -172,6 +172,17 @@ if (get_option(wpflybox_ipad)==""){$wpflybox_ipad="false";update_option('wpflybo
       $wpflybox_ipad = $_POST['wpflybox_ipad'];                            
 			update_option('wpflybox_ipad', $wpflybox_ipad); 			
 
+
+if ($_POST['wpflybox_delete_cache'] == 'true')
+{
+delete_transient('wpfb_d_'.get_option(wpflybox_deviant_username));
+delete_transient('wpfb_t_'.get_option(wpflybox_twitter));
+delete_transient('wpfb_v_'.get_option(wpflybox_vimeo_username));
+delete_transient('wpfb_i_'.get_option(wpflybox_instagram_id));
+echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</strong></p></div>';
+
+}
+
             			                                                                                                  
 			?>
 			<div class="updated"><p><strong><?php _e('Options saved.' ); ?></strong></p></div>
@@ -716,12 +727,12 @@ if (get_option(wpflybox_ipad)==""){$wpflybox_ipad="false";update_option('wpflybo
 		</h3>
 		<table cellpadding="3" style="background-color:#f5f5f5;">
         <tr><td colspan="2"><h4>jquery:</h4></td></tr>
+        <tr><td colspan="2">Most websites will not need this on. Many themes and plugins use jquery and having it load multiple times can cause slow down and conflicts. If you are having problems with other plugins when this plugin is activated try turning this off. If there is a problem with another plugin, then chances are they are calling jquery also and you can turn this option off. Jquery is only used on Internet Explorer with this plugin. To see if you need jquery, turn this option off and open your page in Internet Explorer, if the tabs scroll out then you do not need jquery on because it is already being called in your theme or wordpress.</td></tr>
         <tr><td style="text-align:right;width:100px;">Load jquery:</td><td>
         <select name="wpflybox_jquery">
         <option value="on" <?php if(get_option(wpflybox_jquery)=="on"){echo 'selected';} ?>>On</option>        
         <option value="off" <?php if(get_option(wpflybox_jquery)=="off"){echo 'selected';} ?>>Off</option>
         </select>
-        <br />Most websites will not need this on. Many themes and plugins use jquery and having it load multiple times can cause slow down and conflicts. If you are having problems with other plugins when this plugin is activated try turning this off. If there is a problem with another plugin, then chances are they are calling jquery also and you can turn this option off. Jquery is only used on Internet Explorer with this plugin. To see if you need jquery, turn this option off and open your page in Internet Explorer, if the tabs scroll out then you do not need jquery on because it is already being called in your theme or wordpress.
         </td></tr>
         
         
@@ -741,8 +752,13 @@ if (get_option(wpflybox_ipad)==""){$wpflybox_ipad="false";update_option('wpflybo
         </select>
         </td></tr>
         
+        <tr><td colspan="2"><h4>Caching:</h4></td></tr>
+        <tr><td colspan="2">Since most of these tabs require data from another site like vimeo.com, twitter.com etc., it can take a while to load. All tabs that are not loaded asynchronously via javascript are cached on wordpress. The tabs that are cached are Twitter, Deviant Art, Instagram, and Vimeo. The first time you load your site it will take a bit longer if you use one of these cached tabs because it has to get the data elsewhere and save it, but after it is cached it will load instantly without requiring a connection to another site. The caches last about 6-12 hours. If  you change a setting and it did not update on your page, then try deleting the cache and force WP-Flybox to recache it with new settings.
+        <tr><td style="text-align:right;">Delete Caches?</td><td>
+        <input type="checkbox" name="wpflybox_delete_cache" value="true" />  Check to delete caches  <input type="submit" name="Submit" value="Apply" />
+        </td></tr>
        
-        <tr><td colspan="2">Note: This plugin is automatically disabled for Internet Explorer 7.0 and below because this plugin uses advanced sliding css not supported in earlier versions of IE.
+        <tr><td colspan="2"><br /><br />Note: This plugin is automatically disabled for Internet Explorer 7.0 and below because this plugin uses advanced sliding css not supported in earlier versions of IE.
         </td></tr>      
         
         

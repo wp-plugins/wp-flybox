@@ -88,10 +88,10 @@ function wpfb_show_custom_vimeo($options, $you)
 <?php 			
   if ( $options['total'] > 0)
 		{ ?>	
-  <div style="padding:0px;border-top:1px solid #3cadc9;">
+  <div style="padding:0px;border-top:1px solid #3cadc9;text-align:center;">
 		<?php for($i=0; $i < $options['total']; $i++)	:?>
 		  <?php if ($you['videos'][$i]['url']) { ?>
-			<span class="wpfb_vimeo_vids" style="line-height:1;padding:5px 2px 5px 2px;width:48px;height:67px;float:left;text-align:center;overflow:hidden;font-size:10px;">
+			<span class="wpfb_vimeo_vids" style="line-height:1;padding:5px 0px 5px 0px;width:48px;height:67px;display:inline-block;text-align:center;overflow:hidden;font-size:10px;">
 				<a target="_blank" href="<?php echo $you['videos'][$i]['url'];?>" style="color:gray" rel="nofollow">	
 					<img src="<?php echo $you['videos'][$i]['thumbnail_small'];?>" width="48" height="48" alt="vimeo video">
 					<span style="font-family:Arial;font-size:10px;"><?php echo substr($you['videos'][$i]['title'], 0, 18);?></span>

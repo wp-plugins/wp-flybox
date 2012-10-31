@@ -63,9 +63,6 @@ if ($mobile_browser > 0 && get_option(wpflybox_mobile)=="false") {
 //do nothing
 }  else {
 
-if (get_option(wpflybox_side) !== "none"){
-include 'includes/css.php';
-
 $i=1;
 while ($i <= $wpflybox_count && ($wpflybox_ieversion>7 || $wpflybox_ieversion<0))
     {
@@ -126,7 +123,7 @@ while ($i <= $wpflybox_count && ($wpflybox_ieversion>7 || $wpflybox_ieversion<0)
     }
 
 }//end mobile detection
-}//end check for none side
+
 
 //load time testing.
 $wpflybox_time_end = microtime_float();

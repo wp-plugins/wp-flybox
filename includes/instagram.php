@@ -35,9 +35,9 @@ if ($options[header]=='true')
   echo '</table>';
   } else {echo 'Invalid username or instagram servers not found';}
 }
-
 if (!$you['media'] || $wpfb_cached=='false')
   {
+  $wpfb_cached='false';
   $wpflybox_instagram_jsonfile = wp_remote_get('https://api.instagram.com/v1/users/'.$options[id].'/media/recent/?access_token='.$options[token]);
   if (is_wp_error($wpflybox_instagram_jsonfile))
 		  {
@@ -45,26 +45,26 @@ if (!$you['media'] || $wpfb_cached=='false')
 		  return false;
 		  } else {
       $json = json_decode(wp_remote_retrieve_body($wpflybox_instagram_jsonfile));
-      for($m=0; $m <= $options['max']; $m++)
+      for($m=1; $m <= $options['max']; $m++)
         {
-        $media[$m]['link'] = (string)$json->data[$m]->link;
-        $media[$m]['thumburl'] = (string)$json->data[$m]->images->thumbnail->url;
-        $media[$m]['text'] = (string)$json->data[$m]->caption->text;
+        $media[$m]['link'] = (string)$json->data[$m-1]->link;
+        $media[$m]['thumburl'] = (string)$json->data[$m-1]->images->thumbnail->url;
+        $media[$m]['text'] = (string)$json->data[$m-1]->caption->text;
         }
       $you['media']=$media;  
       }
   } else {
   $media = $you['media'];
   }
-  if ($you['media'][0][thumburl]){
-  for($m=0; $m <= $options['max']; $m++)
+  if ($media[0][thumburl] || $media[1][thumburl]){
+  for($m=1; $m <= $options['max']; $m++)
   {
-    if ($you['media'][$m][thumburl])
+    if ($media[$m][thumburl])
     {
     echo '<a href="'.$media[$m][link].'" target="_blank"><img src="'.$media[$m][thumburl].'" height="50" width="50" style="padding:3px;" alt="'.$media[$m][text].'" title="'.$media[$m][text].'"></a>';
-    }else{$m=100;}
+    }
   }
-  } else {echo '<br>Invalid username, no pictures on account or instagram servers not found';}
+  } else {echo '<br>Invalid username, no pictures on account, or instagram servers not found';}
   
 echo '</div>';
 
