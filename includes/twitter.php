@@ -42,8 +42,6 @@ function wpfb_get_twitter_data($options)
   {			
   $fans_ids = (string)implode( ',', array_slice($fans->ids, 0, $options['total']) );
   $fans = json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/users/lookup.json?user_id=$fans_ids")));
-  if ((string)$fans[0]->screen_name)
-  {
   $followers = array();
   $twmax=$options['total'];
   if  ($twcount<$twmax){$twmax=$twcount;}          
@@ -53,7 +51,6 @@ function wpfb_get_twitter_data($options)
         $followers[$i]['profile_image_url'] = (string)$fans[$i]->profile_image_url;
       }
   $you['followers'] = $followers;
-  }
   }
   }//end no error
   set_transient($key, $you, 60*60*4);
