@@ -1,4 +1,5 @@
 <?php
+echo '<div id="WP-Flybox at http://njarb.com/2012/08/wp-flybox/" style="display:none;visibility:hidden;"></div>';
 //used for testing load times
 function microtime_float()
 {
