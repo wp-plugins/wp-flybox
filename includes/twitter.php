@@ -37,13 +37,15 @@ function wpfb_get_twitter_data($options)
   			  $fans = json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/friends/ids.json?screen_name=$options[username]")));
   				
   			}
-  if (count($fans->ids) > 0)
+  $twcount=count($fans->ids);			
+  if ($twcount > 0 )
   {			
   $fans_ids = (string)implode( ',', array_slice($fans->ids, 0, $options['total']) );
-
   $fans = json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/users/lookup.json?user_id=$fans_ids")));
-  $followers = array();            
-  for($i=0; $i <= $options['total']; $i++)
+  $followers = array();
+  $twmax=$options['total'];
+  if  ($twcount<$twmax){$twmax=$twcount;}          
+  for($i=0; $i <= $twmax; $i++)
       {
         $followers[$i]['screen_name'] 		= (string)$fans[$i]->screen_name;
         $followers[$i]['profile_image_url'] = (string)$fans[$i]->profile_image_url;
@@ -90,7 +92,12 @@ function wpfb_show_custom_twitter($options, $you)
   			}
   			?>	
   		</div>
-  		<?php for($i=0; $i < $options['total']; $i++)	:?>
+  		<?php 
+      $twcount=count($you['followers']);
+      $twmax= $options['total'];
+      if ($twmax>$twcount){$twmax=$twcount;}
+      //echo $twmax;
+      for($i=0; $i < $twmax; $i++)	:?>
   		
   			<span style="line-height:1;padding:5px 0px 3px 5px;width:48px;float:left;text-align: center;">
   			<?php if($options['link_followers'] == 'on' ): ?>
@@ -135,7 +142,7 @@ if (get_option(wpflybox_side)=="right")
     echo '</th>';
   }
 echo '<th style="background-color:#fff; border: 2px solid #6CC5FF;width:232px;overflow:hidden;padding:0px;">';
-if($you)
+if($you && get_option(wpflybox_custom_twitter)!== 'false')
   {
   wpfb_show_custom_twitter($twitteroptions, $you);
   } else {

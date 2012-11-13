@@ -53,7 +53,7 @@ if (get_option(wpflybox_vimeo_username)==""){$wpflybox_vimeo_username="nbcnews";
 if (get_option(wpflybox_vimeo_total)==""){$wpflybox_vimeo_total="8";update_option('wpflybox_vimeo_total', $wpflybox_vimeo_total);}
 if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybox_edge', $wpflybox_edge);}
 if (get_option(wpflybox_ipad)==""){$wpflybox_ipad="false";update_option('wpflybox_ipad', $wpflybox_ipad);}
-
+if (get_option(wpflybox_custom_twitter)==""){$wpflybox_custom_twitter="false";update_option('wpflybox_custom_twitter', $wpflybox_custom_twitter);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
 			//Form data sent
@@ -174,8 +174,9 @@ if (get_option(wpflybox_ipad)==""){$wpflybox_ipad="false";update_option('wpflybo
 			update_option('wpflybox_edge', $wpflybox_edge); 
       $wpflybox_ipad = $_POST['wpflybox_ipad'];                            
 			update_option('wpflybox_ipad', $wpflybox_ipad); 			
-
-
+      $wpflybox_custom_twitter = $_POST['wpflybox_custom_twitter'];                            
+			update_option('wpflybox_custom_twitter', $wpflybox_custom_twitter); 
+                             
 if ($_POST['wpflybox_delete_cache'] == 'true')
 {
 delete_transient('wpfb_d_'.get_option(wpflybox_deviant_username));
@@ -562,7 +563,15 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
         <tr><td style="text-align:right;">Twitter Username:</td><td>
         @<input type="text" name="wpflybox_twitter" value="<?php echo get_option(wpflybox_twitter); ?>" size="20" />
         </td></tr>
+        
+        <tr><td style="text-align:right;">Use Custom Options?</td><td>
+        <select name="wpflybox_custom_twitter">
+        <option value="true" <?php if(get_option(wpflybox_custom_twitter)=="true"){echo 'selected';} ?>>Yes</option>
+        <option value="false" <?php if(get_option(wpflybox_custom_twitter)=="false"){echo 'selected';} ?>>No</option>
+        </select>
+        </td></tr>
 
+        <tr><td colspan="2"><h4>Custom Twitter Options:</h4> (This can sometimes give errors. Turn Custom Options to No if it does.)</td></tr>
         <tr><td style="text-align:right;">Show What?</td><td>
         <select name="wpflybox_twitter_showfollowers">
         <option value="followers" <?php if(get_option(wpflybox_twitter_showfollowers)=="followers"){echo 'selected';} ?>>Followers</option>
