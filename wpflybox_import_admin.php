@@ -54,6 +54,7 @@ if (get_option(wpflybox_vimeo_total)==""){$wpflybox_vimeo_total="8";update_optio
 if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybox_edge', $wpflybox_edge);}
 if (get_option(wpflybox_ipad)==""){$wpflybox_ipad="false";update_option('wpflybox_ipad', $wpflybox_ipad);}
 if (get_option(wpflybox_custom_twitter)==""){$wpflybox_custom_twitter="false";update_option('wpflybox_custom_twitter', $wpflybox_custom_twitter);}
+if (get_option(wpflybox_position)==""){$wpflybox_position="fixed";update_option('wpflybox_position', $wpflybox_position);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
 			//Form data sent
@@ -176,6 +177,8 @@ if (get_option(wpflybox_custom_twitter)==""){$wpflybox_custom_twitter="false";up
 			update_option('wpflybox_ipad', $wpflybox_ipad); 			
       $wpflybox_custom_twitter = $_POST['wpflybox_custom_twitter'];                            
 			update_option('wpflybox_custom_twitter', $wpflybox_custom_twitter); 
+      $wpflybox_position = $_POST['wpflybox_position'];                            
+			update_option('wpflybox_position', $wpflybox_position);			
                              
 if ($_POST['wpflybox_delete_cache'] == 'true')
 {
@@ -241,6 +244,13 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
         <option value="false" <?php if(get_option(wpflybox_edge)=="false"){echo 'selected';} ?>>No</option>
         </select> If you want the flyout boxes to be against the screen when they are out choose Yes. If you want the boxes to slide out past the tabs so the tabs don't block the flyoutbox then choose No. 
         </td></tr>
+        
+        <tr><td style="text-align:right;">Float Tabs?</td><td>
+        <select name="wpflybox_position">
+        <option value="fixed" <?php if(get_option(wpflybox_position)=="fixed"){echo 'selected';} ?>>Float With Window</option>
+        <option value="absolute" <?php if(get_option(wpflybox_position)=="absolute"){echo 'selected';} ?>>Attached To Page</option>
+        </select> This option will change how the tabs behave when scrolling down the page. If you want the tabs to always be on the side of the page then choose Float With Window. If you want the tabs to just be at the top of the page and not move with the scrolling choose Attached To Page 
+        </td></tr>        
         
         <tr><td style="text-align:right;"><?php _e("How many tabs?: " ); ?></td><td>
         <select name="wpflybox_count">
