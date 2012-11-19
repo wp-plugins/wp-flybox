@@ -55,6 +55,7 @@ if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybo
 if (get_option(wpflybox_ipad)==""){$wpflybox_ipad="false";update_option('wpflybox_ipad', $wpflybox_ipad);}
 if (get_option(wpflybox_custom_twitter)==""){$wpflybox_custom_twitter="false";update_option('wpflybox_custom_twitter', $wpflybox_custom_twitter);}
 if (get_option(wpflybox_position)==""){$wpflybox_position="fixed";update_option('wpflybox_position', $wpflybox_position);}
+if (get_option(wpflybox_admin_bar)==""){$wpflybox_admin_bar="28";update_option('wpflybox_admin_bar', $wpflybox_admin_bar);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
 			//Form data sent
@@ -178,7 +179,10 @@ if (get_option(wpflybox_position)==""){$wpflybox_position="fixed";update_option(
       $wpflybox_custom_twitter = $_POST['wpflybox_custom_twitter'];                            
 			update_option('wpflybox_custom_twitter', $wpflybox_custom_twitter); 
       $wpflybox_position = $_POST['wpflybox_position'];                            
-			update_option('wpflybox_position', $wpflybox_position);			
+			update_option('wpflybox_position', $wpflybox_position);
+			$wpflybox_admin_bar = $_POST['wpflybox_admin_bar'];
+			if($wpflybox_admin_bar>=0){update_option('wpflybox_admin_bar', $wpflybox_admin_bar);}
+      			
                              
 if ($_POST['wpflybox_delete_cache'] == 'true')
 {
@@ -228,15 +232,19 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
         </td>
         </tr>
         <td style="text-align:right;"><?php _e("How high to start first tab: " ); ?></td><td>
-        <input type="text" name="wpflybox_start" value="<?php echo get_option(wpflybox_start); ?>" size="4" />
-	(ex: 20px or 10%, must contain either 'px' or '%')
+        <input type="text" name="wpflybox_start" value="<?php echo get_option(wpflybox_start); ?>" size="4" />px (ex: 20)  
         </td></tr>
         
         <tr><td style="text-align:right;"><?php _e("Amount of seperation: " ); ?></td><td>
-        <input type="text" name="wpflybox_seperation" value="<?php echo get_option(wpflybox_seperation); ?>" size="4" />
-	(ex: 103px or 12%, can be in either 'px or '%', but must be same as starting position)
-	<br>If you use % the tabs may overlap on smaller screens. If you use px tabs may run off the bottom of screen on smaller screens.
+        <input type="text" name="wpflybox_seperation" value="<?php echo get_option(wpflybox_seperation); ?>" size="4" />px (ex: 103)
         </td></tr>
+        
+        <tr><td style="text-align:right;">Compensate For <br />Admin/Member Bar?</td><td>
+        <select name="wpflybox_admin_bar">
+        <option value="28" <?php if(get_option(wpflybox_admin_bar)=="28"){echo 'selected';} ?>>Yes</option>
+        <option value="0" <?php if(get_option(wpflybox_admin_bar)=="0"){echo 'selected';} ?>>No</option>
+        </select> Select Yes if you want the tabs shifted down when the admin/member bar is showing. If the admin/member bar is not showing then it will not be shifted. Select no if you do not want to shift the tabs down when the admin/member bar is showing. Choosing Yes will treat the bottom of the menu/member as the top of the page, where choosing No will ignore the bar and treat the top of the bar as the top of the page.
+        <br />&nbsp;</td></tr>
         
         <tr><td style="text-align:right;">Push tabs to screen edge?</td><td>
         <select name="wpflybox_edge">

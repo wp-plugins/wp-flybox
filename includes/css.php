@@ -104,6 +104,7 @@ $wpflybox_tabs=array(
       8 => get_option(wpflybox_tab8));
 
 $wpflybox_start=get_option(wpflybox_start);
+if (is_admin_bar_showing()){$wpflybox_admin_bar=get_option(wpflybox_admin_bar);}else{$wpflybox_admin_bar=0;}
 $wpflybox_seperation=get_option(wpflybox_seperation);     
 if (strpos($wpflybox_start,'%') !== false && strpos($wpflybox_seperation,'%') !== false) {
   //has %
@@ -119,21 +120,20 @@ if (strpos($wpflybox_start,'%') !== false && strpos($wpflybox_seperation,'%') !=
   $wpflybox_pos[6]=($wpflybox_start+(5*$wpflybox_seperation)).$wpflybox_postdim.'';
   $wpflybox_pos[7]=($wpflybox_start+(6*$wpflybox_seperation)).$wpflybox_postdim.'';
   $wpflybox_pos[8]=($wpflybox_start+(7*$wpflybox_seperation)).$wpflybox_postdim.'';
-}
-if (strpos($wpflybox_start,'px') !== false && strpos($wpflybox_seperation,'px') !== false) {
+} else {
   //has px
   $wpflybox_postdim='px';
   $wpflybox_start = str_replace("px", "", $wpflybox_start);
   $wpflybox_seperation = str_replace("px", "", $wpflybox_seperation);
   
-  $wpflybox_pos[1]=$wpflybox_start.$wpflybox_postdim.'';
-  $wpflybox_pos[2]=($wpflybox_start+$wpflybox_seperation).$wpflybox_postdim.'';
-  $wpflybox_pos[3]=($wpflybox_start+(2*$wpflybox_seperation)).$wpflybox_postdim.'';
-  $wpflybox_pos[4]=($wpflybox_start+(3*$wpflybox_seperation)).$wpflybox_postdim.'';
-  $wpflybox_pos[5]=($wpflybox_start+(4*$wpflybox_seperation)).$wpflybox_postdim.'';
-  $wpflybox_pos[6]=($wpflybox_start+(5*$wpflybox_seperation)).$wpflybox_postdim.'';
-  $wpflybox_pos[7]=($wpflybox_start+(6*$wpflybox_seperation)).$wpflybox_postdim.'';
-  $wpflybox_pos[8]=($wpflybox_start+(7*$wpflybox_seperation)).$wpflybox_postdim.'';
+  $wpflybox_pos[1]=($wpflybox_start+$wpflybox_admin_bar).$wpflybox_postdim.'';
+  $wpflybox_pos[2]=($wpflybox_start+$wpflybox_admin_bar+$wpflybox_seperation).$wpflybox_postdim.'';
+  $wpflybox_pos[3]=($wpflybox_start+$wpflybox_admin_bar+(2*$wpflybox_seperation)).$wpflybox_postdim.'';
+  $wpflybox_pos[4]=($wpflybox_start+$wpflybox_admin_bar+(3*$wpflybox_seperation)).$wpflybox_postdim.'';
+  $wpflybox_pos[5]=($wpflybox_start+$wpflybox_admin_bar+(4*$wpflybox_seperation)).$wpflybox_postdim.'';
+  $wpflybox_pos[6]=($wpflybox_start+$wpflybox_admin_bar+(5*$wpflybox_seperation)).$wpflybox_postdim.'';
+  $wpflybox_pos[7]=($wpflybox_start+$wpflybox_admin_bar+(6*$wpflybox_seperation)).$wpflybox_postdim.'';
+  $wpflybox_pos[8]=($wpflybox_start+$wpflybox_admin_bar+(7*$wpflybox_seperation)).$wpflybox_postdim.'';
 }
      
 
