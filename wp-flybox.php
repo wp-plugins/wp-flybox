@@ -3,7 +3,7 @@
 Plugin Name: WP-FlyBox
 Plugin URI: http://njarb.com/2012/08/wp-flybox/
 Description: Tabbed fly-out social boxes for Facebook, Twitter, Google Plus, Youtube, LinkedIn, Feedburner, Pinterest, Flickr, DeviantArt, Instagram and a Contact Me Tab.
-Version: 3.4
+Version: 3.5
 Author: Cyle Conoly
 Author URI: http://njarb.com
 License: GPL2
@@ -47,7 +47,11 @@ function wpflybox_settings_link($links) {
 $wpflybox_plugin = plugin_basename(__FILE__); 
 add_filter("plugin_action_links_$wpflybox_plugin", 'wpflybox_settings_link' );
 
-
+$wpflybox_pid1=get_the_ID();
+if ($wpflybox_pid1 < 1){$wpflybox_pid1='noid';}
+$wpflybox_pid2=$wpflybox_pid1;
+$wpflybox_pid3=$wpflybox_pid1;
+$wpflybox_pid4=$wpflybox_pid1;
 function wpflybox_init_head (){
 if (get_option(wpflybox_side) !== "none" 
   && ((is_front_page() && get_option(wpflybox_showon_front)==is_front_page())
@@ -56,10 +60,10 @@ if (get_option(wpflybox_side) !== "none"
   || (is_archive() && get_option(wpflybox_showon_archive)==is_archive())
   || (is_feed() && get_option(wpflybox_showon_feed)==is_feed())
   || (is_search() && get_option(wpflybox_showon_search)==is_search())
-  || ((is_page() || is_single()) && strpos(get_option(wpflybox_showon_pid),get_the_ID().'')!==false))  
+  || ((is_page() || is_single()) && @strpos(get_option(wpflybox_showon_pid), $wpflybox_pid1.'')!==false))  
   && ((!is_user_logged_in() && get_option(wpflybox_showon_guest)!=is_user_logged_in())
   || (is_user_logged_in() && get_option(wpflybox_showon_logged)==is_user_logged_in()))
-  && strpos(get_option(wpflybox_showon_pidhide),get_the_ID().'')===false 
+  && @strpos(get_option(wpflybox_showon_pidhide), $wpflybox_pid2.'')===false 
   ){
 include('includes/css.php');
 }
@@ -73,10 +77,10 @@ if (get_option(wpflybox_side) !== "none"
   || (is_archive() && get_option(wpflybox_showon_archive)==is_archive())
   || (is_feed() && get_option(wpflybox_showon_feed)==is_feed())
   || (is_search() && get_option(wpflybox_showon_search)==is_search())
-  || ((is_page() || is_single()) && strpos(get_option(wpflybox_showon_pid),get_the_ID().'')!==false))  
+  || ((is_page() || is_single()) && @strpos(get_option(wpflybox_showon_pid),$wpflybox_pid3.'')!==false))  
   && ((!is_user_logged_in() && get_option(wpflybox_showon_guest)!=is_user_logged_in())
   || (is_user_logged_in() && get_option(wpflybox_showon_logged)==is_user_logged_in()))
-  && strpos(get_option(wpflybox_showon_pidhide),get_the_ID().'')===false
+  && @strpos(get_option(wpflybox_showon_pidhide),$wpflybox_pid4.'')===false
   ){
 include('wpflybox_import.php');
 }

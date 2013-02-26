@@ -65,6 +65,8 @@ if (get_option(wpflybox_showon_feed)==""){$wpflybox_showon_feed="true";update_op
 if (get_option(wpflybox_showon_search)==""){$wpflybox_showon_search="true";update_option('wpflybox_showon_search', $wpflybox_showon_search);}
 if (get_option(wpflybox_showon_guest)==""){$wpflybox_showon_guest="true";update_option('wpflybox_showon_guest', $wpflybox_showon_guest);}
 if (get_option(wpflybox_showon_logged)==""){$wpflybox_showon_logged="true";update_option('wpflybox_showon_logged', $wpflybox_showon_logged);}
+if (get_option(wpflybox_showon_pid)==""){$wpflybox_showon_pid=" ";update_option('wpflybox_showon_pid', $wpflybox_showon_pid);}
+if (get_option(wpflybox_showon_pidhide)==""){$wpflybox_showon_pidhide=" ";update_option('wpflybox_showon_pidhide', $wpflybox_showon_pidhide);}
 //if (get_option(wpflybox_opentabs)==""){$wpflybox_opentabs="true";update_option('wpflybox_opentabs', $wpflybox_opentabs);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
