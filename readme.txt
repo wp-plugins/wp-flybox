@@ -4,7 +4,7 @@ Donate link: http://njarb.com/2012/08/wp-flybox/
 Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, vimeo, deviantart, instagram, css, custom, colors, sidebar, links
 Requires at least: 2.8
 Tested up to: 3.5.1
-Stable tag: 3.5
+Stable tag: 3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,9 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 
 == Changelog ==
 
+= 3.6 =
+* Fixed Delimeter bug and hide on page by ID bug. 
+ 
 = 3.5 =
 * Quick delimeter bug fix.
 
@@ -168,6 +171,9 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 * Beta, initial design and testing.
 
 == Upgrade Notice ==
+
+= 3.6 =
+* Fixed Delimeter bug and hide on page by ID bug. 
 
 = 3.5 =
 * Quick delimeter bug fix.
