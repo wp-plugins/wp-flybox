@@ -60,5 +60,14 @@ if( !defined( 'ABSPATH') &&  !defined('WP_UNINSTALL_PLUGIN') )
 	delete_option( 'wpflybox_vimeo_username');
 	delete_option( 'wpflybox_vimeo_total');
 	delete_option( 'wpflybox_edge');        	
-
-
+	delete_option( 'wpflybox_twitter_latest'); 
+  delete_option( 'wpflybox_showon_front');
+  delete_option( 'wpflybox_showon_page');
+  delete_option( 'wpflybox_showon_post');
+  delete_option( 'wpflybox_showon_archive');
+  delete_option( 'wpflybox_showon_feed');
+  delete_option( 'wpflybox_showon_search');
+  delete_option( 'wpflybox_showon_guest');
+  delete_option( 'wpflybox_showon_logged');
+  delete_option( 'wpflybox_showon_pid');
+  delete_option( 'wpflybox_showon_pidhide');

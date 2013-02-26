@@ -1,5 +1,6 @@
 <?php
 echo '<div id="WP-Flybox at http://njarb.com/2012/08/wp-flybox/" style="display:none;visibility:hidden;"></div>';
+
 //used for testing load times
 function microtime_float()
 {
@@ -31,7 +32,14 @@ if (preg_match('/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone|andro
 if ((strpos(strtolower($_SERVER['HTTP_ACCEPT']),'application/vnd.wap.xhtml+xml') > 0) or ((isset($_SERVER['HTTP_X_WAP_PROFILE']) or isset($_SERVER['HTTP_PROFILE'])))) {
     $mobile_browser++;
 }
-    
+//testing for future version
+/*
+if(get_option(wpflybox_opentabs)=='click')
+  {
+  include('includes/clickopen.php');
+  }
+  */
+//end testing    
 $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
 
 $mobile_ua = strtolower(substr($_SERVER['HTTP_USER_AGENT'], 0, 4));
@@ -130,5 +138,4 @@ while ($i <= $wpflybox_count && ($wpflybox_ieversion>7 || $wpflybox_ieversion<0)
 $wpflybox_time_end = microtime_float();
 $wpflybox_time = ($wpflybox_time_end - $wpflybox_time_start)*1000;
 $wpflybox_time = round($wpflybox_time,2); 
-
 ?>

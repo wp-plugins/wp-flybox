@@ -1,5 +1,5 @@
 <?php
-$twitteroptions = array('username' => get_option(wpflybox_twitter) ,'total' => get_option(wpflybox_twitter_count), 'show_followers' => get_option(wpflybox_twitter_showfollowers), 'border-color' => '#AAA','font-color' => '#3B5998','bordertop-color' => '#315C99','bg-color' => 'transparent', 'link_followers' => get_option(wpflybox_twitter_link), 'width' => 220, 'tweetto' => get_option(wpflybox_twitter_tweetto));
+$twitteroptions = array('username' => get_option(wpflybox_twitter) ,'total' => get_option(wpflybox_twitter_count), 'show_followers' => get_option(wpflybox_twitter_showfollowers), 'border-color' => '#AAA','font-color' => '#3B5998','bordertop-color' => '#315C99','bg-color' => 'transparent', 'link_followers' => get_option(wpflybox_twitter_link), 'width' => 220, 'tweetto' => get_option(wpflybox_twitter_tweetto), 'latest' => get_option(wpflybox_twitter_latest));
 
 function wpfb_get_twitter_data($options)
   {
@@ -47,11 +47,26 @@ function wpfb_get_twitter_data($options)
   if  ($twcount<$twmax){$twmax=$twcount;}          
   for($i=0; $i <= $twmax; $i++)
       {
-        $followers[$i]['screen_name'] 		= (string)$fans[$i]->screen_name;
-        $followers[$i]['profile_image_url'] = (string)$fans[$i]->profile_image_url;
+        if (is_array($fans))
+          {
+          $followers[$i]['screen_name'] 		= (string)$fans[$i]->screen_name;
+          $followers[$i]['profile_image_url'] = (string)$fans[$i]->profile_image_url;
+          }
       }
   $you['followers'] = $followers;
   }
+
+  if ($options['latest']=='true')
+    {
+    echo 'hey61';
+    $tweet=json_decode(file_get_contents("http://api.twitter.com/1/statuses/user_timeline/".$options['username'].".json")); // get tweets and decode them into a variable
+    echo $tweet;
+    if ($tweet[0])
+      {
+      $you['latest']=$tweet[0]->text; // show latest tweet
+      echo 'latest12:'.$you['latest'];
+      }
+    }
   }//end no error
   set_transient($key, $you, 60*60*4);
   update_option($key, $you);    
@@ -59,12 +74,14 @@ function wpfb_get_twitter_data($options)
   
   }  
 
+if ($twitteroptions['latest']=='true'){$twitteroptions['height']=125;}else{$twitteroptions['height']=60;}
+
 function wpfb_show_custom_twitter($options, $you)
   {
   ?>
   
   <div style="width:<?php echo $options['width'];?>px;padding:5px 5px 5px 5px; font-family:\'Lucida grande\',tahoma,verdana,arial,sans-serif;">
-  	<div style="color:#555;border-bottom:1px solid #D8DFEA;color:#555; height:60px; position:relative;">
+  	<div style="color:#555;border-bottom:1px solid #D8DFEA;color:#555; height:<?php echo $options['height']; ?>px; position:relative;">
   		<div style="position:absolute;top:5px;left:5px;">
   			<a target="_blank" href="http://twitter.com/<?php echo $options['username'];?>">
   				<img src="<?php echo $you['profile_image_url'];?>" width="44" height="44" alt="twitter profile pic">
@@ -77,7 +94,16 @@ function wpfb_show_custom_twitter($options, $you)
       </div>
       <div style="position:absolute;top:30px;left:60px;min-width:65px;height:20px;">
         <a href="https://twitter.com/<?php echo $options['username'];?>" class="twitter-follow-button" data-show-count="false" data-width="65px" data-show-screen-name="false">Follow @<?php echo $options['username'];?></a>
-      </div> 
+      </div>
+      <?php
+      if ($options['latest']=='true'){
+      ?> 
+      <div style="position:absolute;top:58px;left:5px;min-width:65px;height:20px; text-align:left;font-size:12px">
+       <b>Latest Tweet</b>: <?php echo $you['latest']; ?>
+      </div>
+      <?php
+      }
+      ?>  
   	</div>
   	<div style="padding:0;">
   		<div style="padding:5px 5px 0px 5px;font-size:11px;">

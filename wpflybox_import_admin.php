@@ -56,6 +56,16 @@ if (get_option(wpflybox_ipad)==""){$wpflybox_ipad="false";update_option('wpflybo
 if (get_option(wpflybox_custom_twitter)==""){$wpflybox_custom_twitter="false";update_option('wpflybox_custom_twitter', $wpflybox_custom_twitter);}
 if (get_option(wpflybox_position)==""){$wpflybox_position="fixed";update_option('wpflybox_position', $wpflybox_position);}
 if (get_option(wpflybox_admin_bar)==""){$wpflybox_admin_bar="28";update_option('wpflybox_admin_bar', $wpflybox_admin_bar);}
+if (get_option(wpflybox_twitter_latest)==""){$wpflybox_twitter_latest="false";update_option('wpflybox_twitter_latest', $wpflybox_twitter_latest);}
+if (get_option(wpflybox_showon_front)==""){$wpflybox_showon_front="true";update_option('wpflybox_showon_front', $wpflybox_showon_front);}
+if (get_option(wpflybox_showon_page)==""){$wpflybox_showon_page="true";update_option('wpflybox_showon_page', $wpflybox_showon_page);}
+if (get_option(wpflybox_showon_post)==""){$wpflybox_showon_post="true";update_option('wpflybox_showon_post', $wpflybox_showon_post);}
+if (get_option(wpflybox_showon_archive)==""){$wpflybox_showon_archive="true";update_option('wpflybox_showon_archive', $wpflybox_showon_archive);}
+if (get_option(wpflybox_showon_feed)==""){$wpflybox_showon_feed="true";update_option('wpflybox_showon_feed', $wpflybox_showon_feed);}
+if (get_option(wpflybox_showon_search)==""){$wpflybox_showon_search="true";update_option('wpflybox_showon_search', $wpflybox_showon_search);}
+if (get_option(wpflybox_showon_guest)==""){$wpflybox_showon_guest="true";update_option('wpflybox_showon_guest', $wpflybox_showon_guest);}
+if (get_option(wpflybox_showon_logged)==""){$wpflybox_showon_logged="true";update_option('wpflybox_showon_logged', $wpflybox_showon_logged);}
+//if (get_option(wpflybox_opentabs)==""){$wpflybox_opentabs="true";update_option('wpflybox_opentabs', $wpflybox_opentabs);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
 			//Form data sent
@@ -109,7 +119,9 @@ if (get_option(wpflybox_admin_bar)==""){$wpflybox_admin_bar="28";update_option('
       $wpflybox_twitter_link = $_POST['wpflybox_twitter_link'];
 			update_option('wpflybox_twitter_link', $wpflybox_twitter_link);       
       $wpflybox_twitter_tweetto = $_POST['wpflybox_twitter_tweetto'];
-			update_option('wpflybox_twitter_tweetto', $wpflybox_twitter_tweetto);       	      
+			update_option('wpflybox_twitter_tweetto', $wpflybox_twitter_tweetto);
+      $wpflybox_twitter_latest = $_POST['wpflybox_twitter_latest'];
+			update_option('wpflybox_twitter_latest', $wpflybox_twitter_latest);       	      
       $wpflybox_google = $_POST['wpflybox_google'];                              
 			update_option('wpflybox_google', $wpflybox_google);
       $wpflybox_youtube = $_POST['wpflybox_youtube'];
@@ -182,7 +194,29 @@ if (get_option(wpflybox_admin_bar)==""){$wpflybox_admin_bar="28";update_option('
 			update_option('wpflybox_position', $wpflybox_position);
 			$wpflybox_admin_bar = $_POST['wpflybox_admin_bar'];
 			if($wpflybox_admin_bar>=0){update_option('wpflybox_admin_bar', $wpflybox_admin_bar);}
-      			
+      $wpflybox_showon_front = $_POST['wpflybox_showon_front'];
+			update_option('wpflybox_showon_front', $wpflybox_showon_front); 
+      $wpflybox_showon_page = $_POST['wpflybox_showon_page'];
+			update_option('wpflybox_showon_page', $wpflybox_showon_page);
+      $wpflybox_showon_post = $_POST['wpflybox_showon_post'];
+			update_option('wpflybox_showon_post', $wpflybox_showon_post); 
+      $wpflybox_showon_archive = $_POST['wpflybox_showon_archive'];
+			update_option('wpflybox_showon_archive', $wpflybox_showon_archive); 
+      $wpflybox_showon_feed = $_POST['wpflybox_showon_feed'];                               
+			update_option('wpflybox_showon_feed', $wpflybox_showon_feed); 
+      $wpflybox_showon_search = $_POST['wpflybox_showon_search'];
+			update_option('wpflybox_showon_search', $wpflybox_showon_search); 
+      $wpflybox_showon_guest = $_POST['wpflybox_showon_guest'];
+			update_option('wpflybox_showon_guest', $wpflybox_showon_guest); 
+      $wpflybox_showon_logged = $_POST['wpflybox_showon_logged'];
+			update_option('wpflybox_showon_logged', $wpflybox_showon_logged);                                      			
+      $wpflybox_showon_pid = $_POST['wpflybox_showon_pid'];
+			update_option('wpflybox_showon_pid', $wpflybox_showon_pid); 
+      $wpflybox_showon_pidhide = $_POST['wpflybox_showon_pidhide'];
+			update_option('wpflybox_showon_pidhide', $wpflybox_showon_pidhide); 			
+			//$wpflybox_opentabs = $_POST['wpflybox_opentabs'];
+			//update_option('wpflybox_opentabs', $wpflybox_opentabs);      			                        
+                
                              
 if ($_POST['wpflybox_delete_cache'] == 'true')
 {
@@ -244,7 +278,7 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
         <option value="28" <?php if(get_option(wpflybox_admin_bar)=="28"){echo 'selected';} ?>>Yes</option>
         <option value="0" <?php if(get_option(wpflybox_admin_bar)=="0"){echo 'selected';} ?>>No</option>
         </select> Select Yes if you want the tabs shifted down when the admin/member bar is showing. If the admin/member bar is not showing then it will not be shifted. Select no if you do not want to shift the tabs down when the admin/member bar is showing. Choosing Yes will treat the bottom of the menu/member as the top of the page, where choosing No will ignore the bar and treat the top of the bar as the top of the page.
-        <br />&nbsp;</td></tr>
+        </td></tr>
         
         <tr><td style="text-align:right;">Push tabs to screen edge?</td><td>
         <select name="wpflybox_edge">
@@ -258,7 +292,8 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
         <option value="fixed" <?php if(get_option(wpflybox_position)=="fixed"){echo 'selected';} ?>>Float With Window</option>
         <option value="absolute" <?php if(get_option(wpflybox_position)=="absolute"){echo 'selected';} ?>>Attached To Page</option>
         </select> This option will change how the tabs behave when scrolling down the page. If you want the tabs to always be on the side of the page then choose Float With Window. If you want the tabs to just be at the top of the page and not move with the scrolling choose Attached To Page 
-        </td></tr>        
+        </td></tr>
+                 
         
         <tr><td style="text-align:right;"><?php _e("How many tabs?: " ); ?></td><td>
         <select name="wpflybox_count">
@@ -521,11 +556,29 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
        <input type="hidden" name="wpflybox_bgtopgradient" value="<?php echo get_option(wpflybox_bgtopgradient); ?>" />
        <input type="hidden" name="wpflybox_bgbottomgradient" value="<?php echo get_option(wpflybox_bgbottomgradient); ?>" />
        <input type="hidden" name="wpflybox_bgborder" value="<?php echo get_option(wpflybox_bgborder); ?>" />
-       <?php
+         <?php
        }
        ?>
+       <tr><td>&nbsp;</td></tr>
+       <tr><td style="text-align:right;">Show Options:</td><td>
+       <input type="checkbox" name="wpflybox_showon_front" value="true" <?php if(get_option(wpflybox_showon_front)){echo 'checked';} ?> /> Front Page,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_page" value="true" <?php if(get_option(wpflybox_showon_page)){echo 'checked';} ?> /> Pages,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_post" value="true" <?php if(get_option(wpflybox_showon_post)){echo 'checked';} ?> /> Posts,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_archive" value="true" <?php if(get_option(wpflybox_showon_archive)){echo 'checked';} ?> /> Archives,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_feed" value="true" <?php if(get_option(wpflybox_showon_feed)){echo 'checked';} ?> /> Feeds,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_search" value="true" <?php if(get_option(wpflybox_showon_search)){echo 'checked';} ?> /> Search,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_guest" value="true" <?php if(get_option(wpflybox_showon_guest)){echo 'checked';} ?> /> For Guests,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_logged" value="true" <?php if(get_option(wpflybox_showon_logged)){echo 'checked';} ?> /> For Users Logged In
+       <br />Show On Pages/Posts with ID: <input type="text" name="wpflybox_showon_pid" value="<?php echo get_option(wpflybox_showon_pid); ?>" size="60" /> IDs separated by commas
+       <br />Hide On Pages/Posts with ID: <input type="text" name="wpflybox_showon_pidhide" value="<?php echo get_option(wpflybox_showon_pidhide); ?>" size="60" /> IDs separated by commas  
+       <br /><a href="http://en.forums.wordpress.com/topic/any-one-know-how-to-find-page-ids" target="_blank" title="Help Finding IDs">Help Finding IDs</a>
+       </td></tr>
      
-			
+         <tr><td>
+	       <p class="submit">
+				<input class="button-primary" type="submit" name="Submit" value="Update Options" />
+				</p>  </td></tr>
+  		
 	</table>
 	</div>
 		</div>
@@ -613,6 +666,13 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
         <select name="wpflybox_twitter_tweetto">
         <option value="on" <?php if(get_option(wpflybox_twitter_tweetto)=="on"){echo 'selected';} ?>>On</option>
         <option value="off" <?php if(get_option(wpflybox_twitter_tweetto)=="off"){echo 'selected';} ?>>Off</option>
+        </select>
+        </td></tr>
+        
+        <tr><td style="text-align:right;">Show Latest Tweet:</td><td>
+        <select name="wpflybox_twitter_latest">
+        <option value="true" <?php if(get_option(wpflybox_twitter_latest)=="true"){echo 'selected';} ?>>On</option>
+        <option value="false" <?php if(get_option(wpflybox_twitter_latest)=="false"){echo 'selected';} ?>>Off</option>
         </select>
         </td></tr>
       
@@ -746,6 +806,10 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
         <tr><td style="text-align:right;">Videos to Show:</td><td>
         <input type="text" name="wpflybox_vimeo_total" value="<?php echo get_option(wpflybox_vimeo_total); ?>" size="2" /> 0 to show no videos
         </td></tr>                                                        
+          <tr><td>
+  	       <p class="submit">
+				<input class="button-primary" type="submit" name="Submit" value="Update Options" />
+				</p>            </td></tr>
         
 	</table></div>
              
@@ -790,14 +854,14 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
        
         <tr><td colspan="2"><br /><br />Note: This plugin is automatically disabled for Internet Explorer 7.0 and below because this plugin uses advanced sliding css not supported in earlier versions of IE.
         </td></tr>      
-        
+      	    <tr><td>   
+               <p class="submit">
+				<input class="button-primary" type="submit" name="Submit" value="Update Options" />
+				</p></td></tr>
         
 		</table>
 	</div	
         		                              
-				<p class="submit">
-				<input class="button-primary" type="submit" name="Submit" value="Update Options" />
-				</p>
 			</form>
 		</div>
 </div>
