@@ -49,9 +49,7 @@ add_filter("plugin_action_links_$wpflybox_plugin", 'wpflybox_settings_link' );
 
 $wpflybox_pid=get_the_ID();
 if ($wpflybox_pid1 < 1){$wpflybox_pid1='noid';}
-$wpflybox_pid2=$wpflybox_pid1;
-$wpflybox_pid3=$wpflybox_pid1;
-$wpflybox_pid4=$wpflybox_pid1;
+
 function wpflybox_init_head (){
 if (get_option(wpflybox_side) !== "none" 
   && ((is_front_page() && get_option(wpflybox_showon_front)==is_front_page())
