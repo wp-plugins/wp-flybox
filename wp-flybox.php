@@ -47,7 +47,7 @@ function wpflybox_settings_link($links) {
 $wpflybox_plugin = plugin_basename(__FILE__); 
 add_filter("plugin_action_links_$wpflybox_plugin", 'wpflybox_settings_link' );
 
-$wpflybox_pid1=get_the_ID();
+$wpflybox_pid=get_the_ID();
 if ($wpflybox_pid1 < 1){$wpflybox_pid1='noid';}
 $wpflybox_pid2=$wpflybox_pid1;
 $wpflybox_pid3=$wpflybox_pid1;
@@ -60,10 +60,10 @@ if (get_option(wpflybox_side) !== "none"
   || (is_archive() && get_option(wpflybox_showon_archive)==is_archive())
   || (is_feed() && get_option(wpflybox_showon_feed)==is_feed())
   || (is_search() && get_option(wpflybox_showon_search)==is_search())
-  || ((is_page() || is_single()) && @strpos(get_option(wpflybox_showon_pid), $wpflybox_pid1.'')!==false))  
+  || ((is_page() || is_single()) && @stripos(get_option(wpflybox_showon_pid), $wpflybox_pid.'')!==false))  
   && ((!is_user_logged_in() && get_option(wpflybox_showon_guest)!=is_user_logged_in())
   || (is_user_logged_in() && get_option(wpflybox_showon_logged)==is_user_logged_in()))
-  && @strpos(get_option(wpflybox_showon_pidhide), $wpflybox_pid2.'')===false 
+  && @stripos(get_option(wpflybox_showon_pidhide), $wpflybox_pid.'')===false 
   ){
 include('includes/css.php');
 }
@@ -77,10 +77,10 @@ if (get_option(wpflybox_side) !== "none"
   || (is_archive() && get_option(wpflybox_showon_archive)==is_archive())
   || (is_feed() && get_option(wpflybox_showon_feed)==is_feed())
   || (is_search() && get_option(wpflybox_showon_search)==is_search())
-  || ((is_page() || is_single()) && @strpos(get_option(wpflybox_showon_pid),$wpflybox_pid3.'')!==false))  
+  || ((is_page() || is_single()) && @stripos(get_option(wpflybox_showon_pid),$wpflybox_pid.'')!==false))  
   && ((!is_user_logged_in() && get_option(wpflybox_showon_guest)!=is_user_logged_in())
   || (is_user_logged_in() && get_option(wpflybox_showon_logged)==is_user_logged_in()))
-  && @strpos(get_option(wpflybox_showon_pidhide),$wpflybox_pid4.'')===false
+  && @stripos(get_option(wpflybox_showon_pidhide),$wpflybox_pid.'')===false
   ){
 include('wpflybox_import.php');
 }
