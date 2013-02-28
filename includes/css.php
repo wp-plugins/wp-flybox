@@ -231,7 +231,7 @@ if ($key=array_search('deviant',$wpflybox_tabs))
     }
 if ($key=array_search('instagram',$wpflybox_tabs))
     {
-    echo 'div.wpfb-instagram a:hover, a:hover img {border:none;}';           
+    echo 'div.wpfb-instagram a:hover, div.wpfb-instagram a:hover img {border:none;}';           
     echo 'div.wpfb-instagram {width:'.($wpflybox_widths[11]+68).'px;top:'.$wpflybox_pos[$key].';'.$wpflybox_side.':-'.($wpflybox_widths[11]+36).'px;position:'.$wpflybox_position.';z-index:999999;direction:ltr;}';
     echo 'div.wpfb-instagram div.wpfb-instagram-transition {width:'.($wpflybox_widths[11]+34).'px;'; if ($wpflybox_side=='left'){echo 'margin-left:32px;';} echo '-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
     echo 'div.wpfb-instagram div.wpfb-instagram-transition iframe {border:0px;overflow:hidden;position:static;height:260px;}';

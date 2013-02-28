@@ -3,8 +3,11 @@ $instagramoptions = array('id' => get_option(wpflybox_instagram_id) ,'token' => 
 $wpfb_cached='true';
 function wpfb_show_instagram ($options)
 {
+$you=Array();
 $key = 'wpfb_i_' . $options['id'];
 $you = get_transient($key);
+$you = base64_decode($you);
+$you = unserialize($you);
  	
 echo '<div style="width:196px;text-align: center;overflow:hidden;">';
 if ($options[header]=='true')
@@ -24,6 +27,8 @@ if ($options[header]=='true')
       $you['followedby'] = $json->data->counts->followed_by;
       $you['follows'] = $json->data->counts->follows;
       }
+    } else {
+    //$wpfb_cached=='true';
     }
 
   if ($you['username']){  
@@ -44,18 +49,20 @@ if (!$you['media'] || $wpfb_cached=='false')
 		  echo 'Instagram Server Not Found';
 		  return false;
 		  } else {
-      $json = json_decode(wp_remote_retrieve_body($wpflybox_instagram_jsonfile));
+		  $json = json_decode(wp_remote_retrieve_body($wpflybox_instagram_jsonfile));
+		  //var_dump($json);
+
       for($m=1; $m <= $options['max']; $m++)
         {
         $media[$m]['link'] = (string)$json->data[$m-1]->link;
         $media[$m]['thumburl'] = (string)$json->data[$m-1]->images->thumbnail->url;
         $media[$m]['text'] = (string)$json->data[$m-1]->caption->text;
-        }
+        } 
       $you['media']=$media;  
       }
   } else {
   $media = $you['media'];
-  }
+  }  
   if ($media[0][thumburl] || $media[1][thumburl]){
   for($m=1; $m <= $options['max']; $m++)
   {
@@ -70,6 +77,8 @@ echo '</div>';
 
 if ($wpfb_cached=='false')
   {
+  $you=serialize($you);
+  $you=base64_encode($you);
   set_transient($key, $you, 60*60*3);
   update_option($key, $you);
   }

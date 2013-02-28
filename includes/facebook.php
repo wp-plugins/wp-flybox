@@ -15,7 +15,7 @@ if (get_option(wpflybox_side)=="right")
     echo '</th>';
   }
 echo '<th style="background-color:#fff; border: 2px solid #3c95d9;width:292px;overflow:hidden;padding:0px;line-height:0.5">';
-      echo '<iframe src="https://www.facebook.com/plugins/likebox.php?href='.get_option(wpflybox_facebook).'&amp;locale=en_GB&amp;width=292&amp;height='.get_option(wpflybox_facebook_height).'&amp;colorscheme='.get_option(wpflybox_facebook_color).'&amp;show_faces='.get_option(wpflybox_facebook_showfaces).'&amp;stream='.get_option(wpflybox_facebook_stream).'&amp;header='.get_option(wpflybox_facebook_header).'" style="background-color: transparent;border:none; overflow:hidden; width:292px; height:'.get_option(wpflybox_facebook_height).'px;"></iframe>';
+      echo '<iframe title="Facebook" src="http://www.facebook.com/plugins/likebox.php?href='.urlencode(get_option(wpflybox_facebook)).'&amp;locale=en_GB&amp;width=292&amp;height='.get_option(wpflybox_facebook_height).'&amp;colorscheme='.get_option(wpflybox_facebook_color).'&amp;show_faces='.get_option(wpflybox_facebook_showfaces).'&amp;stream='.get_option(wpflybox_facebook_stream).'&amp;header='.get_option(wpflybox_facebook_header).'" style="background-color:#ffffff; border:none; overflow:hidden; width:292px; height:'.get_option(wpflybox_facebook_height).'px;">iframes not supported by your browser.</iframe>';
       echo '</th>';
 if (get_option(wpflybox_side)=="left")
   {

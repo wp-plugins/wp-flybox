@@ -5,6 +5,8 @@ function wpfb_get_twitter_data($options)
   {
   $key = 'wpfb_t_' . $options['username'];
   $you = get_transient($key);
+  $you = base64_decode($you);
+  $you = unserialize($you);
   	if ($you !== false)
   	{
   	return $you;
@@ -68,8 +70,10 @@ function wpfb_get_twitter_data($options)
       }
     }
   }//end no error
-  set_transient($key, $you, 60*60*4);
-  update_option($key, $you);    
+  $you1=serialize($you);
+  $you1=base64_encode($you1);
+  set_transient($key, $you1, 60*60*4);
+  update_option($key, $you1);    
   return $you;
   
   }  
