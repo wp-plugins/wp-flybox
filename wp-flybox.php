@@ -3,7 +3,7 @@
 Plugin Name: WP-FlyBox
 Plugin URI: http://njarb.com/2012/08/wp-flybox/
 Description: Tabbed fly-out social boxes for Facebook, Twitter, Google Plus, Youtube, LinkedIn, Feedburner, Pinterest, Flickr, DeviantArt, Instagram and a Contact Me Tab.
-Version: 3.7
+Version: 3.8
 Author: Cyle Conoly
 Author URI: http://njarb.com
 License: GPL2
@@ -25,7 +25,7 @@ Copyright 2012  Cyle Conoly  (email : cyle.conoly@gmail.com)
 */
 
 function wpflybox_admin() {  
-    include('wpflybox_import_admin.php');  
+    include_once('wpflybox_import_admin.php');  
 }  
 
 function wpflybox_admin_actions() {  
@@ -53,7 +53,8 @@ $wpflybox_pid=get_the_ID();
 if ($wpflybox_pid < 1){$wpflybox_pid='noid';}
 
 if (get_option(wpflybox_side) !== "none" 
-  && ((is_front_page() && get_option(wpflybox_showon_front)==is_front_page())
+  && (((is_front_page() && get_option(wpflybox_showon_front)==is_front_page())
+  || ((is_home() && get_option(wpflybox_showon_front)==is_home())))
   || (is_page() && get_option(wpflybox_showon_page)==is_page())
   || (is_single() && get_option(wpflybox_showon_post)==is_single())
   || (is_archive() && get_option(wpflybox_showon_archive)==is_archive())
@@ -64,15 +65,17 @@ if (get_option(wpflybox_side) !== "none"
   || (is_user_logged_in() && get_option(wpflybox_showon_logged)==is_user_logged_in()))
   && @stripos(get_option(wpflybox_showon_pidhide), $wpflybox_pid.'')===false 
   ){
-include('includes/css.php');
+include_once('includes/css.php');
 }
 }
 
 function wpflybox_init_body (){
 $wpflybox_pid=get_the_ID();
+
 if ($wpflybox_pid < 1){$wpflybox_pid='noid';}
 if (get_option(wpflybox_side) !== "none" 
-  && ((is_front_page() && get_option(wpflybox_showon_front)==is_front_page())
+  && (((is_front_page() && get_option(wpflybox_showon_front)==is_front_page())
+  || ((is_home() && get_option(wpflybox_showon_front)==is_home())))
   || (is_page() && get_option(wpflybox_showon_page)==is_page())
   || (is_single() && get_option(wpflybox_showon_post)==is_single())
   || (is_archive() && get_option(wpflybox_showon_archive)==is_archive())
@@ -83,7 +86,7 @@ if (get_option(wpflybox_side) !== "none"
   || (is_user_logged_in() && get_option(wpflybox_showon_logged)==is_user_logged_in()))
   && @stripos(get_option(wpflybox_showon_pidhide),$wpflybox_pid.'')===false
   ){
-include('wpflybox_import.php');
+include_once('wpflybox_import.php');
 }
 }
   

@@ -563,7 +563,7 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
        ?>
        <tr><td>&nbsp;</td></tr>
        <tr><td style="text-align:right;">Show Options:</td><td>
-       <input type="checkbox" name="wpflybox_showon_front" value="true" <?php if(get_option(wpflybox_showon_front)){echo 'checked';} ?> /> Front Page,
+       <input type="checkbox" name="wpflybox_showon_front" value="true" <?php if(get_option(wpflybox_showon_front)){echo 'checked';} ?> /> Main Page,
        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_page" value="true" <?php if(get_option(wpflybox_showon_page)){echo 'checked';} ?> /> Pages,
        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_post" value="true" <?php if(get_option(wpflybox_showon_post)){echo 'checked';} ?> /> Posts,
        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_archive" value="true" <?php if(get_option(wpflybox_showon_archive)){echo 'checked';} ?> /> Archives,
