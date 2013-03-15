@@ -25,7 +25,7 @@ Copyright 2012  Cyle Conoly  (email : cyle.conoly@gmail.com)
 */
 
 function wpflybox_admin() {  
-    include('wpflybox_import_admin.php');  
+    include_once('wpflybox_import_admin.php');  
 }  
 
 function wpflybox_admin_actions() {  
@@ -65,7 +65,7 @@ if (get_option(wpflybox_side) !== "none"
   || (is_user_logged_in() && get_option(wpflybox_showon_logged)==is_user_logged_in()))
   && @stripos(get_option(wpflybox_showon_pidhide), $wpflybox_pid.'')===false 
   ){
-include('includes/css.php');
+include_once('includes/css.php');
 }
 }
 
@@ -86,7 +86,7 @@ if (get_option(wpflybox_side) !== "none"
   || (is_user_logged_in() && get_option(wpflybox_showon_logged)==is_user_logged_in()))
   && @stripos(get_option(wpflybox_showon_pidhide),$wpflybox_pid.'')===false
   ){
-include('wpflybox_import.php');
+include_once('wpflybox_import.php');
 }
 }
   
