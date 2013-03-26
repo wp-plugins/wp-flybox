@@ -223,9 +223,13 @@ if (get_option(wpflybox_showon_pidhide)==""){$wpflybox_showon_pidhide=" ";update
 if ($_POST['wpflybox_delete_cache'] == 'true')
 {
 delete_transient('wpfb_d_'.get_option(wpflybox_deviant_username));
+delete_option('wpfb_d_'.get_option(wpflybox_deviant_username));
 delete_transient('wpfb_t_'.get_option(wpflybox_twitter));
+delete_option('wpfb_t_'.get_option(wpflybox_twitter));
 delete_transient('wpfb_v_'.get_option(wpflybox_vimeo_username));
+delete_option('wpfb_v_'.get_option(wpflybox_vimeo_username));
 delete_transient('wpfb_i_'.get_option(wpflybox_instagram_id));
+delete_option('wpfb_i_'.get_option(wpflybox_instagram_id));
 echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</strong></p></div>';
 
 }
@@ -849,7 +853,7 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
         </td></tr>
         
         <tr><td colspan="2"><h4>Caching:</h4></td></tr>
-        <tr><td colspan="2">Since most of these tabs require data from another site like vimeo.com, twitter.com etc., it can take a while to load. All tabs that are not loaded asynchronously via javascript are cached on wordpress. The tabs that are cached are Twitter, Deviant Art, Instagram, and Vimeo. The first time you load your site it will take a bit longer if you use one of these cached tabs because it has to get the data elsewhere and save it, but after it is cached it will load instantly without requiring a connection to another site. The caches last about 6-12 hours. If  you change a setting and it did not update on your page, then try deleting the cache and force WP-Flybox to recache it with new settings.
+        <tr><td colspan="2">Since most of these tabs require data from another site like vimeo.com, twitter.com etc., it can take a while to load. All tabs that are not loaded asynchronously via javascript are cached on wordpress. The tabs that are cached are Twitter, Deviant Art, Instagram, and Vimeo. The first time you load your site it will take a bit longer if you use one of these cached tabs because it has to get the data elsewhere and save it, but after it is cached it will load instantly without requiring a connection to another site. The caches last about 6-12 hours. If  you change a setting and it did not update on your page, then try deleting the cache and force WP-Flybox to recache it with new settings. It is recommended to only delete the caches if you are experiencing problems.
         <tr><td style="text-align:right;">Delete Caches?</td><td>
         <input type="checkbox" name="wpflybox_delete_cache" value="true" />  Check to delete caches  <input type="submit" name="Submit" value="Apply" />
         </td></tr>
