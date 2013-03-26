@@ -8,11 +8,11 @@ $key = 'wpfb_i_' . $options['id'];
 $you = get_transient($key);
 $you = base64_decode($you);
 $you = unserialize($you);
- 	
+
 echo '<div style="width:196px;text-align: center;overflow:hidden;">';
 if ($options[header]=='true')
 {
-  if (!$you)
+  if (!$you['username'])
   	{
   	$wpfb_cached='false';
     $wpflybox_instagram_jsonfile = wp_remote_get('https://api.instagram.com/v1/users/'.$options[id].'/?access_token='.$options[token]);
@@ -44,6 +44,7 @@ if (!$you['media'] || $wpfb_cached=='false')
   {
   $wpfb_cached='false';
   $wpflybox_instagram_jsonfile = wp_remote_get('https://api.instagram.com/v1/users/'.$options[id].'/media/recent/?access_token='.$options[token]);
+  //echo 'https://api.instagram.com/v1/users/'.$options[id].'/media/recent/?access_token='.$options[token];
   if (is_wp_error($wpflybox_instagram_jsonfile))
 		  {
 		  echo 'Instagram Server Not Found';
@@ -62,7 +63,20 @@ if (!$you['media'] || $wpfb_cached=='false')
       }
   } else {
   $media = $you['media'];
-  }  
+  }
+  
+  if (!$media[0][thumburl] && !$media[1][thumburl])
+    {
+    $wpfb_cached='false';
+    //check if from cached. If cache not available, use option stored.
+    $newyoumedia=get_option($key);
+    $newyoumedia = base64_decode($newyoumedia);
+    $newyoumedia = unserialize($newyoumedia);
+    $media=$newyoumedia['media'];
+    $you['media']=$media;
+    }
+  
+    
   if ($media[0][thumburl] || $media[1][thumburl]){
   for($m=1; $m <= $options['max']; $m++)
   {
