@@ -5,8 +5,10 @@ function wpfb_get_vimeo_data($options)
   {
   $key = 'wpfb_v_' . $options['username'];
   $you = get_transient($key);
+  if ($you!='' && is_string($you)){
   $you = base64_decode($you);
   $you = unserialize($you);
+  }else {$you=false;}
   	if ($you !== false)
   	{
   	return $you;

@@ -4,8 +4,10 @@ function wpfb_get_deviant_data($options)
 {
 $key = 'wpfb_d_' . $options['username'];
 $you = get_transient($key);
+if ($you!='' && is_string($you)){
 $you = base64_decode($you);
 $you = unserialize($you);
+} else {$you=false;}
 if (!$you)
 {  
 	function parseRSS($url) { 

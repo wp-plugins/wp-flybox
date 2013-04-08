@@ -6,9 +6,10 @@ function wpfb_show_instagram ($options)
 $you=Array();
 $key = 'wpfb_i_' . $options['id'];
 $you = get_transient($key);
+if ($you!='' && is_string($you)){
 $you = base64_decode($you);
 $you = unserialize($you);
-
+}else {$you=false;}
 echo '<div style="width:196px;text-align: center;overflow:hidden;">';
 if ($options[header]=='true')
 {

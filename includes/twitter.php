@@ -5,12 +5,15 @@ function wpfb_get_twitter_data($options)
   {
   $key = 'wpfb_t_' . $options['username'];
   $you = get_transient($key);
+  if ($you!='' && is_string($you)){
   $you = base64_decode($you);
   $you = unserialize($you);
+  }else {$you=false;}
   	if ($you !== false)
   	{
   	return $you;
-  	}      
+  	}
+        
   $response = wp_remote_get("http://api.twitter.com/1/users/lookup.json?screen_name=$options[username]");
   
   if (is_wp_error($response))
