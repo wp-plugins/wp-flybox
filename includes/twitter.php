@@ -63,13 +63,13 @@ function wpfb_get_twitter_data($options)
 
   if ($options['latest']=='true')
     {
-    echo 'hey61';
+    
     $tweet=json_decode(file_get_contents("http://api.twitter.com/1/statuses/user_timeline/".$options['username'].".json")); // get tweets and decode them into a variable
-    echo $tweet;
+    
     if ($tweet[0])
       {
       $you['latest']=$tweet[0]->text; // show latest tweet
-      echo 'latest12:'.$you['latest'];
+      
       }
     }
   }//end no error
