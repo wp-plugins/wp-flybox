@@ -112,7 +112,6 @@ $response= $twitter->setGetfield($getfield)
                      ->buildOauth($url, $requestMethod)
                      ->performRequest();
         $tweet=json_decode($tweet);
-        var_dump($tweet);
     //$tweet=json_decode(file_get_contents("http://api.twitter.com/1.1/statuses/user_timeline/".$options['username'].".json")); // get tweets and decode them into a variable
     
     if ($tweet[0])
