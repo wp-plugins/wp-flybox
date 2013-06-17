@@ -13,40 +13,80 @@ function wpfb_get_twitter_data($options)
   	{
   	return $you;
   	}
+require_once('TwitterAPIExchange.php');
+$settings = array(
+    'oauth_access_token' => "102830912-RQHOfm0Ls9zWUITBPS11LxpPmftXGuhftjU8QDuc",
+    'oauth_access_token_secret' => "10mKVhjKJZN5sbbKGVkMXwFV1Je2K7TLQrwdxDUKU",
+    'consumer_key' => "Ed5zIykUWHCqTuco0XcZig",
+    'consumer_secret' => "8259x9CHikuJMHdXgnA1wHNxCfqMnG2TiXH46RAVZo"
+); 
+ //new request
+$url = 'https://api.twitter.com/1.1/users/show.json';
+$getfield = '?screen_name='.$options[username];
+$requestMethod = 'GET';
+$twitter = new TwitterAPIExchange($settings);
+$response= $twitter->setGetfield($getfield)
+             ->buildOauth($url, $requestMethod)
+             ->performRequest();             
         
-  $response = wp_remote_get("http://api.twitter.com/1/users/lookup.json?screen_name=$options[username]");
+  //$response = wp_remote_get("http://api.twitter.com/1/users/lookup.json?screen_name=$options[username]");
   
   if (is_wp_error($response))
 		{
 		return get_option($key);
     }
-  $json = json_decode(wp_remote_retrieve_body($response));
+  $json = json_decode($response);
   if ($json->error)
     {
     return get_option($key);
     }
   if(!$json->errors){
-  $you['name'] 			 	= $json[0]->name;
-  $you['screen_name']	 		= $json[0]->screen_name;
-  $you['followers_count'] 	= $json[0]->followers_count;
-  $you['profile_image_url']	= $json[0]->profile_image_url;
-  $you['friends_count']		= $json[0]->friends_count;
-  $you['description'] = $json[0]->description;
+  $you['name'] 			 	= $json->name;
+  $you['screen_name']	 		= $json->screen_name;
+  $you['followers_count'] 	= $json->followers_count;
+  $you['profile_image_url']	= $json->profile_image_url;
+  $you['friends_count']		= $json->friends_count;
+  $you['description'] = $json->description;
   if ( $options['show_followers'] == 'followers' )
   			{
-  				$fans = json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/followers/ids.json?screen_name=$options[username]")));
-
+  			$url = 'https://api.twitter.com/1.1/followers/ids.json';
+        $getfield = '?screen_name='.$options[username].'&count=20';
+        $requestMethod = 'GET';
+        $twitter = new TwitterAPIExchange($settings);
+        $fans = $twitter->setGetfield($getfield)
+                     ->buildOauth($url, $requestMethod)
+                     ->performRequest();
+        $fans=json_decode($fans);
+  				//$fans = json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/followers/ids.json?screen_name=$options[username]")));
   			}
   			else
   			{
-  			  $fans = json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/friends/ids.json?screen_name=$options[username]")));
+  			
+  			$url = 'https://api.twitter.com/1.1/friends/ids.json';
+        $getfield = '?screen_name='.$options[username].'&count=20';
+        $requestMethod = 'GET';
+        $twitter = new TwitterAPIExchange($settings);
+        $fans = $twitter->setGetfield($getfield)
+                     ->buildOauth($url, $requestMethod)
+                     ->performRequest();
+        $fans=json_decode($fans);  			
+  			  //$fans = json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/friends/ids.json?screen_name=$options[username]")));
   				
   			}
   $twcount=count($fans->ids);			
   if ($twcount > 0 )
   {			
   $fans_ids = (string)implode( ',', array_slice($fans->ids, 0, $options['total']) );
-  $fans = json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/users/lookup.json?user_id=$fans_ids")));
+  
+    			$url = 'https://api.twitter.com/1.1/users/lookup.json';
+        $getfield = '?user_id='.$fans_ids;
+        $requestMethod = 'GET';
+        $twitter = new TwitterAPIExchange($settings);
+        $fans = $twitter->setGetfield($getfield)
+                     ->buildOauth($url, $requestMethod)
+                     ->performRequest();
+        $fans=json_decode($fans); 
+  //$fans = json_decode(wp_remote_retrieve_body(wp_remote_get("http://api.twitter.com/1/users/lookup.json?user_id=$fans_ids")));
   $followers = array();
   $twmax=$options['total'];
   if  ($twcount<$twmax){$twmax=$twcount;}          
@@ -63,8 +103,17 @@ function wpfb_get_twitter_data($options)
 
   if ($options['latest']=='true')
     {
-    
-    $tweet=json_decode(file_get_contents("http://api.twitter.com/1/statuses/user_timeline/".$options['username'].".json")); // get tweets and decode them into a variable
+ 
+     			$url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
+        $getfield = '?screen_name='.$options['username'];
+        $requestMethod = 'GET';
+        $twitter = new TwitterAPIExchange($settings);
+        $tweet = $twitter->setGetfield($getfield)
+                     ->buildOauth($url, $requestMethod)
+                     ->performRequest();
+        $tweet=json_decode($tweet);
+        var_dump($tweet);
+    //$tweet=json_decode(file_get_contents("http://api.twitter.com/1.1/statuses/user_timeline/".$options['username'].".json")); // get tweets and decode them into a variable
     
     if ($tweet[0])
       {
