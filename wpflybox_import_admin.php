@@ -1,0 +1,912 @@
+<?php
+if ( !current_user_can( 'manage_options' ) )  {
+		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+	}
+include 'lang/en-US-admin.php';   
+echo '<script type="text/javascript" src="'.plugins_url().'/wp-flybox/static/jscolor/jscolor.js"></script>';
+if (get_option(wpflybox_facebook_header)==""){$wpflybox_facebook_header="false";update_option('wpflybox_facebook_header', $wpflybox_facebook_header);}
+if (get_option(wpflybox_facebook_stream)==""){$wpflybox_facebook_stream="false";update_option('wpflybox_facebook_tream', $wpflybox_facebook_stream);}
+if (get_option(wpflybox_facebook_showfaces)==""){$wpflybox_facebook_showfaces="true";update_option('wpflybox_facebook_showfaces', $wpflybox_facebook_showfaces);}
+if (get_option(wpflybox_facebook_color)==""){$wpflybox_facebook_color="light";update_option('wpflybox_facebook_color', $wpflybox_facebook_color);}
+if (get_option(wpflybox_facebook_height)==""){$wpflybox_facebook_height="500";update_option('wpflybox_facebook_height', $wpflybox_facebook_height);}
+if (get_option(wpflybox_facebook_width)==""){$wpflybox_facebook_width="292";update_option('wpflybox_facebook_width', $wpflybox_facebook_width);}
+if (get_option(wpflybox_facebook)==""){$wpflybox_facebook="http://facebook.com/Wordpress";update_option('wpflybox_facebook', $wpflybox_facebook);}
+if (!strstr(get_option(wpflybox_facebook), 'facebook.com/')){$wpflybox_facebook="http://facebook.com/".get_option(wpflybox_facebook);update_option('wpflybox_facebook', $wpflybox_facebook);}
+if (get_option(wpflybox_ie)==""){$wpflybox_ie="true";update_option('wpflybox_ie', $wpflybox_ie);}
+if (get_option(wpflybox_mobile)==""){$wpflybox_mobile="false";update_option('wpflybox_mobile', $wpflybox_mobile);}
+if (get_option(wpflybox_captcha)==""){$wpflybox_captcha="true";update_option('wpflybox_captcha', $wpflybox_captcha);}
+if (get_option(wpflybox_linkedin_type)==""){$wpflybox_linkedin_type="company";update_option('wpflybox_linkedin_type', $wpflybox_linkedin_type);}
+if (get_option(wpflybox_contactemail)==""){$wpflybox_contactemail="email@domain.com";update_option('wpflybox_contactemail', $wpflybox_contactemail);}
+if (get_option(wpflybox_deviant_limit)==""){$wpflybox_deviant_limit="12";update_option('wpflybox_deviant_limit', $wpflybox_deviant_limit);}
+if (get_option(wpflybox_deviant_max_width)==""){$wpflybox_deviant_max_width="50";update_option('wpflybox_deviant_max_width', $wpflybox_deviant_max_width);}
+if (get_option(wpflybox_deviant_max_height)==""){$wpflybox_deviant_max_height="50";update_option('wpflybox_deviant_max_height', $wpflybox_deviant_max_height);}
+if (get_option(wpflybox_deviant_columns)==""){$wpflybox_deviant_columns="3";update_option('wpflybox_deviant_columns', $wpflybox_deviant_columns);}
+if (get_option(wpflybox_deviant_frame_width)==""){$wpflybox_deviant_frame_width="160";update_option('wpflybox_deviant_frame_width', $wpflybox_deviant_frame_width);}
+if (get_option(wpflybox_deviant_frame_height)==""){$wpflybox_deviant_frame_height="200";update_option('wpflybox_deviant_frame_height', $wpflybox_deviant_frame_height);}
+if (get_option(wpflybox_instagram_max)==""){$wpflybox_instagram_max="9";update_option('wpflybox_instagram_max', $wpflybox_instagram_max);}
+if (get_option(wpflybox_instagram_header)==""){$wpflybox_instagram_header="true";update_option('wpflybox_instagram_header', $wpflybox_instagram_header);}
+if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflybox_jquery', $wpflybox_jquery);}
+if (get_option(wpflybox_contactwho)==""){$wpflybox_contactwho="me";update_option('wpflybox_contactwho', $wpflybox_contactwho);}
+if (get_option(wpflybox_usecustombutton)==""){$wpflybox_usecustombutton="false";update_option('wpflybox_usecustombutton', $wpflybox_usecustombutton);}
+if (get_option(wpflybox_bgtopgradient)==""){$wpflybox_bgtopgradient="#ababab";update_option('wpflybox_bgtopgradient', $wpflybox_bgtopgradient);}
+if (get_option(wpflybox_bgbottomgradient)==""){$wpflybox_bgbottomgradient="#3b3b3b";update_option('wpflybox_bgbottomgradient', $wpflybox_bgbottomgradient);}
+if (get_option(wpflybox_bgborder)==""){$wpflybox_bgborder="#000000";update_option('wpflybox_bgborder', $wpflybox_bgborder);}
+if (get_option(wpflybox_twitter_showfollowers)==""){$wpflybox_twitter_showfollowers="followers";update_option('wpflybox_twitter_showfollowers', $wpflybox_twitter_showfollowers);}
+if (get_option(wpflybox_twitter_count)==""){$wpflybox_twitter_count="8";update_option('wpflybox_twitter_count', $wpflybox_twitter_count);}
+if (get_option(wpflybox_twitter_link)==""){$wpflybox_twitter_link="on";update_option('wpflybox_twitter_link', $wpflybox_twitter_link);}
+if (get_option(wpflybox_twitter_tweetto)==""){$wpflybox_twitter_tweetto="on";update_option('wpflybox_twitter_tweetto', $wpflybox_twitter_tweetto);}
+if (get_option(wpflybox_start)==""){$wpflybox_start="20px";update_option('wpflybox_start', $wpflybox_start);}
+if (get_option(wpflybox_seperation)==""){$wpflybox_seperation="103px";update_option('wpflybox_seperation', $wpflybox_seperation);}
+if (get_option(wpflybox_twitter)==""){$wpflybox_twitter="wordpress";update_option('wpflybox_twitter', $wpflybox_twitter);}
+if (get_option(wpflybox_google)==""){$wpflybox_google="107188080561309681193";update_option('wpflybox_google', $wpflybox_google);}
+if (get_option(wpflybox_google_type)==""){$wpflybox_google_type="page";update_option('wpflybox_google_type', $wpflybox_google_type);}
+if (get_option(wpflybox_youtube)==""){$wpflybox_youtube="nbc";update_option('wpflybox_youtube', $wpflybox_youtube);}
+if (get_option(wpflybox_linkedin)==""){$wpflybox_linkedin="google";update_option('wpflybox_linkedin', $wpflybox_linkedin);}
+if (get_option(wpflybox_linkedin_type)==""){$wpflybox_linkedin_type="company";update_option('wpflybox_linkedin_type', $wpflybox_linkedin_type);}
+if (get_option(wpflybox_flickr)==""){$wpflybox_flickr="palnick";update_option('wpflybox_flickr', $wpflybox_flickr);}
+if (get_option(wpflybox_deviant_username)==""){$wpflybox_deviant_username="leonidafremov";update_option('wpflybox_deviant_username', $wpflybox_deviant_username);}
+if (get_option(wpflybox_jquery)==""){$wpflybox_jquery="on";update_option('wpflybox_jquery', $wpflybox_jquery);}
+if (get_option(wpflybox_feedburner)==""){$wpflybox_feedburner="yugatech";update_option('wpflybox_feedburner', $wpflybox_feedburner);}
+if (get_option(wpflybox_pinterest)==""){$wpflybox_pinterest="janew";update_option('wpflybox_pinterest', $wpflybox_pinterest);}
+if (get_option(wpflybox_count)==""){$wpflybox_count="1";update_option('wpflybox_count', $wpflybox_count);}
+if (get_option(wpflybox_tab1)==""){$wpflybox_tab1="facebook";update_option('wpflybox_tab1', $wpflybox_tab1);}
+if (get_option(wpflybox_vimeo_username)==""){$wpflybox_vimeo_username="nbcnews";update_option('wpflybox_vimeo_username', $wpflybox_vimeo_username);}
+if (get_option(wpflybox_vimeo_total)==""){$wpflybox_vimeo_total="8";update_option('wpflybox_vimeo_total', $wpflybox_vimeo_total);}
+if (get_option(wpflybox_edge)==""){$wpflybox_edge="false";update_option('wpflybox_edge', $wpflybox_edge);}
+if (get_option(wpflybox_ipad)==""){$wpflybox_ipad="false";update_option('wpflybox_ipad', $wpflybox_ipad);}
+if (get_option(wpflybox_custom_twitter)==""){$wpflybox_custom_twitter="false";update_option('wpflybox_custom_twitter', $wpflybox_custom_twitter);}
+if (get_option(wpflybox_position)==""){$wpflybox_position="fixed";update_option('wpflybox_position', $wpflybox_position);}
+if (get_option(wpflybox_admin_bar)==""){$wpflybox_admin_bar="28";update_option('wpflybox_admin_bar', $wpflybox_admin_bar);}
+if (get_option(wpflybox_twitter_latest)==""){$wpflybox_twitter_latest="false";update_option('wpflybox_twitter_latest', $wpflybox_twitter_latest);}
+if (get_option(wpflybox_showon_front)==""){$wpflybox_showon_front="true";update_option('wpflybox_showon_front', $wpflybox_showon_front);}
+if (get_option(wpflybox_showon_page)==""){$wpflybox_showon_page="true";update_option('wpflybox_showon_page', $wpflybox_showon_page);}
+if (get_option(wpflybox_showon_post)==""){$wpflybox_showon_post="true";update_option('wpflybox_showon_post', $wpflybox_showon_post);}
+if (get_option(wpflybox_showon_archive)==""){$wpflybox_showon_archive="true";update_option('wpflybox_showon_archive', $wpflybox_showon_archive);}
+if (get_option(wpflybox_showon_feed)==""){$wpflybox_showon_feed="true";update_option('wpflybox_showon_feed', $wpflybox_showon_feed);}
+if (get_option(wpflybox_showon_search)==""){$wpflybox_showon_search="true";update_option('wpflybox_showon_search', $wpflybox_showon_search);}
+if (get_option(wpflybox_showon_guest)==""){$wpflybox_showon_guest="true";update_option('wpflybox_showon_guest', $wpflybox_showon_guest);}
+if (get_option(wpflybox_showon_logged)==""){$wpflybox_showon_logged="true";update_option('wpflybox_showon_logged', $wpflybox_showon_logged);}
+if (get_option(wpflybox_showon_pid)==""){$wpflybox_showon_pid=" ";update_option('wpflybox_showon_pid', $wpflybox_showon_pid);}
+if (get_option(wpflybox_showon_pidhide)==""){$wpflybox_showon_pidhide=" ";update_option('wpflybox_showon_pidhide', $wpflybox_showon_pidhide);}
+if (get_option(wpflybox_language)==""){$wpflybox_language="en-US";update_option('wpflybox_language', $wpflybox_language);}
+//if (get_option(wpflybox_opentabs)==""){$wpflybox_opentabs="true";update_option('wpflybox_opentabs', $wpflybox_opentabs);}
+
+		if($_POST['wpflybox_hidden'] == 'Y') {
+			//Form data sent
+			$wpflybox_side = $_POST['wpflybox_side'];
+			update_option('wpflybox_side', $wpflybox_side);
+			$wpflybox_start = $_POST['wpflybox_start'];
+			update_option('wpflybox_start', $wpflybox_start);
+			$wpflybox_seperation = $_POST['wpflybox_seperation'];
+			update_option('wpflybox_seperation', $wpflybox_seperation);			
+			$wpflybox_count = $_POST['wpflybox_count'];
+			update_option('wpflybox_count', $wpflybox_count);
+			$wpflybox_tab1 = $_POST['wpflybox_tab1'];
+			update_option('wpflybox_tab1', $wpflybox_tab1);
+			$wpflybox_tab2 = $_POST['wpflybox_tab2'];
+			update_option('wpflybox_tab2', $wpflybox_tab2);	      			
+			$wpflybox_tab3 = $_POST['wpflybox_tab3'];
+			update_option('wpflybox_tab3', $wpflybox_tab3);
+			$wpflybox_tab4 = $_POST['wpflybox_tab4'];
+			update_option('wpflybox_tab4', $wpflybox_tab4);	      
+		  $wpflybox_tab5 = $_POST['wpflybox_tab5'];
+			update_option('wpflybox_tab5', $wpflybox_tab5);	
+			$wpflybox_tab6 = $_POST['wpflybox_tab6'];
+			update_option('wpflybox_tab6', $wpflybox_tab6);
+			$wpflybox_tab7 = $_POST['wpflybox_tab7'];
+			update_option('wpflybox_tab7', $wpflybox_tab7);	
+			$wpflybox_tab8 = $_POST['wpflybox_tab8'];
+			update_option('wpflybox_tab8', $wpflybox_tab8);				
+			
+			$wpflybox_google_type = $_POST['wpflybox_google_type'];
+			update_option('wpflybox_google_type', $wpflybox_google_type);
+      $wpflybox_facebook = $_POST['wpflybox_facebook'];
+			update_option('wpflybox_facebook', $wpflybox_facebook);	
+      $wpflybox_facebook_header = $_POST['wpflybox_facebook_header']; 
+			update_option('wpflybox_facebook_header', $wpflybox_facebook_header);
+      $wpflybox_facebook_stream = $_POST['wpflybox_facebook_stream']; 
+			update_option('wpflybox_facebook_stream', $wpflybox_facebook_stream);	          			
+      $wpflybox_facebook_showfaces = $_POST['wpflybox_facebook_showfaces']; 
+			update_option('wpflybox_facebook_showfaces', $wpflybox_facebook_showfaces);    	
+      $wpflybox_facebook_color = $_POST['wpflybox_facebook_color']; 
+			update_option('wpflybox_facebook_color', $wpflybox_facebook_color);     	
+      $wpflybox_facebook_height = $_POST['wpflybox_facebook_height']; 
+			update_option('wpflybox_facebook_height', $wpflybox_facebook_height);     	            			
+      $wpflybox_facebook_width = $_POST['wpflybox_facebook_width']; 
+			update_option('wpflybox_facebook_width', $wpflybox_facebook_width);	      	
+      $wpflybox_twitter = $_POST['wpflybox_twitter'];
+			update_option('wpflybox_twitter', $wpflybox_twitter);      
+      $wpflybox_twitter_showfollowers = $_POST['wpflybox_twitter_showfollowers'];
+			update_option('wpflybox_twitter_showfollowers', $wpflybox_twitter_showfollowers);       
+      $wpflybox_twitter_count = $_POST['wpflybox_twitter_count'];
+			update_option('wpflybox_twitter_count', $wpflybox_twitter_count);       
+      $wpflybox_twitter_link = $_POST['wpflybox_twitter_link'];
+			update_option('wpflybox_twitter_link', $wpflybox_twitter_link);       
+      $wpflybox_twitter_tweetto = $_POST['wpflybox_twitter_tweetto'];
+			update_option('wpflybox_twitter_tweetto', $wpflybox_twitter_tweetto);
+      $wpflybox_twitter_latest = $_POST['wpflybox_twitter_latest'];
+			update_option('wpflybox_twitter_latest', $wpflybox_twitter_latest);       	      
+      $wpflybox_google = $_POST['wpflybox_google'];                              
+			update_option('wpflybox_google', $wpflybox_google);
+      $wpflybox_youtube = $_POST['wpflybox_youtube'];
+			update_option('wpflybox_youtube', $wpflybox_youtube);      	      
+      $wpflybox_feedburner = $_POST['wpflybox_feedburner'];
+			update_option('wpflybox_feedburner', $wpflybox_feedburner);
+      $wpflybox_pinterest = $_POST['wpflybox_pinterest'];
+			update_option('wpflybox_pinterest', $wpflybox_pinterest); 
+      $wpflybox_linkedin = $_POST['wpflybox_linkedin'];
+			update_option('wpflybox_linkedin', $wpflybox_linkedin);
+      $wpflybox_linkedin_type = $_POST['wpflybox_linkedin_type'];
+			update_option('wpflybox_linkedin_type', $wpflybox_linkedin_type);			
+      $wpflybox_ie = $_POST['wpflybox_ie'];
+			update_option('wpflybox_ie', $wpflybox_ie); 
+      $wpflybox_mobile = $_POST['wpflybox_mobile'];
+			update_option('wpflybox_mobile', $wpflybox_mobile);
+      $wpflybox_captcha = $_POST['wpflybox_captcha'];
+			update_option('wpflybox_captcha', $wpflybox_captcha); 
+      $wpflybox_contactemail = $_POST['wpflybox_contactemail'];
+			update_option('wpflybox_contactemail', $wpflybox_contactemail);
+      $wpflybox_contactwho = $_POST['wpflybox_contactwho'];
+			update_option('wpflybox_contactwho', $wpflybox_contactwho);			
+      $wpflybox_flickr = $_POST['wpflybox_flickr'];
+			update_option('wpflybox_flickr', $wpflybox_flickr);
+      $wpflybox_flickr_tag = $_POST['wpflybox_flickr_tag'];
+			update_option('wpflybox_flickr_tag', $wpflybox_flickr_tag);
+      $wpflybox_deviant_username = $_POST['wpflybox_deviant_username'];
+			update_option('wpflybox_deviant_username', $wpflybox_deviant_username); 
+      $wpflybox_deviant_limit = $_POST['wpflybox_deviant_limit'];
+			update_option('wpflybox_deviant_limit', $wpflybox_deviant_limit); 
+      $wpflybox_deviant_max_width = $_POST['wpflybox_deviant_max_width'];
+			update_option('wpflybox_deviant_max_width', $wpflybox_deviant_max_width); 
+      $wpflybox_deviant_max_height = $_POST['wpflybox_deviant_max_height'];
+			update_option('wpflybox_deviant_max_height', $wpflybox_deviant_max_height); 
+      $wpflybox_deviant_columns = $_POST['wpflybox_deviant_columns'];
+			update_option('wpflybox_deviant_columns', $wpflybox_deviant_columns);                                                                        
+      $wpflybox_deviant_frame_width = $_POST['wpflybox_deviant_frame_width'];
+			if($wpflybox_deviant_frame_width>0){update_option('wpflybox_deviant_frame_width', $wpflybox_deviant_frame_width);} 
+      $wpflybox_deviant_frame_height = $_POST['wpflybox_deviant_frame_height'];
+			update_option('wpflybox_deviant_frame_height', $wpflybox_deviant_frame_height); 			
+      $wpflybox_instagram_id = $_POST['wpflybox_instagram_id'];
+			update_option('wpflybox_instagram_id', $wpflybox_instagram_id); 
+      $wpflybox_instagram_token = $_POST['wpflybox_instagram_token'];
+			update_option('wpflybox_instagram_token', $wpflybox_instagram_token);
+      $wpflybox_instagram_max = $_POST['wpflybox_instagram_max'];
+			update_option('wpflybox_instagram_max', $wpflybox_instagram_max);            
+      $wpflybox_instagram_header = $_POST['wpflybox_instagram_header'];
+			update_option('wpflybox_instagram_header', $wpflybox_instagram_header);
+			$wpflybox_jquery = $_POST['wpflybox_jquery'];
+			update_option('wpflybox_jquery', $wpflybox_jquery);
+			$wpflybox_usecustombutton = $_POST['wpflybox_usecustombutton'];
+			update_option('wpflybox_usecustombutton', $wpflybox_usecustombutton);
+			$wpflybox_bgtopgradient = $_POST['wpflybox_bgtopgradient'];
+			if ($wpflybox_bgtopgradient !== ''){update_option('wpflybox_bgtopgradient', $wpflybox_bgtopgradient);}	      			
+			$wpflybox_bgbottomgradient = $_POST['wpflybox_bgbottomgradient'];
+			if($wpflybox_bgbottomgradient !== ''){update_option('wpflybox_bgbottomgradient', $wpflybox_bgbottomgradient);}
+			$wpflybox_bgborder = $_POST['wpflybox_bgborder'];
+			if($wpflybox_bgborder !== ''){update_option('wpflybox_bgborder', $wpflybox_bgborder);}
+			$wpflybox_vimeo_username = $_POST['wpflybox_vimeo_username'];
+			update_option('wpflybox_vimeo_username', $wpflybox_vimeo_username);      			    
+      $wpflybox_vimeo_total = $_POST['wpflybox_vimeo_total'];
+			update_option('wpflybox_vimeo_total', $wpflybox_vimeo_total);      			
+      $wpflybox_edge = $_POST['wpflybox_edge'];
+			update_option('wpflybox_edge', $wpflybox_edge); 
+      $wpflybox_ipad = $_POST['wpflybox_ipad'];                            
+			update_option('wpflybox_ipad', $wpflybox_ipad); 			
+      $wpflybox_custom_twitter = $_POST['wpflybox_custom_twitter'];                            
+			update_option('wpflybox_custom_twitter', $wpflybox_custom_twitter); 
+      $wpflybox_position = $_POST['wpflybox_position'];                            
+			update_option('wpflybox_position', $wpflybox_position);
+			$wpflybox_admin_bar = $_POST['wpflybox_admin_bar'];
+			if($wpflybox_admin_bar>=0){update_option('wpflybox_admin_bar', $wpflybox_admin_bar);}
+      $wpflybox_showon_front = $_POST['wpflybox_showon_front'];
+			update_option('wpflybox_showon_front', $wpflybox_showon_front); 
+      $wpflybox_showon_page = $_POST['wpflybox_showon_page'];
+			update_option('wpflybox_showon_page', $wpflybox_showon_page);
+      $wpflybox_showon_post = $_POST['wpflybox_showon_post'];
+			update_option('wpflybox_showon_post', $wpflybox_showon_post); 
+      $wpflybox_showon_archive = $_POST['wpflybox_showon_archive'];
+			update_option('wpflybox_showon_archive', $wpflybox_showon_archive); 
+      $wpflybox_showon_feed = $_POST['wpflybox_showon_feed'];                               
+			update_option('wpflybox_showon_feed', $wpflybox_showon_feed); 
+      $wpflybox_showon_search = $_POST['wpflybox_showon_search'];
+			update_option('wpflybox_showon_search', $wpflybox_showon_search); 
+      $wpflybox_showon_guest = $_POST['wpflybox_showon_guest'];
+			update_option('wpflybox_showon_guest', $wpflybox_showon_guest); 
+      $wpflybox_showon_logged = $_POST['wpflybox_showon_logged'];
+			update_option('wpflybox_showon_logged', $wpflybox_showon_logged);                                      			
+      $wpflybox_showon_pid = $_POST['wpflybox_showon_pid'];
+			update_option('wpflybox_showon_pid', $wpflybox_showon_pid); 
+      $wpflybox_showon_pidhide = $_POST['wpflybox_showon_pidhide'];
+			update_option('wpflybox_showon_pidhide', $wpflybox_showon_pidhide); 			
+			//$wpflybox_opentabs = $_POST['wpflybox_opentabs'];
+			//update_option('wpflybox_opentabs', $wpflybox_opentabs);      			                        
+                
+                             
+if ($_POST['wpflybox_delete_cache'] == 'true')
+{
+delete_transient('wpfb_d_'.get_option(wpflybox_deviant_username));
+delete_option('wpfb_d_'.get_option(wpflybox_deviant_username));
+delete_transient('wpfb_t_'.get_option(wpflybox_twitter));
+delete_option('wpfb_t_'.get_option(wpflybox_twitter));
+delete_transient('wpfb_v_'.get_option(wpflybox_vimeo_username));
+delete_option('wpfb_v_'.get_option(wpflybox_vimeo_username));
+delete_transient('wpfb_i_'.get_option(wpflybox_instagram_id));
+delete_option('wpfb_i_'.get_option(wpflybox_instagram_id));
+echo '<div class="updated"><p><strong>'.$wpl_Cachesdeleted.'</strong></p></div>';
+
+}
+
+            			                                                                                                  
+			?>
+			<div class="updated"><p><strong><?php echo $wpl_Optionssaved; ?></strong></p></div>
+			<?php
+		} else {
+			//Normal page display
+		}
+		
+		
+	?>
+	
+	<div class="wrap">
+			<div class="icon32" id="icon-options-general"><br></div><?php    echo "<h2>WP-FlyBox</h2>"; ?>
+			
+			
+
+
+<form name="oscimp_form" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
+				<input type="hidden" name="wpflybox_hidden" value="Y">
+<div class="postbox-container" style="width:74%; float:left">
+<div class="metabox-holder">
+<div class="meta-box-sortables ui-sortable">
+		
+		<div id="wpflybox_general" class="postbox" style="width:100%;">
+		<h3 class="hndle">
+		<span><?php echo $wpl_DisplayOptions; ?>:</span>
+		</h3>
+	<div class="inside">	
+	<table cellpadding="3"><tr>			
+		<td style="text-align:right;" width="190px"><?php echo $wpl_Whichside.':'; ?></td>
+        <td><select name="wpflybox_side">
+	<option value="none" <?php if(get_option(wpflybox_side)=="none"){echo 'selected';} ?>><?php echo $wpl_NoneOff; ?></option>
+	<option value="left" <?php if(get_option(wpflybox_side)=="left"){echo 'selected';} ?>><?php echo $wpl_Left; ?></option>
+        <option value="right" <?php if(get_option(wpflybox_side)=="right"){echo 'selected';} ?>><?php echo $wpl_Right; ?></option>
+        </select>
+        </td>
+        </tr>
+        <td style="text-align:right;"><?php echo $wpl_Howhigh.':'; ?></td><td>
+        <input type="text" name="wpflybox_start" value="<?php echo get_option(wpflybox_start); ?>" size="4" />px (ex: 20)  
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_Amountofsep.':'; ?></td><td>
+        <input type="text" name="wpflybox_seperation" value="<?php echo get_option(wpflybox_seperation); ?>" size="4" />px (ex: 103)
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_CompensateAdmin; ?></td><td>
+        <select name="wpflybox_admin_bar">
+        <option value="28" <?php if(get_option(wpflybox_admin_bar)=="28"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="0" <?php if(get_option(wpflybox_admin_bar)=="0"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
+        </select> <?php echo $wpl_CompensateDesc; ?>
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_Pushtabs; ?></td><td>
+        <select name="wpflybox_edge">
+        <option value="true" <?php if(get_option(wpflybox_edge)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_edge)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
+        </select> <?php echo $wpl_PushDesc; ?> 
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_FloatTabs; ?></td><td>
+        <select name="wpflybox_position">
+        <option value="fixed" <?php if(get_option(wpflybox_position)=="fixed"){echo 'selected';} ?>><?php echo $wpl_FloatWithWindow; ?></option>
+        <option value="absolute" <?php if(get_option(wpflybox_position)=="absolute"){echo 'selected';} ?>><?php echo $wpl_AttachedToPage; ?></option>
+        </select> <?php echo $wpl_FloatDesc; ?> 
+        </td></tr>
+                 
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_Howmanytabs.':'; ?></td><td>
+        <select name="wpflybox_count">
+        <option value="1" <?php if(get_option(wpflybox_count)=="1"){echo 'selected';} ?>>1</option>
+        <option value="2" <?php if(get_option(wpflybox_count)=="2"){echo 'selected';} ?>>2</option>
+        <option value="3" <?php if(get_option(wpflybox_count)=="3"){echo 'selected';} ?>>3</option>
+        <option value="4" <?php if(get_option(wpflybox_count)=="4"){echo 'selected';} ?>>4</option>
+        <option value="5" <?php if(get_option(wpflybox_count)=="5"){echo 'selected';} ?>>5</option>
+	<option value="6" <?php if(get_option(wpflybox_count)=="6"){echo 'selected';} ?>>6</option>
+	<option value="7" <?php if(get_option(wpflybox_count)=="7"){echo 'selected';} ?>>7</option>
+		<option value="8" <?php if(get_option(wpflybox_count)=="8"){echo 'selected';} ?>>8</option>
+        </select> <input type="submit" name="Submit" value="<?php echo $wpl_Apply; ?>" />
+        </td></tr>
+        
+        <?php if(get_option(wpflybox_count)>=1){ ?>
+        <tr><td style="text-align:right;"><?php echo $wpl_Firsttab.':'; ?></td><td>
+        <select name="wpflybox_tab1">
+        <option value="facebook" <?php if(get_option(wpflybox_tab1)=="facebook"){echo 'selected';} ?>>Facebook</option>
+        <option value="twitter" <?php if(get_option(wpflybox_tab1)=="twitter"){echo 'selected';} ?>>Twitter</option>
+        <option value="googleplus" <?php if(get_option(wpflybox_tab1)=="googleplus"){echo 'selected';} ?>>Google Plus</option>
+        <option value="youtube" <?php if(get_option(wpflybox_tab1)=="youtube"){echo 'selected';} ?>>Youtube</option>
+        <option value="subscription" <?php if(get_option(wpflybox_tab1)=="subscription"){echo 'selected';} ?>>Feedburner Subscription</option>
+        <option value="pinterest" <?php if(get_option(wpflybox_tab1)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
+        <option value="linkedin" <?php if(get_option(wpflybox_tab1)=="linkedin"){echo 'selected';} ?>>Linked In</option>
+        <option value="flickr" <?php if(get_option(wpflybox_tab1)=="flickr"){echo 'selected';} ?>>Flickr</option>        
+        <option value="contact" <?php if(get_option(wpflybox_tab1)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
+        <option value="deviant" <?php if(get_option(wpflybox_tab1)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
+        <option value="instagram" <?php if(get_option(wpflybox_tab1)=="instagram"){echo 'selected';} ?>>Instagram</option>
+        <option value="vimeo" <?php if(get_option(wpflybox_tab1)=="vimeo"){echo 'selected';} ?>>Vimeo</option>
+        </select>
+        </td></tr>
+        
+        <?php } if(get_option(wpflybox_count)>=2){ ?>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_Secondtab.':'; ?></td><td>
+        <select name="wpflybox_tab2">
+        <option value="facebook" <?php if(get_option(wpflybox_tab2)=="facebook"){echo 'selected';} ?>>Facebook</option>
+        <option value="twitter" <?php if(get_option(wpflybox_tab2)=="twitter"){echo 'selected';} ?>>Twitter</option>
+        <option value="googleplus" <?php if(get_option(wpflybox_tab2)=="googleplus"){echo 'selected';} ?>>Google Plus</option>
+        <option value="youtube" <?php if(get_option(wpflybox_tab2)=="youtube"){echo 'selected';} ?>>Youtube</option>
+        <option value="subscription" <?php if(get_option(wpflybox_tab2)=="subscription"){echo 'selected';} ?>>Feedburner Subscription</option>
+        <option value="pinterest" <?php if(get_option(wpflybox_tab2)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
+        <option value="linkedin" <?php if(get_option(wpflybox_tab2)=="linkedin"){echo 'selected';} ?>>Linked In</option>
+        <option value="flickr" <?php if(get_option(wpflybox_tab2)=="flickr"){echo 'selected';} ?>>Flickr</option> 
+        <option value="contact" <?php if(get_option(wpflybox_tab2)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
+        <option value="deviant" <?php if(get_option(wpflybox_tab2)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
+        <option value="instagram" <?php if(get_option(wpflybox_tab2)=="instagram"){echo 'selected';} ?>>Instagram</option>
+        <option value="vimeo" <?php if(get_option(wpflybox_tab2)=="vimeo"){echo 'selected';} ?>>Vimeo</option>
+        </select>
+        </td></tr>
+        
+        <?php } if(get_option(wpflybox_count)>=3){ ?>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_Thirdtab.':'; ?></td><td>
+        <select name="wpflybox_tab3">
+        <option value="facebook" <?php if(get_option(wpflybox_tab3)=="facebook"){echo 'selected';} ?>>Facebook</option>
+        <option value="twitter" <?php if(get_option(wpflybox_tab3)=="twitter"){echo 'selected';} ?>>Twitter</option>
+        <option value="googleplus" <?php if(get_option(wpflybox_tab3)=="googleplus"){echo 'selected';} ?>>Google Plus</option>
+        <option value="youtube" <?php if(get_option(wpflybox_tab3)=="youtube"){echo 'selected';} ?>>Youtube</option>
+        <option value="subscription" <?php if(get_option(wpflybox_tab3)=="subscription"){echo 'selected';} ?>>Feedburner Subscription</option>
+        <option value="pinterest" <?php if(get_option(wpflybox_tab3)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
+        <option value="linkedin" <?php if(get_option(wpflybox_tab3)=="linkedin"){echo 'selected';} ?>>Linked In</option>
+        <option value="flickr" <?php if(get_option(wpflybox_tab3)=="flickr"){echo 'selected';} ?>>Flickr</option> 
+        <option value="contact" <?php if(get_option(wpflybox_tab3)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
+        <option value="deviant" <?php if(get_option(wpflybox_tab3)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
+        <option value="instagram" <?php if(get_option(wpflybox_tab3)=="instagram"){echo 'selected';} ?>>Instagram</option>
+        <option value="vimeo" <?php if(get_option(wpflybox_tab3)=="vimeo"){echo 'selected';} ?>>Vimeo</option>
+        </select>
+        </td></tr>
+        
+        <?php } if(get_option(wpflybox_count)>=4){ ?>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_Fourthtab.':'; ?></td><td>
+        <select name="wpflybox_tab4">
+        <option value="facebook" <?php if(get_option(wpflybox_tab4)=="facebook"){echo 'selected';} ?>>Facebook</option>
+        <option value="twitter" <?php if(get_option(wpflybox_tab4)=="twitter"){echo 'selected';} ?>>Twitter</option>
+        <option value="googleplus" <?php if(get_option(wpflybox_tab4)=="googleplus"){echo 'selected';} ?>>Google Plus</option>
+        <option value="youtube" <?php if(get_option(wpflybox_tab4)=="youtube"){echo 'selected';} ?>>Youtube</option>
+        <option value="subscription" <?php if(get_option(wpflybox_tab4)=="subscription"){echo 'selected';} ?>>Feedburner Subscription</option>
+        <option value="pinterest" <?php if(get_option(wpflybox_tab4)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
+        <option value="linkedin" <?php if(get_option(wpflybox_tab4)=="linkedin"){echo 'selected';} ?>>Linked In</option>
+        <option value="flickr" <?php if(get_option(wpflybox_tab4)=="flickr"){echo 'selected';} ?>>Flickr</option> 
+        <option value="contact" <?php if(get_option(wpflybox_tab4)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
+        <option value="deviant" <?php if(get_option(wpflybox_tab4)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
+        <option value="instagram" <?php if(get_option(wpflybox_tab4)=="instagram"){echo 'selected';} ?>>Instagram</option>
+        <option value="vimeo" <?php if(get_option(wpflybox_tab4)=="vimeo"){echo 'selected';} ?>>Vimeo</option>
+        </select>
+        </td></tr>
+        
+        <?php } if(get_option(wpflybox_count)>=5){ ?>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_Fifthtab.':'; ?></td><td>
+        <select name="wpflybox_tab5">
+        <option value="facebook" <?php if(get_option(wpflybox_tab5)=="facebook"){echo 'selected';} ?>>Facebook</option>
+        <option value="twitter" <?php if(get_option(wpflybox_tab5)=="twitter"){echo 'selected';} ?>>Twitter</option>
+        <option value="googleplus" <?php if(get_option(wpflybox_tab5)=="googleplus"){echo 'selected';} ?>>Google Plus</option>
+        <option value="youtube" <?php if(get_option(wpflybox_tab5)=="youtube"){echo 'selected';} ?>>Youtube</option>
+        <option value="subscription" <?php if(get_option(wpflybox_tab5)=="subscription"){echo 'selected';} ?>>Feedburner Subscription</option>
+        <option value="pinterest" <?php if(get_option(wpflybox_tab5)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
+        <option value="linkedin" <?php if(get_option(wpflybox_tab5)=="linkedin"){echo 'selected';} ?>>Linked In</option>
+        <option value="flickr" <?php if(get_option(wpflybox_tab5)=="flickr"){echo 'selected';} ?>>Flickr</option> 
+        <option value="contact" <?php if(get_option(wpflybox_tab5)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
+        <option value="deviant" <?php if(get_option(wpflybox_tab5)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
+        <option value="instagram" <?php if(get_option(wpflybox_tab5)=="instagram"){echo 'selected';} ?>>Instagram</option>
+        <option value="vimeo" <?php if(get_option(wpflybox_tab5)=="vimeo"){echo 'selected';} ?>>Vimeo</option>
+        </select>
+        </td></tr>
+	
+	<?php } if(get_option(wpflybox_count)>=6){ ?>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_Sixthtab.':'; ?></td><td>
+        <select name="wpflybox_tab6">
+        <option value="facebook" <?php if(get_option(wpflybox_tab6)=="facebook"){echo 'selected';} ?>>Facebook</option>
+        <option value="twitter" <?php if(get_option(wpflybox_tab6)=="twitter"){echo 'selected';} ?>>Twitter</option>
+        <option value="googleplus" <?php if(get_option(wpflybox_tab6)=="googleplus"){echo 'selected';} ?>>Google Plus</option>
+        <option value="youtube" <?php if(get_option(wpflybox_tab6)=="youtube"){echo 'selected';} ?>>Youtube</option>
+        <option value="subscription" <?php if(get_option(wpflybox_tab6)=="subscription"){echo 'selected';} ?>>Feedburner Subscription</option>
+        <option value="pinterest" <?php if(get_option(wpflybox_tab6)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
+        <option value="linkedin" <?php if(get_option(wpflybox_tab6)=="linkedin"){echo 'selected';} ?>>Linked In</option>
+        <option value="flickr" <?php if(get_option(wpflybox_tab6)=="flickr"){echo 'selected';} ?>>Flickr</option> 
+        <option value="contact" <?php if(get_option(wpflybox_tab6)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
+        <option value="deviant" <?php if(get_option(wpflybox_tab6)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
+        <option value="instagram" <?php if(get_option(wpflybox_tab6)=="instagram"){echo 'selected';} ?>>Instagram</option>
+        <option value="vimeo" <?php if(get_option(wpflybox_tab6)=="vimeo"){echo 'selected';} ?>>Vimeo</option>
+        </select>
+        </td></tr>
+	
+	<?php } if(get_option(wpflybox_count)>=7){ ?>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_Seventhtab.':'; ?></td><td>
+        <select name="wpflybox_tab7">
+        <option value="facebook" <?php if(get_option(wpflybox_tab7)=="facebook"){echo 'selected';} ?>>Facebook</option>
+        <option value="twitter" <?php if(get_option(wpflybox_tab7)=="twitter"){echo 'selected';} ?>>Twitter</option>
+        <option value="googleplus" <?php if(get_option(wpflybox_tab7)=="googleplus"){echo 'selected';} ?>>Google Plus</option>
+        <option value="youtube" <?php if(get_option(wpflybox_tab7)=="youtube"){echo 'selected';} ?>>Youtube</option>
+        <option value="subscription" <?php if(get_option(wpflybox_tab7)=="subscription"){echo 'selected';} ?>>Feedburner Subscription</option>
+        <option value="pinterest" <?php if(get_option(wpflybox_tab7)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
+        <option value="linkedin" <?php if(get_option(wpflybox_tab7)=="linkedin"){echo 'selected';} ?>>Linked In</option>
+        <option value="flickr" <?php if(get_option(wpflybox_tab7)=="flickr"){echo 'selected';} ?>>Flickr</option> 
+        <option value="contact" <?php if(get_option(wpflybox_tab7)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
+        <option value="deviant" <?php if(get_option(wpflybox_tab7)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
+        <option value="instagram" <?php if(get_option(wpflybox_tab7)=="instagram"){echo 'selected';} ?>>Instagram</option>
+        <option value="vimeo" <?php if(get_option(wpflybox_tab7)=="vimeo"){echo 'selected';} ?>>Vimeo</option>
+        </select>
+        </td></tr>
+        
+	<?php } if(get_option(wpflybox_count)>=8){ ?>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_Eighthtab.':'; ?></td><td>
+        <select name="wpflybox_tab8">
+        <option value="facebook" <?php if(get_option(wpflybox_tab8)=="facebook"){echo 'selected';} ?>>Facebook</option>
+        <option value="twitter" <?php if(get_option(wpflybox_tab8)=="twitter"){echo 'selected';} ?>>Twitter</option>
+        <option value="googleplus" <?php if(get_option(wpflybox_tab8)=="googleplus"){echo 'selected';} ?>>Google Plus</option>
+        <option value="youtube" <?php if(get_option(wpflybox_tab8)=="youtube"){echo 'selected';} ?>>Youtube</option>
+        <option value="subscription" <?php if(get_option(wpflybox_tab8)=="subscription"){echo 'selected';} ?>>Feedburner Subscription</option>
+        <option value="pinterest" <?php if(get_option(wpflybox_tab8)=="pinterest"){echo 'selected';} ?>>Pinterest</option>
+        <option value="linkedin" <?php if(get_option(wpflybox_tab8)=="linkedin"){echo 'selected';} ?>>Linked In</option>
+        <option value="flickr" <?php if(get_option(wpflybox_tab8)=="flickr"){echo 'selected';} ?>>Flickr</option> 
+        <option value="contact" <?php if(get_option(wpflybox_tab8)=="contact"){echo 'selected';} ?>>Contact Me/Us</option>
+        <option value="deviant" <?php if(get_option(wpflybox_tab8)=="deviant"){echo 'selected';} ?>>Deviant Art</option>
+        <option value="instagram" <?php if(get_option(wpflybox_tab8)=="instagram"){echo 'selected';} ?>>Instagram</option>
+        <option value="vimeo" <?php if(get_option(wpflybox_tab8)=="vimeo"){echo 'selected';} ?>>Vimeo</option>
+        </select>
+        </td></tr>        
+		  <?php } ?>
+
+        <tr><td colspan="2"><?php echo $wpl_Notesamething; ?></td></tr>
+
+		    <tr><td style="text-align:right;"><?php echo $wpl_Whichtypebutton; ?></td><td>
+		    <table border="0">
+		    <tr><td style="text-align:center;">
+		    <img src="<?php echo plugins_url()."/wp-flybox/static/"; ?>noncustombuttonexample.png" width="101"><br>
+		    <input type="radio" name="wpflybox_usecustombutton" value="false" <?php if(get_option(wpflybox_usecustombutton)=="false"){echo 'checked';} ?>><br><?php echo $wpl_LogoandText; ?>
+		    </td><td style="text-align:center;">
+		    <img src="<?php echo plugins_url()."/wp-flybox/static/"; ?>custombuttonexample.png" width="101"><br>
+        <input type="radio" name="wpflybox_usecustombutton" value="true" <?php if(get_option(wpflybox_usecustombutton)=="true"){echo 'checked';} ?>><br><?php echo $wpl_CustomColors; ?>
+        </td><td><input type="submit" name="Submit" value="<?php echo $wpl_Apply; ?>" />
+        </td></table>
+        </td></tr> 
+        
+        
+        <?php if (get_option(wpflybox_usecustombutton)=="true"){ ?>
+        <tr><td>
+        <h4><?php echo $wpl_CustomButtonConfig; ?>:</h4>
+        </td></tr>
+        
+        
+		    <tr><td style="text-align:right;"><?php echo $wpl_RightGradColor; ?>:</td><td>
+        <input class="color" type="text" name="wpflybox_bgtopgradient" value="<?php echo get_option(wpflybox_bgtopgradient); ?>" size="10" />
+        </td></tr>
+		    <tr><td style="text-align:right;"><?php echo $wpl_LeftGradColor; ?></td><td>
+        <input class="color" type="text" name="wpflybox_bgbottomgradient" value="<?php echo get_option(wpflybox_bgbottomgradient); ?>" size="10" />
+        </td></tr>                   		  
+		    <tr><td style="text-align:right;"><?php echo $wpl_BorderColor; ?>:</td><td>
+        <input class="color" type="text" name="wpflybox_bgborder" value="<?php echo get_option(wpflybox_bgborder); ?>" size="10" />
+        </td></tr>
+        
+        <?php
+        $wpflybox_bgtopgradient=get_option(wpflybox_bgtopgradient);
+        $wpflybox_bgbottomgradient=get_option(wpflybox_bgbottomgradient);
+        $wpflybox_bgborder=get_option(wpflybox_bgborder);
+        ?>
+        <tr><td style="text-align:right;"><?php echo $wpl_CurrentTabColors; ?>:<br>&nbsp;<br>&nbsp;</td><td>
+        <style type="text/css">
+        .wpflybox_button {
+         border-top: 1px solid #<?php echo $wpflybox_bgborder;?>;
+         border-right: 1px solid #<?php echo $wpflybox_bgborder;?>;
+         border-bottom: 1px solid #<?php echo $wpflybox_bgborder;?>;
+         background: #000000;
+         background: -webkit-gradient(linear, left top, right top, from(#<?php echo $wpflybox_bgtopgradient;?>), to(#<?php echo $wpflybox_bgbottomgradient;?>));
+         background: -webkit-linear-gradient(left, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -moz-linear-gradient(left, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -ms-linear-gradient(left, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -o-linear-gradient(left, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#<?php echo $wpflybox_bgtopgradient;?>', endColorstr='#<?php echo $wpflybox_bgbottomgradient;?>');
+         -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#<?php echo $wpflybox_bgtopgradient;?>', endColorstr='#<?php echo $wpflybox_bgbottomgradient;?>')";
+         display:block;
+         height:32px;
+         width: 32px;
+         margin: 0px;
+         padding: 0px;
+         -webkit-border-radius: 0px 9px 9px 0px;
+         -moz-border-radius: 0px 9px 9px 0px;
+         border-radius: 0px 9px 9px 0px;
+         color: #ffffff;
+         font-size: 10px;
+         font-family: Georgia, serif;
+         text-decoration: none;
+         vertical-align: middle;
+         z-index:800;
+         }
+        .wpflybox_button img{
+         padding:0px;
+         }
+         .wpflybox_button img:hover {
+         -webkit-border-radius: 0px 9px 9px 0px;
+         -moz-border-radius: 0px 9px 9px 0px;
+         border-radius: 0px 9px 9px 0px;
+         padding:0px;   
+         border-bottom:0px hidden;
+         background: #000000;
+         background: -webkit-gradient(linear, left top, right top, from(#<?php echo $wpflybox_bgtopgradient;?>), to(#<?php echo $wpflybox_bgbottomgradient;?>));
+         background: -webkit-linear-gradient(left, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -moz-linear-gradient(left, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -ms-linear-gradient(left, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         background: -o-linear-gradient(left, #<?php echo $wpflybox_bgtopgradient;?>, #<?php echo $wpflybox_bgbottomgradient;?>);
+         filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#<?php echo $wpflybox_bgtopgradient;?>', endColorstr='#<?php echo $wpflybox_bgbottomgradient;?>');
+         -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#<?php echo $wpflybox_bgtopgradient;?>', endColorstr='#<?php echo $wpflybox_bgbottomgradient;?>')";
+         color: #000000;
+         }
+        </style>
+        
+        <a class="wpflybox_button" href="#"><img src="<?php echo plugins_url()."/wp-flybox/static/icons/"; ?>facebook.png" height="30"></a>
+        <br><input type="submit" name="Submit" value="Apply & Refresh" />
+        </td></tr>
+        <tr><td colspan="2"><?php echo $wpl_IENoteCorners; ?></td></tr>     		  
+		   <?php
+		   }else{
+       ?> 
+       <input type="hidden" name="wpflybox_bgtopgradient" value="<?php echo get_option(wpflybox_bgtopgradient); ?>" />
+       <input type="hidden" name="wpflybox_bgbottomgradient" value="<?php echo get_option(wpflybox_bgbottomgradient); ?>" />
+       <input type="hidden" name="wpflybox_bgborder" value="<?php echo get_option(wpflybox_bgborder); ?>" />
+         <?php
+       }
+       ?>
+       <tr><td>&nbsp;</td></tr>
+       <tr><td style="text-align:right;"><?php echo $wpl_ShowOptions; ?>:</td><td>
+       <input type="checkbox" name="wpflybox_showon_front" value="true" <?php if(get_option(wpflybox_showon_front)){echo 'checked';} ?> /> <?php echo $wpl_MainPage; ?>,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_page" value="true" <?php if(get_option(wpflybox_showon_page)){echo 'checked';} ?> /> <?php echo $wpl_Pages; ?>,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_post" value="true" <?php if(get_option(wpflybox_showon_post)){echo 'checked';} ?> /> <?php echo $wpl_Posts; ?>,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_archive" value="true" <?php if(get_option(wpflybox_showon_archive)){echo 'checked';} ?> /> <?php echo $wpl_Archives; ?>,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_feed" value="true" <?php if(get_option(wpflybox_showon_feed)){echo 'checked';} ?> /> <?php echo $wpl_Feeds; ?>,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_search" value="true" <?php if(get_option(wpflybox_showon_search)){echo 'checked';} ?> /> <?php echo $wpl_Search; ?>,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_guest" value="true" <?php if(get_option(wpflybox_showon_guest)){echo 'checked';} ?> /> <?php echo $wpl_ForGuests; ?>,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_logged" value="true" <?php if(get_option(wpflybox_showon_logged)){echo 'checked';} ?> /> <?php echo $wpl_ForUsers; ?>
+       <br /><?php echo $wpl_ShowOnwith; ?>: <input type="text" name="wpflybox_showon_pid" value="<?php echo get_option(wpflybox_showon_pid); ?>" size="60" /> <?php echo $wpl_IDsSep; ?>
+       <br /><?php echo $wpl_HideOnwith; ?>: <input type="text" name="wpflybox_showon_pidhide" value="<?php echo get_option(wpflybox_showon_pidhide); ?>" size="60" /> <?php echo $wpl_IDsSep; ?>  
+       <br /><a href="http://en.forums.wordpress.com/topic/any-one-know-how-to-find-page-ids" target="_blank" title="Help Finding IDs"><?php echo $wpl_HelpFindingID; ?></a>
+       </td></tr>
+
+
+     
+         <tr><td>
+	       <p class="submit">
+				<input class="button-primary" type="submit" name="Submit" value="<?php echo $wpl_UpdateOptions; ?>" />
+				</p>  </td></tr>
+  		
+	</table>
+	</div>
+		</div>
+	<br />&nbsp;
+	<br />&nbsp;
+	<div id="wpflybox_config" class="postbox" style="width:100%">
+		<h3 class="hndle">
+			<?php echo $wpl_TabConfig; ?>:
+		</h3>
+
+        <table cellpadding="3" style="background-color:#f5f5f5;">
+        <tr><td colspan="2"><h4>Facebook:</h4></td></tr>
+        <tr><td style="text-align:right;"><?php echo $wpl_FullPageURL; ?>:</td><td>
+        <input type="text" name="wpflybox_facebook" value="<?php echo get_option(wpflybox_facebook); ?>" size="70" />
+        (<?php echo $wpl_FannotPersonal; ?>)
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_ColorScheme; ?>:</td><td>
+        <select name="wpflybox_facebook_color">
+        <option value="light" <?php if(get_option(wpflybox_facebook_color)=="light"){echo 'selected';} ?>><?php echo $wpl_Light; ?></option>
+        <option value="dark" <?php if(get_option(wpflybox_facebook_color)=="dark"){echo 'selected';} ?>><?php echo $wpl_Dark; ?></option>
+        </select>
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_Height; ?>:</td><td>
+        <input type="text" name="wpflybox_facebook_height" value="<?php echo get_option(wpflybox_facebook_height); ?>" size="6" />px
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_ShowHeader; ?>:</td><td>
+        <select name="wpflybox_facebook_header">
+        <option value="true" <?php if(get_option(wpflybox_facebook_header)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_facebook_header)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
+        </select>(<?php echo $wpl_IsHeader; ?>)
+        </td></tr> 
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_ShowStream; ?>:</td><td>
+        <select name="wpflybox_facebook_stream">
+        <option value="true" <?php if(get_option(wpflybox_facebook_stream)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_facebook_stream)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
+        </select>
+        </td></tr> 
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_ShowFaces; ?>:</td><td>
+        <select name="wpflybox_facebook_showfaces">
+        <option value="true" <?php if(get_option(wpflybox_facebook_showfaces)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_facebook_showfaces)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
+        </select>
+        </td></tr>                                  
+
+
+        <tr><td colspan="2"><h4>Twitter:</h4></td></tr>
+                           
+        <tr><td style="text-align:right;"><?php echo $wpl_TwitterUsername; ?>:</td><td>
+        @<input type="text" name="wpflybox_twitter" value="<?php echo get_option(wpflybox_twitter); ?>" size="20" />
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_UseCustomTwitter; ?></td><td>
+        <select name="wpflybox_custom_twitter">
+        <option value="true" <?php if(get_option(wpflybox_custom_twitter)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_custom_twitter)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
+        </select>
+        </td></tr>
+
+        <tr><td colspan="2"><h4><?php echo $wpl_CustomTwitterOptions; ?>:</h4> (<?php echo $wpl_CustomGiveErrors; ?>)</td></tr>
+        <tr><td style="text-align:right;"><?php echo $wpl_ShowWhat; ?></td><td>
+        <select name="wpflybox_twitter_showfollowers">
+        <option value="followers" <?php if(get_option(wpflybox_twitter_showfollowers)=="followers"){echo 'selected';} ?>><?php echo $wpl_Followers; ?></option>
+        <option value="friends" <?php if(get_option(wpflybox_twitter_showfollowers)=="friends"){echo 'selected';} ?>><?php echo $wpl_Friends; ?></option>
+        </select>
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_HowManyFF; ?>:</td><td>
+        <input type="text" name="wpflybox_twitter_count" value="<?php echo get_option(wpflybox_twitter_count); ?>" size="2" />
+        <?php echo $wpl_Use0Friends; ?>
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_ProvideLinktoF; ?>:</td><td>
+        <select name="wpflybox_twitter_link">
+        <option value="on" <?php if(get_option(wpflybox_twitter_link)=="on"){echo 'selected';} ?>><?php echo $wpl_On; ?></option>
+        <option value="off" <?php if(get_option(wpflybox_twitter_link)=="off"){echo 'selected';} ?>><?php echo $wpl_Off; ?></option>
+        </select>
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_TweettoButton; ?>:</td><td>
+        <select name="wpflybox_twitter_tweetto">
+        <option value="on" <?php if(get_option(wpflybox_twitter_tweetto)=="on"){echo 'selected';} ?>><?php echo $wpl_On; ?></option>
+        <option value="off" <?php if(get_option(wpflybox_twitter_tweetto)=="off"){echo 'selected';} ?>><?php echo $wpl_Off; ?></option>
+        </select>
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_ShowLatestT; ?>:</td><td>
+        <select name="wpflybox_twitter_latest">
+        <option value="true" <?php if(get_option(wpflybox_twitter_latest)=="true"){echo 'selected';} ?>><?php echo $wpl_On; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_twitter_latest)=="false"){echo 'selected';} ?>><?php echo $wpl_Off; ?></option>
+        </select>
+        </td></tr>
+      
+        <tr><td colspan="2"><h4>Google Plus:</h4></td></tr>
+        <tr><td style="text-align:right;"><?php echo $wpl_Googlenumuser; ?>:</td><td>
+        <input type="text" name="wpflybox_google" value="<?php echo get_option(wpflybox_google); ?>" size="30" />
+        (<?php echo $wpl_Googleuserdesc; ?>)
+        </td></tr>
+	
+        <tr><td style="text-align:right;"><?php echo $wpl_PageType; ?>:</td><td>
+        <select name="wpflybox_google_type">
+        <option value="profile" <?php if(get_option(wpflybox_google_type)=="profile"){echo 'selected';} ?>><?php echo $wpl_Profile; ?></option>
+        <option value="page" <?php if(get_option(wpflybox_google_type)=="page"){echo 'selected';} ?>><?php echo $wpl_Page; ?></option>
+        </select>
+	(<?php echo $wpl_GooglePagedesc; ?>)
+        </td></tr>
+        
+        <tr><td colspan="2"><h4>Youtube:</h4></td></tr>        
+        <tr><td style="text-align:right;"><?php echo $wpl_YoutubeUsername; ?>:</td><td>
+        <input type="text" name="wpflybox_youtube" value="<?php echo get_option(wpflybox_youtube); ?>" size="30" />
+        </td></tr>
+        
+        <tr><td colspan="2"><h4>Feedburner Subscription:</h4></td></tr> 
+        <tr><td style="text-align:right;"><?php echo $wpl_FeedburnerUsername; ?>:</td><td>
+        <input type="text" name="wpflybox_feedburner" value="<?php echo get_option(wpflybox_feedburner); ?>" size="30" />
+        </td></tr> 
+        
+        <tr><td colspan="2"><h4>Pinterest:</h4></td></tr> 
+        <tr><td style="text-align:right;"><?php echo $wpl_PinterestUsername; ?>:</td><td>
+        <input type="text" name="wpflybox_pinterest" value="<?php echo get_option(wpflybox_pinterest); ?>" size="30" />
+        (<?php echo $wpl_PinterestUserDesc; ?>)
+        </td></tr>  
+        
+        <tr><td colspan="2"><h4>LinkedIn:</h4></td></tr>
+        <tr><td style="text-align:right;"><?php echo $wpl_LinkedinID; ?>:</td><td>
+        <input type="text" name="wpflybox_linkedin" value="<?php echo get_option(wpflybox_linkedin); ?>" size="70" />
+        <br><?php echo $wpl_LinkedinFindID; ?>
+        </td></tr>
+        <tr><td style="text-align:right;"><?php echo $wpl_LinkedinMember; ?>:</td><td>
+        <select name="wpflybox_linkedin_type">
+        <option value="member" <?php if(get_option(wpflybox_linkedin_type)=="member"){echo 'selected';} ?>><?php echo $wpl_Member; ?></option>        
+        <option value="company" <?php if(get_option(wpflybox_linkedin_type)=="company"){echo 'selected';} ?>><?php echo $wpl_Company; ?></option>
+        </select>
+        </td></tr>
+        
+        <tr><td colspan="2"><h4>Flickr:</h4></td></tr>
+        <tr><td style="text-align:right;"><?php echo $wpl_FlickrID; ?>:</td><td>
+        <input type="text" name="wpflybox_flickr" value="<?php echo get_option(wpflybox_flickr); ?>" size="20" />
+        <?php echo $wpl_FlickerIDGetter; ?>: <a href="http://idgettr.com/" target="_blank">http://idgettr.com/</a>.
+        </td></tr> 
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_PhotoTag; ?>:</td><td>
+        <input type="text" name="wpflybox_flickr_tag" value="<?php echo get_option(wpflybox_flickr_tag); ?>" size="20" />
+        <?php echo $wpl_PhotoTagDesc; ?>
+        </td></tr>         
+        
+        <tr><td colspan="2"><h4><?php echo $wpl_ContactMe; ?>:</h4></td></tr>
+        <tr><td style="text-align:right;"><?php echo $wpl_CompletedForm; ?>:</td><td>
+        <input type="text" name="wpflybox_contactemail" value="<?php echo get_option(wpflybox_contactemail); ?>" size="70" />
+        </td></tr>        
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_UseCaptcha; ?>:</td><td>
+        <select name="wpflybox_captcha">
+        <option value="true" <?php if(get_option(wpflybox_captcha)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>        
+        <option value="false" <?php if(get_option(wpflybox_captcha)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
+        </select>
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_TabWording; ?>:</td><td>
+        <select name="wpflybox_contactwho">
+        <option value="me" <?php if(get_option(wpflybox_contactwho)=="me"){echo 'selected';} ?>><?php echo $wpl_ContactMe; ?></option>        
+        <option value="us" <?php if(get_option(wpflybox_contactwho)=="us"){echo 'selected';} ?>><?php echo $wpl_ContactUs; ?></option>
+        </select>
+        </td></tr>
+        
+        
+        <tr><td colspan="2"><h4>Deviant Art:</h4></td></tr> 
+        <tr><td style="text-align:right;"><?php echo $wpl_DeviantUser; ?>:</td><td>
+        <input type="text" name="wpflybox_deviant_username" value="<?php echo get_option(wpflybox_deviant_username); ?>" size="30" />
+        </td></tr> 
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_DevFrameWidth; ?>:</td><td>
+        <input type="text" name="wpflybox_deviant_frame_width" value="<?php echo get_option(wpflybox_deviant_frame_width); ?>" size="3" />px 
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_DevFramHeight; ?>:</td><td>
+        <input type="text" name="wpflybox_deviant_frame_height" value="<?php echo get_option(wpflybox_deviant_frame_height); ?>" size="3" />px
+        </td></tr>                
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_DevMaxNum; ?>:</td><td>
+        <input type="text" name="wpflybox_deviant_limit" value="<?php echo get_option(wpflybox_deviant_limit); ?>" size="3" /> (<?php echo $wpl_DevMaxNumDesc; ?>)
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_DevMaxWidth; ?>:</td><td>
+        <input type="text" name="wpflybox_deviant_max_width" value="<?php echo get_option(wpflybox_deviant_max_width); ?>" size="3" />px <?php echo $wpl_DevMaxWidthDesc; ?>
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_DevMaxHeight; ?>:</td><td>
+        <input type="text" name="wpflybox_deviant_max_height" value="<?php echo get_option(wpflybox_deviant_max_height); ?>" size="3" />px <?php echo $wpl_DevMaxHeightDesc; ?>
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_DevCol; ?>:</td><td>
+        <input type="text" name="wpflybox_deviant_columns" value="<?php echo get_option(wpflybox_deviant_columns); ?>" size="3" />
+        </td></tr>
+                  
+                  
+        <tr><td colspan="2"><h4>Instagram:</h4></td></tr>
+        <tr><td colspan="2"><?php echo $wpl_ToAuthorize; ?>
+        <tr><td style="text-align:right;"><?php echo $wpl_InstUserID; ?>:</td><td>
+        <input type="text" name="wpflybox_instagram_id" value="<?php echo get_option(wpflybox_instagram_id); ?>" size="30" /><a href="http://njarb.com/wp-flybox/instagram" target="_blank"><?php echo $wpl_InstGetIDHere; ?></a>
+        </td></tr>
+        <tr><td style="text-align:right;"><?php echo $wpl_InstAuth; ?>:</td><td>
+        <input type="text" name="wpflybox_instagram_token" value="<?php echo get_option(wpflybox_instagram_token); ?>" size="70" /><a href="http://njarb.com/wp-flybox/instagram" target="_blank"><?php echo $wpl_InstGetAuthHere; ?></a>
+        </td></tr>
+        <tr><td style="text-align:right;"><?php echo $wpl_InstMaxRecent; ?>:</td><td>
+        <input type="text" name="wpflybox_instagram_max" value="<?php echo get_option(wpflybox_instagram_max); ?>" size="2" /><?php echo $wpl_InstHowManyPics; ?>
+        </td></tr> 
+        <tr><td style="text-align:right;"><?php echo $wpl_ShowHeader; ?>:</td><td>
+        <select name="wpflybox_instagram_header">
+        <option value="true" <?php if(get_option(wpflybox_instagram_header)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>        
+        <option value="false" <?php if(get_option(wpflybox_instagram_header)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
+        </select>
+        </td></tr>  
+        
+        <tr><td colspan="2"><h4>Vimeo:</h4></td></tr> 
+        <tr><td style="text-align:right;"><?php echo $wpl_VimUser;?>:</td><td>
+        <input type="text" name="wpflybox_vimeo_username" value="<?php echo get_option(wpflybox_vimeo_username); ?>" size="30" />
+        </td></tr> 
+         
+        <tr><td style="text-align:right;"><?php echo $wpl_VimVideotoShow; ?>:</td><td>
+        <input type="text" name="wpflybox_vimeo_total" value="<?php echo get_option(wpflybox_vimeo_total); ?>" size="2" /> <?php echo $wpl_VimZerotoShowNo; ?>
+        </td></tr>                                                        
+          <tr><td>
+  	       <p class="submit">
+				<input class="button-primary" type="submit" name="Submit" value="<?php echo $wpl_UpdateOptions; ?>" />
+				</p>            </td></tr>
+        
+	</table></div>
+             
+	
+	<br />&nbsp;
+	<div id="wpflybox_trouble" class="postbox" style="width:100%">
+		<h3 class="hndle">
+			<?php echo $wpl_Troubleshoot; ?>:
+		</h3>
+		<table cellpadding="3" style="background-color:#f5f5f5;">
+        <tr><td colspan="2"><h4>jquery:</h4></td></tr>
+        <tr><td colspan="2"><?php echo $wpl_JqueryDesc; ?></td></tr>
+        <tr><td style="text-align:right;width:100px;"><?php echo $wpl_LoadJquery; ?>:</td><td>
+        <select name="wpflybox_jquery">
+        <option value="on" <?php if(get_option(wpflybox_jquery)=="on"){echo 'selected';} ?>><?php echo $wpl_On; ?></option>        
+        <option value="off" <?php if(get_option(wpflybox_jquery)=="off"){echo 'selected';} ?>><?php echo $wpl_Off; ?></option>
+        </select>
+        </td></tr>
+        
+        
+        <tr><td colspan="2"><h4><?php echo $wpl_MobileSupport; ?>:</h4></td></tr>
+        <tr><td style="text-align:right;"><?php echo $wpl_EnableForMobile; ?>:</td><td>
+        <select name="wpflybox_mobile">
+        <option value="true" <?php if(get_option(wpflybox_mobile)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_mobile)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
+        </select>
+        </td></tr>
+        
+        <tr><td colspan="2"><h4><?php echo $wpl_IpadSupport; ?>:</h4></td></tr>
+        <tr><td style="text-align:right;"><?php echo $wpl_EnableforIpad; ?>:</td><td>
+        <select name="wpflybox_ipad">
+        <option value="true" <?php if(get_option(wpflybox_ipad)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_ipad)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
+        </select>
+        </td></tr>
+        
+        <tr><td colspan="2"><h4><?php echo $wpl_Caching; ?>:</h4></td></tr>
+        <tr><td colspan="2"><?php echo $wpl_CacheDesc; ?>
+        <tr><td style="text-align:right;"><?php echo $wpl_DeleteCaches; ?></td><td>
+        <input type="checkbox" name="wpflybox_delete_cache" value="true" />  <?php echo $wpl_ChecktoDelete; ?>  <input type="submit" name="Submit" value="<?php echo $wpl_Apply; ?>" />
+        </td></tr>
+       
+        <tr><td colspan="2"><br /><br /><?php echo $wpl_AutoDisIE; ?>
+        </td></tr>      
+      	    <tr><td>   
+               <p class="submit">
+				<input class="button-primary" type="submit" name="Submit" value="<?php echo $wpl_UpdateOptions; ?>" />
+				</p></td></tr>
+        
+		</table>
+	</div	
+        		                              
+			</form>
+		</div>
+</div>
+</div>
+
+<div class="postbox-container" style="width: 25%; float:right;position:absolute;right:0px;">
+<div class="metabox-holder">
+<div class="meta-box-sortables ui-sortable">
+<div id="wpflybox_general" class="postbox" >
+		<h3 class="hndle">
+		<span>More Info:</span>
+		</h3>
+	<div class="inside">		
+<b>Help:</b>
+<br /><a href="http://njarb.com/2012/08/wp-flybox/" target="blank"><?php echo $wpl_BlogPost; ?></a>
+<br /><a href="http://wordpress.org/extend/plugins/wp-flybox/" target="blank"><?php echo $wpl_WordpressPluginPage; ?></a>
+<br /><a href="http://njarb.com/2012/08/wp-flybox/" target="blank"><?php echo $wpl_Help; ?></a>
+<br /><br />
+<b>Find me on:</b>
+<br /><a href="http://facebook.com/cylec" target="_blank">Facebook</a>
+<br /><a href="http://twitter.com/cyleconoly" target="_blank">Twitter</a>
+<br /><a href="http://plus.google.com/u/0/105734435204105331709" target="_blank">Google Plus</a>
+<br /><br />
+<b>Rate:</b>
+<br /><a href="http://wordpress.org/extend/plugins/wp-flybox/" target="blank"><?php echo $wpl_Rate; ?> WP-FlyBox</a>
+<br /><br />
+<b>Donate:</b>
+<br /><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="DAP6N4DSPBDMY">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+	</div>
+</div>
+</div>
+</div>
+</div>
