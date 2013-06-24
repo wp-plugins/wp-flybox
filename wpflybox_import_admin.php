@@ -111,7 +111,9 @@ if (get_option(wpflybox_language)==""){$wpflybox_language="en-US";update_option(
       $wpflybox_facebook_color = $_POST['wpflybox_facebook_color']; 
 			update_option('wpflybox_facebook_color', $wpflybox_facebook_color);     	
       $wpflybox_facebook_height = $_POST['wpflybox_facebook_height']; 
-			update_option('wpflybox_facebook_height', $wpflybox_facebook_height);     	            			
+			update_option('wpflybox_facebook_height', $wpflybox_facebook_height);
+      $wpflybox_facebook_width = $_POST['wpflybox_facebook_width']; 
+			update_option('wpflybox_facebook_width', $wpflybox_facebook_width);            	            			
       $wpflybox_facebook_width = $_POST['wpflybox_facebook_width']; 
 			update_option('wpflybox_facebook_width', $wpflybox_facebook_width);	      	
       $wpflybox_twitter = $_POST['wpflybox_twitter'];
@@ -217,10 +219,12 @@ if (get_option(wpflybox_language)==""){$wpflybox_language="en-US";update_option(
       $wpflybox_showon_pid = $_POST['wpflybox_showon_pid'];
 			update_option('wpflybox_showon_pid', $wpflybox_showon_pid); 
       $wpflybox_showon_pidhide = $_POST['wpflybox_showon_pidhide'];
-			update_option('wpflybox_showon_pidhide', $wpflybox_showon_pidhide); 			
+			update_option('wpflybox_showon_pidhide', $wpflybox_showon_pidhide); 
+      $wpflybox_language = $_POST['wpflybox_language'];
+			update_option('wpflybox_language', $wpflybox_language);       			
 			//$wpflybox_opentabs = $_POST['wpflybox_opentabs'];
 			//update_option('wpflybox_opentabs', $wpflybox_opentabs);      			                        
-                
+                                                                                        
                              
 if ($_POST['wpflybox_delete_cache'] == 'true')
 {
@@ -615,6 +619,10 @@ echo '<div class="updated"><p><strong>'.$wpl_Cachesdeleted.'</strong></p></div>'
         
         <tr><td style="text-align:right;"><?php echo $wpl_Height; ?>:</td><td>
         <input type="text" name="wpflybox_facebook_height" value="<?php echo get_option(wpflybox_facebook_height); ?>" size="6" />px
+        </td></tr>
+      
+        <tr><td style="text-align:right;"><?php echo $wpl_Width; ?>:</td><td>
+        <input type="text" name="wpflybox_facebook_width" value="<?php echo get_option(wpflybox_facebook_width); ?>" size="6" />px
         </td></tr>
         
         <tr><td style="text-align:right;"><?php echo $wpl_ShowHeader; ?>:</td><td>

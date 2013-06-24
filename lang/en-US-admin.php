@@ -74,6 +74,7 @@ $wpl_ColorScheme='Color Scheme';
 $wpl_Light='Light';
 $wpl_Dark='Dark';
 $wpl_Height='Height';
+$wpl_Width='Width';
 $wpl_ShowHeader='Show Header';
 $wpl_IsHeader='"Find Us On Facebook" is the header';
 $wpl_ShowStream='Show Stream';
