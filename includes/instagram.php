@@ -35,11 +35,11 @@ if ($options[header]=='true')
   if ($you['username']){  
   echo '<table style="padding:2px;border:none;" class="wpflyboxtable">';
   echo '<tr style="padding:3px;"><td><img src="'.$you[profile_picture].'" height="40" width="40" title="'.$you[username].'" alt="'.$you[username].'"></td>';
-  echo '<td style="text-align:center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[mediacount].'</div><div style="font-size:10px;">&nbsp;Photos</div></td>';
-  echo '<td style="text-align:center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[followedby].'</div><div style="font-size:10px;">&nbsp;Followers</div></td>';
-  echo '<td style="text-align:center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[follows].'</div><div style="font-size:10px;">&nbsp;Following</div></td></tr>';
+  echo '<td style="text-align:center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[mediacount].'</div><div style="font-size:10px;">&nbsp;'.$wpl_Photos.'</div></td>';
+  echo '<td style="text-align:center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[followedby].'</div><div style="font-size:10px;">&nbsp;'.$wpl_Followers.'</div></td>';
+  echo '<td style="text-align:center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[follows].'</div><div style="font-size:10px;">&nbsp;'.$wpl_Following.'</div></td></tr>';
   echo '</table>';
-  } else {echo 'Invalid username or instagram servers not found';}
+  } else {echo $wpl_invaliderror;}
 }
 if (!$you['media'] || $wpfb_cached=='false')
   {
@@ -48,7 +48,7 @@ if (!$you['media'] || $wpfb_cached=='false')
   //echo 'https://api.instagram.com/v1/users/'.$options[id].'/media/recent/?access_token='.$options[token];
   if (is_wp_error($wpflybox_instagram_jsonfile))
 		  {
-		  echo 'Instagram Server Not Found';
+		  echo $wpl_invaliderror;
 		  return false;
 		  } else {
 		  $json = json_decode(wp_remote_retrieve_body($wpflybox_instagram_jsonfile));
@@ -86,7 +86,7 @@ if (!$you['media'] || $wpfb_cached=='false')
     echo '<a href="'.$media[$m][link].'" target="_blank"><img src="'.$media[$m][thumburl].'" height="50" width="50" style="padding:3px;" alt="'.$media[$m][text].'" title="'.$media[$m][text].'"></a>';
     }
   }
-  } else {echo '<br>Invalid username, no pictures on account, or instagram servers not found';}
+  } else {echo '<br>'.$wpl_invaliderror;}
   
 echo '</div>';
 

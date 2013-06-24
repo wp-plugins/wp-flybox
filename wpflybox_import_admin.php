@@ -1,7 +1,8 @@
 <?php
 if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
-	} 
+	}
+include 'lang/en-US-admin.php';   
 echo '<script type="text/javascript" src="'.plugins_url().'/wp-flybox/static/jscolor/jscolor.js"></script>';
 if (get_option(wpflybox_facebook_header)==""){$wpflybox_facebook_header="false";update_option('wpflybox_facebook_header', $wpflybox_facebook_header);}
 if (get_option(wpflybox_facebook_stream)==""){$wpflybox_facebook_stream="false";update_option('wpflybox_facebook_tream', $wpflybox_facebook_stream);}
@@ -67,6 +68,7 @@ if (get_option(wpflybox_showon_guest)==""){$wpflybox_showon_guest="true";update_
 if (get_option(wpflybox_showon_logged)==""){$wpflybox_showon_logged="true";update_option('wpflybox_showon_logged', $wpflybox_showon_logged);}
 if (get_option(wpflybox_showon_pid)==""){$wpflybox_showon_pid=" ";update_option('wpflybox_showon_pid', $wpflybox_showon_pid);}
 if (get_option(wpflybox_showon_pidhide)==""){$wpflybox_showon_pidhide=" ";update_option('wpflybox_showon_pidhide', $wpflybox_showon_pidhide);}
+if (get_option(wpflybox_language)==""){$wpflybox_language="en-US";update_option('wpflybox_language', $wpflybox_language);}
 //if (get_option(wpflybox_opentabs)==""){$wpflybox_opentabs="true";update_option('wpflybox_opentabs', $wpflybox_opentabs);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
@@ -230,13 +232,13 @@ delete_transient('wpfb_v_'.get_option(wpflybox_vimeo_username));
 delete_option('wpfb_v_'.get_option(wpflybox_vimeo_username));
 delete_transient('wpfb_i_'.get_option(wpflybox_instagram_id));
 delete_option('wpfb_i_'.get_option(wpflybox_instagram_id));
-echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</strong></p></div>';
+echo '<div class="updated"><p><strong>'.$wpl_Cachesdeleted.'</strong></p></div>';
 
 }
 
             			                                                                                                  
 			?>
-			<div class="updated"><p><strong><?php _e('Options saved.' ); ?></strong></p></div>
+			<div class="updated"><p><strong><?php echo $wpl_Optionssaved; ?></strong></p></div>
 			<?php
 		} else {
 			//Normal page display
@@ -259,49 +261,49 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
 		
 		<div id="wpflybox_general" class="postbox" style="width:100%;">
 		<h3 class="hndle">
-		<span>Display Options:</span>
+		<span><?php echo $wpl_DisplayOptions; ?>:</span>
 		</h3>
 	<div class="inside">	
 	<table cellpadding="3"><tr>			
-		<td style="text-align:right;" width="190px"><?php _e("Which side?: " ); ?></td>
+		<td style="text-align:right;" width="190px"><?php echo $wpl_Whichside.':'; ?></td>
         <td><select name="wpflybox_side">
-	<option value="none" <?php if(get_option(wpflybox_side)=="none"){echo 'selected';} ?>>None/Off</option>
-	<option value="left" <?php if(get_option(wpflybox_side)=="left"){echo 'selected';} ?>>Left</option>
-        <option value="right" <?php if(get_option(wpflybox_side)=="right"){echo 'selected';} ?>>Right</option>
+	<option value="none" <?php if(get_option(wpflybox_side)=="none"){echo 'selected';} ?>><?php echo $wpl_NoneOff; ?></option>
+	<option value="left" <?php if(get_option(wpflybox_side)=="left"){echo 'selected';} ?>><?php echo $wpl_Left; ?></option>
+        <option value="right" <?php if(get_option(wpflybox_side)=="right"){echo 'selected';} ?>><?php echo $wpl_Right; ?></option>
         </select>
         </td>
         </tr>
-        <td style="text-align:right;"><?php _e("How high to start first tab: " ); ?></td><td>
+        <td style="text-align:right;"><?php echo $wpl_Howhigh.':'; ?></td><td>
         <input type="text" name="wpflybox_start" value="<?php echo get_option(wpflybox_start); ?>" size="4" />px (ex: 20)  
         </td></tr>
         
-        <tr><td style="text-align:right;"><?php _e("Amount of seperation: " ); ?></td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_Amountofsep.':'; ?></td><td>
         <input type="text" name="wpflybox_seperation" value="<?php echo get_option(wpflybox_seperation); ?>" size="4" />px (ex: 103)
         </td></tr>
         
-        <tr><td style="text-align:right;">Compensate For <br />Admin/Member Bar?</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_CompensateAdmin; ?></td><td>
         <select name="wpflybox_admin_bar">
-        <option value="28" <?php if(get_option(wpflybox_admin_bar)=="28"){echo 'selected';} ?>>Yes</option>
-        <option value="0" <?php if(get_option(wpflybox_admin_bar)=="0"){echo 'selected';} ?>>No</option>
-        </select> Select Yes if you want the tabs shifted down when the admin/member bar is showing. If the admin/member bar is not showing then it will not be shifted. Select no if you do not want to shift the tabs down when the admin/member bar is showing. Choosing Yes will treat the bottom of the menu/member as the top of the page, where choosing No will ignore the bar and treat the top of the bar as the top of the page.
+        <option value="28" <?php if(get_option(wpflybox_admin_bar)=="28"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="0" <?php if(get_option(wpflybox_admin_bar)=="0"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
+        </select> <?php echo $wpl_CompensateDesc; ?>
         </td></tr>
         
-        <tr><td style="text-align:right;">Push tabs to screen edge?</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_Pushtabs; ?></td><td>
         <select name="wpflybox_edge">
-        <option value="true" <?php if(get_option(wpflybox_edge)=="true"){echo 'selected';} ?>>Yes</option>
-        <option value="false" <?php if(get_option(wpflybox_edge)=="false"){echo 'selected';} ?>>No</option>
-        </select> If you want the flyout boxes to be against the screen when they are out choose Yes. If you want the boxes to slide out past the tabs so the tabs don't block the flyoutbox then choose No. 
+        <option value="true" <?php if(get_option(wpflybox_edge)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_edge)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
+        </select> <?php echo $wpl_PushDesc; ?> 
         </td></tr>
         
-        <tr><td style="text-align:right;">Float Tabs?</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_FloatTabs; ?></td><td>
         <select name="wpflybox_position">
-        <option value="fixed" <?php if(get_option(wpflybox_position)=="fixed"){echo 'selected';} ?>>Float With Window</option>
-        <option value="absolute" <?php if(get_option(wpflybox_position)=="absolute"){echo 'selected';} ?>>Attached To Page</option>
-        </select> This option will change how the tabs behave when scrolling down the page. If you want the tabs to always be on the side of the page then choose Float With Window. If you want the tabs to just be at the top of the page and not move with the scrolling choose Attached To Page 
+        <option value="fixed" <?php if(get_option(wpflybox_position)=="fixed"){echo 'selected';} ?>><?php echo $wpl_FloatWithWindow; ?></option>
+        <option value="absolute" <?php if(get_option(wpflybox_position)=="absolute"){echo 'selected';} ?>><?php echo $wpl_AttachedToPage; ?></option>
+        </select> <?php echo $wpl_FloatDesc; ?> 
         </td></tr>
                  
         
-        <tr><td style="text-align:right;"><?php _e("How many tabs?: " ); ?></td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_Howmanytabs.':'; ?></td><td>
         <select name="wpflybox_count">
         <option value="1" <?php if(get_option(wpflybox_count)=="1"){echo 'selected';} ?>>1</option>
         <option value="2" <?php if(get_option(wpflybox_count)=="2"){echo 'selected';} ?>>2</option>
@@ -311,11 +313,11 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
 	<option value="6" <?php if(get_option(wpflybox_count)=="6"){echo 'selected';} ?>>6</option>
 	<option value="7" <?php if(get_option(wpflybox_count)=="7"){echo 'selected';} ?>>7</option>
 		<option value="8" <?php if(get_option(wpflybox_count)=="8"){echo 'selected';} ?>>8</option>
-        </select> <input type="submit" name="Submit" value="Apply" />
+        </select> <input type="submit" name="Submit" value="<?php echo $wpl_Apply; ?>" />
         </td></tr>
         
         <?php if(get_option(wpflybox_count)>=1){ ?>
-        <tr><td style="text-align:right;"><?php _e("First tab: " ); ?></td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_Firsttab.':'; ?></td><td>
         <select name="wpflybox_tab1">
         <option value="facebook" <?php if(get_option(wpflybox_tab1)=="facebook"){echo 'selected';} ?>>Facebook</option>
         <option value="twitter" <?php if(get_option(wpflybox_tab1)=="twitter"){echo 'selected';} ?>>Twitter</option>
@@ -334,7 +336,7 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
         
         <?php } if(get_option(wpflybox_count)>=2){ ?>
         
-        <tr><td style="text-align:right;"><?php _e("Second tab: " ); ?></td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_Secondtab.':'; ?></td><td>
         <select name="wpflybox_tab2">
         <option value="facebook" <?php if(get_option(wpflybox_tab2)=="facebook"){echo 'selected';} ?>>Facebook</option>
         <option value="twitter" <?php if(get_option(wpflybox_tab2)=="twitter"){echo 'selected';} ?>>Twitter</option>
@@ -353,7 +355,7 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
         
         <?php } if(get_option(wpflybox_count)>=3){ ?>
         
-        <tr><td style="text-align:right;"><?php _e("Third tab: " ); ?></td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_Thirdtab.':'; ?></td><td>
         <select name="wpflybox_tab3">
         <option value="facebook" <?php if(get_option(wpflybox_tab3)=="facebook"){echo 'selected';} ?>>Facebook</option>
         <option value="twitter" <?php if(get_option(wpflybox_tab3)=="twitter"){echo 'selected';} ?>>Twitter</option>
@@ -372,7 +374,7 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
         
         <?php } if(get_option(wpflybox_count)>=4){ ?>
         
-        <tr><td style="text-align:right;"><?php _e("Fourth tab: " ); ?></td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_Fourthtab.':'; ?></td><td>
         <select name="wpflybox_tab4">
         <option value="facebook" <?php if(get_option(wpflybox_tab4)=="facebook"){echo 'selected';} ?>>Facebook</option>
         <option value="twitter" <?php if(get_option(wpflybox_tab4)=="twitter"){echo 'selected';} ?>>Twitter</option>
@@ -391,7 +393,7 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
         
         <?php } if(get_option(wpflybox_count)>=5){ ?>
         
-        <tr><td style="text-align:right;"><?php _e("Fifth tab: " ); ?></td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_Fifthtab.':'; ?></td><td>
         <select name="wpflybox_tab5">
         <option value="facebook" <?php if(get_option(wpflybox_tab5)=="facebook"){echo 'selected';} ?>>Facebook</option>
         <option value="twitter" <?php if(get_option(wpflybox_tab5)=="twitter"){echo 'selected';} ?>>Twitter</option>
@@ -410,7 +412,7 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
 	
 	<?php } if(get_option(wpflybox_count)>=6){ ?>
         
-        <tr><td style="text-align:right;"><?php _e("Sixth tab: " ); ?></td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_Sixthtab.':'; ?></td><td>
         <select name="wpflybox_tab6">
         <option value="facebook" <?php if(get_option(wpflybox_tab6)=="facebook"){echo 'selected';} ?>>Facebook</option>
         <option value="twitter" <?php if(get_option(wpflybox_tab6)=="twitter"){echo 'selected';} ?>>Twitter</option>
@@ -429,7 +431,7 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
 	
 	<?php } if(get_option(wpflybox_count)>=7){ ?>
         
-        <tr><td style="text-align:right;"><?php _e("Seventh tab: " ); ?></td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_Seventhtab.':'; ?></td><td>
         <select name="wpflybox_tab7">
         <option value="facebook" <?php if(get_option(wpflybox_tab7)=="facebook"){echo 'selected';} ?>>Facebook</option>
         <option value="twitter" <?php if(get_option(wpflybox_tab7)=="twitter"){echo 'selected';} ?>>Twitter</option>
@@ -448,7 +450,7 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
         
 	<?php } if(get_option(wpflybox_count)>=8){ ?>
         
-        <tr><td style="text-align:right;"><?php _e("Eighth tab: " ); ?></td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_Eighthtab.':'; ?></td><td>
         <select name="wpflybox_tab8">
         <option value="facebook" <?php if(get_option(wpflybox_tab8)=="facebook"){echo 'selected';} ?>>Facebook</option>
         <option value="twitter" <?php if(get_option(wpflybox_tab8)=="twitter"){echo 'selected';} ?>>Twitter</option>
@@ -466,34 +468,34 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
         </td></tr>        
 		  <?php } ?>
 
-        <tr><td colspan="2">Note: Make sure you do not have the same thing for more than one tab or they may not show up.</td></tr>
+        <tr><td colspan="2"><?php echo $wpl_Notesamething; ?></td></tr>
 
-		    <tr><td style="text-align:right;">Which type of buttons?</td><td>
+		    <tr><td style="text-align:right;"><?php echo $wpl_Whichtypebutton; ?></td><td>
 		    <table border="0">
 		    <tr><td style="text-align:center;">
 		    <img src="<?php echo plugins_url()."/wp-flybox/static/"; ?>noncustombuttonexample.png" width="101"><br>
-		    <input type="radio" name="wpflybox_usecustombutton" value="false" <?php if(get_option(wpflybox_usecustombutton)=="false"){echo 'checked';} ?>><br>Logo and Text
+		    <input type="radio" name="wpflybox_usecustombutton" value="false" <?php if(get_option(wpflybox_usecustombutton)=="false"){echo 'checked';} ?>><br><?php echo $wpl_LogoandText; ?>
 		    </td><td style="text-align:center;">
 		    <img src="<?php echo plugins_url()."/wp-flybox/static/"; ?>custombuttonexample.png" width="101"><br>
-        <input type="radio" name="wpflybox_usecustombutton" value="true" <?php if(get_option(wpflybox_usecustombutton)=="true"){echo 'checked';} ?>><br>Custom Colors with Logo
-        </td><td><input type="submit" name="Submit" value="Apply" />
+        <input type="radio" name="wpflybox_usecustombutton" value="true" <?php if(get_option(wpflybox_usecustombutton)=="true"){echo 'checked';} ?>><br><?php echo $wpl_CustomColors; ?>
+        </td><td><input type="submit" name="Submit" value="<?php echo $wpl_Apply; ?>" />
         </td></table>
         </td></tr> 
         
         
         <?php if (get_option(wpflybox_usecustombutton)=="true"){ ?>
         <tr><td>
-        <h4>Custom Button Configuration:</h4>
+        <h4><?php echo $wpl_CustomButtonConfig; ?>:</h4>
         </td></tr>
         
         
-		    <tr><td style="text-align:right;">Right Gradient Color:</td><td>
+		    <tr><td style="text-align:right;"><?php echo $wpl_RightGradColor; ?>:</td><td>
         <input class="color" type="text" name="wpflybox_bgtopgradient" value="<?php echo get_option(wpflybox_bgtopgradient); ?>" size="10" />
         </td></tr>
-		    <tr><td style="text-align:right;">Left Gradient Color:</td><td>
+		    <tr><td style="text-align:right;"><?php echo $wpl_LeftGradColor; ?></td><td>
         <input class="color" type="text" name="wpflybox_bgbottomgradient" value="<?php echo get_option(wpflybox_bgbottomgradient); ?>" size="10" />
         </td></tr>                   		  
-		    <tr><td style="text-align:right;">Border Color:</td><td>
+		    <tr><td style="text-align:right;"><?php echo $wpl_BorderColor; ?>:</td><td>
         <input class="color" type="text" name="wpflybox_bgborder" value="<?php echo get_option(wpflybox_bgborder); ?>" size="10" />
         </td></tr>
         
@@ -502,7 +504,7 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
         $wpflybox_bgbottomgradient=get_option(wpflybox_bgbottomgradient);
         $wpflybox_bgborder=get_option(wpflybox_bgborder);
         ?>
-        <tr><td style="text-align:right;">Current Tab Colors:<br>&nbsp;<br>&nbsp;</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_CurrentTabColors; ?>:<br>&nbsp;<br>&nbsp;</td><td>
         <style type="text/css">
         .wpflybox_button {
          border-top: 1px solid #<?php echo $wpflybox_bgborder;?>;
@@ -555,7 +557,7 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
         <a class="wpflybox_button" href="#"><img src="<?php echo plugins_url()."/wp-flybox/static/icons/"; ?>facebook.png" height="30"></a>
         <br><input type="submit" name="Submit" value="Apply & Refresh" />
         </td></tr>
-        <tr><td colspan="2">Note: Internet Explorer 8 and below does not support rounded corners without using external files. For users on Internet Explorer 8 and below the corners will be square.</td></tr>     		  
+        <tr><td colspan="2"><?php echo $wpl_IENoteCorners; ?></td></tr>     		  
 		   <?php
 		   }else{
        ?> 
@@ -566,23 +568,25 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
        }
        ?>
        <tr><td>&nbsp;</td></tr>
-       <tr><td style="text-align:right;">Show Options:</td><td>
-       <input type="checkbox" name="wpflybox_showon_front" value="true" <?php if(get_option(wpflybox_showon_front)){echo 'checked';} ?> /> Main Page,
-       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_page" value="true" <?php if(get_option(wpflybox_showon_page)){echo 'checked';} ?> /> Pages,
-       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_post" value="true" <?php if(get_option(wpflybox_showon_post)){echo 'checked';} ?> /> Posts,
-       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_archive" value="true" <?php if(get_option(wpflybox_showon_archive)){echo 'checked';} ?> /> Archives,
-       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_feed" value="true" <?php if(get_option(wpflybox_showon_feed)){echo 'checked';} ?> /> Feeds,
-       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_search" value="true" <?php if(get_option(wpflybox_showon_search)){echo 'checked';} ?> /> Search,
-       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_guest" value="true" <?php if(get_option(wpflybox_showon_guest)){echo 'checked';} ?> /> For Guests,
-       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_logged" value="true" <?php if(get_option(wpflybox_showon_logged)){echo 'checked';} ?> /> For Users Logged In
-       <br />Show On Pages/Posts with ID: <input type="text" name="wpflybox_showon_pid" value="<?php echo get_option(wpflybox_showon_pid); ?>" size="60" /> IDs separated by commas
-       <br />Hide On Pages/Posts with ID: <input type="text" name="wpflybox_showon_pidhide" value="<?php echo get_option(wpflybox_showon_pidhide); ?>" size="60" /> IDs separated by commas  
-       <br /><a href="http://en.forums.wordpress.com/topic/any-one-know-how-to-find-page-ids" target="_blank" title="Help Finding IDs">Help Finding IDs</a>
+       <tr><td style="text-align:right;"><?php echo $wpl_ShowOptions; ?>:</td><td>
+       <input type="checkbox" name="wpflybox_showon_front" value="true" <?php if(get_option(wpflybox_showon_front)){echo 'checked';} ?> /> <?php echo $wpl_MainPage; ?>,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_page" value="true" <?php if(get_option(wpflybox_showon_page)){echo 'checked';} ?> /> <?php echo $wpl_Pages; ?>,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_post" value="true" <?php if(get_option(wpflybox_showon_post)){echo 'checked';} ?> /> <?php echo $wpl_Posts; ?>,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_archive" value="true" <?php if(get_option(wpflybox_showon_archive)){echo 'checked';} ?> /> <?php echo $wpl_Archives; ?>,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_feed" value="true" <?php if(get_option(wpflybox_showon_feed)){echo 'checked';} ?> /> <?php echo $wpl_Feeds; ?>,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_search" value="true" <?php if(get_option(wpflybox_showon_search)){echo 'checked';} ?> /> <?php echo $wpl_Search; ?>,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_guest" value="true" <?php if(get_option(wpflybox_showon_guest)){echo 'checked';} ?> /> <?php echo $wpl_ForGuests; ?>,
+       &nbsp;&nbsp;&nbsp;<input type="checkbox" name="wpflybox_showon_logged" value="true" <?php if(get_option(wpflybox_showon_logged)){echo 'checked';} ?> /> <?php echo $wpl_ForUsers; ?>
+       <br /><?php echo $wpl_ShowOnwith; ?>: <input type="text" name="wpflybox_showon_pid" value="<?php echo get_option(wpflybox_showon_pid); ?>" size="60" /> <?php echo $wpl_IDsSep; ?>
+       <br /><?php echo $wpl_HideOnwith; ?>: <input type="text" name="wpflybox_showon_pidhide" value="<?php echo get_option(wpflybox_showon_pidhide); ?>" size="60" /> <?php echo $wpl_IDsSep; ?>  
+       <br /><a href="http://en.forums.wordpress.com/topic/any-one-know-how-to-find-page-ids" target="_blank" title="Help Finding IDs"><?php echo $wpl_HelpFindingID; ?></a>
        </td></tr>
+
+
      
          <tr><td>
 	       <p class="submit">
-				<input class="button-primary" type="submit" name="Submit" value="Update Options" />
+				<input class="button-primary" type="submit" name="Submit" value="<?php echo $wpl_UpdateOptions; ?>" />
 				</p>  </td></tr>
   		
 	</table>
@@ -592,229 +596,228 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
 	<br />&nbsp;
 	<div id="wpflybox_config" class="postbox" style="width:100%">
 		<h3 class="hndle">
-			Tab Configuration:
+			<?php echo $wpl_TabConfig; ?>:
 		</h3>
 
         <table cellpadding="3" style="background-color:#f5f5f5;">
         <tr><td colspan="2"><h4>Facebook:</h4></td></tr>
-        <tr><td style="text-align:right;">Full Page URL:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_FullPageURL; ?>:</td><td>
         <input type="text" name="wpflybox_facebook" value="<?php echo get_option(wpflybox_facebook); ?>" size="70" />
-        (it must be a fan page, not a personal page)
+        (<?php echo $wpl_FannotPersonal; ?>)
         </td></tr>
         
-        <tr><td style="text-align:right;">Color Scheme:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_ColorScheme; ?>:</td><td>
         <select name="wpflybox_facebook_color">
-        <option value="light" <?php if(get_option(wpflybox_facebook_color)=="light"){echo 'selected';} ?>>Light</option>
-        <option value="dark" <?php if(get_option(wpflybox_facebook_color)=="dark"){echo 'selected';} ?>>Dark</option>
+        <option value="light" <?php if(get_option(wpflybox_facebook_color)=="light"){echo 'selected';} ?>><?php echo $wpl_Light; ?></option>
+        <option value="dark" <?php if(get_option(wpflybox_facebook_color)=="dark"){echo 'selected';} ?>><?php echo $wpl_Dark; ?></option>
         </select>
         </td></tr>
         
-        <tr><td style="text-align:right;">Height:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_Height; ?>:</td><td>
         <input type="text" name="wpflybox_facebook_height" value="<?php echo get_option(wpflybox_facebook_height); ?>" size="6" />px
         </td></tr>
         
-        <tr><td style="text-align:right;">Show Header:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_ShowHeader; ?>:</td><td>
         <select name="wpflybox_facebook_header">
-        <option value="true" <?php if(get_option(wpflybox_facebook_header)=="true"){echo 'selected';} ?>>Yes</option>
-        <option value="false" <?php if(get_option(wpflybox_facebook_header)=="false"){echo 'selected';} ?>>No</option>
-        </select>("Find Us On Facebook" is the header)
+        <option value="true" <?php if(get_option(wpflybox_facebook_header)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_facebook_header)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
+        </select>(<?php echo $wpl_IsHeader; ?>)
         </td></tr> 
         
-        <tr><td style="text-align:right;">Show Stream:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_ShowStream; ?>:</td><td>
         <select name="wpflybox_facebook_stream">
-        <option value="true" <?php if(get_option(wpflybox_facebook_stream)=="true"){echo 'selected';} ?>>Yes</option>
-        <option value="false" <?php if(get_option(wpflybox_facebook_stream)=="false"){echo 'selected';} ?>>No</option>
+        <option value="true" <?php if(get_option(wpflybox_facebook_stream)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_facebook_stream)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
         </select>
         </td></tr> 
         
-        <tr><td style="text-align:right;">Show Faces:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_ShowFaces; ?>:</td><td>
         <select name="wpflybox_facebook_showfaces">
-        <option value="true" <?php if(get_option(wpflybox_facebook_showfaces)=="true"){echo 'selected';} ?>>Yes</option>
-        <option value="false" <?php if(get_option(wpflybox_facebook_showfaces)=="false"){echo 'selected';} ?>>No</option>
+        <option value="true" <?php if(get_option(wpflybox_facebook_showfaces)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_facebook_showfaces)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
         </select>
         </td></tr>                                  
 
 
         <tr><td colspan="2"><h4>Twitter:</h4></td></tr>
                            
-        <tr><td style="text-align:right;">Twitter Username:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_TwitterUsername; ?>:</td><td>
         @<input type="text" name="wpflybox_twitter" value="<?php echo get_option(wpflybox_twitter); ?>" size="20" />
         </td></tr>
         
-        <tr><td style="text-align:right;">Use Custom Options?</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_UseCustomTwitter; ?></td><td>
         <select name="wpflybox_custom_twitter">
-        <option value="true" <?php if(get_option(wpflybox_custom_twitter)=="true"){echo 'selected';} ?>>Yes</option>
-        <option value="false" <?php if(get_option(wpflybox_custom_twitter)=="false"){echo 'selected';} ?>>No</option>
+        <option value="true" <?php if(get_option(wpflybox_custom_twitter)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_custom_twitter)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
         </select>
         </td></tr>
 
-        <tr><td colspan="2"><h4>Custom Twitter Options:</h4> (This can sometimes give errors. Turn Custom Options to No if it does.)</td></tr>
-        <tr><td style="text-align:right;">Show What?</td><td>
+        <tr><td colspan="2"><h4><?php echo $wpl_CustomTwitterOptions; ?>:</h4> (<?php echo $wpl_CustomGiveErrors; ?>)</td></tr>
+        <tr><td style="text-align:right;"><?php echo $wpl_ShowWhat; ?></td><td>
         <select name="wpflybox_twitter_showfollowers">
-        <option value="followers" <?php if(get_option(wpflybox_twitter_showfollowers)=="followers"){echo 'selected';} ?>>Followers</option>
-        <option value="friends" <?php if(get_option(wpflybox_twitter_showfollowers)=="friends"){echo 'selected';} ?>>Friends</option>
+        <option value="followers" <?php if(get_option(wpflybox_twitter_showfollowers)=="followers"){echo 'selected';} ?>><?php echo $wpl_Followers; ?></option>
+        <option value="friends" <?php if(get_option(wpflybox_twitter_showfollowers)=="friends"){echo 'selected';} ?>><?php echo $wpl_Friends; ?></option>
         </select>
         </td></tr>
         
-        <tr><td style="text-align:right;">How Many Followers/Friends?:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_HowManyFF; ?>:</td><td>
         <input type="text" name="wpflybox_twitter_count" value="<?php echo get_option(wpflybox_twitter_count); ?>" size="2" />
-        Use 0 if you do not want to display any followers or friends.
+        <?php echo $wpl_Use0Friends; ?>
         </td></tr>
         
-        <tr><td style="text-align:right;">Provide Link to Followers/Friends:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_ProvideLinktoF; ?>:</td><td>
         <select name="wpflybox_twitter_link">
-        <option value="on" <?php if(get_option(wpflybox_twitter_link)=="on"){echo 'selected';} ?>>On</option>
-        <option value="off" <?php if(get_option(wpflybox_twitter_link)=="off"){echo 'selected';} ?>>Off</option>
+        <option value="on" <?php if(get_option(wpflybox_twitter_link)=="on"){echo 'selected';} ?>><?php echo $wpl_On; ?></option>
+        <option value="off" <?php if(get_option(wpflybox_twitter_link)=="off"){echo 'selected';} ?>><?php echo $wpl_Off; ?></option>
         </select>
         </td></tr>
         
-        <tr><td style="text-align:right;">Tweet To Button:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_TweettoButton; ?>:</td><td>
         <select name="wpflybox_twitter_tweetto">
-        <option value="on" <?php if(get_option(wpflybox_twitter_tweetto)=="on"){echo 'selected';} ?>>On</option>
-        <option value="off" <?php if(get_option(wpflybox_twitter_tweetto)=="off"){echo 'selected';} ?>>Off</option>
+        <option value="on" <?php if(get_option(wpflybox_twitter_tweetto)=="on"){echo 'selected';} ?>><?php echo $wpl_On; ?></option>
+        <option value="off" <?php if(get_option(wpflybox_twitter_tweetto)=="off"){echo 'selected';} ?>><?php echo $wpl_Off; ?></option>
         </select>
         </td></tr>
         
-        <tr><td style="text-align:right;">Show Latest Tweet:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_ShowLatestT; ?>:</td><td>
         <select name="wpflybox_twitter_latest">
-        <option value="true" <?php if(get_option(wpflybox_twitter_latest)=="true"){echo 'selected';} ?>>On</option>
-        <option value="false" <?php if(get_option(wpflybox_twitter_latest)=="false"){echo 'selected';} ?>>Off</option>
+        <option value="true" <?php if(get_option(wpflybox_twitter_latest)=="true"){echo 'selected';} ?>><?php echo $wpl_On; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_twitter_latest)=="false"){echo 'selected';} ?>><?php echo $wpl_Off; ?></option>
         </select>
         </td></tr>
       
         <tr><td colspan="2"><h4>Google Plus:</h4></td></tr>
-        <tr><td style="text-align:right;">Google Numeric Username:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_Googlenumuser; ?>:</td><td>
         <input type="text" name="wpflybox_google" value="<?php echo get_option(wpflybox_google); ?>" size="30" />
-        (example: if your page is "http://plus.google.com/u/0/<b>105734435204105331709</b>/posts" use 105734435204105331709 as your code.)
+        (<?php echo $wpl_Googleuserdesc; ?>)
         </td></tr>
 	
-        <tr><td style="text-align:right;">Page Type:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_PageType; ?>:</td><td>
         <select name="wpflybox_google_type">
-        <option value="profile" <?php if(get_option(wpflybox_google_type)=="profile"){echo 'selected';} ?>>Profile</option>
-        <option value="page" <?php if(get_option(wpflybox_google_type)=="page"){echo 'selected';} ?>>Page</option>
+        <option value="profile" <?php if(get_option(wpflybox_google_type)=="profile"){echo 'selected';} ?>><?php echo $wpl_Profile; ?></option>
+        <option value="page" <?php if(get_option(wpflybox_google_type)=="page"){echo 'selected';} ?>><?php echo $wpl_Page; ?></option>
         </select>
-	(does the google plus numeric username code belong to a personal profile or a business/fan page?s)
+	(<?php echo $wpl_GooglePagedesc; ?>)
         </td></tr>
         
         <tr><td colspan="2"><h4>Youtube:</h4></td></tr>        
-        <tr><td style="text-align:right;">Youtube Username:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_YoutubeUsername; ?>:</td><td>
         <input type="text" name="wpflybox_youtube" value="<?php echo get_option(wpflybox_youtube); ?>" size="30" />
         </td></tr>
         
         <tr><td colspan="2"><h4>Feedburner Subscription:</h4></td></tr> 
-        <tr><td style="text-align:right;">Feedburner Username:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_FeedburnerUsername; ?>:</td><td>
         <input type="text" name="wpflybox_feedburner" value="<?php echo get_option(wpflybox_feedburner); ?>" size="30" />
         </td></tr> 
         
         <tr><td colspan="2"><h4>Pinterest:</h4></td></tr> 
-        <tr><td style="text-align:right;">Pinterest Username:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_PinterestUsername; ?>:</td><td>
         <input type="text" name="wpflybox_pinterest" value="<?php echo get_option(wpflybox_pinterest); ?>" size="30" />
-        (can be found under pinterest settings)
+        (<?php echo $wpl_PinterestUserDesc; ?>)
         </td></tr>  
         
         <tr><td colspan="2"><h4>LinkedIn:</h4></td></tr>
-        <tr><td style="text-align:right;">LinkedIn Member URL or Company ID:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_LinkedinID; ?>:</td><td>
         <input type="text" name="wpflybox_linkedin" value="<?php echo get_option(wpflybox_linkedin); ?>" size="70" />
-        <br>To find your LinkedIn public profile URL, sign into LinkedIn. Click Profile at the top and choose view profile. At the bottom of your info is your public profile URL.
-        <br>To find your company ID look in the address bar after "http://www.linkedin.com/company/"will be your Company ID.
+        <br><?php echo $wpl_LinkedinFindID; ?>
         </td></tr>
-        <tr><td style="text-align:right;">Member or Company Profile:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_LinkedinMember; ?>:</td><td>
         <select name="wpflybox_linkedin_type">
-        <option value="member" <?php if(get_option(wpflybox_linkedin_type)=="member"){echo 'selected';} ?>>Member</option>        
-        <option value="company" <?php if(get_option(wpflybox_linkedin_type)=="company"){echo 'selected';} ?>>Company</option>
+        <option value="member" <?php if(get_option(wpflybox_linkedin_type)=="member"){echo 'selected';} ?>><?php echo $wpl_Member; ?></option>        
+        <option value="company" <?php if(get_option(wpflybox_linkedin_type)=="company"){echo 'selected';} ?>><?php echo $wpl_Company; ?></option>
         </select>
         </td></tr>
         
         <tr><td colspan="2"><h4>Flickr:</h4></td></tr>
-        <tr><td style="text-align:right;">Flickr ID:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_FlickrID; ?>:</td><td>
         <input type="text" name="wpflybox_flickr" value="<?php echo get_option(wpflybox_flickr); ?>" size="20" />
-        Use this URL to help you find your ID: <a href="http://idgettr.com/" target="_blank">http://idgettr.com/</a>.
+        <?php echo $wpl_FlickerIDGetter; ?>: <a href="http://idgettr.com/" target="_blank">http://idgettr.com/</a>.
         </td></tr> 
         
-        <tr><td style="text-align:right;">Photo Tag:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_PhotoTag; ?>:</td><td>
         <input type="text" name="wpflybox_flickr_tag" value="<?php echo get_option(wpflybox_flickr_tag); ?>" size="20" />
-        Show only photos with this tag, or leave blank for all.
+        <?php echo $wpl_PhotoTagDesc; ?>
         </td></tr>         
         
-        <tr><td colspan="2"><h4>Contact Me:</h4></td></tr>
-        <tr><td style="text-align:right;">Email to Send Completed Form:</td><td>
+        <tr><td colspan="2"><h4><?php echo $wpl_ContactMe; ?>:</h4></td></tr>
+        <tr><td style="text-align:right;"><?php echo $wpl_CompletedForm; ?>:</td><td>
         <input type="text" name="wpflybox_contactemail" value="<?php echo get_option(wpflybox_contactemail); ?>" size="70" />
         </td></tr>        
         
-        <tr><td style="text-align:right;">Use Captcha:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_UseCaptcha; ?>:</td><td>
         <select name="wpflybox_captcha">
-        <option value="true" <?php if(get_option(wpflybox_captcha)=="true"){echo 'selected';} ?>>Yes</option>        
-        <option value="false" <?php if(get_option(wpflybox_captcha)=="false"){echo 'selected';} ?>>No</option>
+        <option value="true" <?php if(get_option(wpflybox_captcha)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>        
+        <option value="false" <?php if(get_option(wpflybox_captcha)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
         </select>
         </td></tr>
         
-        <tr><td style="text-align:right;">Tab Wording:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_TabWording; ?>:</td><td>
         <select name="wpflybox_contactwho">
-        <option value="me" <?php if(get_option(wpflybox_contactwho)=="me"){echo 'selected';} ?>>Contact Me</option>        
-        <option value="us" <?php if(get_option(wpflybox_contactwho)=="us"){echo 'selected';} ?>>Contact Us</option>
+        <option value="me" <?php if(get_option(wpflybox_contactwho)=="me"){echo 'selected';} ?>><?php echo $wpl_ContactMe; ?></option>        
+        <option value="us" <?php if(get_option(wpflybox_contactwho)=="us"){echo 'selected';} ?>><?php echo $wpl_ContactUs; ?></option>
         </select>
         </td></tr>
         
         
         <tr><td colspan="2"><h4>Deviant Art:</h4></td></tr> 
-        <tr><td style="text-align:right;">Username:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_DeviantUser; ?>:</td><td>
         <input type="text" name="wpflybox_deviant_username" value="<?php echo get_option(wpflybox_deviant_username); ?>" size="30" />
         </td></tr> 
         
-        <tr><td style="text-align:right;">Frame Width:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_DevFrameWidth; ?>:</td><td>
         <input type="text" name="wpflybox_deviant_frame_width" value="<?php echo get_option(wpflybox_deviant_frame_width); ?>" size="3" />px 
         </td></tr>
         
-        <tr><td style="text-align:right;">Frame Height:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_DevFramHeight; ?>:</td><td>
         <input type="text" name="wpflybox_deviant_frame_height" value="<?php echo get_option(wpflybox_deviant_frame_height); ?>" size="3" />px
         </td></tr>                
         
-        <tr><td style="text-align:right;">Max Number To Show:</td><td>
-        <input type="text" name="wpflybox_deviant_limit" value="<?php echo get_option(wpflybox_deviant_limit); ?>" size="3" /> (Maximum number of images to show in frame)
+        <tr><td style="text-align:right;"><?php echo $wpl_DevMaxNum; ?>:</td><td>
+        <input type="text" name="wpflybox_deviant_limit" value="<?php echo get_option(wpflybox_deviant_limit); ?>" size="3" /> (<?php echo $wpl_DevMaxNumDesc; ?>)
         </td></tr>
         
-        <tr><td style="text-align:right;">Max Width Of Each Image:</td><td>
-        <input type="text" name="wpflybox_deviant_max_width" value="<?php echo get_option(wpflybox_deviant_max_width); ?>" size="3" />px (Maximum width you want of each image)(0-150)
+        <tr><td style="text-align:right;"><?php echo $wpl_DevMaxWidth; ?>:</td><td>
+        <input type="text" name="wpflybox_deviant_max_width" value="<?php echo get_option(wpflybox_deviant_max_width); ?>" size="3" />px <?php echo $wpl_DevMaxWidthDesc; ?>
         </td></tr>
         
-        <tr><td style="text-align:right;">Max Height Of Each Image:</td><td>
-        <input type="text" name="wpflybox_deviant_max_height" value="<?php echo get_option(wpflybox_deviant_max_height); ?>" size="3" />px (Maximum width you want of each image)(0-150) Leave blank for auto
+        <tr><td style="text-align:right;"><?php echo $wpl_DevMaxHeight; ?>:</td><td>
+        <input type="text" name="wpflybox_deviant_max_height" value="<?php echo get_option(wpflybox_deviant_max_height); ?>" size="3" />px <?php echo $wpl_DevMaxHeightDesc; ?>
         </td></tr>
         
-        <tr><td style="text-align:right;">Number Of Columns:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_DevCol; ?>:</td><td>
         <input type="text" name="wpflybox_deviant_columns" value="<?php echo get_option(wpflybox_deviant_columns); ?>" size="3" />
         </td></tr>
                   
                   
         <tr><td colspan="2"><h4>Instagram:</h4></td></tr>
-        <tr><td colspan="2">WP-Flybox needs to be authorized first so that it has permission to show your photos.<br />To do that go <a href="http://njarb.com/wp-flybox/instagram" target="_blank">here</a>.
-        <tr><td style="text-align:right;">User ID:</td><td>
-        <input type="text" name="wpflybox_instagram_id" value="<?php echo get_option(wpflybox_instagram_id); ?>" size="30" /><a href="http://njarb.com/wp-flybox/instagram" target="_blank">Get your ID here.</a>
+        <tr><td colspan="2"><?php echo $wpl_ToAuthorize; ?>
+        <tr><td style="text-align:right;"><?php echo $wpl_InstUserID; ?>:</td><td>
+        <input type="text" name="wpflybox_instagram_id" value="<?php echo get_option(wpflybox_instagram_id); ?>" size="30" /><a href="http://njarb.com/wp-flybox/instagram" target="_blank"><?php echo $wpl_InstGetIDHere; ?></a>
         </td></tr>
-        <tr><td style="text-align:right;">Auth Token for WP-Flybox:</td><td>
-        <input type="text" name="wpflybox_instagram_token" value="<?php echo get_option(wpflybox_instagram_token); ?>" size="70" /><a href="http://njarb.com/wp-flybox/instagram" target="_blank">Get your Auth Token here.</a>
+        <tr><td style="text-align:right;"><?php echo $wpl_InstAuth; ?>:</td><td>
+        <input type="text" name="wpflybox_instagram_token" value="<?php echo get_option(wpflybox_instagram_token); ?>" size="70" /><a href="http://njarb.com/wp-flybox/instagram" target="_blank"><?php echo $wpl_InstGetAuthHere; ?></a>
         </td></tr>
-        <tr><td style="text-align:right;">Max Recent Pics:</td><td>
-        <input type="text" name="wpflybox_instagram_max" value="<?php echo get_option(wpflybox_instagram_max); ?>" size="2" />How many pictures do you want to show?
+        <tr><td style="text-align:right;"><?php echo $wpl_InstMaxRecent; ?>:</td><td>
+        <input type="text" name="wpflybox_instagram_max" value="<?php echo get_option(wpflybox_instagram_max); ?>" size="2" /><?php echo $wpl_InstHowManyPics; ?>
         </td></tr> 
-        <tr><td style="text-align:right;">Show Header:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_ShowHeader; ?>:</td><td>
         <select name="wpflybox_instagram_header">
-        <option value="true" <?php if(get_option(wpflybox_instagram_header)=="true"){echo 'selected';} ?>>Yes</option>        
-        <option value="false" <?php if(get_option(wpflybox_instagram_header)=="false"){echo 'selected';} ?>>No</option>
+        <option value="true" <?php if(get_option(wpflybox_instagram_header)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>        
+        <option value="false" <?php if(get_option(wpflybox_instagram_header)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
         </select>
         </td></tr>  
         
         <tr><td colspan="2"><h4>Vimeo:</h4></td></tr> 
-        <tr><td style="text-align:right;">Username:</td><td>
+        <tr><td style="text-align:right;"><?php echo $wpl_VimUser;?>:</td><td>
         <input type="text" name="wpflybox_vimeo_username" value="<?php echo get_option(wpflybox_vimeo_username); ?>" size="30" />
         </td></tr> 
          
-        <tr><td style="text-align:right;">Videos to Show:</td><td>
-        <input type="text" name="wpflybox_vimeo_total" value="<?php echo get_option(wpflybox_vimeo_total); ?>" size="2" /> 0 to show no videos
+        <tr><td style="text-align:right;"><?php echo $wpl_VimVideotoShow; ?>:</td><td>
+        <input type="text" name="wpflybox_vimeo_total" value="<?php echo get_option(wpflybox_vimeo_total); ?>" size="2" /> <?php echo $wpl_VimZerotoShowNo; ?>
         </td></tr>                                                        
           <tr><td>
   	       <p class="submit">
-				<input class="button-primary" type="submit" name="Submit" value="Update Options" />
+				<input class="button-primary" type="submit" name="Submit" value="<?php echo $wpl_UpdateOptions; ?>" />
 				</p>            </td></tr>
         
 	</table></div>
@@ -823,46 +826,46 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
 	<br />&nbsp;
 	<div id="wpflybox_trouble" class="postbox" style="width:100%">
 		<h3 class="hndle">
-			Troubleshoot:
+			<?php echo $wpl_Troubleshoot; ?>:
 		</h3>
 		<table cellpadding="3" style="background-color:#f5f5f5;">
         <tr><td colspan="2"><h4>jquery:</h4></td></tr>
-        <tr><td colspan="2">Most websites will not need this on. Many themes and plugins use jquery and having it load multiple times can cause slow down and conflicts. If you are having problems with other plugins when this plugin is activated try turning this off. If there is a problem with another plugin, then chances are they are calling jquery also and you can turn this option off. Jquery is only used on Internet Explorer with this plugin. To see if you need jquery, turn this option off and open your page in Internet Explorer, if the tabs scroll out then you do not need jquery on because it is already being called in your theme or wordpress.</td></tr>
-        <tr><td style="text-align:right;width:100px;">Load jquery:</td><td>
+        <tr><td colspan="2"><?php echo $wpl_JqueryDesc; ?></td></tr>
+        <tr><td style="text-align:right;width:100px;"><?php echo $wpl_LoadJquery; ?>:</td><td>
         <select name="wpflybox_jquery">
-        <option value="on" <?php if(get_option(wpflybox_jquery)=="on"){echo 'selected';} ?>>On</option>        
-        <option value="off" <?php if(get_option(wpflybox_jquery)=="off"){echo 'selected';} ?>>Off</option>
+        <option value="on" <?php if(get_option(wpflybox_jquery)=="on"){echo 'selected';} ?>><?php echo $wpl_On; ?></option>        
+        <option value="off" <?php if(get_option(wpflybox_jquery)=="off"){echo 'selected';} ?>><?php echo $wpl_Off; ?></option>
         </select>
         </td></tr>
         
         
-        <tr><td colspan="2"><h4>Mobile Support:</h4></td></tr>
-        <tr><td style="text-align:right;"><?php _e("Enable for Mobile Devices: " ); ?></td><td>
+        <tr><td colspan="2"><h4><?php echo $wpl_MobileSupport; ?>:</h4></td></tr>
+        <tr><td style="text-align:right;"><?php echo $wpl_EnableForMobile; ?>:</td><td>
         <select name="wpflybox_mobile">
-        <option value="true" <?php if(get_option(wpflybox_mobile)=="true"){echo 'selected';} ?>>Yes</option>
-        <option value="false" <?php if(get_option(wpflybox_mobile)=="false"){echo 'selected';} ?>>No</option>
+        <option value="true" <?php if(get_option(wpflybox_mobile)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_mobile)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
         </select>
         </td></tr>
         
-        <tr><td colspan="2"><h4>iPad Support:</h4></td></tr>
-        <tr><td style="text-align:right;"><?php _e("Enable for iPads: " ); ?></td><td>
+        <tr><td colspan="2"><h4><?php echo $wpl_IpadSupport; ?>:</h4></td></tr>
+        <tr><td style="text-align:right;"><?php echo $wpl_EnableforIpad; ?>:</td><td>
         <select name="wpflybox_ipad">
-        <option value="true" <?php if(get_option(wpflybox_ipad)=="true"){echo 'selected';} ?>>Yes</option>
-        <option value="false" <?php if(get_option(wpflybox_ipad)=="false"){echo 'selected';} ?>>No</option>
+        <option value="true" <?php if(get_option(wpflybox_ipad)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_ipad)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
         </select>
         </td></tr>
         
-        <tr><td colspan="2"><h4>Caching:</h4></td></tr>
-        <tr><td colspan="2">Since most of these tabs require data from another site like vimeo.com, twitter.com etc., it can take a while to load. All tabs that are not loaded asynchronously via javascript are cached on wordpress. The tabs that are cached are Twitter, Deviant Art, Instagram, and Vimeo. The first time you load your site it will take a bit longer if you use one of these cached tabs because it has to get the data elsewhere and save it, but after it is cached it will load instantly without requiring a connection to another site. The caches last about 6-12 hours. If  you change a setting and it did not update on your page, then try deleting the cache and force WP-Flybox to recache it with new settings. It is recommended to only delete the caches if you are experiencing problems.
-        <tr><td style="text-align:right;">Delete Caches?</td><td>
-        <input type="checkbox" name="wpflybox_delete_cache" value="true" />  Check to delete caches  <input type="submit" name="Submit" value="Apply" />
+        <tr><td colspan="2"><h4><?php echo $wpl_Caching; ?>:</h4></td></tr>
+        <tr><td colspan="2"><?php echo $wpl_CacheDesc; ?>
+        <tr><td style="text-align:right;"><?php echo $wpl_DeleteCaches; ?></td><td>
+        <input type="checkbox" name="wpflybox_delete_cache" value="true" />  <?php echo $wpl_ChecktoDelete; ?>  <input type="submit" name="Submit" value="<?php echo $wpl_Apply; ?>" />
         </td></tr>
        
-        <tr><td colspan="2"><br /><br />Note: This plugin is automatically disabled for Internet Explorer 7.0 and below because this plugin uses advanced sliding css not supported in earlier versions of IE.
+        <tr><td colspan="2"><br /><br /><?php echo $wpl_AutoDisIE; ?>
         </td></tr>      
       	    <tr><td>   
                <p class="submit">
-				<input class="button-primary" type="submit" name="Submit" value="Update Options" />
+				<input class="button-primary" type="submit" name="Submit" value="<?php echo $wpl_UpdateOptions; ?>" />
 				</p></td></tr>
         
 		</table>
@@ -882,9 +885,9 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
 		</h3>
 	<div class="inside">		
 <b>Help:</b>
-<br /><a href="http://njarb.com/2012/08/wp-flybox/" target="blank">Blog Post</a>
-<br /><a href="http://wordpress.org/extend/plugins/wp-flybox/" target="blank">Wordpress Plugin Page</a>
-<br /><a href="http://njarb.com/2012/08/wp-flybox/" target="blank">Help</a>
+<br /><a href="http://njarb.com/2012/08/wp-flybox/" target="blank"><?php echo $wpl_BlogPost; ?></a>
+<br /><a href="http://wordpress.org/extend/plugins/wp-flybox/" target="blank"><?php echo $wpl_WordpressPluginPage; ?></a>
+<br /><a href="http://njarb.com/2012/08/wp-flybox/" target="blank"><?php echo $wpl_Help; ?></a>
 <br /><br />
 <b>Find me on:</b>
 <br /><a href="http://facebook.com/cylec" target="_blank">Facebook</a>
@@ -892,7 +895,7 @@ echo '<div class="updated"><p><strong>Caches Deleted for Current Settings.</stro
 <br /><a href="http://plus.google.com/u/0/105734435204105331709" target="_blank">Google Plus</a>
 <br /><br />
 <b>Rate:</b>
-<br /><a href="http://wordpress.org/extend/plugins/wp-flybox/" target="blank">Rate WP-FlyBox</a>
+<br /><a href="http://wordpress.org/extend/plugins/wp-flybox/" target="blank"><?php echo $wpl_Rate; ?> WP-FlyBox</a>
 <br /><br />
 <b>Donate:</b>
 <br /><form action="https://www.paypal.com/cgi-bin/webscr" method="post">

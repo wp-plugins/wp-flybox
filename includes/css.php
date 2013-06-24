@@ -1,4 +1,56 @@
 <?php
+$wpflybox_mobile=get_option(wpflybox_mobile);
+
+$mobile_browser = '0';
+ 
+if (preg_match('/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone|android)/i', strtolower($_SERVER['HTTP_USER_AGENT']))) {
+    $mobile_browser++;
+}
+ 
+if ((strpos(strtolower($_SERVER['HTTP_ACCEPT']),'application/vnd.wap.xhtml+xml') > 0) or ((isset($_SERVER['HTTP_X_WAP_PROFILE']) or isset($_SERVER['HTTP_PROFILE'])))) {
+    $mobile_browser++;
+}
+//testing for future version
+/*
+if(get_option(wpflybox_opentabs)=='click')
+  {
+  include('includes/clickopen.php');
+  }
+  */
+//end testing    
+$isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
+
+$mobile_ua = strtolower(substr($_SERVER['HTTP_USER_AGENT'], 0, 4));
+$mobile_agents = array(
+    'w3c ','acs-','alav','alca','amoi','audi','avan','benq','bird','blac',
+    'blaz','brew','cell','cldc','cmd-','dang','doco','eric','hipt','inno',
+    'ipaq','java','jigs','kddi','keji','leno','lg-c','lg-d','lg-g','lge-',
+    'maui','maxo','midp','mits','mmef','mobi','mot-','moto','mwbp','nec-',
+    'newt','noki','oper','palm','pana','pant','phil','play','port','prox',
+    'qwap','sage','sams','sany','sch-','sec-','send','seri','sgh-','shar',
+    'sie-','siem','smal','smar','sony','sph-','symb','t-mo','teli','tim-',
+    'tosh','tsm-','upg1','upsi','vk-v','voda','wap-','wapa','wapi','wapp',
+    'wapr','webc','winw','winw','xda ','xda-');
+ 
+if (in_array($mobile_ua,$mobile_agents)) {
+    $mobile_browser++;
+}
+ 
+if (strpos(strtolower($_SERVER['ALL_HTTP']),'OperaMini') > 0) {
+    $mobile_browser++;
+}
+ 
+if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),'windows') > 0) {
+    $mobile_browser = 0;
+}
+ 
+if ($mobile_browser > 0 && get_option(wpflybox_mobile)=="false") {
+// do nothing
+} else if ($isiPad && get_option(wpflybox_ipad) == "false"){
+//do nothing
+}  else {
+
+
 $wpflybox_isie=strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE');
 $wpflybox_bgtopgradient=get_option(wpflybox_bgtopgradient);		
 $wpflybox_bgbottomgradient=get_option(wpflybox_bgbottomgradient);       			
@@ -150,14 +202,21 @@ $wpflybox_widths=array(
       10 => get_option(wpflybox_deviant_frame_width), //deviant
       11 => '196', //instagram
       12 => '220' //vimeo
-      );
+      ); 
 if (get_option(wpflybox_edge) == 'true')
   {
   $wpflybox_sidemargin=0;
   } else
   {
   $wpflybox_sidemargin=32;
-  }      
+  }
+
+if($mobile_browser>0)
+  {
+  $wpfb_fbextramobile=-73;
+  }else {
+   $wpfb_fbextramobile=-0;	
+   }        
 
 $wpflybox_sideextravalue=4;
 $wpflybox_position=get_option(wpflybox_position);
@@ -168,7 +227,7 @@ if ($key=array_search('facebook',$wpflybox_tabs))
     echo 'div.wpfb-facebook {width:'.($wpflybox_widths[1]+68).'px;top:'.$wpflybox_pos[$key].';'.$wpflybox_side.':-'.($wpflybox_widths[1]+36).'px;position:'.$wpflybox_position.';z-index:999999;text-align:right;direction:ltr;}';
     echo 'div.wpfb-facebook div.wpfb-facebook-transition {width:'.($wpflybox_widths[1]+34).'px;'; if ($wpflybox_side=='left'){echo 'margin-left:32px;';} echo '-webkit-transition: margin-left 0.5s linear;-moz-transition: margin-left 0.5s linear;-o-transition: margin-left 0.5s linear;-ms-transition: margin-left 0.5s linear;transition: margin-left 0.5s linear;}';
     echo 'div.wpfb-facebook div.wpfb-facebook-transition iframe {border:0px;overflow:hidden;position:static;}';
-    if (!$wpflybox_isie){echo 'div.wpfb-facebook:hover div.wpfb-facebook-transition {margin-left: '.$wpflybox_side_operator.($wpflybox_widths[1]+$wpflybox_sidemargin+$wpflybox_sideextravalue).'px;}';} 
+    if (!$wpflybox_isie){echo 'div.wpfb-facebook:hover div.wpfb-facebook-transition {margin-left: '.$wpflybox_side_operator.($wpflybox_widths[1]+$wpflybox_sidemargin+$wpflybox_sideextravalue+$wpfb_fbextramobile).'px;}';} 
     }
 if ($key=array_search('twitter',$wpflybox_tabs))
     {
@@ -285,5 +344,6 @@ jQuery("#wpfb-vimeo").hover(function(){ jQuery(this).stop(true,false).animate({'
 function(){ jQuery("#wpfb-vimeo").stop(true,false).animate({'.$wpflybox_side.': -'.($wpflybox_widths[12]+$wpflybox_sideextravalue+$wpflybox_extramargin).'}, 500); }); 
 });
 </script>';
-  }   
+  } 
+  }  
 ?>    

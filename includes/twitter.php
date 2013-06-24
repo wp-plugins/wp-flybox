@@ -112,6 +112,7 @@ $response= $twitter->setGetfield($getfield)
                      ->buildOauth($url, $requestMethod)
                      ->performRequest();
         $tweet=json_decode($tweet);
+
     //$tweet=json_decode(file_get_contents("http://api.twitter.com/1.1/statuses/user_timeline/".$options['username'].".json")); // get tweets and decode them into a variable
     
     if ($tweet[0])
@@ -139,22 +140,22 @@ function wpfb_show_custom_twitter($options, $you)
   	<div style="color:#555;border-bottom:1px solid #D8DFEA;color:#555; height:<?php echo $options['height']; ?>px; position:relative;">
   		<div style="position:absolute;top:5px;left:5px;">
   			<a target="_blank" href="http://twitter.com/<?php echo $options['username'];?>">
-  				<img src="<?php echo $you['profile_image_url'];?>" width="44" height="44" alt="twitter profile pic">
+  				<img src="<?php echo $you['profile_image_url'];?>" width="44" height="44" alt="Twitter">
   			</a>
   		</div>
       <div style="position:absolute;top:5px;left:59px;font-size:14px;line-height:14px;font-weight:bold;">
         <a target="_blank" href="http://twitter.com/<?php echo $options['username'];?>" style="color:<?php echo $options['font-color'];?>">
-        <?php echo $options['username'];?><span style="font-weight:normal;font-size:10px"> on Twitter</span>
+        <?php echo $options['username'];?><span style="font-weight:normal;font-size:10px"> <?php echo $wpl_onTwitter; ?></span>
         </a>
       </div>
       <div style="position:absolute;top:30px;left:60px;min-width:65px;height:20px;">
-        <a href="https://twitter.com/<?php echo $options['username'];?>" class="twitter-follow-button" data-show-count="false" data-width="65px" data-show-screen-name="false">Follow @<?php echo $options['username'];?></a>
+        <a href="https://twitter.com/<?php echo $options['username'];?>" class="twitter-follow-button" data-show-count="false" data-width="65px" data-show-screen-name="false"><?php echo $wpl_Follow; ?> @<?php echo $options['username'];?></a>
       </div>
       <?php
       if ($options['latest']=='true'){
       ?> 
       <div style="position:absolute;top:58px;left:5px;min-width:65px;height:20px; text-align:left;font-size:12px">
-       <b>Latest Tweet</b>: <?php echo $you['latest']; ?>
+       <b><?php echo $wpl_LatestTweet; ?></b>: <?php echo $you['latest']; ?>
       </div>
       <?php
       }
@@ -165,11 +166,11 @@ function wpfb_show_custom_twitter($options, $you)
   			<?php 
   			if ( $options['show_followers'] == 'followers')
   			{
-  				echo number_format($you['followers_count']).' people follow <strong>'. $options['username'].'</strong>';
+  				echo number_format($you['followers_count']).' '.$wpl_peoplefollow.' <strong>'. $options['username'].'</strong>';
   			}
   			else
   			{
-  				echo $options['username'].' follows '. number_format($you['friends_count']).' people';
+  				echo $options['username'].' '.$wpl_follows.' '. number_format($you['friends_count']).' '.$wpl_people;
   			}
   			?>	
   		</div>
@@ -184,7 +185,7 @@ function wpfb_show_custom_twitter($options, $you)
   			<?php if($options['link_followers'] == 'on' ): ?>
   				<a target="_blank" href="http://twitter.com/<?php echo $you['followers'][$i]['screen_name'];?>" style="color:gray" rel="nofollow">
   			<?php endif;?>	
-  					<img src="<?php echo $you['followers'][$i]['profile_image_url'];?>" width="48" height="48" alt="twitter users">
+  					<img src="<?php echo $you['followers'][$i]['profile_image_url'];?>" width="48" height="48" alt="Twitter Pic">
   					<span style="font-family:Arial;font-size:10px;"><?php echo substr($you['followers'][$i]['screen_name'], 0, 8);?></span>
   			<?php if($options['link_followers'] == 'on' ): ?>		
   				</a>
@@ -196,7 +197,7 @@ function wpfb_show_custom_twitter($options, $you)
   <?php
   if ($options['tweetto']=='on')
     {
-    echo '<div style="padding:6px 0px 6px 0px;"><a href="https://twitter.com/intent/tweet?screen_name='.$options[username].'" class="twitter-mention-button" data-lang="en">Tweet to @'.$options[username].'</a></div>'; 
+    echo '<div style="padding:6px 0px 6px 0px;"><a href="https://twitter.com/intent/tweet?screen_name='.$options[username].'" class="twitter-mention-button" data-lang="en">'.$wpl_Tweetto.' @'.$options[username].'</a></div>'; 
     }
   ?>
   </div>

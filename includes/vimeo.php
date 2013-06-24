@@ -1,6 +1,6 @@
 <?php
 $vimeooptions = array('username' => get_option(wpflybox_vimeo_username), 'total' => get_option(wpflybox_vimeo_total));
-
+$vimeolang=array('Videos'=>$wpl_Videos,'onVimeo'=>$wpl_onVimeo,'vimeoerror'=>$wpl_vimeoerror);
 function wpfb_get_vimeo_data($options)
   {
   $key = 'wpfb_v_' . $options['username'];
@@ -67,7 +67,7 @@ function wpfb_get_vimeo_data($options)
   
   }
 
-function wpfb_show_custom_vimeo($options, $you)
+function wpfb_show_custom_vimeo($options, $you, $lang)
   {
   ?>
   
@@ -80,11 +80,11 @@ function wpfb_show_custom_vimeo($options, $you)
 		</div>
     <div style="position:absolute;top:5px;left:59px;font-size:14px;line-height:14px;font-weight:bold;">
       <a target="_blank" href="<?php echo $you['profile_url'];?>" style="color:#3cadc9">
-      <?php echo $you['name'];?><span style="font-weight:normal;font-size:10px"> on Vimeo</span>
+      <?php echo $you['name'];?><span style="font-weight:normal;font-size:10px"> <?php echo $lang['onVimeo']; ?></span>
       </a>
     </div>
     <div style="position:absolute;top:30px;left:59px;"> 
-      Videos: 
+      <?php echo $lang['Videos']; ?>: 
       <a target="_blank" href="<?php echo $you['videos_url']; ?>" style="color:#3cadc9">
       <b><?php echo number_format($you['total_videos_uploaded']); ?></b>
       </a>  
@@ -131,9 +131,9 @@ if (get_option(wpflybox_side)=="right")
 echo '<th style="background-color:#fff; border: 2px solid #0989ab;width:220px;overflow:hidden;padding:0px;">';
 if($you)
   {
-  wpfb_show_custom_vimeo($vimeooptions, $you);
+  wpfb_show_custom_vimeo($vimeooptions, $you, $vimeolang);
   } else {
-  echo 'Error: Invalid username or vimeo server cannot be reached.';
+  echo $wpl_vimeoerror;
   }      
 echo '</th>';
 if (get_option(wpflybox_side)=="left")
