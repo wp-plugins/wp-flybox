@@ -190,7 +190,7 @@ if (strpos($wpflybox_start,'%') !== false && strpos($wpflybox_seperation,'%') !=
 
 if (get_option(wpflybox_facebook_width)=="")
 {$wpfb_fbwidth=292;}else{$wpfb_fbwidth=get_option(wpflybox_facebook_width);}     
-
+  
 $wpflybox_widths=array(
       1 => $wpfb_fbwidth, //facebook 
       2 => '232', //twitter
@@ -215,9 +215,9 @@ if (get_option(wpflybox_edge) == 'true')
 
 if($mobile_browser>0)
   {
-  $wpfb_fbextramobile=-73;
+  $wpfb_fbextramobile=-1*floor(get_option(wpflybox_facebook_scale)*$wpfb_fbwidth);
   }else {
-   $wpfb_fbextramobile=-0;	
+   $wpfb_fbextramobile=0;	
    }        
 
 $wpflybox_sideextravalue=4;
