@@ -60,9 +60,7 @@ $wpl_HideOnwith='Hide On Pages/Posts with ID';
 $wpl_HelpFindingID='Help Finding IDs';
 $wpl_Language='Language';
 $wpl_English='English';
-$wpl_Custom='Custom';
 $wpl_LangDesc='The langauge files can be found and edited in wp-content/plugins/WP-Flybox/lang/.';
-
 $wpl_UpdateOptions='Update Options';
 
 //Tab Configuration
@@ -79,6 +77,8 @@ $wpl_ShowHeader='Show Header';
 $wpl_IsHeader='"Find Us On Facebook" is the header';
 $wpl_ShowStream='Show Stream';
 $wpl_ShowFaces='Show Faces';
+$wpl_fbscale='Scale for Mobile';
+$wpl_fbscale_desc='Must be value between 0 and 1 (example 0.6).';
 
 //Twitter
 $wpl_TwitterUsername='Twitter Username';

@@ -1,4 +1,7 @@
 <?php
+$wpfb_fbscale=get_option(wpflybox_facebook_scale);
+if ($wpfb_fbscale>1 || $wpfb_fbscale<0)
+  {$wpfb_fbscale=1;}
 echo '<div class="wpfb-facebook" id="wpfb-facebook">
         <div class="wpfb-facebook-transition">
           <table class="wpflyboxtable">
@@ -19,10 +22,10 @@ if ($mobile_browser>0)
   {
   if (get_option(wpflybox_side)=="left")
     {
-    echo '-webkit-transform: scale(0.75);-moz-transform: scale(0.75);-ms-transform: scale(0.75);-o-transform: scale(0.75);transform: scale(0.75);transform-origin:top right;-webkit-transform-origin:top right;';
+    echo '-webkit-transform: scale('.$wpfb_fbscale.');-moz-transform: scale('.$wpfb_fbscale.');-ms-transform: scale('.$wpfb_fbscale.');-o-transform: scale('.$wpfb_fbscale.');transform: scale('.$wpfb_fbscale.');transform-origin:top right;-webkit-transform-origin:top right;';
     }else
     {
-    echo '-webkit-transform: scale(0.75);-moz-transform: scale(0.75);-ms-transform: scale(0.75);-o-transform: scale(0.75);transform: scale(0.75);transform-origin:top left;-webkit-transform-origin:top left;';
+    echo '-webkit-transform: scale('.$wpfb_fbscale.');-moz-transform: scale('.$wpfb_fbscale.');-ms-transform: scale('.$wpfb_fbscale.');-o-transform: scale('.$wpfb_fbscale.');transform: scale('.$wpfb_fbscale.');transform-origin:top left;-webkit-transform-origin:top left;';
     }
   }
 

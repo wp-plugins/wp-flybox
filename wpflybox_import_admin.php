@@ -11,6 +11,7 @@ if (get_option(wpflybox_facebook_color)==""){$wpflybox_facebook_color="light";up
 if (get_option(wpflybox_facebook_height)==""){$wpflybox_facebook_height="500";update_option('wpflybox_facebook_height', $wpflybox_facebook_height);}
 if (get_option(wpflybox_facebook_width)==""){$wpflybox_facebook_width="292";update_option('wpflybox_facebook_width', $wpflybox_facebook_width);}
 if (get_option(wpflybox_facebook)==""){$wpflybox_facebook="http://facebook.com/Wordpress";update_option('wpflybox_facebook', $wpflybox_facebook);}
+if (get_option(wpflybox_facebook_scale)==""){$wpflybox_facebook_scale='0.6';update_option('wpflybox_facebook_scale', $wpflybox_facebook_scale);}
 if (!strstr(get_option(wpflybox_facebook), 'facebook.com/')){$wpflybox_facebook="http://facebook.com/".get_option(wpflybox_facebook);update_option('wpflybox_facebook', $wpflybox_facebook);}
 if (get_option(wpflybox_ie)==""){$wpflybox_ie="true";update_option('wpflybox_ie', $wpflybox_ie);}
 if (get_option(wpflybox_mobile)==""){$wpflybox_mobile="false";update_option('wpflybox_mobile', $wpflybox_mobile);}
@@ -115,8 +116,10 @@ if (get_option(wpflybox_language)==""){$wpflybox_language="en-US";update_option(
       $wpflybox_facebook_width = $_POST['wpflybox_facebook_width']; 
 			update_option('wpflybox_facebook_width', $wpflybox_facebook_width);            	            			
       $wpflybox_facebook_width = $_POST['wpflybox_facebook_width']; 
-			update_option('wpflybox_facebook_width', $wpflybox_facebook_width);	      	
-      $wpflybox_twitter = $_POST['wpflybox_twitter'];
+			update_option('wpflybox_facebook_width', $wpflybox_facebook_width);
+      $wpflybox_facebook_scale = $_POST['wpflybox_facebook_scale']; 
+			update_option('wpflybox_facebook_scale', $wpflybox_facebook_scale);      	      	
+      $wpflybox_twitter = $_POST['wpflybox_twitter'];                          
 			update_option('wpflybox_twitter', $wpflybox_twitter);      
       $wpflybox_twitter_showfollowers = $_POST['wpflybox_twitter_showfollowers'];
 			update_option('wpflybox_twitter_showfollowers', $wpflybox_twitter_showfollowers);       
@@ -586,7 +589,11 @@ echo '<div class="updated"><p><strong>'.$wpl_Cachesdeleted.'</strong></p></div>'
        <br /><a href="http://en.forums.wordpress.com/topic/any-one-know-how-to-find-page-ids" target="_blank" title="Help Finding IDs"><?php echo $wpl_HelpFindingID; ?></a>
        </td></tr>
 
-
+       <tr><td style="text-align:right;"><?php echo $wpl_Language; ?>:</td><td>
+        <select name="wpflybox_language">
+        <option value="en-US" <?php if(get_option(wpflybox_language)=="en-US"){echo 'selected';} ?>><?php echo $wpl_English; ?></option>
+        </select> <?php echo $wpl_LangDesc; ?>        
+       </td></tr>
      
          <tr><td>
 	       <p class="submit">
@@ -644,9 +651,13 @@ echo '<div class="updated"><p><strong>'.$wpl_Cachesdeleted.'</strong></p></div>'
         <option value="true" <?php if(get_option(wpflybox_facebook_showfaces)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
         <option value="false" <?php if(get_option(wpflybox_facebook_showfaces)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
         </select>
-        </td></tr>                                  
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_fbscale; ?>:</td><td>
+        <input type="text" name="wpflybox_facebook_scale" value="<?php echo get_option(wpflybox_facebook_scale); ?>" size="6" /> <?php echo $wpl_fbscale_desc; ?>
+        </td></tr>                                          
 
-
+                                      
         <tr><td colspan="2"><h4>Twitter:</h4></td></tr>
                            
         <tr><td style="text-align:right;"><?php echo $wpl_TwitterUsername; ?>:</td><td>

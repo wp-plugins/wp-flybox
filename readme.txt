@@ -4,7 +4,7 @@ Donate link: http://njarb.com/2012/08/wp-flybox/
 Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, vimeo, deviantart, instagram, css, custom, colors, sidebar, links
 Requires at least: 2.8
 Tested up to: 3.5.1
-Stable tag: 3.15
+Stable tag: 4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,10 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 8. Custom color configuration
 
 == Changelog ==
+
+= 4.0 =
+* Added scale option for viewing facebook tab in mobile.
+* Added backend support for languages.
 
 = 3.15 =
 * Added width setting for facebook tab.
@@ -198,6 +202,10 @@ All themes have different CSS and layouts. Since no javascript is used, the CSS 
 * Beta, initial design and testing.
 
 == Upgrade Notice ==
+
+= 4.0 =
+* Added scale option for viewing facebook tab in mobile.
+* Added backend support for languages.
 
 = 3.15 =
 * Added width setting for facebook tab.
