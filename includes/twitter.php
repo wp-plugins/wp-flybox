@@ -1,5 +1,14 @@
 <?php
 $twitteroptions = array('username' => get_option(wpflybox_twitter) ,'total' => get_option(wpflybox_twitter_count), 'show_followers' => get_option(wpflybox_twitter_showfollowers), 'border-color' => '#AAA','font-color' => '#3B5998','bordertop-color' => '#315C99','bg-color' => 'transparent', 'link_followers' => get_option(wpflybox_twitter_link), 'width' => 220, 'tweetto' => get_option(wpflybox_twitter_tweetto), 'latest' => get_option(wpflybox_twitter_latest));
+$lang =Array();
+$lang['wpl_onTwitter']=$wpl_onTwitter;
+$lang['wpl_Follow']=$wpl_Follow;
+$lang['wpl_LatestTweet']=$wpl_LatestTweet;
+$lang['wpl_peoplefollow']=$wpl_peoplefollow;
+$lang['wpl_people']=$wpl_people;
+$lang['wpl_follows']=$wpl_follows;
+$lang['wpl_Tweetto']=$wpl_Tweetto;
+
 
 function wpfb_get_twitter_data($options)
   {
@@ -132,8 +141,10 @@ $response= $twitter->setGetfield($getfield)
 
 if ($twitteroptions['latest']=='true'){$twitteroptions['height']=125;}else{$twitteroptions['height']=60;}
 
-function wpfb_show_custom_twitter($options, $you)
+function wpfb_show_custom_twitter($options, $you, $lang)
   {
+
+
   ?>
   
   <div style="width:<?php echo $options['width'];?>px;padding:5px 5px 5px 5px; font-family:\'Lucida grande\',tahoma,verdana,arial,sans-serif;">
@@ -145,17 +156,17 @@ function wpfb_show_custom_twitter($options, $you)
   		</div>
       <div style="position:absolute;top:5px;left:59px;font-size:14px;line-height:14px;font-weight:bold;">
         <a target="_blank" href="http://twitter.com/<?php echo $options['username'];?>" style="color:<?php echo $options['font-color'];?>">
-        <?php echo $options['username'];?><span style="font-weight:normal;font-size:10px"> <?php echo $wpl_onTwitter; ?></span>
+        <?php echo $options['username'];?><span style="font-weight:normal;font-size:10px"> <?php echo $lang['wpl_onTwitter']; ?></span>
         </a>
       </div>
       <div style="position:absolute;top:30px;left:60px;min-width:65px;height:20px;">
-        <a href="https://twitter.com/<?php echo $options['username'];?>" class="twitter-follow-button" data-show-count="false" data-width="65px" data-show-screen-name="false"><?php echo $wpl_Follow; ?> @<?php echo $options['username'];?></a>
+        <a href="https://twitter.com/<?php echo $options['username'];?>" class="twitter-follow-button" data-show-count="false" data-width="65px" data-show-screen-name="false"><?php echo $lang['wpl_Follow']; ?> @<?php echo $options['username'];?></a>
       </div>
       <?php
       if ($options['latest']=='true'){
       ?> 
       <div style="position:absolute;top:58px;left:5px;min-width:65px;height:20px; text-align:left;font-size:12px">
-       <b><?php echo $wpl_LatestTweet; ?></b>: <?php echo $you['latest']; ?>
+       <b><?php echo $lang['wpl_LatestTweet']; ?></b>: <?php echo $you['latest']; ?>
       </div>
       <?php
       }
@@ -166,11 +177,11 @@ function wpfb_show_custom_twitter($options, $you)
   			<?php 
   			if ( $options['show_followers'] == 'followers')
   			{
-  				echo number_format($you['followers_count']).' '.$wpl_peoplefollow.' <strong>'. $options['username'].'</strong>';
+  				echo number_format($you['followers_count']).' '.$lang['wpl_peoplefollow'].' <strong>'. $options['username'].'</strong>';
   			}
   			else
   			{
-  				echo $options['username'].' '.$wpl_follows.' '. number_format($you['friends_count']).' '.$wpl_people;
+  				echo $options['username'].' '.$lang['wpl_follows'].' '. number_format($you['friends_count']).' '.$lang['wpl_people'];
   			}
   			?>	
   		</div>
@@ -197,7 +208,7 @@ function wpfb_show_custom_twitter($options, $you)
   <?php
   if ($options['tweetto']=='on')
     {
-    echo '<div style="padding:6px 0px 6px 0px;"><a href="https://twitter.com/intent/tweet?screen_name='.$options[username].'" class="twitter-mention-button" data-lang="en">'.$wpl_Tweetto.' @'.$options[username].'</a></div>'; 
+    echo '<div style="padding:6px 0px 6px 0px;"><a href="https://twitter.com/intent/tweet?screen_name='.$options[username].'" class="twitter-mention-button" data-lang="en">'.$lang['wpl_Tweetto'].' @'.$options[username].'</a></div>'; 
     }
   ?>
   </div>
@@ -226,7 +237,7 @@ if (get_option(wpflybox_side)=="right")
 echo '<th style="background-color:#fff; border: 2px solid #6CC5FF;width:232px;overflow:hidden;padding:0px;">';
 if($you && get_option(wpflybox_custom_twitter)!== 'false')
   {
-  wpfb_show_custom_twitter($twitteroptions, $you);
+  wpfb_show_custom_twitter($twitteroptions, $you, $lang);
   } else {
   echo '<script type="text/javascript" src="'.WP_PLUGIN_URL.'/wp-flybox/static/twitterbox.js"></script><div id="twitterfanbox"></div><script type="text/javascript">fanbox_init("'.$twitteroptions[username].'");</script>';
   }      

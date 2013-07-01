@@ -1,6 +1,6 @@
 <?php
 echo '<div id="WP-Flybox at http://njarb.com/2012/08/wp-flybox/" style="display:none;visibility:hidden;"></div>';
-include 'lang/en-US.php';
+include ('lang/en-US.php');
 //used for testing load times
 function microtime_float()
 {
