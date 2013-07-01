@@ -1,7 +1,13 @@
 <?php
 $instagramoptions = array('id' => get_option(wpflybox_instagram_id) ,'token' => get_option(wpflybox_instagram_token), 'header' => get_option(wpflybox_instagram_header), 'max' => get_option(wpflybox_instagram_max));
 $wpfb_cached='true';
-function wpfb_show_instagram ($options)
+$lang = array();
+$lang['wpl_Photos']=$wpl_Photos;
+$lang['wpl_Followers']=$wpl_Followers;
+$lang['wpl_Following']=$wpl_Following;
+$lang['wpl_invaliderror']=$wpl_invaliderror;
+
+function wpfb_show_instagram ($options, $lang)
 {
 $you=Array();
 $key = 'wpfb_i_' . $options['id'];
@@ -35,11 +41,11 @@ if ($options[header]=='true')
   if ($you['username']){  
   echo '<table style="padding:2px;border:none;" class="wpflyboxtable">';
   echo '<tr style="padding:3px;"><td><img src="'.$you[profile_picture].'" height="40" width="40" title="'.$you[username].'" alt="'.$you[username].'"></td>';
-  echo '<td style="text-align:center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[mediacount].'</div><div style="font-size:10px;">&nbsp;'.$wpl_Photos.'</div></td>';
-  echo '<td style="text-align:center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[followedby].'</div><div style="font-size:10px;">&nbsp;'.$wpl_Followers.'</div></td>';
-  echo '<td style="text-align:center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[follows].'</div><div style="font-size:10px;">&nbsp;'.$wpl_Following.'</div></td></tr>';
+  echo '<td style="text-align:center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[mediacount].'</div><div style="font-size:10px;">&nbsp;'.$lang['wpl_Photos'].'</div></td>';
+  echo '<td style="text-align:center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[followedby].'</div><div style="font-size:10px;">&nbsp;'.$lang['wpl_Followers'].'</div></td>';
+  echo '<td style="text-align:center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you[follows].'</div><div style="font-size:10px;">&nbsp;'.$lang['wpl_Following'].'</div></td></tr>';
   echo '</table>';
-  } else {echo $wpl_invaliderror;}
+  } else {echo $lang['wpl_invaliderror'];}
 }
 if (!$you['media'] || $wpfb_cached=='false')
   {
@@ -48,7 +54,7 @@ if (!$you['media'] || $wpfb_cached=='false')
   //echo 'https://api.instagram.com/v1/users/'.$options[id].'/media/recent/?access_token='.$options[token];
   if (is_wp_error($wpflybox_instagram_jsonfile))
 		  {
-		  echo $wpl_invaliderror;
+		  echo $lang['wpl_invaliderror'];
 		  return false;
 		  } else {
 		  $json = json_decode(wp_remote_retrieve_body($wpflybox_instagram_jsonfile));
@@ -86,7 +92,7 @@ if (!$you['media'] || $wpfb_cached=='false')
     echo '<a href="'.$media[$m][link].'" target="_blank"><img src="'.$media[$m][thumburl].'" height="50" width="50" style="padding:3px;" alt="'.$media[$m][text].'" title="'.$media[$m][text].'"></a>';
     }
   }
-  } else {echo '<br>'.$wpl_invaliderror;}
+  } else {echo '<br>'.$lang['wpl_invaliderror'];}
   
 echo '</div>';
 
