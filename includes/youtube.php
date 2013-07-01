@@ -15,7 +15,7 @@ if (get_option(wpflybox_side)=="right")
     echo '</th>';
   }
       echo '<th style="background-color:#fff; border: 2px solid #ff0000;width:300px;overflow:hidden;padding:0px;line-height:0.5">';
-      echo '<iframe src="http://www.youtube.com/subscribe_widget?p='.get_option(wpflybox_youtube).'" style="height: 105px; width: 300px; border: 0; overflow:hidden;"></iframe>';
+      echo '<iframe src="https://www.youtube.com/subscribe_widget?p='.get_option(wpflybox_youtube).'" style="height: 105px; width: 300px; border: 0; overflow:hidden;"></iframe>';
       echo '</th>';
 if (get_option(wpflybox_side)=="left")
   {

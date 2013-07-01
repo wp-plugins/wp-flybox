@@ -15,7 +15,7 @@ if (get_option(wpflybox_side)=="right")
     echo '</th>';
   }
       echo '<th style="background-color:#fff; border: 2px solid #0063DC;overflow:hidden;padding:0px;width:113px;line-height:0.6;">';
-      echo '<iframe style="background-color:#ffffff; border-color:#ffffff; border:none; width:113px; overflow:hidden;" src="http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color=ffffff&amp;zg_person_id='.get_option(wpflybox_flickr).'&amp;zg_tags='.get_option(wpflybox_flickr_tag).'&amp;zg_tag_mode=any" title="Flickr Badge"></iframe>';
+      echo '<iframe style="background-color:#ffffff; border-color:#ffffff; border:none; width:113px; overflow:hidden;" src="https://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color=ffffff&amp;zg_person_id='.get_option(wpflybox_flickr).'&amp;zg_tags='.get_option(wpflybox_flickr_tag).'&amp;zg_tag_mode=any" title="Flickr Badge"></iframe>';
       echo '</th>';
 if (get_option(wpflybox_side)=="left")
   {

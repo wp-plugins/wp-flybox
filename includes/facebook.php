@@ -30,7 +30,7 @@ if ($mobile_browser>0)
   }
 
 echo '">';
-      echo '<iframe title="Facebook" src="http://www.facebook.com/plugins/likebox.php?href='.urlencode(get_option(wpflybox_facebook)).'&amp;locale='.$wpl_fblang.'&amp;width='.get_option(wpflybox_facebook_width).'&amp;height='.get_option(wpflybox_facebook_height).'&amp;colorscheme='.get_option(wpflybox_facebook_color).'&amp;show_faces='.get_option(wpflybox_facebook_showfaces).'&amp;stream='.get_option(wpflybox_facebook_stream).'&amp;header='.get_option(wpflybox_facebook_header).'" style="background-color:#ffffff; border:none; overflow:hidden; width:'.get_option(wpflybox_facebook_width).'px; height:'.get_option(wpflybox_facebook_height).'px;">iframes not supported by your browser.</iframe>';
+      echo '<iframe title="Facebook" src="https://www.facebook.com/plugins/likebox.php?href='.urlencode(get_option(wpflybox_facebook)).'&amp;locale='.$wpl_fblang.'&amp;width='.get_option(wpflybox_facebook_width).'&amp;height='.get_option(wpflybox_facebook_height).'&amp;colorscheme='.get_option(wpflybox_facebook_color).'&amp;show_faces='.get_option(wpflybox_facebook_showfaces).'&amp;stream='.get_option(wpflybox_facebook_stream).'&amp;header='.get_option(wpflybox_facebook_header).'" style="background-color:#ffffff; border:none; overflow:hidden; width:'.get_option(wpflybox_facebook_width).'px; height:'.get_option(wpflybox_facebook_height).'px;">iframes not supported by your browser.</iframe>';
       echo '</th>';
 if (get_option(wpflybox_side)=="left")
   {
