@@ -124,7 +124,7 @@ if (get_option(wpflybox_side)=="right")
     echo '</th>';
   }
       echo '<th style="background-color:#fff; border: 2px solid #86513e;width:196px;overflow:hidden;padding:0px;">';
-      wpfb_show_instagram($instagramoptions);
+      wpfb_show_instagram($instagramoptions,$lang);
       echo '</th>';
 if (get_option(wpflybox_side)=="left")
   {
