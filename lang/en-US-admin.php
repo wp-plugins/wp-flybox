@@ -97,12 +97,22 @@ $wpl_TweettoButton='Tweet To Button';
 $wpl_ShowLatestT='Show Latest Tweet';
 
 //Google Plus
-$wpl_Googlenumuser='Google Numeric Username';
-$wpl_Googleuserdesc='example: if your page is "http://plus.google.com/u/0/<b>105734435204105331709</b>/posts" use 105734435204105331709 as your code.';
+$wpl_Googlenumuser='Full URL of Google+ Page';
+$wpl_Googleuserdesc='example: "https://plus.google.com/u/0/+WordPress/"';
 $wpl_PageType='Page Type';
-$wpl_Profile='Profile';
+$wpl_Profile='Person';
 $wpl_Page='Page';
-$wpl_GooglePagedesc='Does the google plus numeric username code belong to a personal profile or a business/fan page?';
+$wpl_Community='Community';
+$wpl_GooglePagedesc='';
+$wpl_Layout='Layout';
+$wpl_Landscape='Landscape';
+$wpl_Portrait='Portrait';
+$wpl_GoogleTheme='Theme';
+$wpl_GoogleLight='Light';
+$wpl_GoogleDark='Dark';
+$wpl_GoogleShowCover='Show Cover Photo?';
+$wpl_GoogleShowTag='Show Tag Line?';
+
 
 //Youtube
 $wpl_YoutubeUsername='Youtube Username';

@@ -14,15 +14,11 @@ if (get_option(wpflybox_side)=="right")
     }
     echo '</th>';
   }
-      echo '<th style="background-color:#fff; border: 2px solid #006ec9;width:325px;overflow:hidden;padding:0px;padding-top:12px;">';
-      if (get_option(wpflybox_google_type)== 'profile')
-            {
-            //echo '<iframe src="http://www.google.com/s2/u/0/widgets/ProfileCard?lang=ar&uid='.get_option(wpflybox_google).'" scrolling="no"></iframe>';
-            echo '<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{"lang": "'.$wpl_gpluslang.'"}</script><div class="g-plus" data-height="69" data-href="//plus.google.com/'.get_option(wpflybox_google).'" data-rel="author"></div>'; 
-            } else if (get_option(wpflybox_google_type)== 'page')
-            {
-            echo '<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{"lang": "'.$wpl_gpluslang.'"}</script><div class="g-plus" data-href="https://plus.google.com/'.get_option(wpflybox_google).'?rel=publisher"></div>';
-            }
+      echo '<th style="background-color:#fff; border: 2px solid #006ec9;width:325px;overflow:hidden;padding:0px;padding-top:1px;">';
+      
+          echo '<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>';
+          echo '<div class="g-'.get_option(wpflybox_google_type).'" data-href="'.get_option(wpflybox_google).'" data-layout="'.get_option(wpflybox_google_layout).'" data-showcoverphoto="'.get_option(wpflybox_google_showcover).'" data-showtagline="'.get_option(wpflybox_google_showtag).'" data-theme="'.get_option(wpflybox_google_theme).'" data-width="320"></div>';      
+                  
       echo '</th>';
 if (get_option(wpflybox_side)=="left")
   {

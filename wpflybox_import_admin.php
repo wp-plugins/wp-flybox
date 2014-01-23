@@ -39,7 +39,7 @@ if (get_option(wpflybox_twitter_tweetto)==""){$wpflybox_twitter_tweetto="on";upd
 if (get_option(wpflybox_start)==""){$wpflybox_start="20px";update_option('wpflybox_start', $wpflybox_start);}
 if (get_option(wpflybox_seperation)==""){$wpflybox_seperation="103px";update_option('wpflybox_seperation', $wpflybox_seperation);}
 if (get_option(wpflybox_twitter)==""){$wpflybox_twitter="wordpress";update_option('wpflybox_twitter', $wpflybox_twitter);}
-if (get_option(wpflybox_google)==""){$wpflybox_google="107188080561309681193";update_option('wpflybox_google', $wpflybox_google);}
+if (get_option(wpflybox_google)==""){$wpflybox_google="https://plus.google.com/u/0/+WordPress/";update_option('wpflybox_google', $wpflybox_google);}
 if (get_option(wpflybox_google_type)==""){$wpflybox_google_type="page";update_option('wpflybox_google_type', $wpflybox_google_type);}
 if (get_option(wpflybox_youtube)==""){$wpflybox_youtube="nbc";update_option('wpflybox_youtube', $wpflybox_youtube);}
 if (get_option(wpflybox_linkedin)==""){$wpflybox_linkedin="google";update_option('wpflybox_linkedin', $wpflybox_linkedin);}
@@ -70,6 +70,12 @@ if (get_option(wpflybox_showon_logged)==""){$wpflybox_showon_logged="true";updat
 if (get_option(wpflybox_showon_pid)==""){$wpflybox_showon_pid=" ";update_option('wpflybox_showon_pid', $wpflybox_showon_pid);}
 if (get_option(wpflybox_showon_pidhide)==""){$wpflybox_showon_pidhide=" ";update_option('wpflybox_showon_pidhide', $wpflybox_showon_pidhide);}
 if (get_option(wpflybox_language)==""){$wpflybox_language="en-US";update_option('wpflybox_language', $wpflybox_language);}
+if (get_option(wpflybox_google_layout)==""){$wpflybox_google_layout="portrait";update_option('wpflybox_google_layout', $wpflybox_google_layout);}
+if (get_option(wpflybox_google_theme)==""){$wpflybox_google_theme="light";update_option('wpflybox_google_theme', $wpflybox_google_theme);}
+if (get_option(wpflybox_google_showcover)==""){$wpflybox_google_showcover="true";update_option('wpflybox_google_showcover', $wpflybox_google_showcover);}
+if (get_option(wpflybox_google_showtag)==""){$wpflybox_google_showtag="true";update_option('wpflybox_google_showtag', $wpflybox_google_showtag);}
+if (get_option(wpflybox_google_width)==""){$wpflybox_google_width="250";update_option('wpflybox_google_width', $wpflybox_google_width);}
+if (get_option(wpflybox_side)==""){$wpflybox_side="none";update_option('wpflybox_side', $wpflybox_side);}
 //if (get_option(wpflybox_opentabs)==""){$wpflybox_opentabs="true";update_option('wpflybox_opentabs', $wpflybox_opentabs);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
@@ -224,7 +230,17 @@ if (get_option(wpflybox_language)==""){$wpflybox_language="en-US";update_option(
       $wpflybox_showon_pidhide = $_POST['wpflybox_showon_pidhide'];
 			update_option('wpflybox_showon_pidhide', $wpflybox_showon_pidhide); 
       $wpflybox_language = $_POST['wpflybox_language'];
-			update_option('wpflybox_language', $wpflybox_language);       			
+			update_option('wpflybox_language', $wpflybox_language);
+      $wpflybox_google_layout = $_POST['wpflybox_google_layout'];
+			update_option('wpflybox_google_layout', $wpflybox_google_layout); 
+      $wpflybox_google_theme = $_POST['wpflybox_google_theme'];
+			update_option('wpflybox_google_theme', $wpflybox_google_theme); 
+      $wpflybox_google_showcover = $_POST['wpflybox_google_showcover'];
+			update_option('wpflybox_google_showcover', $wpflybox_google_showcover); 
+      $wpflybox_google_showtag = $_POST['wpflybox_google_showtag'];
+			update_option('wpflybox_google_showtag', $wpflybox_google_showtag); 
+      $wpflybox_google_width = $_POST['wpflybox_google_width'];
+			update_option('wpflybox_google_width', $wpflybox_google_width);                                      			
 			//$wpflybox_opentabs = $_POST['wpflybox_opentabs'];
 			//update_option('wpflybox_opentabs', $wpflybox_opentabs);      			                        
                                                                                         
@@ -707,17 +723,48 @@ echo '<div class="updated"><p><strong>'.$wpl_Cachesdeleted.'</strong></p></div>'
       
         <tr><td colspan="2"><h4>Google Plus:</h4></td></tr>
         <tr><td style="text-align:right;"><?php echo $wpl_Googlenumuser; ?>:</td><td>
-        <input type="text" name="wpflybox_google" value="<?php echo get_option(wpflybox_google); ?>" size="30" />
+        <input type="text" name="wpflybox_google" value="<?php echo get_option(wpflybox_google); ?>" size="40" />
         (<?php echo $wpl_Googleuserdesc; ?>)
         </td></tr>
 	
         <tr><td style="text-align:right;"><?php echo $wpl_PageType; ?>:</td><td>
         <select name="wpflybox_google_type">
-        <option value="profile" <?php if(get_option(wpflybox_google_type)=="profile"){echo 'selected';} ?>><?php echo $wpl_Profile; ?></option>
+        <option value="person" <?php if(get_option(wpflybox_google_type)=="person"){echo 'selected';} ?>><?php echo $wpl_Profile; ?></option>
         <option value="page" <?php if(get_option(wpflybox_google_type)=="page"){echo 'selected';} ?>><?php echo $wpl_Page; ?></option>
+        <option value="community" <?php if(get_option(wpflybox_google_type)=="community"){echo 'selected';} ?>><?php echo $wpl_Community; ?></option>
         </select>
-	(<?php echo $wpl_GooglePagedesc; ?>)
+	<?php echo $wpl_GooglePagedesc; ?>
         </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_Layout; ?>:</td><td>
+        <select name="wpflybox_google_layout">
+        <option value="portrait" <?php if(get_option(wpflybox_google_layout)=="portrait"){echo 'selected';} ?>><?php echo $wpl_Portrait; ?></option>
+        <option value="landscape" <?php if(get_option(wpflybox_google_layout)=="landscape"){echo 'selected';} ?>><?php echo $wpl_Landscape; ?></option>
+        </select>
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_GoogleTheme; ?>:</td><td>
+        <select name="wpflybox_google_theme">
+        <option value="light" <?php if(get_option(wpflybox_google_theme)=="light"){echo 'selected';} ?>><?php echo $wpl_GoogleLight; ?></option>
+        <option value="dark" <?php if(get_option(wpflybox_google_theme)=="dark"){echo 'selected';} ?>><?php echo $wpl_GoogleDark; ?></option>
+        </select>
+        </td></tr> 
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_GoogleShowCover; ?>:</td><td>
+        <select name="wpflybox_google_showcover">
+        <option value="true" <?php if(get_option(wpflybox_google_showcover)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_google_showcover)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
+        </select>
+        </td></tr>
+        
+        <tr><td style="text-align:right;"><?php echo $wpl_GoogleShowTag; ?>:</td><td>
+        <select name="wpflybox_google_showtag">
+        <option value="true" <?php if(get_option(wpflybox_google_showtag)=="true"){echo 'selected';} ?>><?php echo $wpl_Yes; ?></option>
+        <option value="false" <?php if(get_option(wpflybox_google_showtag)=="false"){echo 'selected';} ?>><?php echo $wpl_No; ?></option>
+        </select>
+        </td></tr>
+                                         
+        
         
         <tr><td colspan="2"><h4>Youtube:</h4></td></tr>        
         <tr><td style="text-align:right;"><?php echo $wpl_YoutubeUsername; ?>:</td><td>
