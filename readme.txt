@@ -3,8 +3,8 @@ Contributors: cconoly
 Donate link: http://njarb.com/2012/08/wp-flybox/
 Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, vimeo, deviantart, instagram, css, custom, colors, sidebar, links
 Requires at least: 2.8
-Tested up to: 3.5.1
-Stable tag: 4.2
+Tested up to: 3.8
+Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

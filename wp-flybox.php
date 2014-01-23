@@ -8,7 +8,7 @@ Author: Cyle Conoly
 Author URI: http://njarb.com
 License: GPL2
 
-Copyright 2013  Cyle Conoly  (email : cyle.conoly@gmail.com)
+Copyright 2014  Cyle Conoly  (email : cyle.conoly@gmail.com)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2, as 

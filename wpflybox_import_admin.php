@@ -75,6 +75,7 @@ if (get_option(wpflybox_google_theme)==""){$wpflybox_google_theme="light";update
 if (get_option(wpflybox_google_showcover)==""){$wpflybox_google_showcover="true";update_option('wpflybox_google_showcover', $wpflybox_google_showcover);}
 if (get_option(wpflybox_google_showtag)==""){$wpflybox_google_showtag="true";update_option('wpflybox_google_showtag', $wpflybox_google_showtag);}
 if (get_option(wpflybox_google_width)==""){$wpflybox_google_width="250";update_option('wpflybox_google_width', $wpflybox_google_width);}
+if (get_option(wpflybox_side)==""){$wpflybox_side="none";update_option('wpflybox_side', $wpflybox_side);}
 //if (get_option(wpflybox_opentabs)==""){$wpflybox_opentabs="true";update_option('wpflybox_opentabs', $wpflybox_opentabs);}
 
 		if($_POST['wpflybox_hidden'] == 'Y') {
