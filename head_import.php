@@ -122,10 +122,12 @@ while($i<=$number_of_tabs)
   }
 //click/hover jquery function
 $i=1;
+if ($click_or_hover=='click')
+{
 while ($i<=$number_of_tabs)
   {
   ?>
-  jQuery("#tab<?php echo $i; ?> .wpflybox_button").<?php echo $click_or_hover; ?>(function(){
+  jQuery("#tab<?php echo $i; ?> .wpflybox_button").click(function(){
     if(tab<?php echo $i; ?>_pos==0)
       {
       jQuery("#tab<?php echo $i; ?>").animate({<?php echo $right_or_left; ?>:'0px'});
@@ -163,6 +165,49 @@ while ($i<=$number_of_tabs)
   <?php
   $i++;
   }
+} else {
+while ($i<=$number_of_tabs)
+  {
+  ?>
+  jQuery("#tab<?php echo $i; ?>").hover(function(){
+    if(tab<?php echo $i; ?>_pos==0)
+      {
+      jQuery("#tab<?php echo $i; ?>").animate({<?php echo $right_or_left; ?>:'0px'});
+      <?php
+      $j=1;
+      while ($j<=$number_of_tabs)
+        {
+        if ($j!=$i)
+          {
+          ?>
+          var j_width=jQuery("#tab<?php echo $j; ?>").width()-tab_width;
+          j_width='-'+j_width;
+          jQuery("#tab<?php echo $j; ?>").animate({<?php echo $right_or_left; ?>:j_width});
+          <?
+          }
+        $j++;
+        }
+      $j=1;
+      while ($j<=$number_of_tabs)
+        {
+        ?>
+        tab<?php echo $j; ?>_pos=0;
+        <?php
+        $j++;
+        }
+        ?>
+      tab<?php echo $i; ?>_pos=1;
+      } else {
+      var i_width=jQuery("#tab<?php echo $i; ?>").width()-tab_width;
+      i_width='-'+i_width;
+      jQuery("#tab<?php echo $i; ?>").animate({<?php echo $right_or_left; ?>:i_width});
+      tab<?php echo $i; ?>_pos=0;
+      }
+  });
+  <?php
+  $i++;
+  }
+}
 ?>
 });
 </script>

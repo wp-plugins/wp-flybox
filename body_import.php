@@ -33,7 +33,7 @@ if ($wpflybox_position !== "fixed" && $wpflybox_position !=="absolute"){$wpflybo
 while ($i<=$number_of_tabs)
   {
   //wrapper
-  echo '<div id="tab'.$i.'" style="display:inline-block;overflow:hidden;position:absolute;border:0px;'.$right_or_left.':-999px;top:';
+  echo '<div id="tab'.$i.'" style="display:inline-block;overflow:hidden;position:'.$wpflybox_position.';border:0px;'.$right_or_left.':-999px;top:';
   if ($i==1)
     {
     echo $top_margin;
