@@ -12,9 +12,10 @@ if (get_option('wpflybox_usecustombutton')=='true')
   } else {
   $tab_height=101;
   }
-$top_margin=get_option('wpflybox_start');
+$top_margin=intval(get_option('wpflybox_start'));
+
 if (is_admin_bar_showing()){$top_margin=$top_margin+32;}
-$tab_spacing=get_option('wpflybox_seperation');
+$tab_spacing=intval(get_option('wpflybox_seperation'));
 $right_or_left=get_option('wpflybox_side');
 $use_custom_button=get_option('wpflybox_usecustombutton');
 if ($right_or_left=='left'){$opposite_right_or_left='right';}else{$opposite_right_or_left='left';}
