@@ -5,7 +5,7 @@ if ((get_option('wpflybox_mobile')=='true' && $detect->isMobile() && !$detect->i
 {
 include('lang/'.get_option('wpflybox_language').'.php');
 $number_of_tabs=get_option('wpflybox_count');
-$tab_width=30;
+$tab_width=33;
 if (get_option('wpflybox_usecustombutton')=='true')
   {
   $tab_height=34;
@@ -30,6 +30,7 @@ while($i<=$number_of_tabs)
 $i=1;
 $wpflybox_position=get_option('wpflybox_position');
 if ($wpflybox_position !== "fixed" && $wpflybox_position !=="absolute"){$wpflybox_position="fixed";}
+//echo '<div style="height: 100%;margin: 0;overflow:hidden;padding: 0;position: absolute;width: 100%;top:0px;">';
 while ($i<=$number_of_tabs)
   {
   //wrapper
@@ -53,5 +54,6 @@ while ($i<=$number_of_tabs)
   echo '</div>';
   $i++;
   }
+//echo '</div>';
 }//end mobile
 ?>

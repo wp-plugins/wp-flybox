@@ -3,7 +3,7 @@ $click_or_hover=get_option('wpflybox_hoverorclick');
 $number_of_tabs=get_option('wpflybox_count');
 $right_or_left=get_option('wpflybox_side');
 if ($right_or_left=='left'){$opposite_right_or_left='right';}else{$opposite_right_or_left='left';}
-$tab_width=30;
+$tab_width=33;
 if (get_option('wpflybox_usecustombutton') == "true")
   {
   echo '<style type="text/css">';
@@ -141,7 +141,7 @@ while ($i<=$number_of_tabs)
           var j_width=jQuery("#tab<?php echo $j; ?>").width()-tab_width;
           j_width='-'+j_width;
           jQuery("#tab<?php echo $j; ?>").animate({<?php echo $right_or_left; ?>:j_width});
-          <?
+          <?php
           }
         $j++;
         }
@@ -155,7 +155,7 @@ while ($i<=$number_of_tabs)
         }
         ?>
       tab<?php echo $i; ?>_pos=1;
-      } else {
+      } else {     
       var i_width=jQuery("#tab<?php echo $i; ?>").width()-tab_width;
       i_width='-'+i_width;
       jQuery("#tab<?php echo $i; ?>").animate({<?php echo $right_or_left; ?>:i_width});
@@ -183,7 +183,7 @@ while ($i<=$number_of_tabs)
           var j_width=jQuery("#tab<?php echo $j; ?>").width()-tab_width;
           j_width='-'+j_width;
           jQuery("#tab<?php echo $j; ?>").animate({<?php echo $right_or_left; ?>:j_width});
-          <?
+          <?php
           }
         $j++;
         }

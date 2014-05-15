@@ -23,7 +23,7 @@ $wpl_PushDesc='If you want the flyout boxes to be against the screen when they a
 $wpl_FloatTabs='Float Tabs?';
 $wpl_FloatWithWindow='Float With Window';
 $wpl_AttachedToPage='Attached To Page';
-$wpl_FloatDesc='This option will change how the tabs behave when scrolling down the page. If you want the tabs to always be on the side of the page then choose Float With Window. If you want the tabs to just be at the top of the page and not move with the scrolling choose Attached To Page.';
+$wpl_FloatDesc='This option will change how the tabs behave when scrolling down the page. If you want the tabs to always be on the side of the page then choose Float With Window. If you want the tabs to just be at the top of the page and not move with the scrolling choose Attached To Page. NOTE: Attched will generate scroll bars at the bottom of the page. Float with window is recommended!';
 $wpl_Howmanytabs='How many tabs?';
 $wpl_Apply='Apply';
 $wpl_Tab='Tab';
@@ -42,6 +42,7 @@ $wpl_CustomColors='Custom Colors with Logo';
 $wpl_BackgroundColor='Background Color (if visible)';
 $wpl_BackgroundColorDesc='Use name of color or hexadecimal value with the # in front.';
 $wpl_BorderColor='Border Color';
+$wpl_DeleteCacheAfterUpdate='For some changes to take affect you will need to delete the caches under "Other Options".';
 //Custom Button Configuration
 $wpl_CustomButtonConfig='Custom Button Configuration';
 $wpl_RightGradColor='Right Gradient Color';

@@ -94,7 +94,7 @@ function wpfb_show_custom_vimeo($options, $you, $lang)
 				</a>		
 			</span>
 		<?php } else {$i=100;} ?>	
-		<? endfor;?>
+		<?php endfor;?>
 	<br style="clear:both">
 	</div>
 <?php } ?>

@@ -5,6 +5,7 @@ if ( !current_user_can( 'manage_options' ) )  {
 include ('wpfb_options_functions.php');   
 echo '<script type="text/javascript" src="'.plugins_url().'/wp-flybox/static/jscolor/jscolor.js"></script>';
 $wpfb_defaults=array (
+'wpflybox_position' => 'fixed',
 'wpflybox_facebook_header' => 'false',
 'wpflybox_facebook_stream' => 'true',
 'wpflybox_facebook_showfaces' => 'true',
@@ -276,6 +277,7 @@ if ($wpfb_active_tab=='tabs')
                       wpfb_form_option('wpflybox_twitter_tweetto',$wpl_TweettoButton,'',$wpfb_choices);
                       $wpfb_choices=array($wpl_On => 'true', $wpl_Off => 'false');
                       wpfb_form_option('wpflybox_twitter_latest',$wpl_ShowLatestT,'',$wpfb_choices);
+                      echo '<tr><td colspan="2">*'.$wpl_DeleteCacheAfterUpdate.'</td></tr>';
                     } else if ($tab=='googleplus'){
                       wpfb_form_input('wpflybox_google','40',$wpl_Googlenumuser,$wpl_Googleuserdesc);
                       $wpfb_choices=array($wpl_Profile => 'person', $wpl_Page => 'page', $wpl_Community => 'community');
@@ -328,7 +330,8 @@ if ($wpfb_active_tab=='tabs')
                       wpfb_form_input('wpflybox_deviant_max_height','3',$wpl_DevMaxHeight,'px '.$wpl_DevMaxHeightDesc);
                       wpfb_form_input('wpflybox_deviant_columns','3',$wpl_DevCol,'');
                       wpfb_form_input('wpflybox_deviant_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
-                      wpfb_form_input('wpflybox_deviant_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);                      
+                      wpfb_form_input('wpflybox_deviant_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);
+                      echo '<tr><td colspan="2">*'.$wpl_DeleteCacheAfterUpdate.'</td></tr>';                      
                     } else if ($tab=='instagram'){
                       echo '<tr><td colspan="2">'.$wpl_ToAuthorize.'</td></tr>';
                       wpfb_form_input('wpflybox_instagram_id','30',$wpl_InstUserID,'<a href="http://njarb.com/wp-flybox/instagram" target="_blank">'.$wpl_InstGetIDHere.'</a>');
@@ -337,12 +340,14 @@ if ($wpfb_active_tab=='tabs')
                       $wpfb_choices=array($wpl_Yes => 'true', $wpl_No => 'false');
                       wpfb_form_option('wpflybox_instagram_header',$wpl_ShowHeader,'',$wpfb_choices);
                       wpfb_form_input('wpflybox_instagram_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
-                      wpfb_form_input('wpflybox_instagram_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);                      
+                      wpfb_form_input('wpflybox_instagram_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);
+                      echo '<tr><td colspan="2">*'.$wpl_DeleteCacheAfterUpdate.'</td></tr>';                                            
                     } else if ($tab=='vimeo'){
                       wpfb_form_input('wpflybox_vimeo_username','30',$wpl_VimUser,'');
                       wpfb_form_input('wpflybox_vimeo_total','2',$wpl_VimVideotoShow,$wpl_VimZerotoShowNo);
                       wpfb_form_input('wpflybox_vimeo_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
-                      wpfb_form_input('wpflybox_vimeo_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);                      
+                      wpfb_form_input('wpflybox_vimeo_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);
+                      echo '<tr><td colspan="2">*'.$wpl_DeleteCacheAfterUpdate.'</td></tr>';                      
                     } else if ($tab=='custom'){
                       wpfb_form_textarea('wpflybox_custom_content','8', '40', $wpl_CustomContent,$wpl_CustomContentDesc);
                       echo '<tr><td style="text-align:right;" width="190px"><b>'.$wpl_CustomIcon.':</b></td>';

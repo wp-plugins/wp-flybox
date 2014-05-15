@@ -23,7 +23,7 @@ $wpl_PushDesc='Si desea que los cuadros desplegables para estar en contra de la 
 $wpl_FloatTabs='¿Flotador aquí?';
 $wpl_FloatWithWindow='Flotador Con Ventana';
 $wpl_AttachedToPage='Adjunto a la página';
-$wpl_FloatDesc='Esta opción va a cambiar la forma de las lengüetas se comportan cuando se desplaza por la página. Si desea que las pestañas estén siempre en el lado de la página y luego elegir flotador con ventana. Si desea que las fichas para ser justo en la parte superior de la página y no se mueven con el movimiento en sentido vertical elija adjunto a la página.';
+$wpl_FloatDesc='Esta opción va a cambiar la forma de las lengüetas se comportan cuando se desplaza por la página. Si desea que las pestañas estén siempre en el lado de la página y luego elegir flotador con ventana. Si desea que las fichas para ser justo en la parte superior de la página y no se mueven con el movimiento en sentido vertical elija adjunto a la página. NOTA: attched generará barras de desplazamiento en la parte inferior de la página. Flotador con ventana se recomienda.';
 $wpl_Howmanytabs='¿Cuántas fichas?';
 $wpl_Apply='Aplicar';
 $wpl_Tab='Etiqueta';
@@ -42,6 +42,7 @@ $wpl_CustomColors='Colores personalizados con logotipo';
 $wpl_BackgroundColor='Color de fondo (si está visible)';
 $wpl_BackgroundColorDesc='Use el nombre del color o el valor hexadecimal con el # delante.';
 $wpl_BorderColor='color del borde';
+$wpl_DeleteCacheAfterUpdate='Para algunos cambios tengan efecto, se deberá borrar la caché en el epígrafe "Other Options".';
 //Custom Button Configuration
 $wpl_CustomButtonConfig='Configuración de botón personalizado';
 $wpl_RightGradColor='Gradiente de color derecho';

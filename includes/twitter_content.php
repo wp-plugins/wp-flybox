@@ -186,7 +186,7 @@ function wpfb_show_custom_twitter($options, $you, $lang)
   				</a>
   			<?php endif;?>		
   			</span>
-  		<? endfor;?>
+  		<?php endfor;?>
   	<?php if ($options['total']>0){echo '<br style="clear:both">';} ?>
   	</div>
   <?php
