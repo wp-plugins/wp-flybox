@@ -189,3 +189,7 @@ $wpl_CustomIcon='Custom Icon';
 $wpl_CustomIconDesc='These will only be used if the custom location below is blank. Use these when using custom color logo buttons.';
 $wpl_CustomIconUpload='Location of Custom Icon';
 $wpl_CustomIconUploadDesc='Leave blank if using an icon above. This image will be scaled down to 30px wide. Don\'t forget to include http://';
+//Tumblr
+$wpl_Tumblr='Tumblr blog url';
+$wpl_Tumblr_Desc='URL without http://';
+$wpl_Tumblr_Max='Max pictures to show';

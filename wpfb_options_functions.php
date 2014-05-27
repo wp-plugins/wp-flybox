@@ -22,6 +22,8 @@ function wpfb_update_options($update_message,$cache_message){
       delete_option('wpfb_v_'.get_option('wpflybox_vimeo_username'));
       delete_transient('wpfb_i_'.get_option('wpflybox_instagram_id'));
       delete_option('wpfb_i_'.get_option('wpflybox_instagram_id'));
+      delete_transient('wpfb_tu_'.str_replace('.','',get_option('wpflybox_tumblr')));
+      delete_option('wpfb_tu_'.str_replace('.','',get_option('wpflybox_tumblr')));      
       echo '<div class="updated"><p><strong>'.$cache_message.'</strong></p></div>';
       update_option($param_name, '0');      
       } else {

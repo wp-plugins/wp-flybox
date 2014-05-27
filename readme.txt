@@ -1,15 +1,15 @@
 === WP-FlyBox ===
 Contributors: cconoly
 Donate link: http://njarb.com/2012/08/wp-flybox/
-Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, vimeo, deviantart, instagram, css, custom, colors, sidebar, links
+Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, vimeo, deviantart, instagram, tumblr, css, custom, colors, sidebar, links
 Requires at least: 3.0
 Tested up to: 3.9.1
-Stable tag: 5.5
+Stable tag: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Social floating fly out tabbed boxes. Can be located on either side of screen and customized to match any theme's colors. 
 == Description ==
-Social media floating fly out tabbed boxes. Can be located on either side of screen. FlyBoxes include Facebook, Twitter, Pinterest, LinkedIn, Google Plus, Youtube, Feedburner, Flickr, DeviantArt, Vimeo, Instagram, and Contact Me.
+Social media floating fly out tabbed boxes. Can be located on either side of screen. FlyBoxes include Facebook, Twitter, Pinterest, LinkedIn, Google Plus, Youtube, Feedburner, Flickr, DeviantArt, Vimeo, Instagram, Tumblr, and Contact Me.
 Tab colors can be customized to match any theme.
 Since this uses CSS, some themes will affect the layout of the tabs. If yours is displaying incorrectly PLEASE let me know which theme is causing poblems and I will fix it as soon as I can.
 If you want a tab that's not included then let me know and I'll add it!
@@ -35,6 +35,8 @@ All themes have different layouts and properties that can affect the correct loo
 7. Tab setup and configuration.
 8. Custom color configuration
 == Changelog ==
+= 5.6 =
+* Added Tumblr tab.
 = 5.5 =
 * Fixed some iframes being hidden on some responsive enabled themes.
 = 5.4 =
@@ -165,6 +167,8 @@ All themes have different layouts and properties that can affect the correct loo
 = 0.1 =
 * Beta, initial design and testing.
 == Upgrade Notice ==
+= 5.6 =
+* Added Tumblr tab.
 = 5.5 =
 * Fixed some iframes being hidden on some responsive enabled themes.
 = 5.4 =

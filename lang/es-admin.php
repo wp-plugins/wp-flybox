@@ -189,3 +189,7 @@ $wpl_CustomIcon='icono personalizado';
 $wpl_CustomIconDesc='Estos sólo serán utilizados si la ubicación de encargo debajo está en blanco. Úselos cuando utilice colores personalizados logotipo botones.';
 $wpl_CustomIconUpload='Ubicación del icono personalizado';
 $wpl_CustomIconUploadDesc='Dejar en blanco si se utiliza un icono de arriba. Esta imagen será escalada hasta 30px de ancho. No se olvide de incluir http://';
+//Tumblr
+$wpl_Tumblr='Tumblr URL del blog';
+$wpl_Tumblr_Desc='URL sin http://';
+$wpl_Tumblr_Max='Máximo imágenes que mostrar';

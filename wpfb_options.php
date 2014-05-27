@@ -105,7 +105,13 @@ $wpfb_defaults=array (
 'wpflybox_vimeo_background' => '#ffffff',
 'wpflybox_vimeo_border' => '#1ab7ea',
 'wpflybox_custom_background' => '#ffffff',
-'wpflybox_custom_border' => 'black'
+'wpflybox_custom_border' => 'black',
+'wpflybox_tumblr' => 'scipsy.tumblr.com',
+'wpflybox_tumblr_background' => '#ffffff',
+'wpflybox_tumblr_border' => '#34465d',
+'wpflybox_tumblr_max' => '4',
+'wpflybox_tumblr_height' => '322',
+'wpflybox_tumblr_width' => '160'
 );
 wpfb_set_defaults($wpfb_defaults);
 include ('lang/'.get_option('wpflybox_language').'-admin.php');
@@ -137,7 +143,7 @@ if ($wpfb_active_tab=='general')
                 $wpfb_max=get_option('wpflybox_count');
                 while ($wpfb_i<=$wpfb_max)
                   {                  
-                  $wpfb_choices=array('Facebook' => 'facebook', 'Twitter' => 'twitter', 'Google Plus' => 'googleplus', 'Youtube' => 'youtube', 'Feedburner Subscription' => 'subscription', 'Pinterest' => 'pinterest', 'Linked In' => 'linkedin', 'Flickr' => 'flickr', 'Contact Me/Us' => 'contact', 'Deviant Art' => 'deviant', 'Instagram' => 'instagram', 'Vimeo' => 'vimeo', 'Custom' => 'custom');
+                  $wpfb_choices=array('Facebook' => 'facebook', 'Twitter' => 'twitter', 'Google Plus' => 'googleplus', 'Youtube' => 'youtube', 'Feedburner Subscription' => 'subscription', 'Pinterest' => 'pinterest', 'Linked In' => 'linkedin', 'Flickr' => 'flickr', 'Contact Me/Us' => 'contact', 'Deviant Art' => 'deviant', 'Instagram' => 'instagram', 'Vimeo' => 'vimeo', 'Tumblr' => 'tumblr', 'Custom' => 'custom');
                   wpfb_form_option('wpflybox_tab'.$wpfb_i,$wpl_Tab.' #'.$wpfb_i,'',$wpfb_choices);
                   $wpfb_i++;
                   }
@@ -244,6 +250,7 @@ if ($wpfb_active_tab=='tabs')
                   if ($tab=='deviant'){echo 'Deviant Art';} else
                   if ($tab=='instagram'){echo 'Instagram';} else
                   if ($tab=='vimeo'){echo 'Vimeo';} else
+                  if ($tab=='tumblr'){echo 'Tumblr';} else
                   if ($tab=='custom'){echo $wpl_Custom;} 
                   ?>        
                 </h3>
@@ -367,6 +374,14 @@ if ($wpfb_active_tab=='tabs')
                       wpfb_form_input('wpflybox_custom_icon_upload','70',$wpl_CustomIconUpload,$wpl_CustomIconUploadDesc);
                       wpfb_form_input('wpflybox_custom_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
                       wpfb_form_input('wpflybox_custom_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);                      
+                    } else if ($tab=='tumblr'){
+                      wpfb_form_input('wpflybox_tumblr','30',$wpl_Tumblr,$wpl_Tumblr_Desc);
+                      wpfb_form_input('wpflybox_tumblr_max','3',$wpl_Tumblr_Max,'');
+                      wpfb_form_input('wpflybox_tumblr_height','6',$wpl_Height,'px');
+                      wpfb_form_input('wpflybox_tumblr_width','6',$wpl_Width,'px');
+                      wpfb_form_input('wpflybox_tumblr_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
+                      wpfb_form_input('wpflybox_tumblr_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);
+                      echo '<tr><td colspan="2">*'.$wpl_DeleteCacheAfterUpdate.'</td></tr>';                      
                     }
                     ?>
                   </table>
