@@ -101,6 +101,9 @@ $wpl_On='On';
 $wpl_Off='Off';
 $wpl_TweettoButton='Tweet To Button';
 $wpl_ShowLatestT='Show Latest Tweet';
+$wpl_Twitter_Bird='Pájaro';
+$wpl_Twitter_T='Letra t';
+$wpl_Twitter_Button='Cuál de logotipo para botón personalizado';
 //Google Plus
 $wpl_Googlenumuser='Full URL of Google+ Page';
 $wpl_Googleuserdesc='example: "https://plus.google.com/u/0/+WordPress/"';

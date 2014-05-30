@@ -111,7 +111,8 @@ $wpfb_defaults=array (
 'wpflybox_tumblr_border' => '#34465d',
 'wpflybox_tumblr_max' => '4',
 'wpflybox_tumblr_height' => '322',
-'wpflybox_tumblr_width' => '160'
+'wpflybox_tumblr_width' => '160',
+'wpflybox_twitter_custom_button' => 'twitter'
 );
 wpfb_set_defaults($wpfb_defaults);
 include ('lang/'.get_option('wpflybox_language').'-admin.php');
@@ -284,6 +285,11 @@ if ($wpfb_active_tab=='tabs')
                       wpfb_form_option('wpflybox_twitter_tweetto',$wpl_TweettoButton,'',$wpfb_choices);
                       $wpfb_choices=array($wpl_On => 'true', $wpl_Off => 'false');
                       wpfb_form_option('wpflybox_twitter_latest',$wpl_ShowLatestT,'',$wpfb_choices);
+                      if (get_option('wpflybox_usecustombutton')=='true')
+                        {
+                        $wpfb_choices=array($wpl_Twitter_Bird => 'twitter_custom', $wpl_Twitter_T => 'twitter');
+                        wpfb_form_option('wpflybox_twitter_custom_button',$wpl_Twitter_Button,'',$wpfb_choices);
+                        }
                       echo '<tr><td colspan="2">*'.$wpl_DeleteCacheAfterUpdate.'</td></tr>';
                     } else if ($tab=='googleplus'){
                       wpfb_form_input('wpflybox_google','40',$wpl_Googlenumuser,$wpl_Googleuserdesc);
