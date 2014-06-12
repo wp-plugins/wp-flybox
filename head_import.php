@@ -114,9 +114,12 @@ $i=1;
 while($i<=$number_of_tabs)
   {
   ?>
-  var i_width=jQuery("#tab<?php echo $i; ?>").width()-tab_width;
-  i_width='-'+i_width+'px';
-  document.getElementById('tab<?php echo $i; ?>').style.<?php echo $right_or_left; ?>=i_width;
+  if (jQuery("#tab<?php echo $i; ?>").length > 0) 
+    {
+    var i_width=jQuery("#tab<?php echo $i; ?>").width()-tab_width;
+    i_width='-'+i_width+'px';
+    document.getElementById('tab<?php echo $i; ?>').style.<?php echo $right_or_left; ?>=i_width;
+    }
   <?php
   $i++;
   }
