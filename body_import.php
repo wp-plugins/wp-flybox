@@ -1,5 +1,8 @@
 <?php
-require_once 'includes/Mobile_Detect.php';
+if (!class_exists('Mobile_Detect', false))
+  {
+  require_once 'includes/Mobile_Detect.php';
+  }
 $detect = new Mobile_Detect;
 if ((get_option('wpflybox_mobile')=='true' && $detect->isMobile() && !$detect->isTablet()) || (get_option('wpflybox_tablet')=='true' && $detect->isTablet()) || !$detect->isMobile())
 {
