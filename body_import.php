@@ -5,7 +5,7 @@ if ((get_option('wpflybox_mobile')=='true' && $detect->isMobile() && !$detect->i
 {
 include('lang/'.get_option('wpflybox_language').'.php');
 $number_of_tabs=get_option('wpflybox_count');
-$tab_width=33;
+$tab_width=32;
 if (get_option('wpflybox_usecustombutton')=='true')
   {
   $tab_height=34;

@@ -3,7 +3,7 @@ $click_or_hover=get_option('wpflybox_hoverorclick');
 $number_of_tabs=get_option('wpflybox_count');
 $right_or_left=get_option('wpflybox_side');
 if ($right_or_left=='left'){$opposite_right_or_left='right';}else{$opposite_right_or_left='left';}
-$tab_width=33;
+$tab_width=32;
 if (get_option('wpflybox_usecustombutton') == "true")
   {
   echo '<style type="text/css">';
