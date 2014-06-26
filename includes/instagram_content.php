@@ -1,6 +1,7 @@
 <?php
 $instagramoptions = array('id' => get_option('wpflybox_instagram_id') ,'token' => get_option('wpflybox_instagram_token'), 'header' => get_option('wpflybox_instagram_header'), 'max' => get_option('wpflybox_instagram_max'));
 $wpfb_cached='true';
+$ismedia=false;
 $lang = array();
 $lang['wpl_Photos']=$wpl_Photos;
 $lang['wpl_Followers']=$wpl_Followers;
@@ -37,7 +38,7 @@ if ($options['header']=='true')
     //$wpfb_cached=='true';
     }
   if ($you['username']){  
-  echo '<table style="padding:2px;border:none;" class="wpflyboxtable">';
+  echo '<table style="padding:2px;border:none;margin:0px;" class="wpflyboxtable">';
   echo '<tr style="padding:3px;"><td><img src="'.$you['profile_picture'].'" height="40" width="40" title="'.$you['username'].'" alt="'.$you['username'].'"></td>';
   echo '<td style="text-align:center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you['mediacount'].'</div><div style="font-size:10px;">&nbsp;'.$lang['wpl_Photos'].'</div></td>';
   echo '<td style="text-align:center"><div style="font-weight:bold;font-size:16px;margin-top:4px;">'.$you['followedby'].'</div><div style="font-size:10px;">&nbsp;'.$lang['wpl_Followers'].'</div></td>';
@@ -56,7 +57,6 @@ if (!$you['media'] || $wpfb_cached=='false')
 		  return false;
 		  } else {
 		  $json = json_decode(wp_remote_retrieve_body($wpflybox_instagram_jsonfile));
-		  //var_dump($json);
       $media=array();
       $ismedia=false;
       for($m=1; $m <= $options['max']; $m++)
@@ -67,24 +67,15 @@ if (!$you['media'] || $wpfb_cached=='false')
           $media[$m]['thumburl'] = (string)$json->data[$m-1]->images->thumbnail->url;
           $media[$m]['text'] = (string)$json->data[$m-1]->caption->text;
           $ismedia=true;
-          }
-        } 
+         
+          } 
+        }    
       $you['media']=$media;  
       }
   } else {
   $media = $you['media'];
   }
-  if ($ismedia)
-    {
-    $wpfb_cached='false';
-    //check if from cached. If cache not available, use option stored.
-    $newyoumedia=get_option($key);
-    $newyoumedia = base64_decode($newyoumedia);
-    $newyoumedia = unserialize($newyoumedia);
-    $media=$newyoumedia['media'];
-    $you['media']=$media;
-    }
-  if ($ismedia){
+  if ($media){
   for($m=1; $m <= $options['max']; $m++)
   {
     if ($media[$m]['thumburl'])
