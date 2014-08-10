@@ -306,7 +306,7 @@ if ($wpfb_active_tab=='tabs')
                       wpfb_form_input('wpflybox_googleplus_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
                       wpfb_form_input('wpflybox_googleplus_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);                      
                     } else if ($tab=='youtube'){
-                      wpfb_form_input('wpflybox_youtube','30',$wpl_YoutubeUsername,'');
+                      wpfb_form_input('wpflybox_youtube','30',$wpl_YoutubeUsername,'You can find your user ID at <a href="https://www.youtube.com/account_advanced" target="_blank">https://www.youtube.com/account_advanced</a>.');
                       wpfb_form_input('wpflybox_youtube_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
                       wpfb_form_input('wpflybox_youtube_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);                      
                     } else if ($tab=='subscription'){

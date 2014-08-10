@@ -121,7 +121,7 @@ $wpl_GoogleDark='Dark';
 $wpl_GoogleShowCover='Show Cover Photo?';
 $wpl_GoogleShowTag='Show Tag Line?';
 //Youtube
-$wpl_YoutubeUsername='Youtube Username';
+$wpl_YoutubeUsername='Youtube Username/ID';
 //Subscription
 $wpl_FeedburnerUsername='Feedburner Site User/ID';
 $wpl_FeedburnerUsernameDesc='Go to "Edit Feed Details" in the feedburner settings website. The User/ID will be after http://feeds.feedburner.com/';
