@@ -4,7 +4,7 @@ Donate link: http://njarb.com/2012/08/wp-flybox/
 Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, vimeo, deviantart, instagram, tumblr, css, custom, colors, sidebar, links
 Requires at least: 3.0
 Tested up to: 3.9.1
-Stable tag: 5.12
+Stable tag: 5.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Social floating fly out tabbed boxes. Can be located on either side of screen and customized to match any theme's colors. 
@@ -35,6 +35,8 @@ All themes have different layouts and properties that can affect the correct loo
 7. Tab setup and configuration.
 8. Custom color configuration
 == Changelog ==
+= 5.13 =
+* Added option to use custom images for tabs.
 = 5.12 =
 * Misc. Bugs
 = 5.11 =
@@ -179,6 +181,8 @@ All themes have different layouts and properties that can affect the correct loo
 = 0.1 =
 * Beta, initial design and testing.
 == Upgrade Notice ==
+= 5.13 =
+* Added option to use custom images for tabs.
 = 5.12 =
 * Misc. Bugs
 = 5.11 =

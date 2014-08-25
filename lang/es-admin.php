@@ -196,3 +196,7 @@ $wpl_CustomIconUploadDesc='Dejar en blanco si se utiliza un icono de arriba. Est
 $wpl_Tumblr='Tumblr URL del blog';
 $wpl_Tumblr_Desc='URL sin http://';
 $wpl_Tumblr_Max='Máximo imágenes que mostrar';
+//Custom uploaded tab
+$wpl_MyTab='URL ficha personalizada';
+$wpl_MyTabDesc='Ingrese una URL a una imagen para usar como una ficha personalizada. Incluya http:// y se puede escalar a 32x32 píxeles. (Dejar en blanco para usar pestañas por defecto)';
+$wpl_customTabIndividual='Puede utilizar los botones personalizados (URL de la imagen) para cada pestaña en las opciones "Editar fichas".';
