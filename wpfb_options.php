@@ -155,7 +155,28 @@ $wpfb_defaults=array (
 'wpflybox_my_custom_tab' => '',
 'wpflybox_my_custom_tab_width' => '32',
 'wpflybox_my_custom_tab_height' => '32',
-'wpflybox_flickr_type' => 'flash'
+'wpflybox_flickr_type' => 'flash',
+'wpflybox_custom2_content' => 'HTML code goes here',
+'wpflybox_custom2_icon' => 'exclamation.png',
+'wpflybox_custom2_background' => '#ffffff',
+'wpflybox_custom2_border' => 'black',
+'wpflybox_my_custom2_tab' => '',
+'wpflybox_my_custom2_tab_width' => '32',
+'wpflybox_my_custom2_tab_height' => '32',
+'wpflybox_custom3_content' => 'HTML code goes here',
+'wpflybox_custom3_icon' => 'exclamation.png',
+'wpflybox_custom3_background' => '#ffffff',
+'wpflybox_custom3_border' => 'black',
+'wpflybox_my_custom3_tab' => '',
+'wpflybox_my_custom3_tab_width' => '32',
+'wpflybox_my_custom3_tab_height' => '32',
+'wpflybox_custom4_content' => 'HTML code goes here',
+'wpflybox_custom4_icon' => 'exclamation.png',
+'wpflybox_custom4_background' => '#ffffff',
+'wpflybox_custom4_border' => 'black',
+'wpflybox_my_custom4_tab' => '',
+'wpflybox_my_custom4_tab_width' => '32',
+'wpflybox_my_custom4_tab_height' => '32'
 );
 wpfb_set_defaults($wpfb_defaults);
 include ('lang/'.get_option('wpflybox_language').'-admin.php');
@@ -187,7 +208,7 @@ if ($wpfb_active_tab=='general')
                 $wpfb_max=get_option('wpflybox_count');
                 while ($wpfb_i<=$wpfb_max)
                   {                  
-                  $wpfb_choices=array('Facebook' => 'facebook', 'Twitter' => 'twitter', 'Google Plus' => 'googleplus', 'Youtube' => 'youtube', 'Feedburner Subscription' => 'subscription', 'Pinterest' => 'pinterest', 'Linked In' => 'linkedin', 'Flickr' => 'flickr', 'Contact Me/Us' => 'contact', 'Deviant Art' => 'deviant', 'Instagram' => 'instagram', 'Vimeo' => 'vimeo', 'Tumblr' => 'tumblr', 'Custom' => 'custom');
+                  $wpfb_choices=array('Facebook' => 'facebook', 'Twitter' => 'twitter', 'Google Plus' => 'googleplus', 'Youtube' => 'youtube', 'Feedburner Subscription' => 'subscription', 'Pinterest' => 'pinterest', 'Linked In' => 'linkedin', 'Flickr' => 'flickr', 'Contact Me/Us' => 'contact', 'Deviant Art' => 'deviant', 'Instagram' => 'instagram', 'Vimeo' => 'vimeo', 'Tumblr' => 'tumblr', 'Custom #1' => 'custom', 'Custom #2' => 'custom2', 'Custom #3' => 'custom3', 'Custom #4' => 'custom4');
                   wpfb_form_option('wpflybox_tab'.$wpfb_i,$wpl_Tab.' #'.$wpfb_i,'',$wpfb_choices);
                   $wpfb_i++;
                   }
@@ -298,7 +319,10 @@ if ($wpfb_active_tab=='tabs')
                   if ($tab=='instagram'){echo 'Instagram';} else
                   if ($tab=='vimeo'){echo 'Vimeo';} else
                   if ($tab=='tumblr'){echo 'Tumblr';} else
-                  if ($tab=='custom'){echo $wpl_Custom;} 
+                  if ($tab=='custom'){echo $wpl_Custom.' #1';}
+                  if ($tab=='custom2'){echo $wpl_Custom.' #2';}
+                  if ($tab=='custom3'){echo $wpl_Custom.' #3';}
+                  if ($tab=='custom4'){echo $wpl_Custom.' #4';} 
                   ?>        
                 </h3>
                 <div class="inside">
@@ -491,6 +515,72 @@ if ($wpfb_active_tab=='tabs')
                       wpfb_form_input('wpflybox_my_tumblr_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
                       wpfb_form_input('wpflybox_my_tumblr_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);
                       echo '<tr><td colspan="2">*'.$wpl_DeleteCacheAfterUpdate.'</td></tr>';                      
+                    } else if ($tab=='custom2'){
+                      wpfb_form_textarea('wpflybox_custom2_content','8', '40', $wpl_CustomContent,$wpl_CustomContentDesc);
+                      echo '<tr><td style="text-align:right;" width="190px"><b>'.$wpl_CustomIcon.':</b></td>';
+                      $wpfb_icon_array=array('accept.png','add.png','apple.png','arrow_down.png','arrow_left.png','arrow_right.png','arrow_up.png','attachment.png','battery.png','battery_full.png','battery_low.png','briefcase.png','calculator.png','calendar_blank.png','calendar_full.png','chart.png','chart_pie.png','chess.png','clock.png','cloud_comment.png','coffee.png','comment.png','comments.png','computer.png','copy_page.png','cut.png','delete.png','dollar.png','edit.png','eject.png','email.png','euro.png','exclamation.png','fast_forward.png','favorite.png','flag.png','folder.png','games.png','heart.png','help.png','home.png','info.png','ipod.png','key.png','link.png','lock.png','mail.png','map.png','microphone.png','minus.png','mobile_phone.png','mouse.png','music_note.png','new.png','new_page.png','notebook.png','old_clock.png','old_phone.png','page.png','paint_brush.png','pause.png','phone.png','photo_camera.png','play.png','print.png','process.png','puzzle.png','record.png','refresh.png','remove.png','repeat.png','rewind.png','rss.png','save.png','search.png','security.png','shopping_cart.png','shut_down.png','skip_backward.png','skip_forward.png','sterling_pound.png','stop.png','target.png','television.png','tools.png','trash.png','umbrella.png','unlock.png','user.png','users.png','video_camera.png','volume_down.png','volume_up.png','warning.png','webcam.png','wired.png','wireless.png','yen.png','zoom_in.png','zoom_out.png'); 
+                      echo '<td>';
+                      foreach ($wpfb_icon_array as &$value) {
+                        echo '<div style="display:inline-block;padding-right:15px;"><input type="radio" name="wpflybox_custom2_icon" value="'.$value.'" id="wpfb_'.$value.'"';
+                        if (get_option('wpflybox_custom2_icon')==$value)
+                          {
+                          echo ' checked';
+                          }
+                        echo ' />';
+                        echo '<label for="wpfb_'.$value.'"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/custom/'.$value.'" style="width:30px;height:30px;" /></label>';
+                        echo '</div>';
+                        }  
+                      echo $wpl_CustomIconDesc.'</td></tr>';                                           
+                      wpfb_form_input('wpflybox_custom2_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
+                      wpfb_form_input('wpflybox_custom2_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc); 
+                      echo '<tr><td colspan="2"><hr /></td></tr>';
+                      wpfb_form_input('wpflybox_my_custom2_tab','50',$wpl_CustomIconUpload,$wpl_CustomIconUploadDesc); 
+                      wpfb_form_input('wpflybox_my_custom2_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
+                      wpfb_form_input('wpflybox_my_custom2_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);                                          
+                    } else if ($tab=='custom3'){
+                      wpfb_form_textarea('wpflybox_custom3_content','8', '40', $wpl_CustomContent,$wpl_CustomContentDesc);
+                      echo '<tr><td style="text-align:right;" width="190px"><b>'.$wpl_CustomIcon.':</b></td>';
+                      $wpfb_icon_array=array('accept.png','add.png','apple.png','arrow_down.png','arrow_left.png','arrow_right.png','arrow_up.png','attachment.png','battery.png','battery_full.png','battery_low.png','briefcase.png','calculator.png','calendar_blank.png','calendar_full.png','chart.png','chart_pie.png','chess.png','clock.png','cloud_comment.png','coffee.png','comment.png','comments.png','computer.png','copy_page.png','cut.png','delete.png','dollar.png','edit.png','eject.png','email.png','euro.png','exclamation.png','fast_forward.png','favorite.png','flag.png','folder.png','games.png','heart.png','help.png','home.png','info.png','ipod.png','key.png','link.png','lock.png','mail.png','map.png','microphone.png','minus.png','mobile_phone.png','mouse.png','music_note.png','new.png','new_page.png','notebook.png','old_clock.png','old_phone.png','page.png','paint_brush.png','pause.png','phone.png','photo_camera.png','play.png','print.png','process.png','puzzle.png','record.png','refresh.png','remove.png','repeat.png','rewind.png','rss.png','save.png','search.png','security.png','shopping_cart.png','shut_down.png','skip_backward.png','skip_forward.png','sterling_pound.png','stop.png','target.png','television.png','tools.png','trash.png','umbrella.png','unlock.png','user.png','users.png','video_camera.png','volume_down.png','volume_up.png','warning.png','webcam.png','wired.png','wireless.png','yen.png','zoom_in.png','zoom_out.png'); 
+                      echo '<td>';
+                      foreach ($wpfb_icon_array as &$value) {
+                        echo '<div style="display:inline-block;padding-right:15px;"><input type="radio" name="wpflybox_custom3_icon" value="'.$value.'" id="wpfb_'.$value.'"';
+                        if (get_option('wpflybox_custom3_icon')==$value)
+                          {
+                          echo ' checked';
+                          }
+                        echo ' />';
+                        echo '<label for="wpfb_'.$value.'"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/custom/'.$value.'" style="width:30px;height:30px;" /></label>';
+                        echo '</div>';
+                        }  
+                      echo $wpl_CustomIconDesc.'</td></tr>';                                           
+                      wpfb_form_input('wpflybox_custom3_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
+                      wpfb_form_input('wpflybox_custom3_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc); 
+                      echo '<tr><td colspan="2"><hr /></td></tr>';
+                      wpfb_form_input('wpflybox_my_custom3_tab','50',$wpl_CustomIconUpload,$wpl_CustomIconUploadDesc); 
+                      wpfb_form_input('wpflybox_my_custom3_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
+                      wpfb_form_input('wpflybox_my_custom3_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);                                          
+                    } else if ($tab=='custom4'){
+                      wpfb_form_textarea('wpflybox_custom4_content','8', '40', $wpl_CustomContent,$wpl_CustomContentDesc);
+                      echo '<tr><td style="text-align:right;" width="190px"><b>'.$wpl_CustomIcon.':</b></td>';
+                      $wpfb_icon_array=array('accept.png','add.png','apple.png','arrow_down.png','arrow_left.png','arrow_right.png','arrow_up.png','attachment.png','battery.png','battery_full.png','battery_low.png','briefcase.png','calculator.png','calendar_blank.png','calendar_full.png','chart.png','chart_pie.png','chess.png','clock.png','cloud_comment.png','coffee.png','comment.png','comments.png','computer.png','copy_page.png','cut.png','delete.png','dollar.png','edit.png','eject.png','email.png','euro.png','exclamation.png','fast_forward.png','favorite.png','flag.png','folder.png','games.png','heart.png','help.png','home.png','info.png','ipod.png','key.png','link.png','lock.png','mail.png','map.png','microphone.png','minus.png','mobile_phone.png','mouse.png','music_note.png','new.png','new_page.png','notebook.png','old_clock.png','old_phone.png','page.png','paint_brush.png','pause.png','phone.png','photo_camera.png','play.png','print.png','process.png','puzzle.png','record.png','refresh.png','remove.png','repeat.png','rewind.png','rss.png','save.png','search.png','security.png','shopping_cart.png','shut_down.png','skip_backward.png','skip_forward.png','sterling_pound.png','stop.png','target.png','television.png','tools.png','trash.png','umbrella.png','unlock.png','user.png','users.png','video_camera.png','volume_down.png','volume_up.png','warning.png','webcam.png','wired.png','wireless.png','yen.png','zoom_in.png','zoom_out.png'); 
+                      echo '<td>';
+                      foreach ($wpfb_icon_array as &$value) {
+                        echo '<div style="display:inline-block;padding-right:15px;"><input type="radio" name="wpflybox_custom4_icon" value="'.$value.'" id="wpfb_'.$value.'"';
+                        if (get_option('wpflybox_custom4_icon')==$value)
+                          {
+                          echo ' checked';
+                          }
+                        echo ' />';
+                        echo '<label for="wpfb_'.$value.'"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/custom/'.$value.'" style="width:30px;height:30px;" /></label>';
+                        echo '</div>';
+                        }  
+                      echo $wpl_CustomIconDesc.'</td></tr>';                                           
+                      wpfb_form_input('wpflybox_custom4_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
+                      wpfb_form_input('wpflybox_custom4_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc); 
+                      echo '<tr><td colspan="2"><hr /></td></tr>';
+                      wpfb_form_input('wpflybox_my_custom4_tab','50',$wpl_CustomIconUpload,$wpl_CustomIconUploadDesc); 
+                      wpfb_form_input('wpflybox_my_custom4_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
+                      wpfb_form_input('wpflybox_my_custom4_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);                                          
                     }
                     ?>
                   </table>
