@@ -16,7 +16,7 @@ if ($you!='' && is_string($you)){
 $you = base64_decode($you);
 $you = unserialize($you);
 }else {$you=false;}
-echo '<div style="width:196px;text-align: center;overflow:hidden;">';
+echo '<div style="width:224px;text-align: center;overflow:hidden;">';
 if ($options['header']=='true')
 {
   if (!$you['username'])

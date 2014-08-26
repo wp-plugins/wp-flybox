@@ -1,9 +1,18 @@
 <?php
 $wpflybox_my_googleplus_tab=get_option('wpflybox_my_googleplus_tab');
+if ($wpflybox_my_googleplus_tab!='')
+  {
+  $wpflybox_googleplus_tab_height=intval(get_option('wpflybox_my_googleplus_tab_height'));
+  $wpflybox_googleplus_tab_width=intval(get_option('wpflybox_my_googleplus_tab_width'));
+  }else 
+  {
+  $wpflybox_googleplus_tab_height=32;
+  $wpflybox_googleplus_tab_width=32;
+  }
 if ($right_or_left=='right'){$right_or_left_cap='Right';}else{$right_or_left_cap='Left';}
 if ($wpflybox_my_googleplus_tab!='')
   {
-  echo '<img src="'.$wpflybox_my_googleplus_tab.'" height="32" width="32" alt="F">';
+  echo '<img src="'.$wpflybox_my_googleplus_tab.'" style="height:'.$wpflybox_googleplus_tab_height.'px;width:'.$wpflybox_googleplus_tab_width.'px;" alt="F">';
   }else 
   {
   if ($use_custom_button=='true')

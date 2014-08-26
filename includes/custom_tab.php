@@ -1,5 +1,14 @@
 <?php
-if (get_option('wpflybox_custom_icon_upload')=='')
+if (get_option('wpflybox_my_custom_tab')!='')
+  {
+  $wpflybox_custom_tab_height=intval(get_option('wpflybox_my_custom_tab_height'));
+  $wpflybox_custom_tab_width=intval(get_option('wpflybox_my_custom_tab_width'));
+  }else 
+  {
+  $wpflybox_custom_tab_height=32;
+  $wpflybox_custom_tab_width=32;
+  }
+if (get_option('wpflybox_my_custom_tab')=='')
   {
   if (get_option('wpflybox_usecustombutton') == "false")
   {
@@ -93,6 +102,6 @@ if ($wpflybox_side=='right')
   }
   echo '<img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/custom/'.get_option('wpflybox_custom_icon').'" style="width:28px;height:28px;padding:2px;" alt="?">';
   } else {
-  echo '<img src="'.get_option('wpflybox_custom_icon_upload').'" style="width:32px;" alt="?">';
+  echo '<img src="'.get_option('wpflybox_my_custom_tab').'" style="width:'.$wpflybox_custom_tab_width.';height:'.$wpflybox_custom_tab_height.'" alt="?">';
   }
 ?>

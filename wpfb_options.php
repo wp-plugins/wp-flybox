@@ -125,7 +125,36 @@ $wpfb_defaults=array (
 'wpflybox_my_deviant_tab' => '',
 'wpflybox_my_instagram_tab' => '',
 'wpflybox_my_vimeo_tab' => '',
-'wpflybox_my_tumblr_tab' => ''
+'wpflybox_my_tumblr_tab' => '',
+'wpflybox_my_facebook_tab_width' => '32',
+'wpflybox_my_twitter_tab_width' => '32',
+'wpflybox_my_googleplus_tab_width' => '32',
+'wpflybox_my_youtube_tab_width' => '32',
+'wpflybox_my_subscription_tab_width' => '32',
+'wpflybox_my_pinterest_tab_width' => '32',
+'wpflybox_my_linkedin_tab_width' => '32',
+'wpflybox_my_flickr_tab_width' => '32',
+'wpflybox_my_contact_tab_width' => '32',
+'wpflybox_my_deviant_tab_width' => '32',
+'wpflybox_my_instagram_tab_width' => '32',
+'wpflybox_my_vimeo_tab_width' => '32',
+'wpflybox_my_tumblr_tab_width' => '32',
+'wpflybox_my_facebook_tab_height' => '32',
+'wpflybox_my_twitter_tab_height' => '32',
+'wpflybox_my_googleplus_tab_height' => '32',
+'wpflybox_my_youtube_tab_height' => '32',
+'wpflybox_my_subscription_tab_height' => '32',
+'wpflybox_my_pinterest_tab_height' => '32',
+'wpflybox_my_linkedin_tab_height' => '32',
+'wpflybox_my_flickr_tab_height' => '32',
+'wpflybox_my_contact_tab_height' => '32',
+'wpflybox_my_deviant_tab_height' => '32',
+'wpflybox_my_instagram_tab_height' => '32',
+'wpflybox_my_vimeo_tab_height' => '32',
+'wpflybox_my_tumblr_tab_height' => '32',
+'wpflybox_my_custom_tab' => '',
+'wpflybox_my_custom_tab_width' => '32',
+'wpflybox_my_custom_tab_height' => '32'
 );
 wpfb_set_defaults($wpfb_defaults);
 include ('lang/'.get_option('wpflybox_language').'-admin.php');
@@ -288,7 +317,10 @@ if ($wpfb_active_tab=='tabs')
                       wpfb_form_option('wpflybox_facebook_showfaces',$wpl_ShowFaces,'',$wpfb_choices);
                       wpfb_form_input('wpflybox_facebook_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
                       wpfb_form_input('wpflybox_facebook_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);
+                      echo '<tr><td colspan="2"><hr /></td></tr>';
                       wpfb_form_input('wpflybox_my_facebook_tab','50',$wpl_MyTab,$wpl_MyTabDesc);
+                      wpfb_form_input('wpflybox_my_facebook_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
+                      wpfb_form_input('wpflybox_my_facebook_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);
                     } else if ($tab=='twitter'){
                       wpfb_form_input('wpflybox_twitter','20',$wpl_TwitterUsername,'');
                       wpfb_form_input('wpflybox_twitter_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
@@ -307,7 +339,10 @@ if ($wpfb_active_tab=='tabs')
                         $wpfb_choices=array($wpl_Twitter_Bird => 'twitter_custom', $wpl_Twitter_T => 'twitter');
                         wpfb_form_option('wpflybox_twitter_custom_button',$wpl_Twitter_Button,'',$wpfb_choices);
                         }
-                      wpfb_form_input('wpflybox_my_twitter_tab','50',$wpl_MyTab,$wpl_MyTabDesc);  
+                      echo '<tr><td colspan="2"><hr /></td></tr>';  
+                      wpfb_form_input('wpflybox_my_twitter_tab','50',$wpl_MyTab,$wpl_MyTabDesc);
+                      wpfb_form_input('wpflybox_my_twitter_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
+                      wpfb_form_input('wpflybox_my_twitter_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);  
                       echo '<tr><td colspan="2">*'.$wpl_DeleteCacheAfterUpdate.'</td></tr>';
                     } else if ($tab=='googleplus'){
                       wpfb_form_input('wpflybox_google','40',$wpl_Googlenumuser,$wpl_Googleuserdesc);
@@ -322,36 +357,54 @@ if ($wpfb_active_tab=='tabs')
                       $wpfb_choices=array($wpl_Yes => 'true', $wpl_No => 'false');
                       wpfb_form_option('wpflybox_google_showtag',$wpl_GoogleShowTag,'',$wpfb_choices);
                       wpfb_form_input('wpflybox_googleplus_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
-                      wpfb_form_input('wpflybox_googleplus_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc); 
-                      wpfb_form_input('wpflybox_my_googleplus_tab','50',$wpl_MyTab,$wpl_MyTabDesc);                     
+                      wpfb_form_input('wpflybox_googleplus_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);
+                      echo '<tr><td colspan="2"><hr /></td></tr>'; 
+                      wpfb_form_input('wpflybox_my_googleplus_tab','50',$wpl_MyTab,$wpl_MyTabDesc);
+                      wpfb_form_input('wpflybox_my_googleplus_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
+                      wpfb_form_input('wpflybox_my_googleplus_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);                     
                     } else if ($tab=='youtube'){
                       wpfb_form_input('wpflybox_youtube','30',$wpl_YoutubeUsername,'You can find your user ID at <a href="https://www.youtube.com/account_advanced" target="_blank">https://www.youtube.com/account_advanced</a>.');
                       wpfb_form_input('wpflybox_youtube_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
                       wpfb_form_input('wpflybox_youtube_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);
-                      wpfb_form_input('wpflybox_my_youtube_tab','50',$wpl_MyTab,$wpl_MyTabDesc);                      
+                      echo '<tr><td colspan="2"><hr /></td></tr>';
+                      wpfb_form_input('wpflybox_my_youtube_tab','50',$wpl_MyTab,$wpl_MyTabDesc);
+                      wpfb_form_input('wpflybox_my_youtube_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
+                      wpfb_form_input('wpflybox_my_youtube_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);                      
                     } else if ($tab=='subscription'){
                       wpfb_form_input('wpflybox_feedburner','30',$wpl_FeedburnerUsername,$wpl_FeedburnerUsernameDesc);
                       wpfb_form_input('wpflybox_subscription_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
                       wpfb_form_input('wpflybox_subscription_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);
-                      wpfb_form_input('wpflybox_my_subscription_tab','50',$wpl_MyTab,$wpl_MyTabDesc);                      
+                      wpfb_form_input('wpflybox_my_subscription_tab','50',$wpl_MyTab,$wpl_MyTabDesc);
+                      wpfb_form_input('wpflybox_my_subscription_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
+                      wpfb_form_input('wpflybox_my_subscription_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);
+                      echo '<tr><td colspan="2"><hr /></td></tr>';                      
                     } else if ($tab=='pinterest'){
                       wpfb_form_input('wpflybox_pinterest','30',$wpl_PinterestUsername,$wpl_PinterestUserDesc);
                       wpfb_form_input('wpflybox_pinterest_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
                       wpfb_form_input('wpflybox_pinterest_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);
-                      wpfb_form_input('wpflybox_my_pinterest_tab','50',$wpl_MyTab,$wpl_MyTabDesc);                      
+                      echo '<tr><td colspan="2"><hr /></td></tr>';
+                      wpfb_form_input('wpflybox_my_pinterest_tab','50',$wpl_MyTab,$wpl_MyTabDesc);
+                      wpfb_form_input('wpflybox_my_pinterest_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
+                      wpfb_form_input('wpflybox_my_pinterest_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);                      
                     } else if ($tab=='linkedin'){
                       wpfb_form_input('wpflybox_linkedin','50',$wpl_LinkedinID,'<br />'.$wpl_LinkedinFindID);
                       $wpfb_choices=array($wpl_Member => 'member', $wpl_Company => 'company');
                       wpfb_form_option('wpflybox_linkedin_type',$wpl_LinkedinMember,'',$wpfb_choices);
                       wpfb_form_input('wpflybox_linkedin_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
                       wpfb_form_input('wpflybox_linkedin_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);
-                      wpfb_form_input('wpflybox_my_linkedin_tab','50',$wpl_MyTab,$wpl_MyTabDesc);                      
+                      echo '<tr><td colspan="2"><hr /></td></tr>';
+                      wpfb_form_input('wpflybox_my_linkedin_tab','50',$wpl_MyTab,$wpl_MyTabDesc);
+                      wpfb_form_input('wpflybox_my_linkedin_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
+                      wpfb_form_input('wpflybox_my_linkedin_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);                      
                     } else if ($tab=='flickr'){
                       wpfb_form_input('wpflybox_flickr','20',$wpl_FlickrID,$wpl_FlickerIDGetter.': <a href="http://idgettr.com/" target="_blank">http://idgettr.com/</a>.');
                       wpfb_form_input('wpflybox_flickr_tag','20',$wpl_PhotoTag,$wpl_PhotoTagDesc);
                       wpfb_form_input('wpflybox_flickr_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
                       wpfb_form_input('wpflybox_flickr_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);
-                      wpfb_form_input('wpflybox_my_flickr_tab','50',$wpl_MyTab,$wpl_MyTabDesc);                      
+                      echo '<tr><td colspan="2"><hr /></td></tr>';
+                      wpfb_form_input('wpflybox_my_flickr_tab','50',$wpl_MyTab,$wpl_MyTabDesc);
+                      wpfb_form_input('wpflybox_my_flickr_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
+                      wpfb_form_input('wpflybox_my_flickr_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);                      
                     } else if ($tab=='contact'){
                       wpfb_form_input('wpflybox_contactemail','70',$wpl_CompletedForm,'');
                       $wpfb_choices=array($wpl_Yes => 'true', $wpl_No => 'false');
@@ -360,7 +413,10 @@ if ($wpfb_active_tab=='tabs')
                       wpfb_form_option('wpflybox_contactwho',$wpl_TabWording,'',$wpfb_choices);
                       wpfb_form_input('wpflybox_contact_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
                       wpfb_form_input('wpflybox_contact_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);
-                      wpfb_form_input('wpflybox_my_contact_tab','50',$wpl_MyTab,$wpl_MyTabDesc);                      
+                      echo '<tr><td colspan="2"><hr /></td></tr>';
+                      wpfb_form_input('wpflybox_my_contact_tab','50',$wpl_MyTab,$wpl_MyTabDesc);
+                      wpfb_form_input('wpflybox_my_contact_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
+                      wpfb_form_input('wpflybox_my_contact_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);                      
                     } else if ($tab=='deviant'){
                       wpfb_form_input('wpflybox_deviant_username','30',$wpl_DeviantUser,'');
                       wpfb_form_input('wpflybox_deviant_limit','3',$wpl_DevMaxNum,'('.$wpl_DevMaxNumDesc.')');
@@ -369,7 +425,10 @@ if ($wpfb_active_tab=='tabs')
                       wpfb_form_input('wpflybox_deviant_columns','3',$wpl_DevCol,'');
                       wpfb_form_input('wpflybox_deviant_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
                       wpfb_form_input('wpflybox_deviant_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);
+                      echo '<tr><td colspan="2"><hr /></td></tr>';
                       wpfb_form_input('wpflybox_my_deviant_tab','50',$wpl_MyTab,$wpl_MyTabDesc);
+                      wpfb_form_input('wpflybox_my_deviant_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
+                      wpfb_form_input('wpflybox_my_deviant_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);
                       echo '<tr><td colspan="2">*'.$wpl_DeleteCacheAfterUpdate.'</td></tr>';                      
                     } else if ($tab=='instagram'){
                       echo '<tr><td colspan="2">'.$wpl_ToAuthorize.'</td></tr>';
@@ -380,14 +439,20 @@ if ($wpfb_active_tab=='tabs')
                       wpfb_form_option('wpflybox_instagram_header',$wpl_ShowHeader,'',$wpfb_choices);
                       wpfb_form_input('wpflybox_instagram_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
                       wpfb_form_input('wpflybox_instagram_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);
+                      echo '<tr><td colspan="2"><hr /></td></tr>';
                       wpfb_form_input('wpflybox_my_instagram_tab','50',$wpl_MyTab,$wpl_MyTabDesc);
+                      wpfb_form_input('wpflybox_my_instagram_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
+                      wpfb_form_input('wpflybox_my_instagram_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);
                       echo '<tr><td colspan="2">*'.$wpl_DeleteCacheAfterUpdate.'</td></tr>';                                            
                     } else if ($tab=='vimeo'){
                       wpfb_form_input('wpflybox_vimeo_username','30',$wpl_VimUser,'');
                       wpfb_form_input('wpflybox_vimeo_total','2',$wpl_VimVideotoShow,$wpl_VimZerotoShowNo);
                       wpfb_form_input('wpflybox_vimeo_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
                       wpfb_form_input('wpflybox_vimeo_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);
+                      echo '<tr><td colspan="2"><hr /></td></tr>';
                       wpfb_form_input('wpflybox_my_vimeo_tab','50',$wpl_MyTab,$wpl_MyTabDesc);
+                      wpfb_form_input('wpflybox_my_vimeo_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
+                      wpfb_form_input('wpflybox_my_vimeo_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);
                       echo '<tr><td colspan="2">*'.$wpl_DeleteCacheAfterUpdate.'</td></tr>';                      
                     } else if ($tab=='custom'){
                       wpfb_form_textarea('wpflybox_custom_content','8', '40', $wpl_CustomContent,$wpl_CustomContentDesc);
@@ -404,10 +469,13 @@ if ($wpfb_active_tab=='tabs')
                         echo '<label for="wpfb_'.$value.'"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/custom/'.$value.'" style="width:30px;height:30px;" /></label>';
                         echo '</div>';
                         }  
-                      echo $wpl_CustomIconDesc.'</td></tr>';
-                      wpfb_form_input('wpflybox_custom_icon_upload','70',$wpl_CustomIconUpload,$wpl_CustomIconUploadDesc);
+                      echo $wpl_CustomIconDesc.'</td></tr>';                                           
                       wpfb_form_input('wpflybox_custom_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
-                      wpfb_form_input('wpflybox_custom_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);                                            
+                      wpfb_form_input('wpflybox_custom_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc); 
+                      echo '<tr><td colspan="2"><hr /></td></tr>';
+                      wpfb_form_input('wpflybox_my_custom_tab','50',$wpl_CustomIconUpload,$wpl_CustomIconUploadDesc); 
+                      wpfb_form_input('wpflybox_my_custom_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
+                      wpfb_form_input('wpflybox_my_custom_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);                                          
                     } else if ($tab=='tumblr'){
                       wpfb_form_input('wpflybox_tumblr','30',$wpl_Tumblr,$wpl_Tumblr_Desc);
                       wpfb_form_input('wpflybox_tumblr_max','3',$wpl_Tumblr_Max,'');
@@ -415,7 +483,10 @@ if ($wpfb_active_tab=='tabs')
                       wpfb_form_input('wpflybox_tumblr_width','6',$wpl_Width,'px');
                       wpfb_form_input('wpflybox_tumblr_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);
                       wpfb_form_input('wpflybox_tumblr_border','10',$wpl_BorderColor,$wpl_BackgroundColorDesc);
+                      echo '<tr><td colspan="2"><hr /></td></tr>';
                       wpfb_form_input('wpflybox_my_tumblr_tab','50',$wpl_MyTab,$wpl_MyTabDesc);
+                      wpfb_form_input('wpflybox_my_tumblr_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
+                      wpfb_form_input('wpflybox_my_tumblr_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);
                       echo '<tr><td colspan="2">*'.$wpl_DeleteCacheAfterUpdate.'</td></tr>';                      
                     }
                     ?>

@@ -198,5 +198,9 @@ $wpl_Tumblr_Desc='URL without http://';
 $wpl_Tumblr_Max='Max pictures to show';
 //Custom uploaded tab
 $wpl_MyTab='Custom Tab URL';
-$wpl_MyTabDesc='Enter a url to an image to use as a custom tab. Include http:// or absolute path. It will be scaled to 32x32 px. (Leave blank to use default tabs)';
+$wpl_MyTabDesc='Enter a url to an image to use as a custom tab. Include http:// or absolute path. (Leave blank to use default tabs)';
 $wpl_customTabIndividual='You can use custom buttons (URL of image) for each individual tab in the "Edit Tabs" options.';
+$wpl_MyTabWidth='Custom Tab Width';
+$wpl_MyTabDescWidth='px (ex: 32)';
+$wpl_MyTabHeight='Custom Tab Height';
+$wpl_MyTabDescHeight='px (ex: 32)';
