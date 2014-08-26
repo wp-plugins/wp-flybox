@@ -154,7 +154,8 @@ $wpfb_defaults=array (
 'wpflybox_my_tumblr_tab_height' => '32',
 'wpflybox_my_custom_tab' => '',
 'wpflybox_my_custom_tab_width' => '32',
-'wpflybox_my_custom_tab_height' => '32'
+'wpflybox_my_custom_tab_height' => '32',
+'wpflybox_flickr_type' => 'flash'
 );
 wpfb_set_defaults($wpfb_defaults);
 include ('lang/'.get_option('wpflybox_language').'-admin.php');
@@ -397,6 +398,8 @@ if ($wpfb_active_tab=='tabs')
                       wpfb_form_input('wpflybox_my_linkedin_tab_width','5',$wpl_MyTabWidth,$wpl_MyTabDescWidth);
                       wpfb_form_input('wpflybox_my_linkedin_tab_height','5',$wpl_MyTabHeight,$wpl_MyTabDescHeight);                      
                     } else if ($tab=='flickr'){
+                      $wpfb_choices=array($wpl_Flash => 'flash', $wpl_Static => 'static');
+                      wpfb_form_option('wpflybox_flickr_type',$wpl_FlickrType,$wpl_FlickrTypeDesc,$wpfb_choices);
                       wpfb_form_input('wpflybox_flickr','20',$wpl_FlickrID,$wpl_FlickerIDGetter.': <a href="http://idgettr.com/" target="_blank">http://idgettr.com/</a>.');
                       wpfb_form_input('wpflybox_flickr_tag','20',$wpl_PhotoTag,$wpl_PhotoTagDesc);
                       wpfb_form_input('wpflybox_flickr_background','10',$wpl_BackgroundColor,$wpl_BackgroundColorDesc);

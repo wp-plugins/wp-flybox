@@ -85,7 +85,7 @@ while ($i<=$number_of_tabs)
     
   echo 'px;z-index:9999'.$i.'">';
   //filler
-  echo '<div style="width:'.$my_tab_max_width.'px;display:inline-block;float:'.$right_or_left.';"></div>';
+  echo '<div style="height:10px;width:'.$my_tab_max_width.'px;display:inline-block;float:'.$right_or_left.';"></div>';
   //click image tab
   echo '<div class="'.$class.'" style="display:inline-block;float:'.$opposite_right_or_left.';cursor:pointer;">';
   include ('includes/'.$tabs[$i].'_tab.php');

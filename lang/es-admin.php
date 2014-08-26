@@ -135,10 +135,14 @@ $wpl_LinkedinMember='Miembro o de perfil de la compañía';
 $wpl_Member='Miembro';
 $wpl_Company='Empresa';
 //Flickr
+$wpl_Flash='Flash';
+$wpl_Static='Static';
+$wpl_FlickrType='Tipo';
+$wpl_FlickrTypeDesc='Flash es generado por flckr.com y puede causar problemas con agobiar. No se puede solucionar, ya que no se puede editar desde flckr. Estáticas son imágenes claras y funciona mejor con cernido'; 
 $wpl_FlickrID='Flickr ID';
 $wpl_FlickerIDGetter='Use esta URL para ayudarle a encontrar su ID';
 $wpl_PhotoTag='Etiqueta fotográfica';
-$wpl_PhotoTagDesc='Mostrar sólo las fotos con esta etiqueta, o dejar en blanco para todos.';
+$wpl_PhotoTagDesc='Mostrar sólo las fotos con esta etiqueta, o dejar en blanco para todos. Separa las etiquetas con comas';
 //Contact
 $wpl_ContactMe='Ponte en contacto conmigo';
 $wpl_CompletedForm='Enviar para enviar el formulario completado a';

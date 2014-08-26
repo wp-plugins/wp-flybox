@@ -95,7 +95,7 @@ if ($wpflybox_side=='right')
   echo '</style>';
   }
 ?>
-<script>
+<script type="text/javascript">
 <?php
 $i=1;
 while ($i<=$number_of_tabs)
@@ -182,7 +182,7 @@ while ($i<=$number_of_tabs)
 while ($i<=$number_of_tabs)
   {
   ?>
-  jQuery("#tab<?php echo $i; ?>").hover(function(){
+  jQuery("#tab<?php echo $i; ?> div.wp_but").hover(function(){
     if(tab<?php echo $i; ?>_pos==0)
       {
       jQuery("#tab<?php echo $i; ?>").animate({<?php echo $right_or_left; ?>:'0px'});
@@ -213,11 +213,21 @@ while ($i<=$number_of_tabs)
       tab<?php echo $i; ?>_pos=1;
       } else {
       var tab_width=<?php echo $tab_width[$i]; ?>;
-      var i_width=jQuery("#tab<?php echo $i; ?>").width()-tab_width;
+      var i_width=jQuery("#tab<?php echo $i; ?> div.wp_but").width()-tab_width;
       i_width='-'+i_width;
       jQuery("#tab<?php echo $i; ?>").animate({<?php echo $right_or_left; ?>:i_width});
       tab<?php echo $i; ?>_pos=0;
       }
+  },function(){
+    jQuery("#tab<?php echo $i; ?>").mouseleave(function(){
+    var tab_width=<?php echo $tab_width[$i]; ?>;
+    if (jQuery("#tab<?php echo $i; ?>").length > 0) 
+      {
+      var i_width=jQuery("#tab<?php echo $i; ?>").width()-tab_width;
+      i_width='-'+i_width+'px';
+      jQuery("#tab<?php echo $i; ?>").animate({<?php echo $right_or_left; ?>:i_width});
+      } 
+    }); 
   });
   <?php
   $i++;
