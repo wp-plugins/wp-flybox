@@ -2,8 +2,9 @@
 function wpfb_set_defaults($defaults){
   foreach ($defaults as $key => $value)
     {
-    if (get_option($key)=="" || !get_option($key))
+    if (get_option($key)==="" || (!get_option($key)&&get_option($key)!=='0'))
       {
+      //echo $key.':'.get_option($key).'<br />';
       update_option($key, $value);
       }
     }
