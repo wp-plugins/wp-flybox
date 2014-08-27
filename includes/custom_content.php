@@ -1,5 +1,5 @@
 <?php
 echo '<div style="background-color:'.get_option('wpflybox_custom_background').';border:1px solid '.get_option('wpflybox_custom_border').';display:inline-block">';
-echo stripslashes(get_option('wpflybox_custom_content'));
+echo do_shortcode(stripslashes(get_option('wpflybox_custom_content')));
 echo '</div>';
 ?>

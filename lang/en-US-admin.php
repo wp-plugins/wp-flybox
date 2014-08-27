@@ -190,7 +190,7 @@ $wpl_Help='Help';
 $wpl_Rate='Rate';
 //Custom Content
 $wpl_CustomContent='Custom HTML Code';
-$wpl_CustomContentDesc='';
+$wpl_CustomContentDesc='You can use [shortcodes].';
 $wpl_Custom='Custom';
 $wpl_CustomIcon='Custom Icon';
 $wpl_CustomIconDesc='These will only be used if the custom location below is blank. Use these when using custom color logo buttons.';

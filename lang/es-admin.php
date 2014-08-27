@@ -190,7 +190,7 @@ $wpl_Help='ayudar';
 $wpl_Rate='velocidad';
 //Custom Content
 $wpl_CustomContent='Código HTML personalizado';
-$wpl_CustomContentDesc='';
+$wpl_CustomContentDesc='Usted puede utilizar [shortcodes].';
 $wpl_Custom='costumbre';
 $wpl_CustomIcon='icono personalizado';
 $wpl_CustomIconDesc='Estos sólo serán utilizados si la ubicación de encargo debajo está en blanco. Úselos cuando utilice colores personalizados logotipo botones.';
