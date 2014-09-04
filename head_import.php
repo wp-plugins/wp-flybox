@@ -106,6 +106,32 @@ while ($i<=$number_of_tabs)
   $i++;
   }
 ?>
+jQuery(window).load(function(){
+<?php
+$i=1;
+$tab_width=array();
+//move tabs to edge
+while($i<=$number_of_tabs)
+  {
+  if (get_option('wpflybox_my_'.get_option('wpflybox_tab'.$i).'_tab') !='')
+    {
+    $tab_width[$i]=intval(get_option('wpflybox_my_'.get_option('wpflybox_tab'.$i).'_tab_width'));
+    }else {
+     $tab_width[$i]=32;
+    }
+  ?>
+  var tab_width=<?php echo $tab_width[$i]; ?>;
+  if (jQuery("#tab<?php echo $i; ?>").length > 0) 
+    {
+    var i_width=jQuery("#tab<?php echo $i; ?>").width()-tab_width;
+    i_width='-'+i_width+'px';
+    document.getElementById('tab<?php echo $i; ?>').style.<?php echo $right_or_left; ?>=i_width;
+    }
+  <?php
+  $i++;
+  }
+?>
+});
 jQuery(document).ready(function(){
 <?php
 $i=1;
