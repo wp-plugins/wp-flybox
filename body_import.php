@@ -52,7 +52,7 @@ $tab_heights[0]=0;
 while ($i<=$number_of_tabs)
   {
   //wrapper
-  echo '<div id="tab'.$i.'" style="display:inline-block;overflow:hidden;position:'.$wpflybox_position.';border:0px;'.$right_or_left.':-999px;top:';
+  echo '<div class="wp-flybox_tab" id="tab'.$i.'" style="width:auto;display:inline-block;overflow:hidden;position:'.$wpflybox_position.';border:0px;'.$right_or_left.':-999px;top:';
   if ($i==1)
     {
     if(get_option('wpflybox_my_'.$tabs[$i].'_tab') !='')
