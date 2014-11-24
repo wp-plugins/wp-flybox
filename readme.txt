@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, vimeo, deviantart, instagram, tumblr, css, custom, colors, sidebar, links
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 6.2
+Stable tag: 6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Social floating fly out tabbed boxes. Can be located on either side of screen and customized to match any theme's colors. 
@@ -35,6 +35,8 @@ All themes have different layouts and properties that can affect the correct loo
 7. Tab setup and configuration.
 8. Custom color configuration
 == Changelog ==
+= 6.3 =
+* Fixed bug relating to missing quotes
 = 6.2 =
 * Fixed custom content bug
 = 6.1 =
@@ -202,6 +204,8 @@ All themes have different layouts and properties that can affect the correct loo
 = 0.1 =
 * Beta, initial design and testing.
 == Upgrade Notice ==
+= 6.3 =
+* Fixed bug relating to missing quotes
 = 6.2 =
 * Fixed custom content bug
 = 6.1 =

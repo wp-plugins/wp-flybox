@@ -76,7 +76,7 @@ while ($i<=$number_of_tabs)
     $new_spacing = $top_margin+$tab_spacing*($i-1)+$tab_heights[$i-1];
     echo $new_spacing;
     }
-  if((get_option('wpflybox_my_'.$tabs[$i].'_tab')=='' && get_option(wpflybox_usecustombutton)=='true') || (strpos($tabs[$i],'custom')!==false && get_option('wpflybox_my_'.$tabs[$i].'_tab')==''))
+  if((get_option('wpflybox_my_'.$tabs[$i].'_tab')=='' && get_option('wpflybox_usecustombutton')=='true') || (strpos($tabs[$i],'custom')!==false && get_option('wpflybox_my_'.$tabs[$i].'_tab')==''))
   {
   $class='wpflybox_button wp_but';
   }else{

@@ -2,30 +2,30 @@
 <table border="0">
 <tr><td style="text-align:center;">
 <img src="<?php echo plugins_url()."/wp-flybox/static/"; ?>noncustombuttonexample.png" width="101"><br>
-<input type="radio" name="wpflybox_usecustombutton" value="false" <?php if(get_option(wpflybox_usecustombutton)=="false"){echo 'checked';} ?>><br><?php echo $wpl_LogoandText; ?>
+<input type="radio" name="wpflybox_usecustombutton" value="false" <?php if(get_option('wpflybox_usecustombutton')=="false"){echo 'checked';} ?>><br><?php echo $wpl_LogoandText; ?>
 </td><td style="text-align:center;">
 <img src="<?php echo plugins_url()."/wp-flybox/static/"; ?>custombuttonexample.png" width="101"><br>
-<input type="radio" name="wpflybox_usecustombutton" value="true" <?php if(get_option(wpflybox_usecustombutton)=="true"){echo 'checked';} ?>><br><?php echo $wpl_CustomColors; ?>
+<input type="radio" name="wpflybox_usecustombutton" value="true" <?php if(get_option('wpflybox_usecustombutton')=="true"){echo 'checked';} ?>><br><?php echo $wpl_CustomColors; ?>
 </td><td><input type="submit" name="Submit" value="<?php echo $wpl_Apply; ?>" />
 </td></table>
 </td></tr> 
-<?php if (get_option(wpflybox_usecustombutton)=="true"){ ?>
+<?php if (get_option('wpflybox_usecustombutton')=="true"){ ?>
 <tr><td>
 <h4><?php echo $wpl_CustomButtonConfig; ?>:</h4>
 </td></tr>
 <tr><td style="text-align:right;"><?php echo $wpl_RightGradColor; ?>:</td><td>
-<input class="color" type="text" name="wpflybox_bgtopgradient" value="<?php echo get_option(wpflybox_bgtopgradient); ?>" size="10" />
+<input class="color" type="text" name="wpflybox_bgtopgradient" value="<?php echo get_option('wpflybox_bgtopgradient'); ?>" size="10" />
 </td></tr>
 <tr><td style="text-align:right;"><?php echo $wpl_LeftGradColor; ?></td><td>
-<input class="color" type="text" name="wpflybox_bgbottomgradient" value="<?php echo get_option(wpflybox_bgbottomgradient); ?>" size="10" />
+<input class="color" type="text" name="wpflybox_bgbottomgradient" value="<?php echo get_option('wpflybox_bgbottomgradient'); ?>" size="10" />
 </td></tr>                   		  
 <tr><td style="text-align:right;"><?php echo $wpl_BorderColor; ?>:</td><td>
-<input class="color" type="text" name="wpflybox_bgborder" value="<?php echo get_option(wpflybox_bgborder); ?>" size="10" />
+<input class="color" type="text" name="wpflybox_bgborder" value="<?php echo get_option('wpflybox_bgborder'); ?>" size="10" />
 </td></tr>
 <?php
-$wpflybox_bgtopgradient=get_option(wpflybox_bgtopgradient);
-$wpflybox_bgbottomgradient=get_option(wpflybox_bgbottomgradient);
-$wpflybox_bgborder=get_option(wpflybox_bgborder);
+$wpflybox_bgtopgradient=get_option('wpflybox_bgtopgradient');
+$wpflybox_bgbottomgradient=get_option('wpflybox_bgbottomgradient');
+$wpflybox_bgborder=get_option('wpflybox_bgborder');
 ?>
 <tr><td style="text-align:right;"><?php echo $wpl_CurrentTabColors; ?>:<br>&nbsp;<br>&nbsp;</td><td>
 <style type="text/css">
@@ -83,9 +83,9 @@ $wpflybox_bgborder=get_option(wpflybox_bgborder);
 <?php
 }else{
 ?> 
-<input type="hidden" name="wpflybox_bgtopgradient" value="<?php echo get_option(wpflybox_bgtopgradient); ?>" />
-<input type="hidden" name="wpflybox_bgbottomgradient" value="<?php echo get_option(wpflybox_bgbottomgradient); ?>" />
-<input type="hidden" name="wpflybox_bgborder" value="<?php echo get_option(wpflybox_bgborder); ?>" />
+<input type="hidden" name="wpflybox_bgtopgradient" value="<?php echo get_option('wpflybox_bgtopgradient'); ?>" />
+<input type="hidden" name="wpflybox_bgbottomgradient" value="<?php echo get_option('wpflybox_bgbottomgradient'); ?>" />
+<input type="hidden" name="wpflybox_bgborder" value="<?php echo get_option('wpflybox_bgborder'); ?>" />
  <?php
 }
 ?>
