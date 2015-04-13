@@ -49,7 +49,7 @@ $context = stream_context_create($opts);
         } 
         return $values[0];
 	}
-$xml = parseRSS("http://backend.deviantart.com/rss.xml?type=deviation&q=by%3A".$options['username']."+sort%3Atime+meta%3Aall");
+$xml = parseRSS("https://backend.deviantart.com/rss.xml?type=deviation&q=by%3A".$options['username']."+sort%3Atime+meta%3Aall");
 if($xml['RSS']['CHANNEL']['ITEM']){ 
 $k=0;
 foreach($xml['RSS']['CHANNEL']['ITEM'] as $item) if ($k<$options['limit']){

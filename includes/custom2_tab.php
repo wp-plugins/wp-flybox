@@ -100,7 +100,7 @@ if ($wpflybox_side=='right')
    }';
   echo '</style>';
   }
-  echo '<img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/custom/'.get_option('wpflybox_custom2_icon').'" style="width:28px;height:28px;padding:2px;" alt="?">';
+  echo '<img src="'.plugins_url().'/wp-flybox/static/icons/custom/'.get_option('wpflybox_custom2_icon').'" style="width:28px;height:28px;padding:2px;" alt="?">';
   } else {
   echo '<img src="'.get_option('wpflybox_my_custom2_tab').'" style="width:'.$wpflybox_custom2_tab_width.'px;height:'.$wpflybox_custom2_tab_height.'px" alt="?">';
   }

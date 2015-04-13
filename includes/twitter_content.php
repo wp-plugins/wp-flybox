@@ -50,7 +50,7 @@ $response= $twitter->setGetfield($getfield)
   $you['name'] 			 	= $json->name;
   $you['screen_name']	 		= $json->screen_name;
   $you['followers_count'] 	= $json->followers_count;
-  $you['profile_image_url']	= $json->profile_image_url;
+  $you['profile_image_url']	= $json->profile_image_url_https;
   $you['friends_count']		= $json->friends_count;
   $you['description'] = $json->description;
   if ( $options['show_followers'] == 'followers' )
@@ -99,7 +99,7 @@ $response= $twitter->setGetfield($getfield)
         if (is_array($fans))
           {
           $followers[$i]['screen_name'] 		= (string)$fans[$i]->screen_name;
-          $followers[$i]['profile_image_url'] = (string)$fans[$i]->profile_image_url;
+          $followers[$i]['profile_image_url'] = (string)$fans[$i]->profile_image_url_https;
           }
       }
   $you['followers'] = $followers;

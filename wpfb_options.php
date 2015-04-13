@@ -320,7 +320,7 @@ if ($wpfb_active_tab=='tabs')
                           echo ' checked';
                           }
                         echo ' />';
-                        echo '<label for="wpfb_'.$value.'"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/custom/'.$value.'" style="width:30px;height:30px;" /></label>';
+                        echo '<label for="wpfb_'.$value.'"><img src="'.plugins_url().'/wp-flybox/static/icons/custom/'.$value.'" style="width:30px;height:30px;" /></label>';
                         echo '</div>';
                         }  
                       echo $wpl_CustomIconDesc.'</td></tr>';                                           
@@ -354,7 +354,7 @@ if ($wpfb_active_tab=='tabs')
                           echo ' checked';
                           }
                         echo ' />';
-                        echo '<label for="wpfb_'.$value.'"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/custom/'.$value.'" style="width:30px;height:30px;" /></label>';
+                        echo '<label for="wpfb_'.$value.'"><img src="'.plugins_url().'/wp-flybox/static/icons/custom/'.$value.'" style="width:30px;height:30px;" /></label>';
                         echo '</div>';
                         }  
                       echo $wpl_CustomIconDesc.'</td></tr>';                                           
@@ -376,7 +376,7 @@ if ($wpfb_active_tab=='tabs')
                           echo ' checked';
                           }
                         echo ' />';
-                        echo '<label for="wpfb_'.$value.'"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/custom/'.$value.'" style="width:30px;height:30px;" /></label>';
+                        echo '<label for="wpfb_'.$value.'"><img src="'.plugins_url().'/wp-flybox/static/icons/custom/'.$value.'" style="width:30px;height:30px;" /></label>';
                         echo '</div>';
                         }  
                       echo $wpl_CustomIconDesc.'</td></tr>';                                           
@@ -398,7 +398,7 @@ if ($wpfb_active_tab=='tabs')
                           echo ' checked';
                           }
                         echo ' />';
-                        echo '<label for="wpfb_'.$value.'"><img src="'.WP_PLUGIN_URL.'/wp-flybox/static/icons/custom/'.$value.'" style="width:30px;height:30px;" /></label>';
+                        echo '<label for="wpfb_'.$value.'"><img src="'.plugins_url().'/wp-flybox/static/icons/custom/'.$value.'" style="width:30px;height:30px;" /></label>';
                         echo '</div>';
                         }  
                       echo $wpl_CustomIconDesc.'</td></tr>';                                           

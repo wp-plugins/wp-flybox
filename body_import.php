@@ -22,7 +22,7 @@ $tab_spacing=intval(get_option('wpflybox_seperation'));
 $right_or_left=get_option('wpflybox_side');
 $use_custom_button=get_option('wpflybox_usecustombutton');
 if ($right_or_left=='left'){$opposite_right_or_left='right';}else{$opposite_right_or_left='left';}
-$plugin_url=WP_PLUGIN_URL;
+$plugin_url=plugins_url();
 $i=1;
 $tabs=Array();
 $my_tab_width=Array();
