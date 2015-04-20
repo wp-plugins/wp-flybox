@@ -3,7 +3,7 @@ Contributors: cconoly
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=C6BJ8C7NPJTVW
 Tags: social, fly, box, tabs, tabbed, facebook ,twitter, google, plus, pinterest, vimeo, deviantart, instagram, tumblr, css, custom, colors, sidebar, links
 Requires at least: 3.0
-Tested up to: 4.0
+Tested up to: 4.2
 Stable tag: 6.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
