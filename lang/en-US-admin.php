@@ -189,8 +189,10 @@ $wpl_WordpressPluginPage='Wordpress Plugin Page';
 $wpl_Help='Help';
 $wpl_Rate='Rate';
 //Custom Content
-$wpl_CustomContent='Custom HTML Code';
+$wpl_CustomContent='HTML Code/URL';
 $wpl_CustomContentDesc='You can use [shortcodes].';
+$wpl_URL_Instead='Link or HTML Code';
+$wpl_URL_Instead_Desc='To have the button link to another page or site then put in the URL into the "HTML Code/URL" option box and choose URL above. If you want a box to slide out with your HTML code then put in the HTMl code into the "HTML Code/URL" box and choose HTML Code above';
 $wpl_Custom='Custom';
 $wpl_CustomIcon='Custom Icon';
 $wpl_CustomIconDesc='These will only be used if the custom location below is blank. Use these when using custom color logo buttons.';

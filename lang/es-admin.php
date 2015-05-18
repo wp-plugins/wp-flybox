@@ -191,6 +191,7 @@ $wpl_Rate='velocidad';
 //Custom Content
 $wpl_CustomContent='Código HTML personalizado';
 $wpl_CustomContentDesc='Usted puede utilizar [shortcodes].';
+$wpl_URL_Instead_Desc='To have the button link to another page or site then put in the URL into the "HTML Code/URL" option box and choose URL above. If you want a box to slide out with your HTML code then put in the HTMl code into the "HTML Code/URL" box and choose HTML Code above';
 $wpl_Custom='costumbre';
 $wpl_CustomIcon='icono personalizado';
 $wpl_CustomIconDesc='Estos sólo serán utilizados si la ubicación de encargo debajo está en blanco. Úselos cuando utilice colores personalizados logotipo botones.';

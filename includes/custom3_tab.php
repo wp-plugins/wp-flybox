@@ -1,4 +1,5 @@
 <?php
+if (get_option('wpflybox_custom3_URL_instead')==='true'){echo '<a href="'.get_option('wpflybox_custom3_content').'">';}
 if (get_option('wpflybox_my_custom3_tab')!='')
   {
   $wpflybox_custom3_tab_height=intval(get_option('wpflybox_my_custom3_tab_height'));
@@ -104,4 +105,5 @@ if ($wpflybox_side=='right')
   } else {
   echo '<img src="'.get_option('wpflybox_my_custom3_tab').'" style="width:'.$wpflybox_custom3_tab_width.'px;height:'.$wpflybox_custom3_tab_height.'px" alt="?">';
   }
-?>
+if (get_option('wpflybox_custom3_URL_instead')==='true'){echo '</a>';}
+  ?>
