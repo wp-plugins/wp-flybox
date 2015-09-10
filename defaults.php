@@ -180,6 +180,7 @@ $wpfb_defaults=array (
 'wpflybox_instagram_token'=> '',
 'wpflybox_instagram_id'=>'',
 'wpflybox_flickr_tag'=>'',
-'wpflybox_delete_cache'=>'0'
+'wpflybox_delete_cache'=>'0',
+'wpflybox_twitter_customheight' => '0'
 );
 ?>

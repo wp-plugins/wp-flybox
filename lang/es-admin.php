@@ -104,6 +104,8 @@ $wpl_ShowLatestT='Ver últimos Tweet';
 $wpl_Twitter_Bird='Pájaro';
 $wpl_Twitter_T='Letra t';
 $wpl_Twitter_Button='Cuál de logotipo para botón personalizado';
+$wpl_twitterheight="Altura Ficha Personalizada";
+$wpl_twitterheightdesc="px Dejar en blanco o 0 para la altura de auto. Si automático no funciona pruebe a utilizar 200 o más. Esto sólo se aplica a nombre, encabezado y último tweet.";
 //Google Plus
 $wpl_Googlenumuser='URL completo de la página de Google+';
 $wpl_Googleuserdesc='ejemplo: "https://plus.google.com/u/0/+WordPress/"';

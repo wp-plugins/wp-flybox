@@ -101,9 +101,11 @@ $wpl_On='On';
 $wpl_Off='Off';
 $wpl_TweettoButton='Tweet To Button';
 $wpl_ShowLatestT='Show Latest Tweet';
-$wpl_Twitter_Bird='Pájaro';
-$wpl_Twitter_T='Letra t';
-$wpl_Twitter_Button='Cuál de logotipo para botón personalizado';
+$wpl_Twitter_Bird='Bird';
+$wpl_Twitter_T='Twitter T';
+$wpl_Twitter_Button='Twitter Button';
+$wpl_twitterheight="Custom Tab Height";
+$wpl_twitterheightdesc="px Leave blank or 0 for auto height. If auto does not work try using 200 or more. This only applies to name, header and latest tweet.";
 //Google Plus
 $wpl_Googlenumuser='Full URL of Google+ Page';
 $wpl_Googleuserdesc='example: "https://plus.google.com/u/0/+WordPress/"';

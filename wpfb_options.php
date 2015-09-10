@@ -186,6 +186,7 @@ if ($wpfb_active_tab=='tabs')
                       wpfb_form_option('wpflybox_twitter_tweetto',$wpl_TweettoButton,'',$wpfb_choices);
                       $wpfb_choices=array($wpl_On => 'true', $wpl_Off => 'false');
                       wpfb_form_option('wpflybox_twitter_latest',$wpl_ShowLatestT,'',$wpfb_choices);
+                      wpfb_form_input('wpflybox_twitter_customheight','3',$wpl_twitterheight,$wpl_twitterheightdesc);
                       if (get_option('wpflybox_usecustombutton')=='true')
                         {
                         $wpfb_choices=array($wpl_Twitter_Bird => 'twitter_custom', $wpl_Twitter_T => 'twitter');

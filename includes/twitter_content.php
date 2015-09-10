@@ -127,7 +127,14 @@ $response= $twitter->setGetfield($getfield)
   update_option($key, $you1);    
   return $you;
   }
-if ($twitteroptions['latest']=='true'){$twitteroptions['height']=125;}else{$twitteroptions['height']=60;}
+$customheight=get_option('wpflybox_twitter_customheight');
+if ($customheight<1 || $customheight==='')
+  {
+  if ($twitteroptions['latest']=='true'){$twitteroptions['height']=125;}else{$twitteroptions['height']=60;}  
+  }else{
+  $twitteroptions['height']=$customheight;
+  }  
+
 function wpfb_show_custom_twitter($options, $you, $lang)
   {
   ?>
